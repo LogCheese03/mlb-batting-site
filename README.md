@@ -17,13 +17,14 @@ One row of `data/batting.csv` is one player's batting line for one team in one s
 
 | File | What it does |
 |---|---|
-| `index.html` | Report page. It has the summary, headline numbers, ten findings with charts, and the data and methods section. |
+| `index.html` | Report page. It has the summary, headline numbers, ten findings with charts, a season/franchise roster explorer, and the data and methods section. |
 | `dashboard.html` | Dashboard page. It has filters, summary numbers, six charts with measure and breakdown switches, a table and a reset button. |
 | `css/style.css` | Shared fonts, colors and layout for both pages. |
 | `js/common.js` | Shared formulas (AVG, OBP, SLG, OPS, rates), number formatting and chart styling. Its formulas match `scripts/prep_data.py`. |
 | `js/report.js` | Loads `data/report.json`, fills in every number on the report and draws the report charts. Each finding links to a matching dashboard view. |
 | `js/dashboard.js` | Loads `data/batting.csv`, applies filters, recalculates the numbers and draws the dashboard charts, heatmap and table. Also runs the player search, chart click-to-filter, and the `?measure=...&breakdown=...` deep links from the report. |
 | `js/sound.js` | Optional synthesized hover/click sounds (off by default; toggle button in the nav bar). |
+| `js/roster.js` | Loads `data/batting.csv` on the report page and renders every player's line for a chosen season and franchise, with a team-total row. |
 | `scripts/prep_data.py` | Reads the raw Lahman CSVs, joins franchise, batting hand and primary position, drops rows, checks the project requirements, and writes the two data files below. |
 | `data/raw/` | The original Lahman CSV files, unchanged. |
 | `data/batting.csv` | Cleaned data loaded by the dashboard, written by the script. |
