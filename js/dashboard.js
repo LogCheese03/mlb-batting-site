@@ -10,6 +10,7 @@ const HIST_MIN_PA = 100;      // rate histograms only include player-seasons wit
 
 let DATA = [];
 let DOMAIN = {};
+let PLAYERS = new Map(); // playerID -> array of that player's season rows
 const state = {};
 const charts = {};
 let tableRows = [], tableSort = { key: "PA", dir: -1 };
@@ -51,8 +52,103 @@ function init() {
   buildChips("posChips", "pos");
   buildChips("batsChips", "bats");
   buildFranchiseList();
+  buildPlayerIndex();
   wire();
   resetState();
+  applyUrlParams();
+}
+
+/* ---------------- URL deep links (from report findings) ---------------- */
+function applyUrlParams() {
+  const p = new URLSearchParams(location.search);
+  if (![...p.keys()].length) return;
+  if (p.has("measure") && MEASURES[p.get("measure")]) state.measure = p.get("measure");
+  if (p.has("breakdown") && BREAKDOWNS[p.get("breakdown")]) state.breakdown = p.get("breakdown");
+  if (p.has("trend")) state.trendMode = p.get("trend") === "split" ? "split" : "all";
+  if (p.has("yearMin")) state.yearMin = Math.max(DOMAIN.yearMin, Math.min(DOMAIN.yearMax, +p.get("yearMin") || state.yearMin));
+  if (p.has("yearMax")) state.yearMax = Math.max(DOMAIN.yearMin, Math.min(DOMAIN.yearMax, +p.get("yearMax") || state.yearMax));
+  if (p.has("franchise") && DOMAIN.franchise.includes(p.get("franchise"))) state.franchise = new Set([p.get("franchise")]);
+  if (p.has("league") && DOMAIN.league.includes(p.get("league"))) state.league = new Set([p.get("league")]);
+  if (p.has("pos") && DOMAIN.pos.includes(p.get("pos"))) state.pos = new Set([p.get("pos")]);
+  if (p.has("bats") && DOMAIN.bats.includes(p.get("bats"))) state.bats = new Set([p.get("bats")]);
+  syncInputs();
+  update();
+}
+
+/* ---------------- clicking a chart segment narrows the filters ---------------- */
+function drillDown(breakdown, label) {
+  if (breakdown === "decade") {
+    const y = parseInt(label, 10);
+    if (Number.isNaN(y)) return;
+    state.yearMin = Math.max(DOMAIN.yearMin, y);
+    state.yearMax = Math.min(DOMAIN.yearMax, y + 9);
+  } else if (DOMAIN[breakdown]) {
+    state[breakdown] = new Set([label]);
+  }
+  syncInputs();
+  update();
+  document.querySelector(".controls")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ---------------- player lookup ---------------- */
+function buildPlayerIndex() {
+  PLAYERS = new Map();
+  DATA.forEach(r => {
+    if (!PLAYERS.has(r.playerID)) PLAYERS.set(r.playerID, []);
+    PLAYERS.get(r.playerID).push(r);
+  });
+  const options = [...PLAYERS.entries()].map(([id, rows]) => {
+    const years = rows.map(r => r.year);
+    return { id, label: `${rows[0].name} (${Math.min(...years)}–${Math.max(...years)})` };
+  }).sort((a, b) => a.label.localeCompare(b.label));
+  document.getElementById("playerNames").innerHTML = options.map(o => `<option value="${o.label}">`).join("");
+  window._playerLabelToId = new Map(options.map(o => [o.label, o.id]));
+}
+
+function showPlayer(id) {
+  const rows = PLAYERS.get(id);
+  if (!rows) return;
+  const seasons = [...rows].sort((a, b) => a.year - b.year);
+  const t = totalsOf(seasons);
+  const years = seasons.map(r => r.year);
+  const posCounts = groupBy(seasons, r => r.pos);
+  const primaryPos = [...posCounts.entries()].sort((a, b) => b[1].rows - a[1].rows)[0][0];
+
+  document.getElementById("playerResult").hidden = false;
+  document.getElementById("playerResult").innerHTML = `
+    <div class="player-result-head">
+      <h3>${seasons[0].name}</h3>
+      <span>${Math.min(...years)}–${Math.max(...years)} · ${primaryPos} · Bats ${seasons[0].bats}</span>
+    </div>
+    <div class="player-tiles">
+      <div class="tile"><div class="tile-value">${fmt(t.rows, "int")}</div><div class="tile-label">Seasons</div></div>
+      <div class="tile"><div class="tile-value">${fmt(t.PA, "int")}</div><div class="tile-label">Plate app.</div></div>
+      <div class="tile"><div class="tile-value">${fmt(t.HR, "int")}</div><div class="tile-label">Home runs</div></div>
+      <div class="tile"><div class="tile-value">${fmt(val(t, "BA"), "avg")}</div><div class="tile-label">AVG</div></div>
+      <div class="tile"><div class="tile-value">${fmt(val(t, "OBP"), "avg")}</div><div class="tile-label">OBP</div></div>
+      <div class="tile"><div class="tile-value">${fmt(val(t, "SLG"), "avg")}</div><div class="tile-label">SLG</div></div>
+      <div class="tile"><div class="tile-value">${fmt(val(t, "OPS"), "avg")}</div><div class="tile-label">OPS</div></div>
+      <div class="tile"><div class="tile-value">${fmt(val(t, "K_PCT"), "pct")}</div><div class="tile-label">K%</div></div>
+    </div>
+    <div class="player-chart-head">
+      <label for="playerMeasure">Season by season</label>
+      <select id="playerMeasure">${Object.entries(MEASURES).map(([k, m]) => `<option value="${k}" ${k === "OPS" ? "selected" : ""}>${m.label}</option>`).join("")}</select>
+    </div>
+    <div class="chart-box" style="height:220px"><canvas id="c-player" role="img" aria-label="Player season by season"></canvas></div>`;
+
+  const draw = measure => {
+    const kind = MEASURES[measure].kind;
+    make("player", {
+      type: "line",
+      data: { labels: years, datasets: [{ label: MEASURES[measure].label, data: seasons.map(r => { const rt = emptyTotals(); addRow(rt, r); return val(rt, measure); }),
+        borderColor: COLORS[1], backgroundColor: "rgba(200,16,46,.1)", fill: true }] },
+      options: { plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.y, kind) } } },
+        scales: { y: axisFor(kind), x: { ticks: { maxTicksLimit: 12 } } } },
+    });
+  };
+  draw("OPS");
+  document.getElementById("playerMeasure").addEventListener("change", e => draw(e.target.value));
+  document.getElementById("playerCard").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function resetState() {
@@ -137,6 +233,11 @@ function wire() {
     const c = charts[b.dataset.save]; if (c) downloadChart(c, `mlb-${b.dataset.save}-${state.measure}`);
   }));
   document.getElementById("exportCsv").addEventListener("click", exportTable);
+
+  document.getElementById("playerSearch").addEventListener("input", e => {
+    const id = window._playerLabelToId?.get(e.target.value);
+    if (id) showPlayer(id);
+  });
 }
 
 /* ---------------- filtering + aggregation ---------------- */
@@ -254,6 +355,7 @@ function drawBar(groups) {
       backgroundColor: entries.map((_, i) => (i === 0 && state.breakdown !== "decade" ? COLORS[1] : COLORS[0])) }] },
     options: {
       indexAxis: horizontal ? "y" : "x", interaction: { mode: "nearest", intersect: true },
+      onClick: (evt, els) => { if (els.length) drillDown(state.breakdown, entries[els[0].index][0]); },
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(horizontal ? c.parsed.x : c.parsed.y, m.kind) } } },
       scales: { [horizontal ? "x" : "y"]: axisFor(m.kind), [horizontal ? "y" : "x"]: { ticks: { autoSkip: false, font: { size: 11 } } } },
     },
@@ -272,6 +374,7 @@ function drawScatter(groups) {
     })) },
     options: {
       interaction: { mode: "nearest", intersect: true },
+      onClick: (evt, els) => { if (els.length) drillDown(state.breakdown, entries[els[0].datasetIndex][0]); },
       plugins: { legend: { display: entries.length <= 10 },
         tooltip: { callbacks: { label: c => `${c.dataset.label}: K ${fmt(c.parsed.x, "pct")}, HR ${fmt(c.parsed.y, "pct")}` } } },
       scales: { x: { title: { display: true, text: "Strikeout rate" }, ...axisFor("pct") }, y: { title: { display: true, text: "Home run rate" }, ...axisFor("pct") } },
@@ -285,16 +388,17 @@ function drawLeaders(rows) {
   const names = new Map(rows.map(r => [r.playerID, r.name]));
   let list = [...players.entries()];
   if (m.rate) list = list.filter(([, t]) => t.PA >= LEADER_MIN_PA);
-  list = list.map(([id, t]) => [names.get(id), val(t)]).filter(e => e[1] != null).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  list = list.map(([id, t]) => [id, names.get(id), val(t)]).filter(e => e[2] != null).sort((a, b) => b[2] - a[2]).slice(0, 10);
   document.getElementById("t-leaders").textContent = `Top 10 players: ${m.label}`;
-  document.getElementById("n-leaders").textContent = m.rate
+  document.getElementById("n-leaders").textContent = (m.rate
     ? `Players with at least ${fmt(LEADER_MIN_PA, "int")} plate appearances in the current view. Totals are summed across the filtered seasons.`
-    : "Totals are summed across the filtered seasons and teams.";
+    : "Totals are summed across the filtered seasons and teams.") + " Click a bar to look up that player.";
   make("leaders", {
     type: "bar",
-    data: { labels: list.map(e => e[0]), datasets: [{ label: m.label, data: list.map(e => e[1]), backgroundColor: list.map((_, i) => (i ? COLORS[2] : COLORS[1])) }] },
+    data: { labels: list.map(e => e[1]), datasets: [{ label: m.label, data: list.map(e => e[2]), backgroundColor: list.map((_, i) => (i ? COLORS[2] : COLORS[1])) }] },
     options: {
       indexAxis: "y", interaction: { mode: "nearest", intersect: true },
+      onClick: (evt, els) => { if (els.length) showPlayer(list[els[0].index][0]); },
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.x, m.kind) } } },
       scales: { x: axisFor(m.kind), y: { ticks: { autoSkip: false, font: { size: 11 } } } },
     },
