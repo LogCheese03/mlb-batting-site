@@ -16,7 +16,7 @@ const charts = {};
 let tableRows = [], tableSort = { key: "PA", dir: -1 };
 
 /* ---------------- load ---------------- */
-Papa.parse("data/batting.csv", {
+Papa.parse("data/batting.csv?v=" + DATA_VERSION, {
   download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
   complete: res => {
     DATA = res.data.map(r => { SUM_COLS.forEach(c => (r[c] = +r[c] || 0)); r.year = +r.year; return r; });

@@ -7,7 +7,7 @@ applyChartTheme();
 const charts = {};
 let REP, D;
 
-fetch("data/report.json")
+fetch("data/report.json?v=" + DATA_VERSION)
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(rep => { REP = rep; D = derive(rep); fillNumbers(); countUp(); drawAll(); wireToggles(); buildToc(); })
   .catch(err => {

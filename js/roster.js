@@ -8,7 +8,7 @@ let ROSTER_DATA = [];
 let rosterSort = { key: "PA", dir: -1 };
 let rosterRows = [], rosterTotal = null;
 
-Papa.parse("data/batting.csv", {
+Papa.parse("data/batting.csv?v=" + DATA_VERSION, {
   download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
   complete: res => {
     ROSTER_DATA = res.data.map(r => { SUM_COLS.forEach(c => (r[c] = +r[c] || 0)); r.year = +r.year; return r; });

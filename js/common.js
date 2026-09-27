@@ -5,6 +5,11 @@
 
 const COLORS = ["#16392a", "#c8102e", "#2f6db5", "#e0a526", "#5e9b5a", "#7a4e9c", "#2a9d8f", "#8a5a44", "#4a5568", "#d45d9a"];
 
+/* Bump this whenever data/batting.csv or data/report.json changes, so
+   returning visitors' browsers fetch the new file instead of serving
+   their cached copy for the rest of its 10-minute Cache-Control window. */
+const DATA_VERSION = "2025release";
+
 const SUM_COLS = ["G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"];
 
 /* An accumulator of totals for any group of rows */
