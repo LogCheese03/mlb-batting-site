@@ -7,7 +7,7 @@ A two-page data website built for Financial Data Analytics. It studies every MLB
 
 ## Data source
 
-The [Lahman Baseball Database](https://sabr.org/lahman-database/), compiled by Sean Lahman and maintained with SABR, downloaded as CSV files. <!-- Add the exact release (e.g. "2024 version") and the date you downloaded it. -->
+The [Lahman Baseball Database](https://sabr.org/lahman-database/), compiled by Sean Lahman and maintained with SABR, downloaded as CSV files. Using the 2025 release (covering 1871–2025), downloaded September 27, 2026.
 
 Tables used: `Batting.csv`, `People.csv`, `Fielding.csv`, `Teams.csv` and `TeamsFranchises.csv`.
 

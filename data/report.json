@@ -1,17 +1,17 @@
 {
  "meta": {
   "start_year": 1960,
-  "end_year": 2021,
-  "rows": 53373,
+  "end_year": 2025,
+  "rows": 56345,
   "columns": 24,
-  "seasons": 62,
+  "seasons": 66,
   "franchises": 30,
-  "players": 9508,
-  "raw_rows": 110495,
-  "rows_in_window": 69871,
+  "players": 9994,
+  "raw_rows": 128598,
+  "rows_in_window": 76517,
   "cells_filled_with_zero": 0,
-  "rows_dropped_zero_pa": 16498,
-  "rows_without_fielding_record": 737
+  "rows_dropped_zero_pa": 20172,
+  "rows_without_fielding_record": 774
  },
  "season": [
   {
@@ -1129,6 +1129,78 @@
    "teams": 30,
    "SB_PER_TEAM": 73.8,
    "HR_PER_TEAM": 198.1
+  },
+  {
+   "year": 2022,
+   "BA": 0.2427,
+   "OBP": 0.3116,
+   "SLG": 0.3949,
+   "K_PCT": 0.2243,
+   "BB_PCT": 0.0816,
+   "HR_PCT": 0.0287,
+   "TTO_PCT": 0.3345,
+   "OPS": 0.7064,
+   "HR": 5215,
+   "SO": 40812,
+   "SB": 2486,
+   "PA": 181978,
+   "teams": 30,
+   "SB_PER_TEAM": 82.9,
+   "HR_PER_TEAM": 173.8
+  },
+  {
+   "year": 2023,
+   "BA": 0.2484,
+   "OBP": 0.3201,
+   "SLG": 0.4142,
+   "K_PCT": 0.2274,
+   "BB_PCT": 0.086,
+   "HR_PCT": 0.0319,
+   "TTO_PCT": 0.3453,
+   "OPS": 0.7343,
+   "HR": 5868,
+   "SO": 41843,
+   "SB": 3503,
+   "PA": 184008,
+   "teams": 30,
+   "SB_PER_TEAM": 116.8,
+   "HR_PER_TEAM": 195.6
+  },
+  {
+   "year": 2024,
+   "BA": 0.2433,
+   "OBP": 0.3121,
+   "SLG": 0.3992,
+   "K_PCT": 0.2259,
+   "BB_PCT": 0.0819,
+   "HR_PCT": 0.0299,
+   "TTO_PCT": 0.3377,
+   "OPS": 0.7113,
+   "HR": 5453,
+   "SO": 41197,
+   "SB": 3617,
+   "PA": 182349,
+   "teams": 30,
+   "SB_PER_TEAM": 120.6,
+   "HR_PER_TEAM": 181.8
+  },
+  {
+   "year": 2025,
+   "BA": 0.2452,
+   "OBP": 0.3152,
+   "SLG": 0.4038,
+   "K_PCT": 0.2223,
+   "BB_PCT": 0.0841,
+   "HR_PCT": 0.0309,
+   "TTO_PCT": 0.3373,
+   "OPS": 0.719,
+   "HR": 5650,
+   "SO": 40645,
+   "SB": 3440,
+   "PA": 182838,
+   "teams": 30,
+   "SB_PER_TEAM": 114.7,
+   "HR_PER_TEAM": 188.3
   }
  ],
  "league_season": [
@@ -2619,316 +2691,412 @@
    "HR_PCT": 0.0317,
    "TTO_PCT": 0.3548,
    "OPS": 0.7251
+  },
+  {
+   "year": 2022,
+   "league": "AL",
+   "BA": 0.2425,
+   "OBP": 0.3094,
+   "SLG": 0.3918,
+   "K_PCT": 0.2223,
+   "BB_PCT": 0.0796,
+   "HR_PCT": 0.0282,
+   "TTO_PCT": 0.3301,
+   "OPS": 0.7012
+  },
+  {
+   "year": 2022,
+   "league": "NL",
+   "BA": 0.2429,
+   "OBP": 0.3137,
+   "SLG": 0.3979,
+   "K_PCT": 0.2263,
+   "BB_PCT": 0.0836,
+   "HR_PCT": 0.0292,
+   "TTO_PCT": 0.339,
+   "OPS": 0.7117
+  },
+  {
+   "year": 2023,
+   "league": "AL",
+   "BA": 0.2468,
+   "OBP": 0.317,
+   "SLG": 0.4118,
+   "K_PCT": 0.2315,
+   "BB_PCT": 0.0838,
+   "HR_PCT": 0.0319,
+   "TTO_PCT": 0.3471,
+   "OPS": 0.7288
+  },
+  {
+   "year": 2023,
+   "league": "NL",
+   "BA": 0.25,
+   "OBP": 0.3233,
+   "SLG": 0.4165,
+   "K_PCT": 0.2233,
+   "BB_PCT": 0.0882,
+   "HR_PCT": 0.0319,
+   "TTO_PCT": 0.3434,
+   "OPS": 0.7398
+  },
+  {
+   "year": 2024,
+   "league": "AL",
+   "BA": 0.2397,
+   "OBP": 0.3089,
+   "SLG": 0.3945,
+   "K_PCT": 0.2258,
+   "BB_PCT": 0.0813,
+   "HR_PCT": 0.0299,
+   "TTO_PCT": 0.337,
+   "OPS": 0.7034
+  },
+  {
+   "year": 2024,
+   "league": "NL",
+   "BA": 0.2468,
+   "OBP": 0.3153,
+   "SLG": 0.4039,
+   "K_PCT": 0.226,
+   "BB_PCT": 0.0825,
+   "HR_PCT": 0.0299,
+   "TTO_PCT": 0.3384,
+   "OPS": 0.7192
+  },
+  {
+   "year": 2025,
+   "league": "AL",
+   "BA": 0.2437,
+   "OBP": 0.3131,
+   "SLG": 0.4055,
+   "K_PCT": 0.2256,
+   "BB_PCT": 0.0828,
+   "HR_PCT": 0.0323,
+   "TTO_PCT": 0.3406,
+   "OPS": 0.7186
+  },
+  {
+   "year": 2025,
+   "league": "NL",
+   "BA": 0.2468,
+   "OBP": 0.3172,
+   "SLG": 0.4021,
+   "K_PCT": 0.2191,
+   "BB_PCT": 0.0855,
+   "HR_PCT": 0.0295,
+   "TTO_PCT": 0.334,
+   "OPS": 0.7193
   }
  ],
  "franchise": [
   {
    "franchise": "New York Yankees",
-   "HR": 10669,
-   "PA": 377856,
-   "seasons": 62,
-   "HR_PCT": 0.0282
+   "HR": 11653,
+   "PA": 402463,
+   "seasons": 66,
+   "HR_PCT": 0.029
   },
   {
    "franchise": "Baltimore Orioles",
-   "HR": 10249,
-   "PA": 374735,
-   "seasons": 62,
-   "HR_PCT": 0.0273
-  },
-  {
-   "franchise": "Detroit Tigers",
-   "HR": 10170,
-   "PA": 375218,
-   "seasons": 62,
-   "HR_PCT": 0.0271
+   "HR": 11029,
+   "PA": 399089,
+   "seasons": 66,
+   "HR_PCT": 0.0276
   },
   {
    "franchise": "Boston Red Sox",
-   "HR": 10157,
-   "PA": 380559,
-   "seasons": 62,
-   "HR_PCT": 0.0267
+   "HR": 10874,
+   "PA": 405262,
+   "seasons": 66,
+   "HR_PCT": 0.0268
+  },
+  {
+   "franchise": "Detroit Tigers",
+   "HR": 10805,
+   "PA": 399269,
+   "seasons": 66,
+   "HR_PCT": 0.0271
   },
   {
    "franchise": "Atlanta Braves",
-   "HR": 9621,
-   "PA": 374339,
-   "seasons": 62,
-   "HR_PCT": 0.0257
+   "HR": 10574,
+   "PA": 398925,
+   "seasons": 66,
+   "HR_PCT": 0.0265
   },
   {
    "franchise": "Texas Rangers",
-   "HR": 9540,
-   "PA": 368601,
-   "seasons": 61,
-   "HR_PCT": 0.0259
+   "HR": 10322,
+   "PA": 393030,
+   "seasons": 65,
+   "HR_PCT": 0.0263
   },
   {
    "franchise": "Cincinnati Reds",
-   "HR": 9535,
-   "PA": 375672,
-   "seasons": 62,
-   "HR_PCT": 0.0254
+   "HR": 10230,
+   "PA": 399887,
+   "seasons": 66,
+   "HR_PCT": 0.0256
   },
   {
    "franchise": "Oakland Athletics",
-   "HR": 9421,
-   "PA": 375004,
-   "seasons": 62,
+   "HR": 10144,
+   "PA": 399003,
+   "seasons": 66,
+   "HR_PCT": 0.0254
+  },
+  {
+   "franchise": "Chicago Cubs",
+   "HR": 10026,
+   "PA": 399050,
+   "seasons": 66,
    "HR_PCT": 0.0251
   },
   {
    "franchise": "Cleveland Indians",
-   "HR": 9373,
-   "PA": 375135,
-   "seasons": 62,
+   "HR": 9977,
+   "PA": 399259,
+   "seasons": 66,
    "HR_PCT": 0.025
   },
   {
-   "franchise": "Chicago Cubs",
-   "HR": 9278,
-   "PA": 374486,
-   "seasons": 62,
-   "HR_PCT": 0.0248
-  },
-  {
    "franchise": "Chicago White Sox",
-   "HR": 9187,
-   "PA": 373331,
-   "seasons": 62,
-   "HR_PCT": 0.0246
+   "HR": 9805,
+   "PA": 397277,
+   "seasons": 66,
+   "HR_PCT": 0.0247
   },
   {
    "franchise": "San Francisco Giants",
-   "HR": 8891,
-   "PA": 375489,
-   "seasons": 62,
-   "HR_PCT": 0.0237
+   "HR": 9598,
+   "PA": 399831,
+   "seasons": 66,
+   "HR_PCT": 0.024
   },
   {
    "franchise": "Minnesota Twins",
-   "HR": 8738,
-   "PA": 375951,
-   "seasons": 62,
-   "HR_PCT": 0.0232
-  },
-  {
-   "franchise": "Philadelphia Phillies",
-   "HR": 8661,
-   "PA": 375467,
-   "seasons": 62,
-   "HR_PCT": 0.0231
-  },
-  {
-   "franchise": "Los Angeles Angels of Anaheim",
-   "HR": 8563,
-   "PA": 367250,
-   "seasons": 61,
-   "HR_PCT": 0.0233
-  },
-  {
-   "franchise": "Los Angeles Dodgers",
-   "HR": 8560,
-   "PA": 374376,
-   "seasons": 62,
-   "HR_PCT": 0.0229
-  },
-  {
-   "franchise": "Milwaukee Brewers",
-   "HR": 8104,
-   "PA": 318931,
-   "seasons": 53,
-   "HR_PCT": 0.0254
-  },
-  {
-   "franchise": "New York Mets",
-   "HR": 7933,
-   "PA": 360676,
-   "seasons": 60,
-   "HR_PCT": 0.022
-  },
-  {
-   "franchise": "Pittsburgh Pirates",
-   "HR": 7880,
-   "PA": 373697,
-   "seasons": 62,
-   "HR_PCT": 0.0211
-  },
-  {
-   "franchise": "St. Louis Cardinals",
-   "HR": 7766,
-   "PA": 375055,
-   "seasons": 62,
-   "HR_PCT": 0.0207
-  },
-  {
-   "franchise": "Houston Astros",
-   "HR": 7755,
-   "PA": 362101,
-   "seasons": 60,
-   "HR_PCT": 0.0214
-  },
-  {
-   "franchise": "Toronto Blue Jays",
-   "HR": 7672,
-   "PA": 270348,
-   "seasons": 45,
-   "HR_PCT": 0.0284
-  },
-  {
-   "franchise": "Washington Nationals",
-   "HR": 7133,
-   "PA": 317763,
-   "seasons": 53,
-   "HR_PCT": 0.0224
-  },
-  {
-   "franchise": "Seattle Mariners",
-   "HR": 7073,
-   "PA": 269927,
-   "seasons": 45,
-   "HR_PCT": 0.0262
-  },
-  {
-   "franchise": "San Diego Padres",
-   "HR": 6670,
-   "PA": 317142,
-   "seasons": 53,
-   "HR_PCT": 0.021
-  },
-  {
-   "franchise": "Kansas City Royals",
-   "HR": 6501,
-   "PA": 317529,
-   "seasons": 53,
-   "HR_PCT": 0.0205
-  },
-  {
-   "franchise": "Colorado Rockies",
-   "HR": 5195,
-   "PA": 175050,
-   "seasons": 29,
-   "HR_PCT": 0.0297
-  },
-  {
-   "franchise": "Florida Marlins",
-   "HR": 4104,
-   "PA": 172536,
-   "seasons": 29,
+   "HR": 9523,
+   "PA": 400461,
+   "seasons": 66,
    "HR_PCT": 0.0238
   },
   {
+   "franchise": "Los Angeles Dodgers",
+   "HR": 9498,
+   "PA": 399381,
+   "seasons": 66,
+   "HR_PCT": 0.0238
+  },
+  {
+   "franchise": "Philadelphia Phillies",
+   "HR": 9496,
+   "PA": 400074,
+   "seasons": 66,
+   "HR_PCT": 0.0237
+  },
+  {
+   "franchise": "Los Angeles Angels of Anaheim",
+   "HR": 9375,
+   "PA": 391331,
+   "seasons": 65,
+   "HR_PCT": 0.024
+  },
+  {
+   "franchise": "Milwaukee Brewers",
+   "HR": 8831,
+   "PA": 343521,
+   "seasons": 57,
+   "HR_PCT": 0.0257
+  },
+  {
+   "franchise": "New York Mets",
+   "HR": 8750,
+   "PA": 385240,
+   "seasons": 64,
+   "HR_PCT": 0.0227
+  },
+  {
+   "franchise": "Houston Astros",
+   "HR": 8563,
+   "PA": 386581,
+   "seasons": 64,
+   "HR_PCT": 0.0222
+  },
+  {
+   "franchise": "St. Louis Cardinals",
+   "HR": 8485,
+   "PA": 399587,
+   "seasons": 66,
+   "HR_PCT": 0.0212
+  },
+  {
+   "franchise": "Pittsburgh Pirates",
+   "HR": 8474,
+   "PA": 397786,
+   "seasons": 66,
+   "HR_PCT": 0.0213
+  },
+  {
+   "franchise": "Toronto Blue Jays",
+   "HR": 8407,
+   "PA": 294945,
+   "seasons": 49,
+   "HR_PCT": 0.0285
+  },
+  {
+   "franchise": "Seattle Mariners",
+   "HR": 7903,
+   "PA": 294503,
+   "seasons": 49,
+   "HR_PCT": 0.0268
+  },
+  {
+   "franchise": "Washington Nationals",
+   "HR": 7716,
+   "PA": 341786,
+   "seasons": 57,
+   "HR_PCT": 0.0226
+  },
+  {
+   "franchise": "San Diego Padres",
+   "HR": 7370,
+   "PA": 341673,
+   "seasons": 57,
+   "HR_PCT": 0.0216
+  },
+  {
+   "franchise": "Kansas City Royals",
+   "HR": 7131,
+   "PA": 341504,
+   "seasons": 57,
+   "HR_PCT": 0.0209
+  },
+  {
+   "franchise": "Colorado Rockies",
+   "HR": 5846,
+   "PA": 199137,
+   "seasons": 33,
+   "HR_PCT": 0.0294
+  },
+  {
    "franchise": "Arizona Diamondbacks",
-   "HR": 3995,
-   "PA": 145435,
-   "seasons": 24,
-   "HR_PCT": 0.0275
+   "HR": 4759,
+   "PA": 170060,
+   "seasons": 28,
+   "HR_PCT": 0.028
+  },
+  {
+   "franchise": "Florida Marlins",
+   "HR": 4718,
+   "PA": 196701,
+   "seasons": 33,
+   "HR_PCT": 0.024
   },
   {
    "franchise": "Tampa Bay Rays",
-   "HR": 3936,
-   "PA": 144388,
-   "seasons": 24,
-   "HR_PCT": 0.0273
+   "HR": 4634,
+   "PA": 168604,
+   "seasons": 28,
+   "HR_PCT": 0.0275
   }
  ],
  "position": [
   {
    "pos": "Catcher",
-   "PA": 1100050,
-   "BA": 0.2484,
-   "OBP": 0.316,
-   "SLG": 0.3814,
-   "K_PCT": 0.1637,
-   "BB_PCT": 0.0835,
-   "HR_PCT": 0.0239,
-   "TTO_PCT": 0.2711,
-   "OPS": 0.6974
+   "PA": 1187737,
+   "BA": 0.2473,
+   "OBP": 0.3149,
+   "SLG": 0.3815,
+   "K_PCT": 0.1688,
+   "BB_PCT": 0.0831,
+   "HR_PCT": 0.0243,
+   "TTO_PCT": 0.2763,
+   "OPS": 0.6964
   },
   {
    "pos": "DH / pinch hitter",
-   "PA": 59283,
-   "BA": 0.2547,
-   "OBP": 0.3348,
-   "SLG": 0.4186,
-   "K_PCT": 0.1658,
-   "BB_PCT": 0.1026,
-   "HR_PCT": 0.0337,
-   "TTO_PCT": 0.3021,
-   "OPS": 0.7534
+   "PA": 66367,
+   "BA": 0.2545,
+   "OBP": 0.3354,
+   "SLG": 0.4217,
+   "K_PCT": 0.1753,
+   "BB_PCT": 0.1033,
+   "HR_PCT": 0.0344,
+   "TTO_PCT": 0.313,
+   "OPS": 0.7571
   },
   {
    "pos": "First base",
-   "PA": 1288815,
-   "BA": 0.2683,
-   "OBP": 0.3464,
-   "SLG": 0.4452,
-   "K_PCT": 0.1631,
-   "BB_PCT": 0.1022,
+   "PA": 1385796,
+   "BA": 0.2669,
+   "OBP": 0.3449,
+   "SLG": 0.4434,
+   "K_PCT": 0.1673,
+   "BB_PCT": 0.1015,
    "HR_PCT": 0.0345,
-   "TTO_PCT": 0.2998,
-   "OPS": 0.7915
+   "TTO_PCT": 0.3032,
+   "OPS": 0.7884
   },
   {
    "pos": "Outfield",
-   "PA": 3697225,
-   "BA": 0.2671,
-   "OBP": 0.3363,
-   "SLG": 0.4239,
-   "K_PCT": 0.1665,
-   "BB_PCT": 0.0892,
-   "HR_PCT": 0.0277,
-   "TTO_PCT": 0.2833,
-   "OPS": 0.7601
+   "PA": 3980281,
+   "BA": 0.2654,
+   "OBP": 0.3348,
+   "SLG": 0.4228,
+   "K_PCT": 0.1714,
+   "BB_PCT": 0.089,
+   "HR_PCT": 0.028,
+   "TTO_PCT": 0.2884,
+   "OPS": 0.7577
   },
   {
    "pos": "Pitcher",
-   "PA": 382963,
-   "BA": 0.1428,
-   "OBP": 0.1802,
-   "SLG": 0.1831,
-   "K_PCT": 0.328,
-   "BB_PCT": 0.0376,
-   "HR_PCT": 0.0046,
-   "TTO_PCT": 0.3702,
-   "OPS": 0.3633
+   "PA": 385008,
+   "BA": 0.1435,
+   "OBP": 0.1813,
+   "SLG": 0.1852,
+   "K_PCT": 0.3276,
+   "BB_PCT": 0.0382,
+   "HR_PCT": 0.005,
+   "TTO_PCT": 0.3707,
+   "OPS": 0.3665
   },
   {
    "pos": "Second base",
-   "PA": 1155420,
-   "BA": 0.2625,
-   "OBP": 0.3256,
-   "SLG": 0.3755,
-   "K_PCT": 0.1339,
-   "BB_PCT": 0.0795,
-   "HR_PCT": 0.0156,
-   "TTO_PCT": 0.2291,
-   "OPS": 0.7011
+   "PA": 1241557,
+   "BA": 0.2614,
+   "OBP": 0.3248,
+   "SLG": 0.3759,
+   "K_PCT": 0.1384,
+   "BB_PCT": 0.0794,
+   "HR_PCT": 0.0162,
+   "TTO_PCT": 0.2341,
+   "OPS": 0.7007
   },
   {
    "pos": "Shortstop",
-   "PA": 1088399,
-   "BA": 0.2566,
-   "OBP": 0.3142,
-   "SLG": 0.3649,
-   "K_PCT": 0.139,
-   "BB_PCT": 0.0727,
-   "HR_PCT": 0.0148,
-   "TTO_PCT": 0.2265,
-   "OPS": 0.6791
+   "PA": 1168749,
+   "BA": 0.2562,
+   "OBP": 0.3141,
+   "SLG": 0.3672,
+   "K_PCT": 0.144,
+   "BB_PCT": 0.0728,
+   "HR_PCT": 0.0156,
+   "TTO_PCT": 0.2324,
+   "OPS": 0.6812
   },
   {
    "pos": "Third base",
-   "PA": 1141892,
-   "BA": 0.2622,
-   "OBP": 0.3306,
-   "SLG": 0.4141,
-   "K_PCT": 0.1569,
-   "BB_PCT": 0.0879,
-   "HR_PCT": 0.0273,
-   "TTO_PCT": 0.2721,
-   "OPS": 0.7447
+   "PA": 1229725,
+   "BA": 0.2609,
+   "OBP": 0.3292,
+   "SLG": 0.4132,
+   "K_PCT": 0.1612,
+   "BB_PCT": 0.0874,
+   "HR_PCT": 0.0275,
+   "TTO_PCT": 0.2762,
+   "OPS": 0.7424
   }
  ],
  "bats_decade": {
@@ -2949,7 +3117,7 @@
     0.2877,
     0.311,
     0.3282,
-    0.3258
+    0.3359
    ],
    "Right": [
     0.6161,
@@ -2958,7 +3126,7 @@
     0.5304,
     0.5391,
     0.5398,
-    0.5574
+    0.5525
    ],
    "Switch": [
     0.0622,
@@ -2967,7 +3135,7 @@
     0.182,
     0.1499,
     0.132,
-    0.1168
+    0.1116
    ]
   }
  },
@@ -3004,18 +3172,18 @@
   },
   {
    "decade": "2020s",
-   "2B_PER_600": 25.83,
+   "2B_PER_600": 25.96,
    "3B_PER_600": 2.2
   }
  ],
  "headline": {
-  "player_seasons": 53373,
-  "total_HR": 242330,
-  "total_PA": 9914047,
-  "BA_all": 0.2581,
+  "player_seasons": 56345,
+  "total_HR": 264516,
+  "total_PA": 10645220,
+  "BA_all": 0.2572,
   "K_PCT_first": 0.1352,
-  "K_PCT_last": 0.2319,
+  "K_PCT_last": 0.2223,
   "HR_PCT_first": 0.0225,
-  "HR_PCT_last": 0.0327
+  "HR_PCT_last": 0.0309
  }
 }
