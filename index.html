@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How MLB Hitting Changed | Logan</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared navigation bar (identical on both pages) -->
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M6 3.5c2.5 2.5 2.5 14.5 0 17M18 3.5c-2.5 2.5-2.5 14.5 0 17" stroke="#c8102e" stroke-width="1.6" fill="none" stroke-dasharray="2 1.6"/></svg>
+      <span>The Box Score Era</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" aria-current="page">Report</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="#methods">About the data</a></li>
+    </ul>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<main class="report-layout">
+
+  <header class="hero">
+    <h1>How big-league hitting changed</h1>
+    <p class="byline">By Logan, for Financial Data Analytics</p>
+    <!-- LOGAN: rewrite this summary in your own words once you've looked at the numbers. -->
+    <p class="summary">
+      This report follows every MLB batter's season from <span data-fill="meta.start_year"></span> to
+      <span data-fill="meta.end_year"></span>: <span data-fill="meta.rows|int"></span> player-seasons across
+      <span data-fill="meta.franchises"></span> franchises, using the Lahman Baseball Database. It tracks how
+      strikeouts, home runs, walks, batting average and base stealing moved over <span data-fill="meta.seasons"></span>
+      seasons, and how hitting differs by league, franchise, position and batting hand.
+    </p>
+  </header>
+
+  <section class="hero-board" aria-label="Headline numbers">
+    <div class="scoreboard">
+      <p class="scoreboard-title">By the numbers</p>
+      <div class="board-grid">
+        <div class="tile"><div class="tile-value" data-count="headline.player_seasons|int"></div><div class="tile-label">Player-seasons analyzed</div></div>
+        <div class="tile"><div class="tile-value" data-count="headline.total_HR|int"></div><div class="tile-label">Home runs hit, all seasons</div></div>
+        <div class="tile"><div class="tile-value" data-fill="headline.BA_all|avg"></div><div class="tile-label">Overall batting average (hits ÷ at-bats)</div></div>
+        <div class="tile"><div class="tile-value small"><span data-fill="headline.K_PCT_first|pct"></span> → <span data-fill="headline.K_PCT_last|pct"></span></div><div class="tile-label">Strikeout rate, first season vs. latest season</div></div>
+        <div class="tile"><div class="tile-value small"><span data-fill="headline.HR_PCT_first|pct"></span> → <span data-fill="headline.HR_PCT_last|pct"></span></div><div class="tile-label">Home run rate, first season vs. latest season</div></div>
+        <div class="tile"><div class="tile-value" data-fill="meta.franchises"></div><div class="tile-label">Franchises tracked</div></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="toc" aria-label="Sections">
+    <h2>Findings</h2>
+    <ol id="toc"></ol>
+  </aside>
+
+  <article id="findings">
+
+    <!--
+      LOGAN: Each heading states the finding using live numbers from data/report.json.
+      The paragraphs are neutral first drafts. After you run the script and look at
+      the charts, rewrite each paragraph in your own words and add what you think
+      explains the pattern. Check every number against data/report.json.
+    -->
+
+    <section class="finding" id="strikeouts">
+      <h2>Strikeouts rose from <span data-fill="headline.K_PCT_first|pct"></span> to <span data-fill="headline.K_PCT_last|pct"></span> of plate appearances</h2>
+      <p>In <span data-fill="meta.start_year"></span>, <span class="stat-inline" data-fill="headline.K_PCT_first|pct"></span> of all plate appearances ended in a strikeout. In <span data-fill="meta.end_year"></span> it was <span class="stat-inline" data-fill="headline.K_PCT_last|pct"></span>. The highest single season was <span data-fill="d.kPeakYear"></span> at <span class="stat-inline" data-fill="d.kPeak|pct"></span>.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Strikeouts as a share of plate appearances, by season</span></div>
+        <div class="chart-box"><canvas id="c-strikeouts" aria-label="Line chart of strikeout rate by season" role="img"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="homers">
+      <h2>Home run rate peaked in <span data-fill="d.hrPeakYear"></span> at <span data-fill="d.hrPeak|pct"></span> of plate appearances</h2>
+      <p>The home run rate is home runs divided by plate appearances, which adjusts for seasons of different lengths (1981, 1994, 1995 and 2020 were shortened). It went from <span class="stat-inline" data-fill="headline.HR_PCT_first|pct"></span> in the first season to <span class="stat-inline" data-fill="headline.HR_PCT_last|pct"></span> in the latest. Switch the chart to home runs per team to see raw totals.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title" id="t-homers">Home runs per plate appearance, by season</span>
+          <div class="seg" data-chart="homers"><button aria-pressed="true" data-v="HR_PCT">Rate</button><button aria-pressed="false" data-v="HR_PER_TEAM">Per team</button></div></div>
+        <div class="chart-box"><canvas id="c-homers" role="img" aria-label="Home run rate by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="average">
+      <h2>Batting average ranged from <span data-fill="d.baMin|avg"></span> in <span data-fill="d.baMinYear"></span> to <span data-fill="d.baMax|avg"></span> in <span data-fill="d.baMaxYear"></span></h2>
+      <p>Batting average is total hits divided by total at-bats for the whole league each season. The lowest season was <span data-fill="d.baMinYear"></span> (<span class="stat-inline" data-fill="d.baMin|avg"></span>) and the highest was <span data-fill="d.baMaxYear"></span> (<span class="stat-inline" data-fill="d.baMax|avg"></span>). Use the switch to compare on-base percentage, slugging and OPS over the same years.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">League-wide rate stat by season</span>
+          <div class="seg" data-chart="average"><button aria-pressed="true" data-v="BA">AVG</button><button aria-pressed="false" data-v="OBP">OBP</button><button aria-pressed="false" data-v="SLG">SLG</button><button aria-pressed="false" data-v="OPS">OPS</button></div></div>
+        <div class="chart-box"><canvas id="c-average" role="img" aria-label="Batting average by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="tto">
+      <h2>Three true outcomes went from <span data-fill="d.ttoFirst|pct"></span> to <span data-fill="d.ttoLast|pct"></span> of plate appearances</h2>
+      <p>A "three true outcome" is a home run, a walk or a strikeout: a plate appearance the fielders never touch. Combined, they were <span class="stat-inline" data-fill="d.ttoFirst|pct"></span> of plate appearances in <span data-fill="meta.start_year"></span> and <span class="stat-inline" data-fill="d.ttoLast|pct"></span> in <span data-fill="meta.end_year"></span>. The stacked chart shows how much each of the three contributes.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Home runs, walks and strikeouts as a share of plate appearances (stacked)</span></div>
+        <div class="chart-box"><canvas id="c-tto" role="img" aria-label="Stacked area chart of three true outcomes"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="steals">
+      <h2>Stolen bases per team peaked at <span data-fill="d.sbPeak|dec1"></span> in <span data-fill="d.sbPeakYear"></span></h2>
+      <p>Dividing total stolen bases by the number of franchises active that season gives steals per team. The peak was <span class="stat-inline" data-fill="d.sbPeak|dec1"></span> in <span data-fill="d.sbPeakYear"></span>. In <span data-fill="meta.end_year"></span> it was <span class="stat-inline" data-fill="d.sbLast|dec1"></span>. Shortened seasons appear as dips in this chart because it counts totals rather than rates.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Stolen bases per team, by season</span></div>
+        <div class="chart-box"><canvas id="c-steals" role="img" aria-label="Bar chart of stolen bases per team by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="leagues">
+      <h2>From 1973 to 2021 the AL's OPS averaged <span data-fill="d.dhGap|signavg"></span> versus the NL</h2>
+      <p>The American League adopted the designated hitter in 1973. The National League did not until 2022, so NL pitchers kept batting. From 1973 through 2021, the AL's OPS minus the NL's OPS averaged <span class="stat-inline" data-fill="d.dhGap|signavg"></span> per season. Before 1973 the gap averaged <span class="stat-inline" data-fill="d.preGap|signavg"></span>, and since 2022 it has averaged <span class="stat-inline" data-fill="d.postGap|signavg"></span>. The shaded band marks the years only one league used the DH.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">AL vs. NL, by season</span>
+          <div class="seg" data-chart="leagues"><button aria-pressed="true" data-v="OPS">OPS</button><button aria-pressed="false" data-v="K_PCT">K%</button><button aria-pressed="false" data-v="HR_PCT">HR%</button></div></div>
+        <div class="chart-box"><canvas id="c-leagues" role="img" aria-label="AL versus NL by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="franchises">
+      <h2>The <span data-fill="d.topFranchise"></span> hit the most home runs: <span data-fill="d.topFranchiseHR|int"></span></h2>
+      <p>Summing every home run hit by batters on each franchise's roster puts the <span data-fill="d.topFranchise"></span> first with <span class="stat-inline" data-fill="d.topFranchiseHR|int"></span>. Franchises that joined later, through expansion, have had fewer seasons to add up totals, so the switch shows home runs per plate appearance as a fairer comparison.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Top 15 franchises</span>
+          <div class="seg" data-chart="franchises"><button aria-pressed="true" data-v="HR">Total HR</button><button aria-pressed="false" data-v="HR_PCT">HR rate</button></div></div>
+        <div class="chart-box tall"><canvas id="c-franchises" role="img" aria-label="Franchise home run leaders"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="positions">
+      <h2><span data-fill="d.topPos"></span> had the highest OPS of any position at <span data-fill="d.topPosOPS|avg"></span></h2>
+      <p>Each player-season is assigned the position where the player played the most games that season. Among position players, <span data-fill="d.topPos"></span> produced the highest OPS (<span class="stat-inline" data-fill="d.topPosOPS|avg"></span>) and <span data-fill="d.lowPos"></span> the lowest (<span class="stat-inline" data-fill="d.lowPosOPS|avg"></span>). Pitchers batting posted <span class="stat-inline" data-fill="d.pitcherOPS|avg"></span>.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">On-base and slugging percentage by primary position</span></div>
+        <div class="chart-box"><canvas id="c-positions" role="img" aria-label="OBP and SLG by position"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="hands">
+      <h2>Left-handed hitters took <span data-fill="d.leftFirst|pct"></span> of plate appearances in the <span data-fill="d.firstDecade"></span> and <span data-fill="d.leftLast|pct"></span> in the <span data-fill="d.lastDecade"></span></h2>
+      <p>Batting hand comes from each player's record in the People table. Left-handed batters took <span class="stat-inline" data-fill="d.leftFirst|pct"></span> of plate appearances in the <span data-fill="d.firstDecade"></span> and <span class="stat-inline" data-fill="d.leftLast|pct"></span> in the <span data-fill="d.lastDecade"></span>. Switch hitters took <span class="stat-inline" data-fill="d.switchFirst|pct"></span> and <span class="stat-inline" data-fill="d.switchLast|pct"></span> over the same decades.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Share of plate appearances by batting hand, by decade</span></div>
+        <div class="chart-box"><canvas id="c-hands" role="img" aria-label="Stacked bar of batting hand share by decade"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="xbh">
+      <h2>Triples per 600 plate appearances went from <span data-fill="d.triplesFirst|dec2"></span> to <span data-fill="d.triplesLast|dec2"></span></h2>
+      <p>Per 600 plate appearances (about a full season for a regular), hitters averaged <span class="stat-inline" data-fill="d.triplesFirst|dec2"></span> triples in the <span data-fill="d.firstDecade"></span> and <span class="stat-inline" data-fill="d.triplesLast|dec2"></span> in the <span data-fill="d.lastDecade"></span>. Doubles went from <span class="stat-inline" data-fill="d.doublesFirst|dec2"></span> to <span class="stat-inline" data-fill="d.doublesLast|dec2"></span>.</p>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Doubles and triples per 600 plate appearances, by decade</span>
+          <div class="seg" data-chart="xbh"><button aria-pressed="true" data-v="both">Both</button><button aria-pressed="false" data-v="3B_PER_600">Triples only</button></div></div>
+        <div class="chart-box"><canvas id="c-xbh" role="img" aria-label="Doubles and triples by decade"></canvas></div>
+      </div>
+    </section>
+
+    <section class="methods" id="methods">
+      <h2>About the data</h2>
+
+      <h3>Source</h3>
+      <p>The Lahman Baseball Database, compiled by Sean Lahman and maintained with SABR. It is free to download as CSV files. This project uses five of its tables: Batting, People, Fielding, Teams and TeamsFranchises. <!-- LOGAN: add the exact release/version and download link you used --></p>
+
+      <h3>What one row is</h3>
+      <p>One row is one player's batting line for one team in one season (a "stint"). A player traded mid-season has one row per team. The file used by the site has <span data-fill="meta.rows|int"></span> rows and <span data-fill="meta.columns"></span> columns covering <span data-fill="meta.seasons"></span> seasons (<span data-fill="meta.start_year"></span>–<span data-fill="meta.end_year"></span>) and <span data-fill="meta.franchises"></span> franchises.</p>
+
+      <h3>Rows dropped and cleaning</h3>
+      <p>Seasons before <span data-fill="meta.start_year"></span> are excluded (<span data-fill="d.droppedWindow|int"></span> rows) to keep the study to the modern era. Rows with zero plate appearances are dropped (<span data-fill="meta.rows_dropped_zero_pa|int"></span> rows) because those players never batted. Missing counting stats (<span data-fill="meta.cells_filled_with_zero|int"></span> cells, mostly sacrifice flies and hit-by-pitches in older records) are treated as zero. Team codes are mapped to franchises so that, for example, the Montreal Expos and Washington Nationals count as one group. <span data-fill="meta.rows_without_fielding_record|int"></span> rows have no fielding record and are labeled "DH / pinch hitter."</p>
+
+      <h3>How every number is computed</h3>
+      <p>All rates are computed from totals (for example, total hits divided by total at-bats), not as an average of individual players' rates. The same formulas run in <code>scripts/prep_data.py</code> and in the dashboard.</p>
+      <table>
+        <tr><th>Measure</th><th>Formula</th></tr>
+        <tr><td>Plate appearances (PA)</td><td>AB + BB + HBP + SF + SH</td></tr>
+        <tr><td>Batting average</td><td>H ÷ AB</td></tr>
+        <tr><td>On-base percentage</td><td>(H + BB + HBP) ÷ (AB + BB + HBP + SF)</td></tr>
+        <tr><td>Slugging percentage</td><td>(H + 2B + 2×3B + 3×HR) ÷ AB</td></tr>
+        <tr><td>OPS</td><td>OBP + SLG</td></tr>
+        <tr><td>Strikeout, walk, home run rate</td><td>SO ÷ PA, BB ÷ PA, HR ÷ PA</td></tr>
+        <tr><td>Three true outcomes rate</td><td>(HR + BB + SO) ÷ PA</td></tr>
+        <tr><td>Stolen bases per team</td><td>Season SB ÷ number of franchises with at least one row that season</td></tr>
+        <tr><td>Per 600 PA</td><td>Total ÷ PA × 600</td></tr>
+        <tr><td>League OPS gap</td><td>Mean across seasons of (AL OPS − NL OPS)</td></tr>
+        <tr><td>Primary position</td><td>Fielding position with the most games for that player, team and season</td></tr>
+      </table>
+      <a class="cta" href="dashboard.html">Explore the data yourself</a>
+    </section>
+
+  </article>
+</main>
+
+<footer>Built by Logan with data from the Lahman Baseball Database. <a href="dashboard.html">Open the dashboard</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/report.js"></script>
+</body>
+</html>
