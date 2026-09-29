@@ -59,12 +59,15 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-s
 .nav-links a:hover { background: var(--wall-2); color: #fff; }
 .nav-links a[aria-current="page"] { background: var(--lights); color: var(--wall); }
 
+.sound-controls { display: flex; gap: 8px; flex: none; }
 .sound-toggle {
-  border: 1px solid var(--wall-3); background: var(--wall-2); color: #fff; border-radius: 999px;
-  width: 34px; height: 34px; font-size: 15px; line-height: 1; cursor: pointer; flex: none;
+  border: 2px solid var(--lights); background: transparent; color: var(--lights); border-radius: 999px;
+  padding: 6px 14px; font: 700 13px/1 var(--body); cursor: pointer; white-space: nowrap;
 }
-.sound-toggle:hover { background: var(--wall-3); }
+.sound-toggle:hover { background: var(--wall-2); }
+.sound-toggle:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 .sound-toggle[aria-pressed="true"] { background: var(--lights); border-color: var(--lights); color: var(--wall); }
+@media (max-width: 900px) { .sound-toggle { padding: 6px 10px; font-size: 12px; } .brand span { display: none; } }
 
 .progress { position: absolute; left: 0; bottom: -4px; height: 4px; width: 0; background: var(--lights); }
 
