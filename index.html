@@ -23,6 +23,7 @@
       <li><a href="index.html" aria-current="page">Report</a></li>
       <li><a href="dashboard.html">Hitting Dashboard</a></li>
       <li><a href="pitching.html">Pitching Dashboard</a></li>
+      <li><a href="matchups.html">Matchups</a></li>
       <li><a href="#methods">About the data</a></li>
     </ul>
   </div>
@@ -276,13 +277,16 @@
       <h2>About the data</h2>
 
       <h3>Source</h3>
-      <p>The Lahman Baseball Database, compiled by Sean Lahman and maintained with SABR. It is free to download as CSV files. This project uses five of its tables: Batting, People, Fielding, Teams and TeamsFranchises. <!-- LOGAN: add the exact release/version and download link you used --></p>
+      <p>The Lahman Baseball Database, compiled by Sean Lahman and maintained with SABR. It is free to download as CSV files. This project uses six of its tables: Batting, Pitching, People, Fielding, Teams and TeamsFranchises, from the 2025 release (covering 1871–2025, released January 2026). The Matchups tab also uses Retrosheet play-by-play files, described below.</p>
 
       <h3>What one row is</h3>
       <p>One row is one player's batting line for one team in one season (a "stint"). A player traded mid-season has one row per team. The file used by the site has <span data-fill="meta.rows|int"></span> rows and <span data-fill="meta.columns"></span> columns covering <span data-fill="meta.seasons"></span> seasons (<span data-fill="meta.start_year"></span>–<span data-fill="meta.end_year"></span>) and <span data-fill="meta.franchises"></span> franchises.</p>
 
       <h3>Pitching table</h3>
       <p>The pitching half uses a sixth Lahman table, Pitching. One pitching row is one pitcher's line for one team in one season (a "stint"), the same grain as the batting rows. The file has <span data-fill="pitching.meta.rows|int"></span> rows and <span data-fill="pitching.meta.columns"></span> columns covering the same <span data-fill="pitching.meta.seasons"></span> seasons and <span data-fill="pitching.meta.franchises"></span> franchises. Seasons before <span data-fill="meta.start_year"></span> are excluded (<span data-fill="d.pDroppedWindow|int"></span> rows) and <span data-fill="pitching.meta.rows_dropped_zero_bfp|int"></span> row with no batters faced is dropped. A pitcher is a starter for a given team and season if he started at least half of his games, otherwise a reliever. Innings are stored as outs and divided by 3, so no rounding enters the totals. Holds are not recorded in the Lahman data, so saves are the only late-inning count shown.</p>
+
+      <h3>Matchup data (Matchups tab)</h3>
+      <p>Hitter-versus-pitcher results are not in Lahman, which only has season totals. They come from Retrosheet's play-by-play event files for <span data-fill="matchups.years.0"></span>–<span data-fill="matchups.years.1"></span>, read by <code>scripts/build_matchups.py</code>. Every plate appearance is classified from its play record (single, double, triple, home run, walk, hit by pitch, strikeout, sacrifice, or other out) and credited to the pitcher who was on the mound according to that game's lineup and substitution records. That gives <span data-fill="matchups.plate_appearances_parsed|int"></span> plate appearances. Only pairs who faced each other at least <span data-fill="matchups.min_career_pa"></span> times are kept, which leaves <span data-fill="matchups.pairs_kept|int"></span> pairs in <span data-fill="matchups.rows|int"></span> season rows (<span data-fill="d.mmKeptShare|pct"></span> of all plate appearances). Season totals built this way are within <span data-fill="d.mmTol|pct2"></span> of the Lahman batting totals from 1970 on. Retrosheet is missing some 1960s games, so those seasons run up to <span data-fill="d.mmWorst|pct2"></span> low. On the pitcher side, hits, home runs, walks and strikeouts match the Lahman pitching table exactly for <span data-fill="d.mmExact|pct"></span> of the <span data-fill="matchups.pitcher_check.pitcher_seasons_compared|int"></span> pitcher-seasons compared; most misses are a single walk, because official scoring can charge a walk to the pitcher who started the count. The information used here was obtained free of charge from and is copyrighted by <a href="https://www.retrosheet.org">Retrosheet</a>. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711.</p>
 
       <h3>Rows dropped and cleaning</h3>
       <p>Seasons before <span data-fill="meta.start_year"></span> are excluded (<span data-fill="d.droppedWindow|int"></span> rows) to keep the study to the modern era. Rows with zero plate appearances are dropped (<span data-fill="meta.rows_dropped_zero_pa|int"></span> rows) because those players never batted. Any missing counting stat is treated as zero; in this release <span data-fill="meta.cells_filled_with_zero|int"></span> cells were missing, so no values changed. Team codes are mapped to franchises so that, for example, the Montreal Expos and Washington Nationals count as one group. <span data-fill="meta.rows_without_fielding_record|int"></span> rows have no fielding record and are labeled "DH / pinch hitter."</p>
@@ -317,7 +321,7 @@
   </article>
 </main>
 
-<footer>Built by Logan Hull with data from the Lahman Baseball Database. <a href="dashboard.html">Open the dashboard</a></footer>
+<footer>Built by Logan Hull with data from the Lahman Baseball Database and Retrosheet. <a href="dashboard.html">Open the dashboard</a></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>

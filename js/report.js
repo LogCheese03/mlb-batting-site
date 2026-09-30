@@ -7,9 +7,11 @@ applyChartTheme();
 const charts = {};
 let REP, D;
 
-fetch("data/report.json?v=" + DATA_VERSION)
-  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(rep => { REP = rep; D = derive(rep); fillNumbers(); countUp(); drawAll(); wireToggles(); buildToc(); })
+Promise.all([
+  fetch("data/report.json?v=" + DATA_VERSION).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+  fetch("data/matchups_meta.json?v=" + DATA_VERSION).then(r => (r.ok ? r.json() : null)).catch(() => null),
+])
+  .then(([rep, mm]) => { rep.matchups = mm; REP = rep; D = derive(rep); fillNumbers(); countUp(); drawAll(); wireToggles(); buildToc(); })
   .catch(err => {
     document.getElementById("findings").insertAdjacentHTML("afterbegin",
       `<p class="empty">Could not load data/report.json (${err.message}). Run <code>python scripts/prep_data.py</code>, then open the site through a web server (see README).</p>`);
@@ -77,6 +79,10 @@ function derivePitching(rep, { maxBy, minBy, mean }) {
     pTopFranchise: franchises[0].franchise, pTopFranchiseERA: franchises[0].ERA,
     pWorstFranchise: franchises[franchises.length - 1].franchise, pWorstFranchiseERA: franchises[franchises.length - 1].ERA,
     pDroppedWindow: p.meta.raw_rows - p.meta.rows_in_window,
+    ...(rep.matchups ? {
+      mmTol: Math.max(rep.matchups.worst_relative_difference_1970_on, 0.0001), mmWorst: rep.matchups.worst_relative_difference_vs_lahman,
+      mmExact: rep.matchups.pitcher_check.exact_share, mmKeptShare: rep.matchups.plate_appearances_kept / rep.matchups.plate_appearances_parsed,
+    } : {}),
   };
 }
 
@@ -88,7 +94,8 @@ function lookup(path) {
 }
 function format(v, kind) {
   if (kind === "signavg") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "avg");
-  if (kind === "signdec2") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "dec2");
+  if (kind === "pct2") return v == null ? "–" : (v * 100).toFixed(2) + "%";
+    if (kind === "signdec2") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "dec2");
   return kind ? fmt(v, kind) : (v ?? "–");
 }
 function fillNumbers() {
