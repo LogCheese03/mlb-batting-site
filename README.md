@@ -1,4 +1,4 @@
-# The Box Score Era: How MLB Hitting Changed
+# MLB Hitting Over the Years
 
 A two-page data website built for Financial Data Analytics. It studies every MLB batter's season from 1960 to the latest Lahman release.
 
