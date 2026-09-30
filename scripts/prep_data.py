@@ -367,6 +367,8 @@ def report(df, log):
     rep["headline"] = {
         "player_seasons": len(df),
         "total_HR": int(all_t["HR"]),
+        "total_H": int(all_t["H"]),
+        "HR_PCT_all": r(rates(all_t)["HR_PCT"]),
         "total_PA": int(all_t["PA"]),
         "BA_all": r(rates(all_t)["BA"]),
         "K_PCT_first": s_first["K_PCT"], "K_PCT_last": s_last["K_PCT"],

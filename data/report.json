@@ -3230,6 +3230,8 @@
  "headline": {
   "player_seasons": 57084,
   "total_HR": 270091,
+  "total_H": 2480262,
+  "HR_PCT_all": 0.0249,
   "total_PA": 10829069,
   "BA_all": 0.257,
   "K_PCT_first": 0.1352,
