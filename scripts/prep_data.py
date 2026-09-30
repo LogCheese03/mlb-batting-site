@@ -7,11 +7,13 @@ Run from the repository root:
     python scripts/prep_data.py
 
 Inputs  (put the Lahman CSVs anywhere under data/raw/):
-    Batting.csv, People.csv, Fielding.csv, Teams.csv, TeamsFranchises.csv
+    Batting.csv, Pitching.csv, People.csv, Fielding.csv, Teams.csv, TeamsFranchises.csv
 
 Outputs:
-    data/batting.csv   one row per player, per team (stint), per season -> loaded by dashboard.html
-    data/report.json   every number and chart series shown on index.html
+    data/batting.csv   one row per batter, per team (stint), per season -> loaded by dashboard.html
+    data/pitching.csv  one row per pitcher, per team (stint), per season -> loaded by pitching.html
+    data/report.json   every number and chart series shown on index.html (hitting under the
+                       top-level keys, pitching under "pitching")
 
 Every rate is computed from TOTALS (sum of hits / sum of at-bats), never as an
 average of player averages. dashboard.html uses the exact same formulas, so the
@@ -28,6 +30,7 @@ START_YEAR = 1960          # first season kept; change if you want a different w
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 OUT_CSV = ROOT / "data" / "batting.csv"
+OUT_PITCH_CSV = ROOT / "data" / "pitching.csv"
 OUT_JSON = ROOT / "data" / "report.json"
 
 
@@ -234,17 +237,150 @@ def report(df, log):
     return rep
 
 
+# ================================================================ pitching
+# Rates mirror js/pitching.js. Innings are stored as outs (IPouts) so nothing is rounded:
+# IP = IPouts / 3. Every rate is computed from totals, never as an average of pitchers' rates.
+def build_pitching():
+    pitching = read_csv("Pitching.csv")
+    people = read_csv("People.csv")
+    teams = read_csv("Teams.csv")
+    franchises = read_csv("TeamsFranchises.csv")
+
+    log = {"raw_rows": len(pitching)}
+
+    df = pitching[pitching["yearID"] >= START_YEAR].copy()
+    log["rows_in_window"] = len(df)
+
+    count_cols = ["W", "L", "G", "GS", "CG", "SHO", "SV", "IPouts", "H", "R", "ER", "HR", "BB", "SO", "HBP", "BFP"]
+    log["cells_filled_with_zero"] = int(df[count_cols].isna().sum().sum())
+    df[count_cols] = df[count_cols].fillna(0).astype(int)
+
+    zero = df["BFP"] == 0            # pitchers who never faced a batter
+    log["rows_dropped_zero_bfp"] = int(zero.sum())
+    df = df[~zero].copy()
+
+    team_map = teams[["yearID", "teamID", "franchID"]].drop_duplicates()
+    df = df.merge(team_map, on=["yearID", "teamID"], how="left")
+    names = franchises[["franchID", "franchName"]].drop_duplicates("franchID")
+    df = df.merge(names, on="franchID", how="left")
+    df["franchName"] = df["franchName"].fillna(df["teamID"])
+
+    ppl = people[["playerID", "nameFirst", "nameLast", "throws"]].copy()
+    ppl["name"] = (ppl["nameFirst"].fillna("") + " " + ppl["nameLast"].fillna("")).str.strip()
+    ppl["throws"] = ppl["throws"].map({"R": "Right", "L": "Left", "S": "Switch"}).fillna("Unknown")
+    df = df.merge(ppl[["playerID", "name", "throws"]], on="playerID", how="left")
+    df["throws"] = df["throws"].fillna("Unknown")
+
+    # Role: a starter if he started at least half of the games he pitched for that team that season
+    df["role"] = (df["GS"] * 2 >= df["G"]).map({True: "Starter", False: "Reliever"})
+    df["decade"] = (df["yearID"] // 10 * 10).astype(str) + "s"
+
+    out = df.rename(columns={"yearID": "year", "lgID": "league", "franchName": "franchise"})
+    keep = ["year", "decade", "playerID", "name", "franchise", "league", "role", "throws",
+            "G", "GS", "CG", "SHO", "SV", "W", "L", "IPouts", "BFP", "H", "R", "ER", "HR", "BB", "SO", "HBP"]
+    out = out[keep].sort_values(["year", "franchise", "name"]).reset_index(drop=True)
+    return out, log
+
+
+P_SUM = ["G", "GS", "CG", "SHO", "SV", "W", "L", "IPouts", "BFP", "H", "R", "ER", "HR", "BB", "SO", "HBP"]
+
+
+def p_rates(t):
+    ip = t["IPouts"] / 3
+    return {
+        "ERA": 9 * t["ER"] / ip if ip else None,
+        "WHIP": (t["BB"] + t["H"]) / ip if ip else None,
+        "K9": 9 * t["SO"] / ip if ip else None,
+        "BB9": 9 * t["BB"] / ip if ip else None,
+        "HR9": 9 * t["HR"] / ip if ip else None,
+        "H9": 9 * t["H"] / ip if ip else None,
+        "K_PCT": t["SO"] / t["BFP"] if t["BFP"] else None,
+        "BB_PCT": t["BB"] / t["BFP"] if t["BFP"] else None,
+        "HR_PCT": t["HR"] / t["BFP"] if t["BFP"] else None,
+        "K_BB": t["SO"] / t["BB"] if t["BB"] else None,
+    }
+
+
+def pitching_report(df, log):
+    tot = lambda g: g[P_SUM].sum()
+    first, last = int(df["year"].min()), int(df["year"].max())
+    rep = {"meta": {"start_year": first, "end_year": last, "rows": len(df), "columns": df.shape[1],
+                    "seasons": int(df["year"].nunique()), "franchises": int(df["franchise"].nunique()),
+                    "pitchers": int(df["playerID"].nunique()), **log}}
+
+    season = []
+    for yr, g in df.groupby("year"):
+        t = tot(g)
+        teams_in_year = g["franchise"].nunique()
+        st = g[g["role"] == "Starter"]
+        rel = g[g["role"] == "Reliever"]
+        season.append({"year": int(yr), **{k: r(v) for k, v in p_rates(t).items()},
+                       "IP": r(t["IPouts"] / 3, 1), "SO": int(t["SO"]), "teams": int(teams_in_year),
+                       "CG_PER_TEAM": r(t["CG"] / teams_in_year, 2),
+                       "IP_PER_START": r(st["IPouts"].sum() / 3 / st["GS"].sum(), 2),
+                       "RELIEF_SHARE": r(rel["IPouts"].sum() / t["IPouts"])})
+    rep["season"] = season
+
+    rep["league_season"] = [
+        {"year": int(yr), "league": lg, **{k: r(v) for k, v in p_rates(tot(g)).items()}}
+        for (yr, lg), g in df.groupby(["year", "league"])
+    ]
+
+    rep["franchise"] = [
+        {"franchise": f, "IP": r(tot(g)["IPouts"] / 3, 1), "SO": int(tot(g)["SO"]),
+         "seasons": int(g["year"].nunique()), **{k: r(v) for k, v in p_rates(tot(g)).items()}}
+        for f, g in df.groupby("franchise")
+    ]
+    rep["franchise"].sort(key=lambda x: x["ERA"])
+
+    # By decade: reliever share of innings, innings per start, share of innings thrown left-handed
+    dec = []
+    for d, g in df.groupby("decade"):
+        st = g[g["role"] == "Starter"]
+        dec.append({"decade": d,
+                    "RELIEF_SHARE": r(g[g["role"] == "Reliever"]["IPouts"].sum() / g["IPouts"].sum()),
+                    "IP_PER_START": r(st["IPouts"].sum() / 3 / st["GS"].sum(), 2),
+                    "LEFT_SHARE": r(g[g["throws"] == "Left"]["IPouts"].sum() / g["IPouts"].sum())})
+    rep["decade"] = dec
+
+    all_t = tot(df)
+    rep["headline"] = {
+        "pitcher_seasons": len(df),
+        "total_SO": int(all_t["SO"]),
+        "total_IP": r(all_t["IPouts"] / 3, 0),
+        "ERA_all": r(p_rates(all_t)["ERA"], 2),
+        "K9_first": season[0]["K9"], "K9_last": season[-1]["K9"],
+        "ERA_first": season[0]["ERA"], "ERA_last": season[-1]["ERA"],
+    }
+    return rep
+
+
+def validate_pitching(df):
+    print("\nPitching data check")
+    print(f"  rows={len(df):,}  cols={df.shape[1]}  seasons={df['year'].nunique()}  "
+          f"franchises={df['franchise'].nunique()}  pitchers={df['playerID'].nunique():,}")
+
+
 def main():
     df, log = build()
     validate(df)
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUT_CSV, index=False)
     rep = report(df, log)
+
+    pdf, plog = build_pitching()
+    validate_pitching(pdf)
+    pdf.to_csv(OUT_PITCH_CSV, index=False)
+    rep["pitching"] = pitching_report(pdf, plog)
     OUT_JSON.write_text(json.dumps(rep, indent=1))
     print(f"\nWrote {OUT_CSV.relative_to(ROOT)} ({OUT_CSV.stat().st_size/1e6:.1f} MB)")
+    print(f"Wrote {OUT_PITCH_CSV.relative_to(ROOT)} ({OUT_PITCH_CSV.stat().st_size/1e6:.1f} MB)")
     print(f"Wrote {OUT_JSON.relative_to(ROOT)}")
-    print("\nCleaning log:")
+    print("\nCleaning log (hitting):")
     for k, v in log.items():
+        print(f"  {k}: {v:,}")
+    print("\nCleaning log (pitching):")
+    for k, v in plog.items():
         print(f"  {k}: {v:,}")
 
 
