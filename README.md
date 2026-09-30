@@ -1,4 +1,4 @@
-# MLB Hitting Over the Years
+# The Evolution of MLB Hitting
 
 A two-page data website built for Financial Data Analytics. It studies every MLB batter's season from 1960 to the latest Lahman release.
 
