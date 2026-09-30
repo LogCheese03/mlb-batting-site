@@ -51,7 +51,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-s
 .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none;
   font-family: var(--display); font-weight: 800; font-size: 26px; }
 .brand-ball { width: 24px; height: 24px; }
-.nav-links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
   display: block; padding: 8px 14px; border-radius: var(--radius-sm);
   color: #dfe8e2; text-decoration: none; font-weight: 600; font-size: 15px;
