@@ -8,6 +8,9 @@ Run from the repository root:
 
 Inputs  (put the Lahman CSVs anywhere under data/raw/):
     Batting.csv, Pitching.csv, People.csv, Fielding.csv, Teams.csv, TeamsFranchises.csv
+Optional: data/raw/mlb2026/ (written by scripts/fetch_mlb_2026.py). When present, the 2026 regular
+    season from MLB's Stats API is appended to the Lahman rows, because Lahman does not publish a
+    season until after it ends. Rows are built with the same columns and cleaning rules.
 
 Outputs:
     data/batting.csv   one row per batter, per team (stint), per season -> loaded by dashboard.html
@@ -22,7 +25,9 @@ two pages agree.
 
 from pathlib import Path
 import json
+import re
 import sys
+import unicodedata
 
 import pandas as pd
 
@@ -88,6 +93,129 @@ def r(x, n=4):
     return None if x is None or pd.isna(x) else round(float(x), n)
 
 
+# ================================================================ 2026 season (MLB Stats API)
+MLB_DIR = RAW / "mlb2026"
+# MLB team id -> the franchise name the Lahman-based rows already use (so a franchise keeps one history)
+MLB_FRANCHISE = {
+    108: "Los Angeles Angels of Anaheim", 109: "Arizona Diamondbacks", 110: "Baltimore Orioles", 111: "Boston Red Sox",
+    112: "Chicago Cubs", 113: "Cincinnati Reds", 114: "Cleveland Indians", 115: "Colorado Rockies", 116: "Detroit Tigers",
+    117: "Houston Astros", 118: "Kansas City Royals", 119: "Los Angeles Dodgers", 120: "Washington Nationals",
+    121: "New York Mets", 133: "Oakland Athletics", 134: "Pittsburgh Pirates", 135: "San Diego Padres",
+    136: "Seattle Mariners", 137: "San Francisco Giants", 138: "St. Louis Cardinals", 139: "Tampa Bay Rays",
+    140: "Texas Rangers", 141: "Toronto Blue Jays", 142: "Minnesota Twins", 143: "Philadelphia Phillies",
+    144: "Atlanta Braves", 145: "Chicago White Sox", 146: "Florida Marlins", 147: "New York Yankees", 158: "Milwaukee Brewers",
+}
+SUFFIXES = {"jr", "sr", "ii", "iii", "iv"}
+
+
+def norm_name(text):
+    """Lowercase, strip accents, punctuation and suffixes, so 'Ronald Acuña Jr.' matches 'Ronald Acuna'."""
+    text = unicodedata.normalize("NFKD", str(text)).encode("ascii", "ignore").decode().lower()
+    words = [w for w in re.sub(r"[^a-z ]", " ", text).split() if w not in SUFFIXES]
+    return " ".join(words)
+
+
+def mlb_id_map(people, mlb_players):
+    """MLB player id -> Lahman playerID, matched on birth date and last name; unmatched get 'mlb<id>'."""
+    p = people.dropna(subset=["birthYear", "birthMonth", "birthDay"]).copy()
+    p["born"] = (p["birthYear"].astype(int).astype(str) + "-" + p["birthMonth"].astype(int).astype(str).str.zfill(2)
+                 + "-" + p["birthDay"].astype(int).astype(str).str.zfill(2))
+    by_born = {}
+    for r in p.itertuples():
+        by_born.setdefault(r.born, []).append(r)
+    p["fullnorm"] = (p["nameFirst"].fillna("") + " " + p["nameLast"].fillna("")).map(norm_name)
+    by_name_year = {}
+    for r in p.itertuples():
+        by_name_year.setdefault((r.fullnorm, int(r.birthYear)), []).append(r)
+    mapping, matched = {}, 0
+    for mid, rec in mlb_players.items():
+        full = norm_name(rec["name"])
+        first = full.split()[0] if full else ""
+        hits = [r for r in by_born.get(rec["birthDate"], []) if norm_name(r.nameLast) and norm_name(r.nameLast) in full]
+        if len(hits) > 1:          # twins or shared birthdays: narrow by first name, then first initial
+            hits = [r for r in hits if norm_name(r.nameFirst) == first] or [r for r in hits if norm_name(r.nameFirst)[:1] == first[:1]] or hits
+        if not hits and rec.get("birthDate"):   # birth dates can differ by a day between sources: same full name and year
+            hits = by_name_year.get((full, int(rec["birthDate"][:4])), [])
+        if len(hits) == 1:
+            mapping[mid] = hits[0].playerID
+            matched += 1
+        else:
+            mapping[mid] = f"mlb{mid}"
+    return mapping, matched
+
+
+def load_mlb_2026(people):
+    """Return (hitting rows, pitching rows, log) for 2026 in the same columns as the Lahman-based rows."""
+    if not (MLB_DIR / "players.json").exists():
+        return None, None, {}
+    players = json.loads((MLB_DIR / "players.json").read_text())
+    teams = json.loads((MLB_DIR / "teams.json").read_text())
+    fielding = json.loads((MLB_DIR / "fielding.json").read_text())
+    meta = json.loads((MLB_DIR / "meta.json").read_text())
+    ids, matched = mlb_id_map(people, players)
+    lahman = people.set_index("playerID")
+
+    # primary position = position with the most games for that player and team (LF + CF + RF count as OF)
+    games = {}
+    for f in fielding:
+        pos = "OF" if f["pos"] in ("LF", "CF", "RF") else f["pos"]
+        if pos == "DH":
+            continue
+        key = (str(f["playerId"]), f["teamId"])
+        games.setdefault(key, {})
+        games[key][pos] = games[key].get(pos, 0) + f["games"]
+    pos_names = {"P": "Pitcher", "C": "Catcher", "1B": "First base", "2B": "Second base",
+                 "3B": "Third base", "SS": "Shortstop", "OF": "Outfield"}
+
+    def common(mid, rec, line):
+        lid = ids[mid]
+        name = (f"{lahman.at[lid, 'nameFirst']} {lahman.at[lid, 'nameLast']}".strip()
+                if lid in lahman.index else rec["name"])
+        team = line["teamId"]
+        return {"year": 2026, "decade": "2020s", "playerID": lid, "name": name,
+                "franchise": MLB_FRANCHISE[team], "league": "AL" if "American" in teams[str(team)]["league"] else "NL"}, lid
+
+    hit_rows, pit_rows = [], []
+    for mid, rec in players.items():
+        for line in rec["hitting"]:
+            base, lid = common(mid, rec, line)
+            g = games.get((mid, line["teamId"]))
+            pos = pos_names[max(g, key=g.get)] if g else "DH / pinch hitter"
+            bats = (lahman.at[lid, "bats"] if lid in lahman.index else rec["bats"])
+            bats = {"R": "Right", "L": "Left", "B": "Switch", "S": "Switch"}.get(bats, "Unknown")
+            hit_rows.append({**base, "pos": pos, "bats": bats, **{k: line[k] for k in
+                             ["G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"]}})
+        for line in rec["pitching"]:
+            base, lid = common(mid, rec, line)
+            throws = (lahman.at[lid, "throws"] if lid in lahman.index else rec["throws"])
+            throws = {"R": "Right", "L": "Left", "S": "Switch"}.get(throws, "Unknown")
+            role = "Starter" if line["GS"] * 2 >= line["G"] else "Reliever"
+            pit_rows.append({**base, "role": role, "throws": throws, **{k: line[k] for k in
+                             ["G", "GS", "CG", "SHO", "SV", "W", "L", "IPouts", "BFP", "H", "R", "ER", "HR", "BB", "SO", "HBP"]}})
+    hit, pit = pd.DataFrame(hit_rows), pd.DataFrame(pit_rows)
+
+    # cross-check: sum the player rows by team and compare with MLB's published team totals
+    checks = exact = 0
+    misses = set()
+    tt_path = MLB_DIR / "team_totals.json"
+    if tt_path.exists():
+        team_totals = json.loads(tt_path.read_text())
+        for group, frame in (("hitting", hit), ("pitching", pit)):
+            for team, name in MLB_FRANCHISE.items():
+                rows = frame[frame["franchise"] == name]
+                for stat, published in team_totals[str(team)][group].items():
+                    checks += 1
+                    if int(rows[stat].sum()) == int(published):
+                        exact += 1
+                    else:
+                        misses.add(f"{group}:{stat}")
+    log = {"mlb2026_team_checks": checks, "mlb2026_team_checks_exact": exact,
+           "mlb2026_team_check_misses": ", ".join(sorted(misses)), "mlb2026_players": len(players), "mlb2026_matched_to_lahman_id": matched,
+           "mlb2026_hitting_rows_raw": len(hit), "mlb2026_pitching_rows_raw": len(pit),
+           "mlb2026_fetched_utc": meta["fetched_utc"]}
+    return hit, pit, log
+
+
 # ---------------------------------------------------------------- build
 def build():
     batting = standardize_batting(read_csv("Batting.csv"))
@@ -146,6 +274,16 @@ def build():
     keep = ["year", "decade", "playerID", "name", "franchise", "league", "pos", "bats",
             "G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"]
     out = out[keep].sort_values(["year", "franchise", "name"]).reset_index(drop=True)
+
+    # 2026 regular season from the MLB Stats API (same columns, same cleaning rules)
+    hit26, _, mlog = load_mlb_2026(people)
+    if hit26 is not None:
+        zero = hit26["PA"] == 0
+        mlog["mlb2026_hitting_rows_dropped_zero_pa"] = int(zero.sum())
+        hit26 = hit26[~zero]
+        out = pd.concat([out, hit26[keep]], ignore_index=True)
+        out = out.sort_values(["year", "franchise", "name"]).reset_index(drop=True)
+        log.update(mlog)
     return out, log
 
 
@@ -279,6 +417,14 @@ def build_pitching():
     keep = ["year", "decade", "playerID", "name", "franchise", "league", "role", "throws",
             "G", "GS", "CG", "SHO", "SV", "W", "L", "IPouts", "BFP", "H", "R", "ER", "HR", "BB", "SO", "HBP"]
     out = out[keep].sort_values(["year", "franchise", "name"]).reset_index(drop=True)
+
+    _, pit26, mlog = load_mlb_2026(people)
+    if pit26 is not None:
+        zero = pit26["BFP"] == 0
+        log["mlb2026_pitching_rows_dropped_zero_bfp"] = int(zero.sum())
+        pit26 = pit26[~zero]
+        out = pd.concat([out, pit26[keep]], ignore_index=True)
+        out = out.sort_values(["year", "franchise", "name"]).reset_index(drop=True)
     return out, log
 
 
@@ -378,10 +524,10 @@ def main():
     print(f"Wrote {OUT_JSON.relative_to(ROOT)}")
     print("\nCleaning log (hitting):")
     for k, v in log.items():
-        print(f"  {k}: {v:,}")
+        print(f"  {k}: {v:,}" if isinstance(v, int) else f"  {k}: {v}")
     print("\nCleaning log (pitching):")
     for k, v in plog.items():
-        print(f"  {k}: {v:,}")
+        print(f"  {k}: {v:,}" if isinstance(v, int) else f"  {k}: {v}")
 
 
 if __name__ == "__main__":

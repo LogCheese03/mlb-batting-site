@@ -37413,3 +37413,1005 @@ year,decade,playerID,name,franchise,league,role,throws,G,GS,CG,SHO,SV,W,L,IPouts
 2025,2020s,ogasash01,Shinnosuke Ogasawara,Washington Nationals,NL,Reliever,Left,23,2,0,0,0,1,1,116,173,43,30,30,9,17,30,3
 2025,2020s,willitr01,Trevor Williams,Washington Nationals,NL,Starter,Right,17,17,0,0,0,3,10,248,373,106,59,57,11,21,65,2
 2025,2020s,brzykza01,Zach Brzykcy,Washington Nationals,NL,Reliever,Right,26,0,0,0,0,0,1,69,110,28,23,23,6,12,24,2
+2026,2020s,delcaad01,Adrian Del Castillo,Arizona Diamondbacks,NL,Reliever,Right,1,0,0,0,0,0,0,5,10,4,1,1,0,0,0,1
+2026,2020s,hoffman01,Andrew Hoffmann,Arizona Diamondbacks,NL,Reliever,Right,8,0,0,0,0,1,0,35,59,16,12,10,3,8,12,1
+2026,2020s,walstbl01,Blake Walston,Arizona Diamondbacks,NL,Reliever,Left,2,0,0,0,0,1,0,9,13,1,2,1,0,3,2,0
+2026,2020s,pfaadbr01,Brandon Pfaadt,Arizona Diamondbacks,NL,Starter,Right,29,19,0,0,0,8,3,408,562,129,61,57,14,32,94,6
+2026,2020s,garcibr02,Brandyn Garcia,Arizona Diamondbacks,NL,Reliever,Left,57,0,0,0,5,0,1,154,192,27,12,11,3,11,60,7
+2026,2020s,burneco01,Corbin Burnes,Arizona Diamondbacks,NL,Starter,Right,3,3,0,0,0,0,0,31,47,12,9,9,5,4,8,0
+2026,2020s,santade01,Dennis Santana,Arizona Diamondbacks,NL,Reliever,Right,13,0,0,0,1,0,0,45,64,14,8,7,2,4,12,1
+2026,2020s,lawde01,Derek Law,Arizona Diamondbacks,NL,Reliever,Right,7,1,0,0,0,0,0,27,34,8,1,1,0,2,5,1
+2026,2020s,jamesdr01,Drey Jameson,Arizona Diamondbacks,NL,Reliever,Right,12,0,0,0,0,0,0,58,86,19,11,11,1,10,13,1
+2026,2020s,rodried05,Eduardo Rodriguez,Arizona Diamondbacks,NL,Starter,Left,32,32,0,0,0,16,7,569,788,173,68,61,19,62,143,1
+2026,2020s,mlb672629,Gerardo Carrillo,Arizona Diamondbacks,NL,Reliever,Right,13,0,0,0,0,3,1,52,81,14,10,8,0,16,21,1
+2026,2020s,vargail01,Ildemaro Vargas,Arizona Diamondbacks,NL,Reliever,Right,3,0,0,0,0,0,0,11,17,3,2,2,0,3,0,1
+2026,2020s,mccanja02,James McCann,Arizona Diamondbacks,NL,Reliever,Right,4,0,0,0,0,0,0,12,23,9,6,5,1,3,0,0
+2026,2020s,rossjo01,Joe Ross,Arizona Diamondbacks,NL,Reliever,Right,3,0,0,0,0,0,0,11,22,7,8,8,1,4,2,0
+2026,2020s,loaisjo01,Jonathan Loaisiga,Arizona Diamondbacks,NL,Reliever,Right,67,0,0,0,2,7,3,201,261,56,20,18,3,13,48,1
+2026,2020s,mlb703615,Jose Cabrera,Arizona Diamondbacks,NL,Starter,Right,8,5,0,0,0,0,4,85,129,32,18,18,6,11,20,3
+2026,2020s,burgoju01,Juan Burgos,Arizona Diamondbacks,NL,Reliever,Right,4,0,0,0,0,0,0,13,17,3,1,1,0,0,0,1
+2026,2020s,morilju02,Juan Morillo,Arizona Diamondbacks,NL,Reliever,Right,70,0,0,0,3,5,4,193,264,45,18,16,3,23,74,5
+2026,2020s,martiju01,Justin Martinez,Arizona Diamondbacks,NL,Reliever,Right,15,0,0,0,0,3,1,40,55,5,5,3,0,10,18,1
+2026,2020s,strowka01,Kade Strowd,Arizona Diamondbacks,NL,Reliever,Right,2,0,0,0,0,0,0,8,14,2,1,1,0,5,1,0
+2026,2020s,ginkeke01,Kevin Ginkel,Arizona Diamondbacks,NL,Reliever,Right,74,0,0,0,3,6,4,203,275,59,34,31,9,17,72,1
+2026,2020s,mlb684442,Kohl Drake,Arizona Diamondbacks,NL,Starter,Left,5,5,0,0,0,0,1,62,95,24,15,15,5,7,17,4
+2026,2020s,kellyme01,Merrill Kelly,Arizona Diamondbacks,NL,Starter,Right,29,29,1,0,0,10,14,486,704,166,93,89,28,70,113,4
+2026,2020s,sorokmi01,Mike Soroka,Arizona Diamondbacks,NL,Starter,Right,22,21,0,0,0,9,5,348,473,97,45,44,10,29,114,7
+2026,2020s,mlb683352,Mitch Bratt,Arizona Diamondbacks,NL,Starter,Left,10,10,0,0,0,1,3,132,194,40,23,23,5,27,30,1
+2026,2020s,sewalpa01,Paul Sewald,Arizona Diamondbacks,NL,Reliever,Right,45,0,0,0,24,2,5,117,163,34,29,27,12,9,44,2
+2026,2020s,abnerph01,Philip Abner,Arizona Diamondbacks,NL,Reliever,Left,8,0,0,0,0,0,0,43,64,14,10,10,2,8,6,0
+2026,2020s,thompry02,Ryan Thompson,Arizona Diamondbacks,NL,Reliever,Right,46,0,0,0,0,4,2,122,186,51,23,20,3,13,29,3
+2026,2020s,nelsory01,Ryne Nelson,Arizona Diamondbacks,NL,Starter,Right,19,15,0,0,0,3,5,262,374,86,55,48,18,24,66,5
+2026,2020s,clarkta01,Taylor Clarke,Arizona Diamondbacks,NL,Reliever,Right,71,2,0,0,0,2,4,219,288,59,28,24,7,14,45,4
+2026,2020s,rashita01,Taylor Rashi,Arizona Diamondbacks,NL,Reliever,Right,3,0,0,0,0,1,0,11,15,3,4,4,1,1,4,0
+2026,2020s,diazyi01,Yilber Díaz,Arizona Diamondbacks,NL,Reliever,Right,1,0,0,0,0,0,0,2,10,7,7,7,1,1,0,0
+2026,2020s,galleza01,Zac Gallen,Arizona Diamondbacks,NL,Starter,Right,22,20,0,0,0,3,9,316,472,128,78,71,19,35,64,4
+2026,2020s,litteza01,Zack Littell,Arizona Diamondbacks,NL,Reliever,Right,3,0,0,0,0,1,0,36,59,21,12,10,5,4,3,0
+2026,2020s,smithaj01,AJ Smith-Shawver,Atlanta Braves,NL,Starter,Right,9,5,0,0,0,0,3,94,144,32,23,23,7,16,27,2
+2026,2020s,bummeaa01,Aaron Bummer,Atlanta Braves,NL,Reliever,Left,19,0,0,0,0,1,1,46,77,18,15,13,6,10,13,1
+2026,2020s,molinan01,Anthony Molina,Atlanta Braves,NL,Reliever,Right,3,0,0,0,0,0,0,15,21,6,4,3,1,1,2,0
+2026,2020s,falteba01,Bailey Falter,Atlanta Braves,NL,Reliever,Left,2,0,0,0,0,0,0,10,12,2,0,0,0,0,2,0
+2026,2020s,mlb686628,Blake Burkhalter,Atlanta Braves,NL,Reliever,Right,1,0,0,0,0,0,0,3,5,1,1,1,0,1,1,0
+2026,2020s,suterbr01,Brent Suter,Atlanta Braves,NL,Reliever,Left,13,1,0,0,0,2,0,83,111,23,7,5,2,8,23,0
+2026,2020s,elderbr01,Bryce Elder,Atlanta Braves,NL,Starter,Right,26,26,0,0,0,8,8,447,633,140,74,68,24,49,121,3
+2026,2020s,carraca01,Carlos Carrasco,Atlanta Braves,NL,Reliever,Right,8,0,0,0,0,0,0,50,73,21,11,11,3,3,7,2
+2026,2020s,salech01,Chris Sale,Atlanta Braves,NL,Starter,Left,27,27,1,1,0,14,9,488,648,129,44,39,10,31,200,15
+2026,2020s,thomaco02,Connor Thomas,Atlanta Braves,NL,Reliever,Left,2,0,0,0,0,0,1,19,40,15,15,15,4,6,4,0
+2026,2020s,youngda02,Danny Young,Atlanta Braves,NL,Reliever,Left,16,1,0,0,0,0,1,37,65,15,11,11,3,13,15,3
+2026,2020s,fuentdi01,Didier Fuentes,Atlanta Braves,NL,Reliever,Right,58,1,0,0,3,7,2,220,297,60,21,20,6,21,92,2
+2026,2020s,dodddy01,Dylan Dodd,Atlanta Braves,NL,Reliever,Left,48,0,0,0,2,4,1,149,194,31,14,14,7,14,53,3
+2026,2020s,leedy01,Dylan Lee,Atlanta Braves,NL,Reliever,Left,71,0,0,0,0,6,1,201,262,48,25,23,3,17,77,0
+2026,2020s,hernael01,Elieser Hernandez,Atlanta Braves,NL,Reliever,Right,5,0,0,0,1,2,0,36,53,10,3,3,3,6,13,1
+2026,2020s,holmegr01,Grant Holmes,Atlanta Braves,NL,Starter,Right,31,29,0,0,0,10,6,455,642,136,60,58,22,62,115,3
+2026,2020s,strathu01,Hunter Stratton,Atlanta Braves,NL,Reliever,Right,1,0,0,0,0,0,0,3,3,1,0,0,0,0,1,0
+2026,2020s,waldrhu01,Hurston Waldrep,Atlanta Braves,NL,Starter,Right,3,2,0,0,0,0,1,32,56,13,10,10,3,10,9,2
+2026,2020s,hamilia01,Ian Hamilton,Atlanta Braves,NL,Reliever,Right,4,0,0,0,0,0,0,14,23,6,4,4,0,3,4,0
+2026,2020s,mlb702275,JR Ritchie,Atlanta Braves,NL,Starter,Right,17,11,0,0,1,1,5,220,326,65,43,40,13,43,68,6
+2026,2020s,karinja01,James Karinchak,Atlanta Braves,NL,Reliever,Right,9,0,0,0,0,0,0,29,37,4,2,2,1,5,8,0
+2026,2020s,payamjo01,Joel Payamps,Atlanta Braves,NL,Reliever,Right,12,0,0,0,0,0,2,23,36,9,9,7,2,4,9,0
+2026,2020s,mateojo01,Jorge Mateo,Atlanta Braves,NL,Reliever,Right,3,0,0,0,0,0,0,7,12,5,1,1,0,1,1,0
+2026,2020s,suarejo01,Jose Suarez,Atlanta Braves,NL,Reliever,Left,8,1,0,0,1,0,1,49,79,22,12,12,0,12,21,0
+2026,2020s,perezma02,Martin Perez,Atlanta Braves,NL,Starter,Left,30,26,0,0,0,9,9,426,596,119,53,48,14,62,102,3
+2026,2020s,bidoos01,Osvaldo Bido,Atlanta Braves,NL,Reliever,Right,6,0,0,0,1,1,0,30,41,7,7,7,1,5,6,2
+2026,2020s,mlb702566,Owen Murphy,Atlanta Braves,NL,Reliever,Right,5,1,0,0,0,0,1,36,56,17,10,8,4,3,9,1
+2026,2020s,iglesra01,Raisel Iglesias,Atlanta Braves,NL,Reliever,Right,59,0,0,0,34,1,2,180,239,48,21,17,6,17,64,1
+2026,2020s,kerrra01,Ray Kerr,Atlanta Braves,NL,Reliever,Left,9,1,0,0,0,0,0,55,66,9,3,3,2,2,11,2
+2026,2020s,lopezre01,Reynaldo Lopez,Atlanta Braves,NL,Starter,Right,26,13,0,0,0,4,5,238,346,80,44,40,11,34,73,1
+2026,2020s,suarero01,Robert Suarez,Atlanta Braves,NL,Reliever,Right,33,0,0,0,4,4,0,102,130,24,4,4,1,6,26,0
+2026,2020s,munozro02,Rolddy Muñoz,Atlanta Braves,NL,Reliever,Right,1,0,0,0,0,0,0,6,12,5,3,3,1,1,3,0
+2026,2020s,stridsp01,Spencer Strider,Atlanta Braves,NL,Starter,Right,8,8,0,0,0,4,2,117,165,33,24,23,9,20,46,1
+2026,2020s,kinlety01,Tyler Kinley,Atlanta Braves,NL,Reliever,Right,49,0,0,0,1,6,5,128,179,35,21,19,9,20,42,2
+2026,2020s,mahlety01,Tyler Mahle,Atlanta Braves,NL,Starter,Right,9,9,0,0,0,4,1,163,210,43,14,12,6,9,48,1
+2026,2020s,medervi01,Victor Mederos,Atlanta Braves,NL,Reliever,Right,30,0,0,0,1,6,1,103,148,27,13,13,1,14,34,4
+2026,2020s,suareal01,Albert Suarez,Baltimore Orioles,AL,Reliever,Right,28,0,0,0,1,3,0,189,262,57,32,27,8,20,46,0
+2026,2020s,mlb695380,Alex Hoppe,Baltimore Orioles,AL,Reliever,Right,18,0,0,0,1,1,0,44,69,14,8,3,1,9,13,2
+2026,2020s,kittran01,Andrew Kittredge,Baltimore Orioles,AL,Reliever,Right,55,0,0,0,11,3,3,145,214,55,30,19,6,11,40,0
+2026,2020s,mlb689296,Anthony Nunez,Baltimore Orioles,AL,Reliever,Right,52,0,0,0,3,3,2,179,255,47,31,27,5,26,66,4
+2026,2020s,youngbr01,Brandon Young,Baltimore Orioles,AL,Starter,Right,28,28,0,0,0,9,6,470,669,150,71,62,22,61,133,4
+2026,2020s,povicca01,Cade Povich,Baltimore Orioles,AL,Starter,Left,8,7,0,0,0,2,1,111,160,40,18,18,6,15,28,1
+2026,2020s,sandeca01,Cam Sanders,Baltimore Orioles,AL,Reliever,Right,19,0,0,0,3,1,1,60,83,13,6,6,0,10,27,3
+2026,2020s,mlb671382,Cameron Foster,Baltimore Orioles,AL,Reliever,Right,6,0,0,0,0,0,0,27,49,17,10,9,1,8,9,0
+2026,2020s,mlb687721,Cameron Weston,Baltimore Orioles,AL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,1,1,0
+2026,2020s,trompch01,Chadwick Tromp,Baltimore Orioles,AL,Reliever,Right,1,0,0,0,0,0,0,3,6,3,2,2,1,1,0,0
+2026,2020s,bassich01,Chris Bassitt,Baltimore Orioles,AL,Starter,Right,20,18,0,0,0,9,5,306,460,120,53,52,10,38,74,9
+2026,2020s,kremede01,Dean Kremer,Baltimore Orioles,AL,Starter,Right,7,7,0,0,0,1,4,108,153,38,28,26,12,11,38,0
+2026,2020s,ennsdi01,Dietrich Enns,Baltimore Orioles,AL,Reliever,Left,13,0,0,0,0,3,0,48,70,13,8,7,0,11,13,0
+2026,2020s,bautife01,Felix Bautista,Baltimore Orioles,AL,Reliever,Right,2,0,0,0,0,0,0,5,10,4,3,3,1,1,3,0
+2026,2020s,wolfrgr01,Grant Wolfram,Baltimore Orioles,AL,Reliever,Left,60,0,0,0,1,6,4,157,226,53,30,25,3,16,61,4
+2026,2020s,espadjo01,Jose Espada,Baltimore Orioles,AL,Reliever,Right,1,0,0,0,0,0,0,3,4,2,0,0,0,0,0,0
+2026,2020s,walkejo03,Josh Walker,Baltimore Orioles,AL,Reliever,Left,31,0,0,0,1,1,0,91,126,24,9,7,2,12,29,1
+2026,2020s,akinke01,Keegan Akin,Baltimore Orioles,AL,Reliever,Left,24,2,0,0,0,0,1,76,114,29,18,16,3,9,17,0
+2026,2020s,bradiky01,Kyle Bradish,Baltimore Orioles,AL,Starter,Right,29,29,0,0,0,7,14,465,669,156,83,71,20,70,142,3
+2026,2020s,trivilo01,Lou Trivino,Baltimore Orioles,AL,Reliever,Right,2,0,0,0,0,0,0,9,18,6,6,6,0,3,3,0
+2026,2020s,mlb801725,Luis De León,Baltimore Orioles,AL,Reliever,Left,8,0,0,0,0,0,2,28,36,6,3,2,1,2,6,0
+2026,2020s,raqueni01,Nick Raquet,Baltimore Orioles,AL,Reliever,Left,4,0,0,0,0,0,0,11,17,3,3,3,1,2,1,1
+2026,2020s,garciri01,Rico Garcia,Baltimore Orioles,AL,Reliever,Right,75,0,0,0,10,5,1,201,265,43,26,23,9,22,68,2
+2026,2020s,helslry01,Ryan Helsley,Baltimore Orioles,AL,Reliever,Right,17,0,0,0,8,0,4,46,68,13,9,7,3,9,21,0
+2026,2020s,bazsh01,Shane Baz,Baltimore Orioles,AL,Starter,Right,31,31,1,0,0,6,15,539,769,179,92,82,15,63,154,6
+2026,2020s,rogertr01,Trevor Rogers,Baltimore Orioles,AL,Starter,Left,30,30,0,0,0,10,11,509,699,162,81,76,19,39,157,3
+2026,2020s,mlb694346,Trey Gibson,Baltimore Orioles,AL,Starter,Right,9,8,0,0,0,2,3,119,185,41,27,27,7,27,37,1
+2026,2020s,wellsty01,Tyler Wells,Baltimore Orioles,AL,Reliever,Right,43,0,0,0,4,2,2,162,211,39,19,16,6,13,53,2
+2026,2020s,wilsowe01,Weston Wilson,Baltimore Orioles,AL,Reliever,Right,3,0,0,0,0,0,0,7,13,6,4,4,2,0,0,0
+2026,2020s,hiralya01,Yaramil Hiraldo,Baltimore Orioles,AL,Reliever,Right,8,0,0,0,0,1,0,28,48,9,9,9,2,10,13,1
+2026,2020s,canoye01,Yennier Cano,Baltimore Orioles,AL,Reliever,Right,68,0,0,0,3,4,3,149,204,40,19,16,2,13,45,3
+2026,2020s,eflinza01,Zach Eflin,Baltimore Orioles,AL,Starter,Right,1,1,0,0,0,0,0,11,17,4,1,1,1,2,7,0
+2026,2020s,mlb687941,Alec Gamboa,Boston Red Sox,AL,Reliever,Left,21,3,0,0,1,1,0,99,132,27,8,7,1,11,23,1
+2026,2020s,monasan01,Andruw Monasterio,Boston Red Sox,AL,Reliever,Right,1,0,0,0,0,0,0,2,8,3,5,5,2,3,0,0
+2026,2020s,chapmar01,Aroldis Chapman,Boston Red Sox,AL,Reliever,Left,53,0,0,0,35,3,4,155,213,35,13,11,3,23,71,1
+2026,2020s,bellobr01,Brayan Bello,Boston Red Sox,AL,Reliever,Right,26,11,0,0,1,6,7,349,503,123,61,56,12,36,92,7
+2026,2020s,earlyco01,Connelly Early,Boston Red Sox,AL,Starter,Left,17,17,0,0,0,7,5,275,390,81,35,35,15,34,93,9
+2026,2020s,couloda01,Danny Coulombe,Boston Red Sox,AL,Reliever,Left,29,0,0,0,0,0,2,66,96,18,11,11,1,15,10,1
+2026,2020s,mlb700842,Eduardo Rivera,Boston Red Sox,AL,Starter,Left,4,3,0,0,0,0,1,30,44,8,7,7,1,6,10,0
+2026,2020s,milleer01,Erik Miller,Boston Red Sox,AL,Reliever,Left,19,1,0,0,1,2,2,56,85,14,8,7,1,12,29,3
+2026,2020s,crochga01,Garrett Crochet,Boston Red Sox,AL,Starter,Left,6,6,0,0,0,3,3,90,138,33,23,21,5,11,37,4
+2026,2020s,whitlga01,Garrett Whitlock,Boston Red Sox,AL,Reliever,Right,54,0,0,0,4,7,2,157,198,38,13,10,3,9,59,0
+2026,2020s,weissgr01,Greg Weissert,Boston Red Sox,AL,Reliever,Right,63,0,0,0,1,4,2,182,255,55,23,22,8,20,60,3
+2026,2020s,mlb681252,Jack Anderson,Boston Red Sox,AL,Reliever,Right,3,0,0,0,0,0,0,24,32,8,3,3,1,2,6,0
+2026,2020s,mlb687562,Jake Bennett,Boston Red Sox,AL,Starter,Left,20,19,0,0,0,9,7,340,455,104,47,46,12,21,91,3
+2026,2020s,mlb699151,Jedixson Paez,Boston Red Sox,AL,Starter,Right,2,1,0,0,0,1,1,26,41,13,8,8,2,2,8,0
+2026,2020s,lasorjo01,Joe La Sorsa,Boston Red Sox,AL,Reliever,Left,1,0,0,0,0,0,0,1,2,1,1,1,1,0,1,0
+2026,2020s,oviedjo01,Johan Oviedo,Boston Red Sox,AL,Reliever,Right,1,0,0,0,0,0,0,11,18,6,4,4,2,1,3,1
+2026,2020s,moranjo01,Jovani Moran,Boston Red Sox,AL,Reliever,Left,50,3,0,0,0,2,3,197,272,42,24,23,9,33,73,2
+2026,2020s,slateju01,Justin Slaten,Boston Red Sox,AL,Reliever,Right,36,0,0,0,0,2,4,94,137,35,20,16,4,8,39,0
+2026,2020s,sandopa02,Patrick Sandoval,Boston Red Sox,AL,Starter,Left,15,13,0,0,0,1,7,211,321,86,44,40,7,32,73,2
+2026,2020s,tollepa01,Payton Tolle,Boston Red Sox,AL,Starter,Left,26,26,0,0,0,9,6,446,603,123,54,50,15,40,171,6
+2026,2020s,suarera01,Ranger Suarez,Boston Red Sox,AL,Starter,Left,28,28,0,0,0,8,5,445,612,130,56,53,10,46,140,7
+2026,2020s,burgora01,Raymond Burgos,Boston Red Sox,AL,Reliever,Left,9,0,0,0,2,0,0,64,82,17,11,10,3,1,16,0
+2026,2020s,mlb670245,Ryan Watson,Boston Red Sox,AL,Reliever,Right,35,0,0,0,1,1,0,167,240,54,28,28,8,19,43,3
+2026,2020s,martise01,Seth Martinez,Boston Red Sox,AL,Reliever,Right,1,0,0,0,0,0,0,3,6,2,1,1,0,0,1,1
+2026,2020s,grayso01,Sonny Gray,Boston Red Sox,AL,Starter,Right,29,29,0,0,0,18,5,507,683,148,52,51,16,46,149,5
+2026,2020s,houckta01,Tanner Houck,Boston Red Sox,AL,Starter,Right,1,1,0,0,0,0,1,9,13,4,3,3,2,0,1,0
+2026,2020s,guerrta01,Tayron Guerrero,Boston Red Sox,AL,Reliever,Right,40,0,0,0,0,1,2,122,166,37,18,14,2,8,41,2
+2026,2020s,kahnlto01,Tommy Kahnle,Boston Red Sox,AL,Reliever,Right,8,0,0,0,0,0,0,27,43,12,8,8,2,6,5,0
+2026,2020s,mlb701719,Tyler Samaniego,Boston Red Sox,AL,Reliever,Left,20,1,0,0,0,0,3,61,90,22,8,6,1,8,17,2
+2026,2020s,mlb700413,Tyler Uberstine,Boston Red Sox,AL,Reliever,Right,1,0,0,0,0,0,1,8,11,3,1,1,1,1,2,0
+2026,2020s,mlb681544,Wyatt Olds,Boston Red Sox,AL,Reliever,Right,14,0,0,0,0,2,0,47,68,11,5,2,2,8,20,2
+2026,2020s,kellyza01,Zack Kelly,Boston Red Sox,AL,Reliever,Right,17,0,0,0,0,0,2,49,71,14,8,6,1,7,14,1
+2026,2020s,civalaa01,Aaron Civale,Chicago Cubs,NL,Reliever,Right,18,0,0,0,2,1,1,110,152,27,9,7,2,12,33,3
+2026,2020s,wantzan01,Andrew Wantz,Chicago Cubs,NL,Reliever,Right,1,0,0,0,0,0,0,6,9,3,1,1,0,1,0,0
+2026,2020s,mlb681520,Antoine Kelly,Chicago Cubs,NL,Reliever,Left,1,0,0,0,0,0,0,4,4,0,0,0,0,1,1,0
+2026,2020s,brownbe01,Ben Brown,Chicago Cubs,NL,Reliever,Right,20,8,0,0,1,4,2,204,265,45,16,14,2,19,65,2
+2026,2020s,garrebr01,Braxton Garrett,Chicago Cubs,NL,Reliever,Left,1,0,0,0,0,1,0,15,21,4,1,1,0,3,2,1
+2026,2020s,wilsobr02,Bryse Wilson,Chicago Cubs,NL,Reliever,Right,2,0,0,0,0,0,0,23,38,12,7,7,2,1,8,2
+2026,2020s,hortoca01,Cade Horton,Chicago Cubs,NL,Starter,Right,2,2,0,0,0,1,0,22,26,4,2,2,1,2,4,0
+2026,2020s,thielca01,Caleb Thielbar,Chicago Cubs,NL,Reliever,Left,58,0,0,0,3,3,4,150,212,47,30,27,11,18,60,1
+2026,2020s,kellyca02,Carson Kelly,Chicago Cubs,NL,Reliever,Right,3,0,0,0,0,0,0,9,13,4,2,2,2,0,0,0
+2026,2020s,barnech01,Charlie Barnes,Chicago Cubs,NL,Reliever,Left,1,0,0,0,0,0,0,9,17,4,4,3,0,3,1,1
+2026,2020s,holmecl01,Clay Holmes,Chicago Cubs,NL,Starter,Right,9,9,0,0,0,2,4,146,204,39,25,23,3,24,33,1
+2026,2020s,reaco01,Colin Rea,Chicago Cubs,NL,Starter,Right,34,19,0,0,2,8,8,411,587,135,68,66,21,47,101,7
+2026,2020s,martico02,Corbin Martin,Chicago Cubs,NL,Reliever,Right,7,0,0,0,1,0,0,15,25,5,6,6,2,5,4,0
+2026,2020s,palenda01,Daniel Palencia,Chicago Cubs,NL,Reliever,Right,32,0,0,0,3,2,2,89,123,25,13,12,4,11,30,1
+2026,2020s,peterda01,David Peterson,Chicago Cubs,NL,Starter,Left,16,15,0,0,0,6,2,241,344,75,35,33,9,35,74,1
+2026,2020s,pomerdr01,Drew Pomeranz,Chicago Cubs,NL,Reliever,Left,6,0,0,0,0,2,0,17,27,7,5,5,2,4,1,0
+2026,2020s,cabreed02,Edward Cabrera,Chicago Cubs,NL,Starter,Right,18,15,0,0,0,5,5,240,350,83,58,53,16,36,71,2
+2026,2020s,roberet01,Ethan Roberts,Chicago Cubs,NL,Reliever,Right,23,0,0,0,0,0,2,77,110,22,14,12,3,14,17,3
+2026,2020s,holloga01,Gavin Hollowell,Chicago Cubs,NL,Reliever,Right,15,0,0,0,1,0,0,44,64,11,5,4,2,9,13,1
+2026,2020s,milneho01,Hoby Milner,Chicago Cubs,NL,Reliever,Left,38,0,0,0,1,1,0,107,149,34,14,14,4,9,18,3
+2026,2020s,harvehu01,Hunter Harvey,Chicago Cubs,NL,Reliever,Right,4,0,0,0,0,0,1,12,18,5,3,3,2,1,4,0
+2026,2020s,webbja01,Jacob Webb,Chicago Cubs,NL,Reliever,Right,68,0,0,0,9,6,5,201,284,59,28,25,10,25,73,1
+2026,2020s,woodfja01,Jake Woodford,Chicago Cubs,NL,Reliever,Right,2,0,0,0,0,0,0,9,14,6,3,3,1,0,3,0
+2026,2020s,taillja01,Jameson Taillon,Chicago Cubs,NL,Starter,Right,15,15,0,0,0,2,6,228,326,76,51,50,25,27,68,2
+2026,2020s,assadja01,Javier Assad,Chicago Cubs,NL,Reliever,Right,28,11,0,0,2,6,2,283,378,81,39,38,16,27,63,3
+2026,2020s,murraja01,Jayden Murray,Chicago Cubs,NL,Reliever,Right,2,0,0,0,0,0,0,9,17,6,6,6,2,2,6,0
+2026,2020s,wicksjo01,Jordan Wicks,Chicago Cubs,NL,Starter,Left,4,2,0,0,2,0,2,31,50,18,12,12,1,2,8,1
+2026,2020s,gausmke01,Kevin Gausman,Chicago Cubs,NL,Starter,Right,9,9,0,0,0,4,2,151,210,51,28,27,11,11,57,0
+2026,2020s,littllu01,Luke Little,Chicago Cubs,NL,Reliever,Left,1,0,0,0,0,0,0,3,5,2,1,1,1,0,1,0
+2026,2020s,boydma01,Matt Boyd,Chicago Cubs,NL,Starter,Left,22,22,0,0,0,10,5,380,520,114,59,55,15,39,96,7
+2026,2020s,matonph01,Phil Maton,Chicago Cubs,NL,Reliever,Right,31,0,0,0,0,0,1,83,136,34,19,19,5,16,31,5
+2026,2020s,mlb702303,Riley Martin,Chicago Cubs,NL,Reliever,Left,8,1,0,0,0,0,0,25,31,5,2,2,1,2,10,0
+2026,2020s,rolisry01,Ryan Rolison,Chicago Cubs,NL,Reliever,Left,60,2,0,0,3,9,2,189,256,53,24,22,6,28,55,0
+2026,2020s,zeferry01,Ryan Zeferjahn,Chicago Cubs,NL,Reliever,Right,20,0,0,0,3,0,1,54,80,19,10,9,2,8,19,1
+2026,2020s,imanash01,Shota Imanaga,Chicago Cubs,NL,Starter,Left,32,32,0,0,0,11,10,523,706,154,75,73,35,37,174,7
+2026,2020s,thorntr01,Trent Thornton,Chicago Cubs,NL,Reliever,Right,48,0,0,0,3,5,5,145,196,41,21,18,8,17,31,3
+2026,2020s,blachty01,Ty Blach,Chicago Cubs,NL,Reliever,Left,1,0,0,0,0,0,0,9,9,1,0,0,0,0,2,0
+2026,2020s,ferguty01,Tyler Ferguson,Chicago Cubs,NL,Reliever,Right,17,0,0,0,0,0,1,52,70,11,7,7,4,4,20,3
+2026,2020s,velasvi01,Vince Velasquez,Chicago Cubs,NL,Reliever,Right,2,0,0,0,0,0,0,10,11,1,0,0,0,0,1,0
+2026,2020s,riosya01,Yacksel Rios,Chicago Cubs,NL,Reliever,Right,1,0,0,0,0,0,0,5,5,0,0,0,0,0,2,0
+2026,2020s,kayan01,Anthony Kay,Chicago White Sox,AL,Starter,Left,33,31,0,0,0,10,9,474,710,161,85,78,21,56,129,26
+2026,2020s,eiserbr01,Brandon Eisert,Chicago White Sox,AL,Reliever,Left,25,4,0,0,0,2,1,82,117,26,19,18,6,8,32,0
+2026,2020s,hudsobr01,Bryan Hudson,Chicago White Sox,AL,Reliever,Left,70,9,0,0,8,5,4,202,282,68,31,28,5,18,59,4
+2026,2020s,murphch01,Chris Murphy,Chicago White Sox,AL,Reliever,Left,33,3,0,0,1,3,0,101,150,32,21,18,4,16,35,4
+2026,2020s,mlb689818,David Sandlin,Chicago White Sox,AL,Starter,Right,8,6,0,0,0,3,2,121,167,36,28,25,7,13,40,1
+2026,2020s,martida03,Davis Martin,Chicago White Sox,AL,Starter,Right,29,28,0,0,0,9,8,438,617,146,68,64,14,46,122,10
+2026,2020s,nikhado01,Doug Nikhazy,Chicago White Sox,AL,Reliever,Left,1,0,0,0,0,0,0,6,9,1,1,1,0,2,1,0
+2026,2020s,mlb701474,Duncan Davitt,Chicago White Sox,AL,Reliever,Right,2,0,0,0,0,0,0,6,8,2,1,1,1,1,1,0
+2026,2020s,feddeer01,Erick Fedde,Chicago White Sox,AL,Reliever,Right,33,15,0,0,0,8,9,423,606,139,68,60,23,52,99,4
+2026,2020s,taylogr02,Grant Taylor,Chicago White Sox,AL,Reliever,Right,60,4,0,0,10,7,3,252,336,60,27,21,7,30,106,1
+2026,2020s,mlb696146,Hagen Smith,Chicago White Sox,AL,Reliever,Left,18,1,0,0,0,3,3,84,110,11,5,4,1,16,41,0
+2026,2020s,brazohu01,Huascar Brazoban,Chicago White Sox,AL,Reliever,Right,14,0,0,0,0,1,0,43,60,14,7,7,2,6,7,0
+2026,2020s,mlb699151,Jedixson Paez,Chicago White Sox,AL,Reliever,Right,3,0,0,0,0,0,0,9,16,4,6,6,2,3,0,0
+2026,2020s,rockjo01,Joe Rock,Chicago White Sox,AL,Reliever,Left,4,0,0,0,0,0,1,31,53,11,5,4,0,11,12,2
+2026,2020s,cannojo02,Jonathan Cannon,Chicago White Sox,AL,Reliever,Right,2,0,0,0,1,0,0,9,18,4,3,3,0,5,4,0
+2026,2020s,hicksjo03,Jordan Hicks,Chicago White Sox,AL,Reliever,Right,53,2,0,0,1,3,2,144,216,41,21,21,4,33,64,1
+2026,2020s,leasujo01,Jordan Leasure,Chicago White Sox,AL,Reliever,Right,18,1,0,0,0,2,1,56,78,15,14,13,6,8,18,0
+2026,2020s,urquijo01,Jose Urquidy,Chicago White Sox,AL,Reliever,Right,6,1,0,0,0,2,1,68,95,22,11,11,3,5,15,2
+2026,2020s,simslu01,Lucas Sims,Chicago White Sox,AL,Reliever,Right,9,0,0,0,0,0,2,30,46,9,7,5,1,7,10,1
+2026,2020s,castilu02,Luis Castillo,Chicago White Sox,AL,Starter,Right,9,6,0,0,0,1,2,93,149,44,30,29,9,12,26,2
+2026,2020s,acunalu01,Luisangel Acuña,Chicago White Sox,AL,Reliever,Right,3,0,0,0,0,0,0,7,10,2,1,1,1,1,0,0
+2026,2020s,mlb702273,Noah Schultz,Chicago White Sox,AL,Starter,Left,19,14,0,0,0,4,9,223,324,68,47,46,11,31,67,9
+2026,2020s,bidoos01,Osvaldo Bido,Chicago White Sox,AL,Reliever,Right,5,0,0,0,0,1,0,26,40,8,6,6,2,5,5,2
+2026,2020s,mcguire01,Reese McGuire,Chicago White Sox,AL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
+2026,2020s,burkese01,Sean Burke,Chicago White Sox,AL,Starter,Right,32,27,0,0,0,11,7,517,716,144,67,64,19,62,185,9
+2026,2020s,newcose01,Sean Newcomb,Chicago White Sox,AL,Reliever,Left,60,6,0,0,4,2,5,271,372,73,35,31,4,34,84,8
+2026,2020s,dominse01,Seranthony Dominguez,Chicago White Sox,AL,Reliever,Right,43,0,0,0,12,4,3,115,165,28,20,17,6,23,47,2
+2026,2020s,smithsh02,Shane Smith,Chicago White Sox,AL,Starter,Right,3,3,0,0,0,0,2,25,49,12,12,10,1,9,11,1
+2026,2020s,mlb701780,Tanner McDougal,Chicago White Sox,AL,Reliever,Right,1,0,0,0,0,0,0,1,5,0,1,1,0,3,0,1
+2026,2020s,richatr01,Trevor Richards,Chicago White Sox,AL,Reliever,Right,52,0,0,0,2,0,1,236,326,66,37,33,12,23,68,1
+2026,2020s,mlb699823,Tyler Davis,Chicago White Sox,AL,Reliever,Right,31,0,0,0,1,2,3,96,128,21,15,13,3,16,27,0
+2026,2020s,gilbety01,Tyler Gilbert,Chicago White Sox,AL,Reliever,Left,5,1,0,0,0,0,0,18,32,12,8,8,2,4,4,0
+2026,2020s,mlb805326,Tyler Schweitzer,Chicago White Sox,AL,Reliever,Left,18,0,0,0,1,1,0,112,154,37,13,13,3,12,18,0
+2026,2020s,abbotan01,Andrew Abbott,Cincinnati Reds,NL,Starter,Left,32,32,0,0,0,6,11,498,729,165,91,85,26,76,131,0
+2026,2020s,singebr01,Brady Singer,Cincinnati Reds,NL,Starter,Right,31,31,0,0,0,6,15,471,725,188,107,102,32,62,126,15
+2026,2020s,leibrbr01,Brandon Leibrandt,Cincinnati Reds,NL,Reliever,Left,1,0,0,0,0,0,0,18,30,10,5,5,2,3,3,0
+2026,2020s,willibr02,Brandon Williamson,Cincinnati Reds,NL,Starter,Left,12,9,0,0,0,5,5,158,231,47,34,31,9,30,36,4
+2026,2020s,burkebr01,Brock Burke,Cincinnati Reds,NL,Reliever,Left,77,0,0,0,2,6,5,223,314,54,32,19,5,40,74,4
+2026,2020s,ferguca01,Caleb Ferguson,Cincinnati Reds,NL,Reliever,Left,26,1,0,0,1,1,0,74,109,26,11,11,3,11,22,0
+2026,2020s,spierca01,Carson Spiers,Cincinnati Reds,NL,Reliever,Right,2,0,0,0,0,0,0,18,24,6,5,5,4,0,6,0
+2026,2020s,burnsch01,Chase Burns,Cincinnati Reds,NL,Starter,Right,29,29,0,0,0,15,3,463,630,124,54,49,17,56,185,1
+2026,2020s,pettych02,Chase Petty,Cincinnati Reds,NL,Reliever,Right,16,3,0,0,1,1,2,95,139,31,19,17,6,9,15,3
+2026,2020s,paddach01,Chris Paddack,Cincinnati Reds,NL,Starter,Right,6,3,0,0,0,0,2,67,102,28,15,15,2,9,12,1
+2026,2020s,phillco01,Connor Phillips,Cincinnati Reds,NL,Reliever,Right,27,0,0,0,1,2,0,90,145,23,19,18,3,31,29,3
+2026,2020s,paganem01,Emilio Pagan,Cincinnati Reds,NL,Reliever,Right,45,0,0,0,25,5,1,128,174,33,16,16,7,11,45,4
+2026,2020s,ashcrgr01,Graham Ashcraft,Cincinnati Reds,NL,Reliever,Right,35,0,0,0,1,1,1,106,151,27,17,16,2,24,40,1
+2026,2020s,greenhu01,Hunter Greene,Cincinnati Reds,NL,Starter,Right,5,5,0,0,0,2,2,83,121,29,22,21,4,9,33,0
+2026,2020s,mlb683742,Jose Franco,Cincinnati Reds,NL,Reliever,Right,10,0,0,0,0,1,0,61,93,19,11,10,3,16,15,0
+2026,2020s,trevijo01,Jose Trevino,Cincinnati Reds,NL,Reliever,Right,7,0,0,0,0,0,0,27,49,22,15,15,3,1,3,1
+2026,2020s,aguiaju01,Julian Aguiar,Cincinnati Reds,NL,Reliever,Right,1,0,0,0,0,1,0,9,14,4,2,2,0,1,2,0
+2026,2020s,mlb670062,Julian Garcia,Cincinnati Reds,NL,Reliever,Right,33,0,0,0,2,2,3,138,179,29,17,16,7,19,41,1
+2026,2020s,emanuke01,Kent Emanuel,Cincinnati Reds,NL,Starter,Left,1,1,0,0,0,0,1,15,23,5,2,2,0,3,4,1
+2026,2020s,nicolky01,Kyle Nicolas,Cincinnati Reds,NL,Reliever,Right,7,0,0,0,0,1,0,22,42,8,7,7,1,13,7,0
+2026,2020s,meylu01,Luis Mey,Cincinnati Reds,NL,Reliever,Right,29,0,0,0,0,0,2,104,165,35,26,24,3,22,50,4
+2026,2020s,richaly01,Lyon Richardson,Cincinnati Reds,NL,Starter,Right,2,1,0,0,0,0,1,5,10,2,5,5,2,2,3,1
+2026,2020s,lodolni01,Nick Lodolo,Cincinnati Reds,NL,Starter,Left,21,21,0,0,0,3,6,326,486,115,60,60,20,46,83,17
+2026,2020s,higgipj01,P. J. Higgins,Cincinnati Reds,NL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,1,0
+2026,2020s,johnspi01,Pierce Johnson,Cincinnati Reds,NL,Reliever,Right,56,0,0,0,1,2,1,146,211,47,25,25,8,19,42,0
+2026,2020s,lowderh01,Rhett Lowder,Cincinnati Reds,NL,Starter,Right,29,26,0,0,0,7,12,400,603,147,88,85,18,56,103,6
+2026,2020s,marinro01,Ron Marinaccio,Cincinnati Reds,NL,Reliever,Right,4,0,0,0,0,0,0,16,32,6,10,10,1,7,6,2
+2026,2020s,mollsa01,Sam Moll,Cincinnati Reds,NL,Reliever,Left,65,0,0,0,1,2,7,169,257,54,36,30,5,30,56,6
+2026,2020s,antonte01,Tejay Antone,Cincinnati Reds,NL,Reliever,Right,58,0,0,0,1,3,2,165,234,43,22,19,6,17,57,7
+2026,2020s,santito01,Tony Santillan,Cincinnati Reds,NL,Reliever,Right,44,0,0,0,5,3,4,122,191,40,31,29,11,28,36,2
+2026,2020s,marteyu01,Yunior Marte,Cincinnati Reds,NL,Reliever,Right,1,0,0,0,0,0,0,1,6,3,4,4,0,1,1,1
+2026,2020s,maxweza01,Zach Maxwell,Cincinnati Reds,NL,Reliever,Right,12,0,0,0,1,0,1,39,67,18,12,12,3,10,12,0
+2026,2020s,mlb685112,Zach McCambley,Cincinnati Reds,NL,Reliever,Right,11,0,0,0,0,0,0,40,60,13,6,6,1,6,14,2
+2026,2020s,hedgeau01,Austin Hedges,Cleveland Indians,AL,Reliever,Right,4,0,0,0,0,0,0,13,20,7,3,3,0,0,1,0
+2026,2020s,mlb804926,Austin Peterson,Cleveland Indians,AL,Reliever,Right,2,0,0,0,0,0,1,21,27,4,2,2,2,2,8,0
+2026,2020s,smithca05,Cade Smith,Cleveland Indians,AL,Reliever,Right,69,0,0,0,41,6,1,222,295,48,20,16,5,23,107,4
+2026,2020s,hernaca04,Carlos Hernandez,Cleveland Indians,AL,Reliever,Right,2,0,0,0,0,0,0,9,14,5,2,2,1,1,4,0
+2026,2020s,heuerco01,Codi Heuer,Cleveland Indians,AL,Reliever,Right,8,0,0,0,0,0,1,29,46,12,5,5,0,5,6,1
+2026,2020s,holdeco01,Colin Holderman,Cleveland Indians,AL,Reliever,Right,54,0,0,0,1,6,4,158,222,35,18,16,1,20,50,10
+2026,2020s,brogdco01,Connor Brogdon,Cleveland Indians,AL,Reliever,Right,16,0,0,0,1,2,2,48,70,15,12,9,5,3,15,1
+2026,2020s,yohocr01,Craig Yoho,Cleveland Indians,AL,Reliever,Right,19,0,0,0,0,0,1,55,86,20,14,14,3,10,23,1
+2026,2020s,mlb682982,Daniel Espino,Cleveland Indians,AL,Reliever,Right,14,3,0,0,0,0,0,46,65,12,7,7,3,7,25,0
+2026,2020s,sabroer01,Erik Sabrowski,Cleveland Indians,AL,Reliever,Left,60,0,0,0,1,5,2,145,203,26,17,14,3,31,76,2
+2026,2020s,grifffo01,Foster Griffin,Cleveland Indians,AL,Starter,Left,9,9,0,0,0,3,3,130,197,55,27,25,4,15,42,2
+2026,2020s,mlb680916,Franco Aleman,Cleveland Indians,AL,Reliever,Right,21,0,0,0,0,0,1,67,103,25,12,11,4,10,28,4
+2026,2020s,williga01,Gavin Williams,Cleveland Indians,AL,Starter,Right,32,32,0,0,0,14,8,553,746,144,81,77,28,61,248,6
+2026,2020s,gaddihu01,Hunter Gaddis,Cleveland Indians,AL,Reliever,Right,68,0,0,0,1,6,3,181,257,55,20,20,7,22,57,3
+2026,2020s,cantijo01,Joey Cantillo,Cleveland Indians,AL,Starter,Left,33,30,0,0,0,11,9,477,687,144,79,64,17,81,171,6
+2026,2020s,allarko01,Kolby Allard,Cleveland Indians,AL,Reliever,Left,4,0,0,0,0,0,0,26,45,16,10,10,2,3,9,1
+2026,2020s,allenlo02,Logan Allen,Cleveland Indians,AL,Reliever,Left,7,2,0,0,0,0,0,50,81,23,14,11,3,6,16,2
+2026,2020s,festama01,Matt Festa,Cleveland Indians,AL,Reliever,Right,66,0,0,0,1,2,3,200,289,66,32,28,7,21,69,6
+2026,2020s,messipa01,Parker Messick,Cleveland Indians,AL,Starter,Left,32,32,0,0,0,12,9,559,747,149,57,53,17,49,193,4
+2026,2020s,mlb688883,Peyton Pallette,Cleveland Indians,AL,Reliever,Right,16,0,0,0,0,1,2,62,97,17,13,12,2,16,22,3
+2026,2020s,armstsh01,Shawn Armstrong,Cleveland Indians,AL,Reliever,Right,41,0,0,0,0,2,1,106,154,29,19,18,4,19,34,2
+2026,2020s,ceccosl01,Slade Cecconi,Cleveland Indians,AL,Starter,Right,28,21,0,0,0,5,7,363,528,134,72,66,19,39,99,3
+2026,2020s,bibeeta01,Tanner Bibee,Cleveland Indians,AL,Starter,Right,33,33,0,0,0,7,15,564,780,175,95,91,29,55,148,7
+2026,2020s,herriti01,Tim Herrin,Cleveland Indians,AL,Reliever,Left,67,0,0,0,0,3,4,170,240,46,22,19,5,28,54,5
+2026,2020s,mlb702021,Will Dion,Cleveland Indians,AL,Reliever,Left,12,0,0,0,0,0,0,59,85,24,14,10,4,3,25,1
+2026,2020s,senzaan01,Antonio Senzatela,Colorado Rockies,NL,Reliever,Right,34,0,0,0,3,9,2,157,219,51,24,21,4,17,46,1
+2026,2020s,mlb687060,Blake Adams,Colorado Rockies,NL,Reliever,Right,1,0,0,0,0,0,0,3,9,5,5,5,1,2,0,0
+2026,2020s,castabl01,Blas Castano,Colorado Rockies,NL,Reliever,Right,15,0,0,0,0,2,0,82,111,27,12,11,4,9,21,2
+2026,2020s,bernabr01,Brennan Bernardino,Colorado Rockies,NL,Reliever,Left,74,2,0,0,2,4,3,192,267,59,25,20,5,15,49,5
+2026,2020s,sullibr01,Brett Sullivan,Colorado Rockies,NL,Reliever,Right,7,0,0,0,0,0,0,23,34,11,4,4,1,2,1,0
+2026,2020s,dollach01,Chase Dollander,Colorado Rockies,NL,Reliever,Right,10,3,0,0,0,3,3,132,189,39,19,19,6,18,47,3
+2026,2020s,mlb682769,Eiberson Castellano,Colorado Rockies,NL,Reliever,Right,1,0,0,0,1,0,0,9,12,4,0,0,0,0,2,1
+2026,2020s,mlb687312,Gabriel Hughes,Colorado Rockies,NL,Starter,Right,14,13,0,0,1,0,8,192,283,68,46,45,7,24,56,3
+2026,2020s,hillja01,Jaden Hill,Colorado Rockies,NL,Reliever,Right,46,0,0,0,2,1,4,119,181,36,23,23,3,23,40,3
+2026,2020s,criswje01,Jeff Criswell,Colorado Rockies,NL,Reliever,Right,3,0,0,0,0,0,0,12,18,4,2,2,2,3,3,0
+2026,2020s,hergeji01,Jimmy Herget,Colorado Rockies,NL,Reliever,Right,51,3,0,0,3,0,6,161,237,56,37,34,10,26,47,3
+2026,2020s,brebbjo01,John Brebbia,Colorado Rockies,NL,Reliever,Right,3,0,0,0,0,0,0,13,21,7,5,5,2,0,2,0
+2026,2020s,romanjo03,Jordan Romano,Colorado Rockies,NL,Reliever,Right,27,0,0,0,11,0,2,77,111,18,13,12,3,13,27,0
+2026,2020s,quintjo01,Jose Quintana,Colorado Rockies,NL,Starter,Left,11,11,0,0,0,2,3,144,212,52,32,29,10,20,25,1
+2026,2020s,mejiaju01,Juan Mejia,Colorado Rockies,NL,Reliever,Right,65,1,0,0,4,4,6,210,323,78,44,41,6,40,66,3
+2026,2020s,thompke02,Keegan Thompson,Colorado Rockies,NL,Reliever,Right,5,0,0,0,0,0,0,36,57,19,11,11,1,2,11,0
+2026,2020s,freelky01,Kyle Freeland,Colorado Rockies,NL,Starter,Left,26,26,1,0,0,4,12,406,613,177,104,100,29,29,108,7
+2026,2020s,mlb815081,Mark Manfredi,Colorado Rockies,NL,Reliever,Left,14,0,0,0,0,1,2,53,75,15,6,6,1,9,16,0
+2026,2020s,mlb690279,Mason Adams,Colorado Rockies,NL,Starter,Right,6,6,0,0,0,0,2,87,124,31,17,13,6,12,31,1
+2026,2020s,lorenmi01,Michael Lorenzen,Colorado Rockies,NL,Starter,Right,26,25,0,0,0,3,11,347,562,168,102,91,19,49,82,6
+2026,2020s,mlb693308,Nick Frasso,Colorado Rockies,NL,Reliever,Right,20,0,0,0,0,1,1,65,99,25,15,14,3,7,22,2
+2026,2020s,mushipa01,Parker Mushinski,Colorado Rockies,NL,Reliever,Left,8,0,0,0,0,1,0,20,34,9,2,2,0,5,0,0
+2026,2020s,feltnry01,Ryan Feltner,Colorado Rockies,NL,Starter,Right,26,22,0,0,0,7,10,370,548,133,82,74,20,53,92,2
+2026,2020s,peralsa01,Sammy Peralta,Colorado Rockies,NL,Starter,Left,2,1,0,0,0,0,1,8,15,3,3,3,1,2,4,2
+2026,2020s,mlb807743,Sean Sullivan,Colorado Rockies,NL,Starter,Left,5,5,0,0,0,0,3,67,114,34,22,22,5,11,16,3
+2026,2020s,halvose01,Seth Halvorsen,Colorado Rockies,NL,Reliever,Right,21,0,0,0,0,0,1,57,96,22,10,10,3,15,17,0
+2026,2020s,mlb669298,TJ Shook,Colorado Rockies,NL,Reliever,Right,5,0,0,0,0,0,0,23,36,12,7,7,3,2,7,0
+2026,2020s,gordota01,Tanner Gordon,Colorado Rockies,NL,Starter,Right,24,12,0,0,0,1,6,311,473,148,79,77,21,24,85,2
+2026,2020s,suganto01,Tomoyuki Sugano,Colorado Rockies,NL,Starter,Right,29,29,0,0,0,12,12,463,656,167,95,92,33,36,96,3
+2026,2020s,johnstr02,Troy Johnston,Colorado Rockies,NL,Reliever,Left,2,0,0,0,0,0,0,6,9,1,0,0,0,1,0,1
+2026,2020s,bellova01,Valente Bellozo,Colorado Rockies,NL,Reliever,Right,3,0,0,0,0,0,1,32,48,10,10,9,5,7,8,1
+2026,2020s,vodnivi01,Victor Vodnik,Colorado Rockies,NL,Reliever,Right,33,0,0,0,4,3,3,108,163,42,24,21,3,19,26,1
+2026,2020s,mlb700327,Welinton Herrera,Colorado Rockies,NL,Reliever,Left,3,0,0,0,0,0,0,7,10,2,0,0,0,1,2,0
+2026,2020s,agnosza01,Zach Agnos,Colorado Rockies,NL,Reliever,Right,41,3,0,0,2,0,2,273,407,102,64,60,10,35,58,5
+2026,2020s,mlb808825,Andrew Sears,Detroit Tigers,AL,Starter,Left,6,3,0,0,0,0,1,57,92,24,21,15,3,8,15,4
+2026,2020s,briesbe01,Beau Brieske,Detroit Tigers,AL,Reliever,Right,18,0,0,0,0,1,0,76,102,23,14,14,5,7,24,0
+2026,2020s,hurtebr01,Brant Hurter,Detroit Tigers,AL,Reliever,Left,29,0,0,0,0,4,1,106,143,24,13,12,1,15,24,1
+2026,2020s,hanifbr01,Brenan Hanifee,Detroit Tigers,AL,Reliever,Right,23,2,0,0,0,0,1,64,93,24,12,12,5,7,10,1
+2026,2020s,smithbu03,Burch Smith,Detroit Tigers,AL,Reliever,Right,13,1,0,0,0,0,2,51,73,18,8,6,2,7,20,0
+2026,2020s,mizeca01,Casey Mize,Detroit Tigers,AL,Starter,Right,16,16,0,0,0,4,6,260,341,67,27,26,5,19,85,1
+2026,2020s,seaboco01,Connor Seabold,Detroit Tigers,AL,Reliever,Right,11,0,0,0,0,1,0,47,69,17,6,6,2,5,14,1
+2026,2020s,anderdr02,Drew Anderson,Detroit Tigers,AL,Reliever,Right,49,11,0,0,2,5,7,324,456,94,48,44,16,43,114,6
+2026,2020s,sommedr01,Drew Sommers,Detroit Tigers,AL,Reliever,Left,43,0,0,0,0,2,4,119,169,35,20,16,4,14,62,3
+2026,2020s,dejesen01,Enmanuel De Jesus,Detroit Tigers,AL,Reliever,Left,30,0,0,0,1,2,0,127,178,38,21,18,3,15,39,2
+2026,2020s,valdefr01,Framber Valdez,Detroit Tigers,AL,Starter,Left,31,31,0,0,0,10,12,522,758,170,87,78,16,67,135,14
+2026,2020s,flaheja01,Jack Flaherty,Detroit Tigers,AL,Starter,Right,20,19,0,0,0,3,8,265,396,81,52,44,11,42,103,7
+2026,2020s,jobeja01,Jackson Jobe,Detroit Tigers,AL,Starter,Right,9,9,0,0,0,3,3,138,193,38,21,20,7,16,51,4
+2026,2020s,wagueja01,Jacob Waguespack,Detroit Tigers,AL,Reliever,Right,35,1,0,0,0,2,2,141,183,25,14,13,6,18,35,2
+2026,2020s,rogerja03,Jake Rogers,Detroit Tigers,AL,Reliever,Right,3,0,0,0,0,0,0,7,12,3,0,0,0,1,3,1
+2026,2020s,verlaju01,Justin Verlander,Detroit Tigers,AL,Starter,Right,2,2,0,0,0,0,1,27,39,11,7,7,3,3,7,0
+2026,2020s,monteke01,Keider Montero,Detroit Tigers,AL,Starter,Right,32,25,0,0,1,10,9,465,625,124,64,60,17,37,107,6
+2026,2020s,janseke01,Kenley Jansen,Detroit Tigers,AL,Reliever,Right,50,0,0,0,22,4,6,135,180,24,18,16,7,23,51,1
+2026,2020s,finneky01,Kyle Finnegan,Detroit Tigers,AL,Reliever,Right,63,0,0,0,2,3,1,182,270,67,31,29,10,34,47,1
+2026,2020s,vanasri01,Ricky Vanasco,Detroit Tigers,AL,Reliever,Right,5,0,0,0,0,0,1,19,40,14,12,11,2,6,4,0
+2026,2020s,ryanri01,River Ryan,Detroit Tigers,AL,Starter,Right,2,2,0,0,0,0,1,13,21,5,2,2,1,3,6,0
+2026,2020s,raineta01,Tanner Rainey,Detroit Tigers,AL,Reliever,Right,6,0,0,0,0,0,0,21,31,3,3,3,0,8,6,1
+2026,2020s,skubata01,Tarik Skubal,Detroit Tigers,AL,Starter,Left,16,16,0,0,0,7,5,290,374,74,33,30,10,14,116,4
+2026,2020s,meltotr01,Troy Melton,Detroit Tigers,AL,Starter,Right,20,20,0,0,0,8,5,343,470,92,41,35,13,37,94,7
+2026,2020s,maddety01,Ty Madden,Detroit Tigers,AL,Reliever,Right,20,1,0,0,0,1,0,141,189,33,17,17,5,14,46,2
+2026,2020s,holtoty01,Tyler Holton,Detroit Tigers,AL,Reliever,Left,67,3,0,0,2,2,5,216,301,71,27,22,8,19,55,6
+2026,2020s,kinlety01,Tyler Kinley,Detroit Tigers,AL,Reliever,Right,15,0,0,0,0,1,0,44,53,5,3,3,1,6,6,1
+2026,2020s,vestwi01,Will Vest,Detroit Tigers,AL,Reliever,Right,27,0,0,0,2,3,5,80,116,28,22,18,2,10,27,2
+2026,2020s,diazyi01,Yilber Díaz,Detroit Tigers,AL,Reliever,Right,4,0,0,0,0,0,0,16,24,5,4,4,1,4,6,0
+2026,2020s,mckinza01,Zach McKinstry,Detroit Tigers,AL,Reliever,Right,2,0,0,0,0,0,0,6,15,3,4,4,1,5,0,1
+2026,2020s,nardian01,Andrew Nardi,Florida Marlins,NL,Reliever,Left,25,0,0,0,0,3,3,68,99,21,13,13,4,11,27,1
+2026,2020s,bendean01,Anthony Bender,Florida Marlins,NL,Reliever,Right,35,0,0,0,2,1,1,103,140,21,10,10,1,12,41,3
+2026,2020s,blalobr01,Bradley Blalock,Florida Marlins,NL,Reliever,Right,4,0,0,0,0,0,0,34,48,11,7,7,4,4,12,0
+2026,2020s,garrebr01,Braxton Garrett,Florida Marlins,NL,Starter,Left,2,2,0,0,0,0,1,13,28,7,7,7,0,8,5,0
+2026,2020s,gibsoca01,Cade Gibson,Florida Marlins,NL,Reliever,Left,47,1,0,0,0,6,2,151,221,49,35,30,4,21,44,6
+2026,2020s,fauchca01,Calvin Faucher,Florida Marlins,NL,Reliever,Right,69,0,0,0,3,5,5,205,294,53,33,27,1,37,73,4
+2026,2020s,paddach01,Chris Paddack,Florida Marlins,NL,Starter,Right,7,6,0,0,0,0,5,92,146,41,27,26,6,10,27,1
+2026,2020s,mlb690978,Dax Fulton,Florida Marlins,NL,Reliever,Left,16,0,0,0,0,2,0,86,122,23,12,12,1,15,29,1
+2026,2020s,perezeu02,Eury Pérez,Florida Marlins,NL,Starter,Right,30,29,1,1,0,8,11,477,660,124,77,69,20,68,170,10
+2026,2020s,mlb667652,Jack Ralston,Florida Marlins,NL,Reliever,Right,16,1,0,0,0,0,3,52,77,15,11,11,5,9,19,1
+2026,2020s,junkja01,Janson Junk,Florida Marlins,NL,Starter,Right,26,25,0,0,0,6,9,371,523,127,63,58,15,33,89,4
+2026,2020s,sanojja01,Javier Sanoja,Florida Marlins,NL,Reliever,Right,5,0,0,0,0,0,0,14,27,11,7,7,2,1,1,1
+2026,2020s,kingjo01,John King,Florida Marlins,NL,Reliever,Left,50,1,0,0,1,6,2,149,197,33,24,22,7,17,33,4
+2026,2020s,mlb694795,Josh Ekness,Florida Marlins,NL,Reliever,Right,30,0,0,0,1,3,4,92,134,23,16,11,2,20,24,2
+2026,2020s,mlb687985,Josh White,Florida Marlins,NL,Reliever,Right,1,0,0,0,0,0,0,2,8,1,5,5,1,4,1,1
+2026,2020s,bachala01,Lake Bachar,Florida Marlins,NL,Reliever,Right,38,4,0,0,2,1,2,176,242,43,27,25,9,21,61,4
+2026,2020s,meyerma01,Max Meyer,Florida Marlins,NL,Starter,Right,20,20,0,0,0,9,1,333,462,85,39,33,11,41,121,7
+2026,2020s,petermi01,Michael Petersen,Florida Marlins,NL,Reliever,Right,65,0,0,0,1,4,4,197,269,45,25,22,5,29,81,4
+2026,2020s,montepa01,Patrick Monteverde,Florida Marlins,NL,Reliever,Left,1,0,0,0,0,0,0,12,18,5,4,4,1,1,2,0
+2026,2020s,fairbpe01,Pete Fairbanks,Florida Marlins,NL,Reliever,Right,46,1,0,0,19,4,5,124,183,35,32,29,8,21,57,3
+2026,2020s,mlb702281,Robby Snelling,Florida Marlins,NL,Starter,Left,1,1,0,0,0,0,1,15,22,5,3,3,1,4,2,0
+2026,2020s,gustory01,Ryan Gusto,Florida Marlins,NL,Starter,Right,23,18,0,0,0,1,5,264,392,99,43,40,11,28,74,5
+2026,2020s,alcansa01,Sandy Alcantara,Florida Marlins,NL,Starter,Right,36,33,1,1,3,13,11,642,894,204,97,92,24,59,153,9
+2026,2020s,phillty01,Tyler Phillips,Florida Marlins,NL,Starter,Right,37,20,0,0,2,5,6,380,538,112,50,47,17,56,101,3
+2026,2020s,zuberty01,Tyler Zuber,Florida Marlins,NL,Reliever,Right,44,0,0,0,1,2,1,119,175,46,27,25,10,11,42,2
+2026,2020s,vodnivi01,Victor Vodnik,Florida Marlins,NL,Reliever,Right,20,0,0,0,0,0,0,68,103,16,13,11,0,14,18,2
+2026,2020s,mlb687531,William Kempner,Florida Marlins,NL,Reliever,Right,9,0,0,0,0,1,0,37,50,8,4,4,1,4,14,2
+2026,2020s,brzykza01,Zach Brzykcy,Florida Marlins,NL,Reliever,Right,2,0,0,0,0,0,0,9,12,3,1,1,0,2,2,0
+2026,2020s,blubaaj01,AJ Blubaugh,Houston Astros,AL,Reliever,Right,64,0,0,0,1,5,3,288,401,76,41,39,13,42,94,3
+2026,2020s,mlb695001,Alimber Santa,Houston Astros,AL,Reliever,Right,10,0,0,0,0,0,1,46,59,8,6,2,1,6,9,0
+2026,2020s,sousabe01,Bennett Sousa,Houston Astros,AL,Reliever,Left,35,1,0,0,0,1,3,90,141,36,22,20,5,18,32,0
+2026,2020s,abreubr01,Bryan Abreu,Houston Astros,AL,Reliever,Right,66,0,0,0,9,6,4,188,268,44,28,26,9,41,80,5
+2026,2020s,kingbr01,Bryan King,Houston Astros,AL,Reliever,Left,60,1,0,0,6,3,6,182,278,69,39,35,9,23,51,6
+2026,2020s,roach01,Christian Roa,Houston Astros,AL,Reliever,Right,7,0,0,0,0,0,1,26,43,10,5,5,1,7,6,3
+2026,2020s,boltoco01,Cody Bolton,Houston Astros,AL,Reliever,Right,8,3,0,0,1,0,1,60,95,21,12,12,3,14,22,1
+2026,2020s,gordoco01,Colton Gordon,Houston Astros,AL,Reliever,Left,4,1,0,0,0,0,0,28,50,21,12,12,6,3,11,1
+2026,2020s,javiecr01,Cristian Javier,Houston Astros,AL,Starter,Right,17,12,0,0,0,2,6,189,276,64,36,36,10,28,59,2
+2026,2020s,salazce01,César Salazar,Houston Astros,AL,Reliever,Right,1,0,0,0,0,0,0,3,4,1,1,1,1,0,0,0
+2026,2020s,delosen01,Enyel De Los Santos,Houston Astros,AL,Reliever,Right,66,0,0,0,5,3,3,214,301,69,43,38,11,20,67,1
+2026,2020s,mlb814490,Ethan Pecko,Houston Astros,AL,Starter,Right,8,5,0,0,0,2,0,103,140,25,16,15,5,14,23,2
+2026,2020s,wesneha01,Hayden Wesneski,Houston Astros,AL,Starter,Right,11,11,0,0,0,6,2,183,246,49,27,22,4,20,46,2
+2026,2020s,brownhu01,Hunter Brown,Houston Astros,AL,Starter,Right,20,20,0,0,0,6,4,322,451,81,42,38,11,55,124,4
+2026,2020s,francjp01,J. P. France,Houston Astros,AL,Reliever,Right,3,0,0,0,0,0,0,20,31,6,6,6,1,5,4,1
+2026,2020s,meyerja02,Jake Meyers,Houston Astros,AL,Reliever,Left,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
+2026,2020s,alexaja01,Jason Alexander,Houston Astros,AL,Starter,Right,4,2,0,0,0,1,1,55,84,21,19,19,4,8,14,1
+2026,2020s,murraja01,Jayden Murray,Houston Astros,AL,Reliever,Right,8,0,0,0,0,0,0,40,62,19,11,11,1,7,8,0
+2026,2020s,haderjo01,Josh Hader,Houston Astros,AL,Reliever,Left,45,0,0,0,26,4,2,134,167,19,6,5,1,15,55,0
+2026,2020s,mlb681973,Josh Hendrickson,Houston Astros,AL,Reliever,Left,2,0,0,0,0,0,0,8,9,2,1,1,0,0,3,0
+2026,2020s,tengka01,Kai-Wei Teng,Houston Astros,AL,Reliever,Right,30,10,0,0,0,5,7,221,329,69,43,39,10,33,73,13
+2026,2020s,wadela01,LaMonte Wade,Houston Astros,AL,Reliever,Left,1,0,0,0,0,0,0,3,6,3,2,2,1,0,0,0
+2026,2020s,mcculla02,Lance McCullers,Houston Astros,AL,Starter,Right,8,8,0,0,0,2,3,118,172,38,32,30,7,22,43,2
+2026,2020s,vanwelo01,Logan VanWey,Houston Astros,AL,Reliever,Right,10,0,0,0,0,1,0,38,46,11,3,2,1,1,9,0
+2026,2020s,mlb699044,Miguel Ullola,Houston Astros,AL,Reliever,Right,11,2,0,0,0,2,0,50,62,7,4,4,2,5,16,2
+2026,2020s,burromi01,Mike Burrows,Houston Astros,AL,Starter,Right,18,17,0,0,0,4,9,284,423,112,69,63,21,35,75,4
+2026,2020s,pearsna01,Nate Pearson,Houston Astros,AL,Reliever,Right,16,0,0,0,1,1,0,60,84,16,10,8,1,12,16,1
+2026,2020s,lambepe01,Peter Lambert,Houston Astros,AL,Starter,Right,29,29,0,0,0,8,10,467,664,136,68,66,17,59,154,12
+2026,2020s,munozro01,Roddery Muñoz,Houston Astros,AL,Reliever,Right,3,0,0,0,0,0,0,12,25,7,7,7,3,6,6,0
+2026,2020s,blancro01,Ronel Blanco,Houston Astros,AL,Starter,Right,8,5,0,0,0,0,1,101,143,30,25,25,9,16,29,1
+2026,2020s,mlb680802,Ryan Weiss,Houston Astros,AL,Reliever,Right,9,2,0,0,0,0,3,78,131,35,24,22,8,20,30,0
+2026,2020s,arrigsp01,Spencer Arrighetti,Houston Astros,AL,Starter,Right,17,17,0,0,0,7,5,264,386,68,47,45,12,50,87,14
+2026,2020s,okertst01,Steven Okert,Houston Astros,AL,Reliever,Left,68,1,0,0,0,6,2,203,261,45,17,16,7,14,68,4
+2026,2020s,mlb837227,Tatsuya Imai,Houston Astros,AL,Starter,Right,23,15,0,0,0,6,4,230,338,58,42,42,9,51,97,4
+2026,2020s,bummeaa01,Aaron Bummer,Kansas City Royals,AL,Reliever,Left,2,0,0,0,0,0,1,4,11,6,6,6,1,1,0,0
+2026,2020s,langeal01,Alex Lange,Kansas City Royals,AL,Reliever,Right,59,0,0,0,10,2,7,180,275,65,47,45,13,33,60,6
+2026,2020s,gosean01,Anthony Gose,Kansas City Royals,AL,Reliever,Left,14,0,0,0,0,1,1,41,51,11,3,1,1,2,7,0
+2026,2020s,falteba01,Bailey Falter,Kansas City Royals,AL,Reliever,Left,5,2,0,0,0,0,2,29,57,24,15,15,4,6,6,0
+2026,2020s,mlb694360,Beck Way,Kansas City Royals,AL,Reliever,Right,19,1,0,0,0,1,1,70,105,27,13,10,4,10,21,1
+2026,2020s,duranca01,Carlos Duran,Kansas City Royals,AL,Reliever,Right,2,0,0,0,0,1,0,4,9,2,2,2,0,3,1,0
+2026,2020s,estevca01,Carlos Estevez,Kansas City Royals,AL,Reliever,Right,1,0,0,0,0,0,1,1,7,4,6,6,1,2,0,0
+2026,2020s,raganco01,Cole Ragans,Kansas City Royals,AL,Starter,Left,8,8,0,0,0,1,4,106,151,27,20,19,10,23,45,0
+2026,2020s,seaboco01,Connor Seabold,Kansas City Royals,AL,Reliever,Right,5,0,0,0,0,0,0,15,28,7,6,5,0,4,5,2
+2026,2020s,thomaco02,Connor Thomas,Kansas City Royals,AL,Reliever,Left,17,0,0,0,0,2,0,58,78,17,5,5,0,3,14,2
+2026,2020s,kimbrcr01,Craig Kimbrel,Kansas City Royals,AL,Reliever,Right,13,0,0,0,1,1,3,37,52,11,7,5,0,6,8,1
+2026,2020s,lynchda02,Daniel Lynch,Kansas City Royals,AL,Reliever,Left,56,10,0,0,1,6,6,258,356,73,43,39,11,26,56,4
+2026,2020s,mcgeeea01,Easton McGee,Kansas City Royals,AL,Reliever,Right,7,0,0,0,0,0,0,28,46,16,9,9,3,4,8,0
+2026,2020s,morgael01,Eli Morgan,Kansas City Royals,AL,Reliever,Right,16,0,0,0,1,0,1,58,91,24,11,11,5,9,16,2
+2026,2020s,mlb672021,Eric Cerantola,Kansas City Royals,AL,Reliever,Right,4,0,0,0,0,0,0,16,27,4,6,6,2,10,7,0
+2026,2020s,schrejo01,John Schreiber,Kansas City Royals,AL,Reliever,Right,55,0,0,0,1,1,3,148,203,41,23,20,7,22,36,1
+2026,2020s,cuasjo01,Jose Cuas,Kansas City Royals,AL,Reliever,Right,24,0,0,0,0,0,1,70,108,26,7,6,0,15,25,0
+2026,2020s,rojasjo01,Josh Rojas,Kansas City Royals,AL,Reliever,Right,1,0,0,0,0,0,0,3,4,1,0,0,0,0,0,0
+2026,2020s,bubickr01,Kris Bubic,Kansas City Royals,AL,Starter,Left,9,9,0,0,0,3,2,151,207,36,23,23,4,26,51,1
+2026,2020s,erceglu01,Lucas Erceg,Kansas City Royals,AL,Reliever,Right,52,0,0,0,13,4,4,145,228,55,35,30,5,32,34,6
+2026,2020s,avilalu02,Luinder Avila,Kansas City Royals,AL,Starter,Right,21,12,0,0,0,5,4,210,309,71,43,43,7,42,61,2
+2026,2020s,mailelu01,Luke Maile,Kansas City Royals,AL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
+2026,2020s,blackma01,Mason Black,Kansas City Royals,AL,Reliever,Right,17,0,0,0,0,0,0,94,142,30,16,15,6,20,19,2
+2026,2020s,strahma01,Matt Strahm,Kansas City Royals,AL,Reliever,Left,41,0,0,0,0,3,4,107,161,39,29,29,12,14,30,2
+2026,2020s,wachami01,Michael Wacha,Kansas City Royals,AL,Starter,Right,32,32,0,0,0,9,10,602,812,168,82,74,30,54,158,7
+2026,2020s,spencmi01,Mitch Spence,Kansas City Royals,AL,Reliever,Right,3,1,0,0,0,0,2,28,56,19,22,22,3,9,6,0
+2026,2020s,pearsna01,Nate Pearson,Kansas City Royals,AL,Reliever,Right,26,0,0,0,3,2,4,78,116,21,13,13,1,14,25,5
+2026,2020s,mearsni01,Nick Mears,Kansas City Royals,AL,Reliever,Right,21,0,0,0,0,2,3,58,83,18,11,11,2,11,15,0
+2026,2020s,camerno01,Noah Cameron,Kansas City Royals,AL,Starter,Left,31,30,1,1,0,9,8,532,746,160,87,81,21,58,158,5
+2026,2020s,hoffmno01,Nolan Hoffman,Kansas City Royals,AL,Reliever,Right,12,0,0,0,0,0,0,31,46,11,4,4,0,3,10,3
+2026,2020s,dobnara01,Randy Dobnak,Kansas City Royals,AL,Starter,Right,15,13,0,0,0,3,5,223,321,78,31,29,7,26,49,4
+2026,2020s,lugose01,Seth Lugo,Kansas City Royals,AL,Starter,Right,32,32,0,0,0,7,9,517,751,200,107,99,23,54,134,9
+2026,2020s,bivensp01,Spencer Bivens,Kansas City Royals,AL,Reliever,Right,2,0,0,0,0,0,0,8,12,2,0,0,0,2,4,0
+2026,2020s,kolekst01,Stephen Kolek,Kansas City Royals,AL,Starter,Right,10,10,1,1,0,4,3,162,224,55,30,27,8,12,34,2
+2026,2020s,cruzst01,Steven Cruz,Kansas City Royals,AL,Reliever,Right,56,2,0,0,8,2,4,176,246,54,30,28,14,20,65,3
+2026,2020s,gonsoto01,Tony Gonsolin,Kansas City Royals,AL,Reliever,Right,1,0,0,0,0,0,0,8,15,4,5,5,1,3,5,0
+2026,2020s,tolbety01,Tyler Tolbert,Kansas City Royals,AL,Reliever,Right,5,0,0,0,0,0,0,14,33,17,13,13,4,3,0,1
+2026,2020s,fraziad01,Adam Frazier,Los Angeles Angels of Anaheim,AL,Reliever,Right,3,0,0,0,0,0,0,6,14,7,4,4,1,2,0,0
+2026,2020s,manoaal01,Alek Manoah,Los Angeles Angels of Anaheim,AL,Reliever,Right,3,0,0,0,0,0,0,22,39,8,9,8,1,8,5,0
+2026,2020s,joycebe01,Ben Joyce,Los Angeles Angels of Anaheim,AL,Reliever,Right,16,0,0,0,5,0,2,46,61,8,9,7,1,9,18,1
+2026,2020s,mlb676620,Blake Weiman,Los Angeles Angels of Anaheim,AL,Reliever,Left,18,0,0,0,0,1,1,53,79,22,8,5,3,3,16,0
+2026,2020s,suterbr01,Brent Suter,Los Angeles Angels of Anaheim,AL,Reliever,Left,41,3,0,0,0,1,2,190,265,63,35,29,7,17,55,1
+2026,2020s,mlb695049,Brett Kerry,Los Angeles Angels of Anaheim,AL,Reliever,Right,3,0,0,0,0,0,0,41,54,11,6,6,1,2,12,0
+2026,2020s,silsech01,Chase Silseth,Los Angeles Angels of Anaheim,AL,Reliever,Right,47,0,0,0,0,3,2,119,174,34,14,12,3,22,48,1
+2026,2020s,pomerdr01,Drew Pomeranz,Los Angeles Angels of Anaheim,AL,Reliever,Left,25,0,0,0,0,0,3,70,108,25,14,13,5,12,16,2
+2026,2020s,mlb691946,George Klassen,Los Angeles Angels of Anaheim,AL,Starter,Right,6,6,0,0,0,2,2,81,125,23,13,11,2,21,24,1
+2026,2020s,rodrigr01,Grayson Rodriguez,Los Angeles Angels of Anaheim,AL,Starter,Right,20,20,0,0,0,5,8,296,444,111,71,66,16,43,85,7
+2026,2020s,kochaja01,Jack Kochanowicz,Los Angeles Angels of Anaheim,AL,Starter,Right,13,13,0,0,0,2,5,192,296,65,47,44,7,36,47,5
+2026,2020s,lucchjo01,Joey Lucchesi,Los Angeles Angels of Anaheim,AL,Reliever,Left,5,0,0,0,0,0,1,10,24,7,6,5,1,6,4,1
+2026,2020s,romanjo03,Jordan Romano,Los Angeles Angels of Anaheim,AL,Reliever,Right,11,0,0,0,4,0,2,24,42,11,9,9,1,6,12,1
+2026,2020s,fermijo02,José Fermin,Los Angeles Angels of Anaheim,AL,Reliever,Right,53,0,0,0,1,4,3,161,238,49,27,23,6,25,62,4
+2026,2020s,soriajo02,José Soriano,Los Angeles Angels of Anaheim,AL,Starter,Right,22,22,0,0,0,9,6,369,511,97,49,45,12,57,127,4
+2026,2020s,yateski01,Kirby Yates,Los Angeles Angels of Anaheim,AL,Reliever,Right,31,0,0,0,3,0,5,82,118,20,13,12,2,12,36,4
+2026,2020s,mlb684665,Luke Murphy,Los Angeles Angels of Anaheim,AL,Reliever,Right,22,0,0,0,0,0,3,60,89,21,17,15,2,11,20,1
+2026,2020s,fulmemi01,Michael Fulmer,Los Angeles Angels of Anaheim,AL,Reliever,Right,3,0,0,0,0,0,0,11,15,2,0,0,0,2,4,0
+2026,2020s,farrimi01,Mitch Farris,Los Angeles Angels of Anaheim,AL,Reliever,Left,33,0,0,0,1,1,4,180,258,60,29,27,10,29,63,1
+2026,2020s,sandlni01,Nick Sandlin,Los Angeles Angels of Anaheim,AL,Reliever,Right,8,0,0,0,0,0,1,26,40,9,11,11,2,5,6,3
+2026,2020s,detmere01,Reid Detmers,Los Angeles Angels of Anaheim,AL,Starter,Left,32,32,0,0,0,7,8,555,740,144,72,69,19,48,211,5
+2026,2020s,johnsry01,Ryan Johnson,Los Angeles Angels of Anaheim,AL,Starter,Right,22,19,0,0,0,5,9,300,437,96,61,56,18,43,79,6
+2026,2020s,mlb670245,Ryan Watson,Los Angeles Angels of Anaheim,AL,Reliever,Right,18,0,0,0,3,0,1,49,67,14,5,4,0,4,22,0
+2026,2020s,zeferry01,Ryan Zeferjahn,Los Angeles Angels of Anaheim,AL,Reliever,Right,45,0,0,0,4,4,3,155,224,30,23,21,5,32,75,8
+2026,2020s,aldegsa01,Sam Aldegheri,Los Angeles Angels of Anaheim,AL,Starter,Left,9,6,0,0,0,3,4,101,151,31,21,19,5,17,22,1
+2026,2020s,bachmsa01,Sam Bachman,Los Angeles Angels of Anaheim,AL,Reliever,Right,44,0,0,0,1,1,3,146,217,41,27,26,7,29,49,4
+2026,2020s,peralsa01,Sammy Peralta,Los Angeles Angels of Anaheim,AL,Reliever,Left,14,0,0,0,0,0,0,61,97,31,15,14,3,7,19,2
+2026,2020s,mlb696519,Samy Natera Jr.,Los Angeles Angels of Anaheim,AL,Reliever,Left,28,0,0,0,3,1,2,95,131,22,11,11,1,13,48,2
+2026,2020s,andersh01,Shaun Anderson,Los Angeles Angels of Anaheim,AL,Reliever,Right,12,0,0,0,0,2,0,60,93,25,19,17,4,10,17,1
+2026,2020s,sauceta01,Tayler Saucedo,Los Angeles Angels of Anaheim,AL,Reliever,Left,28,0,0,0,0,1,1,64,87,15,6,6,1,7,26,3
+2026,2020s,mlb694680,Trevor Martin,Los Angeles Angels of Anaheim,AL,Reliever,Right,2,0,0,0,0,0,1,12,19,6,6,2,0,3,2,0
+2026,2020s,heinety01,Tyler Heineman,Los Angeles Angels of Anaheim,AL,Reliever,Right,2,0,0,0,0,0,0,6,8,2,1,1,1,0,0,0
+2026,2020s,mlb700712,Walbert Ureña,Los Angeles Angels of Anaheim,AL,Starter,Right,29,27,1,0,0,9,11,445,625,114,56,49,10,68,142,9
+2026,2020s,kikucyu01,Yusei Kikuchi,Los Angeles Angels of Anaheim,AL,Starter,Left,14,14,0,0,0,1,7,203,305,74,38,37,7,30,67,3
+2026,2020s,vesiaal01,Alex Vesia,Los Angeles Dodgers,NL,Reliever,Left,72,0,0,0,3,3,1,174,237,30,18,17,4,32,74,0
+2026,2020s,caspabe01,Ben Casparius,Los Angeles Dodgers,NL,Reliever,Right,5,0,0,0,0,0,1,14,23,6,5,5,1,4,4,0
+2026,2020s,snellbl01,Blake Snell,Los Angeles Dodgers,NL,Starter,Left,9,9,0,0,0,4,1,128,173,31,10,9,0,16,55,1
+2026,2020s,treinbl01,Blake Treinen,Los Angeles Dodgers,NL,Reliever,Right,36,0,0,0,1,4,1,89,130,29,12,12,3,13,31,1
+2026,2020s,millebo05,Bobby Miller,Los Angeles Dodgers,NL,Reliever,Right,3,0,0,0,0,1,0,22,33,5,3,3,1,4,8,3
+2026,2020s,stewabr01,Brock Stewart,Los Angeles Dodgers,NL,Reliever,Right,28,1,0,0,1,1,2,80,103,17,10,8,3,10,25,0
+2026,2020s,barnech01,Charlie Barnes,Los Angeles Dodgers,NL,Reliever,Left,4,0,0,0,0,0,1,30,46,13,7,7,3,4,5,0
+2026,2020s,mcderch01,Chayce McDermott,Los Angeles Dodgers,NL,Reliever,Right,2,0,0,0,0,0,0,7,10,3,2,2,1,0,1,0
+2026,2020s,irvinco01,Cole Irvin,Los Angeles Dodgers,NL,Reliever,Left,1,0,0,0,0,0,1,18,30,8,6,6,1,3,5,1
+2026,2020s,henried01,Edgardo Henriquez,Los Angeles Dodgers,NL,Reliever,Right,61,1,0,0,2,4,1,180,242,37,25,19,1,25,71,6
+2026,2020s,diazed04,Edwin Diaz,Los Angeles Dodgers,NL,Reliever,Right,21,0,0,0,7,2,2,56,96,26,18,18,3,11,28,3
+2026,2020s,sheehem01,Emmet Sheehan,Los Angeles Dodgers,NL,Starter,Right,23,22,0,0,0,5,8,337,472,99,58,57,21,33,132,8
+2026,2020s,hernaen02,Enrique Hernandez,Los Angeles Dodgers,NL,Reliever,Right,1,0,0,0,0,0,0,3,4,1,0,0,0,0,0,0
+2026,2020s,lauerer01,Eric Lauer,Los Angeles Dodgers,NL,Starter,Left,14,12,0,0,0,7,2,216,304,69,37,36,15,19,46,5
+2026,2020s,phillev01,Evan Phillips,Los Angeles Dodgers,NL,Reliever,Right,31,0,0,0,1,3,2,78,106,22,11,10,5,6,33,1
+2026,2020s,dreyeja01,Jack Dreyer,Los Angeles Dodgers,NL,Reliever,Left,67,3,0,0,2,5,2,194,261,48,23,23,7,23,73,2
+2026,2020s,ederja01,Jake Eder,Los Angeles Dodgers,NL,Reliever,Left,4,0,0,0,0,1,0,12,15,3,1,1,0,1,1,0
+2026,2020s,hernajo02,Jonathan Hernandez,Los Angeles Dodgers,NL,Reliever,Right,16,0,0,0,0,0,0,76,109,21,16,16,4,13,22,0
+2026,2020s,wroblju01,Justin Wrobleski,Los Angeles Dodgers,NL,Starter,Left,28,22,0,0,0,12,5,420,578,129,59,57,21,31,118,5
+2026,2020s,bubickr01,Kris Bubic,Los Angeles Dodgers,NL,Reliever,Left,5,0,0,0,0,1,0,14,19,4,0,0,0,0,5,1
+2026,2020s,hurtky01,Kyle Hurt,Los Angeles Dodgers,NL,Reliever,Right,44,1,0,0,1,4,1,137,198,38,23,21,5,23,58,1
+2026,2020s,knackla01,Landon Knack,Los Angeles Dodgers,NL,Reliever,Right,4,0,0,0,1,1,0,35,50,12,5,5,4,2,8,1
+2026,2020s,rojasmi02,Miguel Rojas,Los Angeles Dodgers,NL,Reliever,Right,4,0,0,0,0,0,0,12,23,9,6,6,2,1,0,1
+2026,2020s,gervapa01,Paul Gervase,Los Angeles Dodgers,NL,Reliever,Right,4,0,0,0,0,0,0,23,34,7,2,2,0,5,8,0
+2026,2020s,sasakro01,Roki Sasaki,Los Angeles Dodgers,NL,Starter,Right,26,23,0,0,0,5,5,367,522,113,63,61,22,48,123,5
+2026,2020s,halvose01,Seth Halvorsen,Los Angeles Dodgers,NL,Reliever,Right,11,0,0,0,0,1,1,30,45,11,9,9,3,2,6,2
+2026,2020s,ohtansh01,Shohei Ohtani,Los Angeles Dodgers,NL,Starter,Right,14,14,0,0,0,8,2,257,340,55,21,17,4,26,95,6
+2026,2020s,scottta01,Tanner Scott,Los Angeles Dodgers,NL,Reliever,Left,69,0,0,0,25,1,6,191,251,48,20,19,4,15,82,1
+2026,2020s,skubata01,Tarik Skubal,Los Angeles Dodgers,NL,Starter,Left,10,10,0,0,0,5,2,186,246,52,19,18,4,13,70,1
+2026,2020s,glasnty01,Tyler Glasnow,Los Angeles Dodgers,NL,Starter,Right,13,13,0,0,0,5,2,222,288,45,29,29,7,25,98,1
+2026,2020s,kleinwi01,Will Klein,Los Angeles Dodgers,NL,Reliever,Right,36,3,0,0,2,3,4,125,189,44,22,17,3,21,49,3
+2026,2020s,millswy01,Wyatt Mills,Los Angeles Dodgers,NL,Reliever,Right,6,0,0,0,0,0,0,19,36,5,5,4,0,9,5,2
+2026,2020s,yamamyo01,Yoshinobu Yamamoto,Los Angeles Dodgers,NL,Starter,Right,28,28,1,0,0,14,9,555,708,119,55,52,20,42,182,7
+2026,2020s,ashbyaa01,Aaron Ashby,Milwaukee Brewers,NL,Reliever,Left,75,1,0,0,4,13,3,268,383,76,36,31,8,41,116,2
+2026,2020s,uribeab01,Abner Uribe,Milwaukee Brewers,NL,Reliever,Right,61,0,0,0,6,6,3,178,234,42,13,13,3,19,62,1
+2026,2020s,vaughan01,Andrew Vaughn,Milwaukee Brewers,NL,Reliever,Right,2,0,0,0,0,0,0,9,26,12,10,10,4,5,1,1
+2026,2020s,zerpaan01,Angel Zerpa,Milwaukee Brewers,NL,Reliever,Left,12,0,0,0,2,0,2,38,55,16,11,9,2,6,8,0
+2026,2020s,senzaan01,Antonio Senzatela,Milwaukee Brewers,NL,Reliever,Right,23,0,0,0,1,2,3,63,92,22,13,12,2,9,14,1
+2026,2020s,sproabr01,Brandon Sproat,Milwaukee Brewers,NL,Starter,Right,22,19,0,0,0,3,7,291,422,88,61,60,17,52,101,10
+2026,2020s,woodrbr01,Brandon Woodruff,Milwaukee Brewers,NL,Starter,Right,9,9,0,0,0,2,2,136,174,28,16,15,5,10,47,1
+2026,2020s,mlb702153,Brian Fitzpatrick,Milwaukee Brewers,NL,Reliever,Left,5,0,0,0,0,0,0,20,30,7,2,1,0,3,5,0
+2026,2020s,wilsobr02,Bryse Wilson,Milwaukee Brewers,NL,Reliever,Right,13,0,0,0,0,0,0,77,106,31,10,10,3,1,23,0
+2026,2020s,rodrica02,Carlos Rodriguez,Milwaukee Brewers,NL,Reliever,Right,4,0,0,0,0,0,0,28,42,10,4,4,1,4,8,0
+2026,2020s,patrich01,Chad Patrick,Milwaukee Brewers,NL,Reliever,Right,57,6,0,0,6,9,4,318,441,84,40,40,11,47,93,5
+2026,2020s,mlb689441,Coleman Crow,Milwaukee Brewers,NL,Starter,Right,5,4,0,0,0,0,1,56,85,21,13,11,2,6,10,1
+2026,2020s,gordoco01,Colton Gordon,Milwaukee Brewers,NL,Reliever,Left,1,0,0,0,0,0,1,15,20,4,3,2,0,1,1,0
+2026,2020s,yohocr01,Craig Yoho,Milwaukee Brewers,NL,Reliever,Right,15,0,0,0,0,2,0,60,78,9,7,7,3,8,18,2
+2026,2020s,halldl01,DL Hall,Milwaukee Brewers,NL,Reliever,Left,47,1,0,0,0,4,0,184,241,29,13,13,5,35,64,2
+2026,2020s,romdr01,Drew Rom,Milwaukee Brewers,NL,Reliever,Left,5,0,0,0,0,1,0,17,27,6,2,2,1,4,11,0
+2026,2020s,maydu01,Dustin May,Milwaukee Brewers,NL,Starter,Right,10,10,0,0,0,2,2,110,162,37,23,23,7,15,38,4
+2026,2020s,mcgeeea01,Easton McGee,Milwaukee Brewers,NL,Reliever,Right,2,0,0,0,0,0,0,6,6,1,0,0,0,1,1,0
+2026,2020s,mlb668831,Garrett Stallings,Milwaukee Brewers,NL,Reliever,Right,6,0,0,0,1,0,0,42,51,4,0,0,0,5,17,0
+2026,2020s,sanchga02,Gary Sanchez,Milwaukee Brewers,NL,Reliever,Right,2,0,0,0,0,0,0,6,10,4,0,0,0,0,0,0
+2026,2020s,andergr01,Grant Anderson,Milwaukee Brewers,NL,Reliever,Right,52,0,0,0,0,3,3,177,235,43,27,22,8,23,52,1
+2026,2020s,misioja01,Jacob Misiorowski,Milwaukee Brewers,NL,Starter,Right,30,30,1,1,0,16,5,524,665,96,43,35,14,44,252,9
+2026,2020s,woodfja01,Jake Woodford,Milwaukee Brewers,NL,Reliever,Right,16,0,0,0,1,1,0,70,112,34,18,18,3,7,20,0
+2026,2020s,koenija01,Jared Koenig,Milwaukee Brewers,NL,Reliever,Left,9,0,0,0,0,0,0,21,41,12,9,7,1,7,7,1
+2026,2020s,romerjo01,JoJo Romero,Milwaukee Brewers,NL,Reliever,Left,11,0,0,0,0,2,0,40,52,11,5,5,2,2,11,0
+2026,2020s,kuhnejo01,Joel Kuhnel,Milwaukee Brewers,NL,Reliever,Right,10,0,0,0,2,0,1,29,49,13,9,7,4,6,8,2
+2026,2020s,harriky01,Kyle Harrison,Milwaukee Brewers,NL,Starter,Left,28,24,0,0,0,11,5,347,505,120,62,54,20,36,141,7
+2026,2020s,mcculla02,Lance McCullers,Milwaukee Brewers,NL,Reliever,Right,2,0,0,0,0,0,0,14,23,3,5,2,0,5,5,0
+2026,2020s,hendelo01,Logan Henderson,Milwaukee Brewers,NL,Starter,Right,18,18,0,0,0,11,3,295,371,64,28,27,14,19,110,1
+2026,2020s,richaly01,Lyon Richardson,Milwaukee Brewers,NL,Reliever,Right,1,0,0,0,0,0,0,5,6,0,0,0,0,1,1,0
+2026,2020s,gassero01,Robert Gasser,Milwaukee Brewers,NL,Starter,Left,21,20,0,0,0,5,5,328,463,95,49,47,15,35,103,10
+2026,2020s,mlb675660,Shane Drohan,Milwaukee Brewers,NL,Starter,Left,33,19,0,0,2,7,5,374,528,121,63,58,14,44,125,5
+2026,2020s,pannoth01,Thomas Pannone,Milwaukee Brewers,NL,Starter,Left,1,1,0,0,0,0,1,9,14,3,3,2,1,2,2,0
+2026,2020s,megiltr01,Trevor Megill,Milwaukee Brewers,NL,Reliever,Right,63,0,0,0,30,3,3,185,242,40,20,18,1,15,69,1
+2026,2020s,minteaj01,A. J. Minter,Minnesota Twins,AL,Reliever,Left,25,0,0,0,1,1,1,68,94,19,8,7,5,6,21,0
+2026,2020s,jacksal02,Alex Jackson,Minnesota Twins,AL,Reliever,Right,2,0,0,0,0,0,0,6,10,3,3,3,2,1,0,0
+2026,2020s,mlb702193,Andrew Morris,Minnesota Twins,AL,Reliever,Right,64,3,0,0,5,4,8,221,321,74,42,36,5,27,69,2
+2026,2020s,bandaan01,Anthony Banda,Minnesota Twins,AL,Reliever,Left,39,0,0,0,2,2,0,103,156,31,19,17,3,15,33,8
+2026,2020s,vothau01,Austin Voth,Minnesota Twins,AL,Reliever,Right,1,0,0,0,0,0,1,12,25,11,6,5,0,1,2,0
+2026,2020s,oberba01,Bailey Ober,Minnesota Twins,AL,Starter,Right,25,24,1,1,1,7,7,393,561,133,69,65,21,37,96,2
+2026,2020s,lawerco01,Cody Laweryson,Minnesota Twins,AL,Reliever,Right,15,0,0,0,1,1,0,50,78,15,12,9,3,8,18,2
+2026,2020s,sandsco01,Cole Sands,Minnesota Twins,AL,Reliever,Right,13,0,0,0,1,1,1,36,56,15,11,11,3,5,11,1
+2026,2020s,mlb687570,Connor Prielipp,Minnesota Twins,AL,Starter,Left,24,22,0,0,0,6,7,377,535,118,76,68,14,44,128,7
+2026,2020s,kremede01,Dean Kremer,Minnesota Twins,AL,Starter,Right,10,10,0,0,0,4,1,163,211,36,22,21,6,18,48,1
+2026,2020s,orzeer01,Eric Orze,Minnesota Twins,AL,Reliever,Right,36,0,0,0,1,2,2,124,189,42,27,26,1,21,36,2
+2026,2020s,actonga01,Garrett Acton,Minnesota Twins,AL,Reliever,Right,7,0,0,0,0,1,1,33,51,10,10,7,1,6,14,2
+2026,2020s,mlb681252,Jack Anderson,Minnesota Twins,AL,Reliever,Right,4,0,0,0,1,1,0,13,16,2,0,0,0,1,6,0
+2026,2020s,hoffmje02,Jeff Hoffman,Minnesota Twins,AL,Reliever,Right,20,0,0,0,1,0,1,54,77,9,5,5,0,12,27,2
+2026,2020s,ryanjo04,Joe Ryan,Minnesota Twins,AL,Starter,Right,27,27,0,0,0,7,10,434,614,137,74,61,21,31,159,13
+2026,2020s,mlb804619,John Klein,Minnesota Twins,AL,Reliever,Right,3,0,0,0,0,0,1,13,19,3,2,2,1,4,2,0
+2026,2020s,lawreju01,Justin Lawrence,Minnesota Twins,AL,Reliever,Right,7,0,0,0,0,0,1,18,39,10,12,12,4,9,12,2
+2026,2020s,topaju01,Justin Topa,Minnesota Twins,AL,Reliever,Right,23,0,0,0,2,0,1,57,92,27,18,17,4,11,12,1
+2026,2020s,mlb696070,Kendry Rojas,Minnesota Twins,AL,Reliever,Left,12,4,0,0,0,1,1,89,130,23,11,11,2,22,34,1
+2026,2020s,fundeko01,Kody Funderburk,Minnesota Twins,AL,Reliever,Left,58,0,0,0,1,3,2,153,222,43,21,21,3,27,49,2
+2026,2020s,garcilu03,Luis Garcia,Minnesota Twins,AL,Reliever,Right,9,0,0,0,2,0,1,26,42,12,10,10,2,4,2,1
+2026,2020s,mlb694397,Marco Raya,Minnesota Twins,AL,Reliever,Right,3,0,0,0,0,0,0,18,25,5,2,2,1,3,4,0
+2026,2020s,abelmi01,Mick Abel,Minnesota Twins,AL,Starter,Right,4,3,0,0,0,1,2,61,93,22,9,9,0,10,23,3
+2026,2020s,mlb702474,Mike Paredes,Minnesota Twins,AL,Starter,Right,9,5,0,0,0,0,3,103,154,36,19,18,6,13,19,3
+2026,2020s,arciaor01,Orlando Arcia,Minnesota Twins,AL,Reliever,Right,1,0,0,0,0,0,0,3,5,1,1,1,0,2,0,0
+2026,2020s,woodssi01,Simeon Woods Richardson,Minnesota Twins,AL,Starter,Right,12,10,0,0,0,0,7,143,227,65,46,41,9,25,26,2
+2026,2020s,bradlta01,Taj Bradley,Minnesota Twins,AL,Starter,Right,31,31,0,0,0,12,6,535,748,142,74,74,23,76,205,4
+2026,2020s,rogerta01,Taylor Rogers,Minnesota Twins,AL,Reliever,Left,65,0,0,0,2,6,4,181,276,65,35,29,5,31,54,5
+2026,2020s,nanceto01,Tommy Nance,Minnesota Twins,AL,Reliever,Right,25,0,0,0,0,2,1,80,119,30,13,12,3,11,34,1
+2026,2020s,adamstr01,Travis Adams,Minnesota Twins,AL,Reliever,Right,40,0,0,0,3,3,0,177,247,53,32,30,8,25,62,0
+2026,2020s,mlb808970,Woo-Suk Go,Minnesota Twins,AL,Reliever,Right,4,0,0,0,0,0,0,12,22,8,4,4,2,2,5,0
+2026,2020s,gomezyo01,Yoendrys Gómez,Minnesota Twins,AL,Reliever,Right,56,0,0,0,21,3,4,149,215,39,23,20,2,29,52,2
+2026,2020s,kentza01,Zak Kent,Minnesota Twins,AL,Reliever,Right,2,0,0,0,0,0,0,11,20,4,5,2,2,5,2,0
+2026,2020s,matthze01,Zebby Matthews,Minnesota Twins,AL,Starter,Right,23,23,0,0,0,9,11,391,545,125,76,71,24,39,116,4
+2026,2020s,minteaj01,A. J. Minter,New York Mets,NL,Reliever,Left,23,0,0,0,0,1,1,69,92,21,8,6,4,2,20,1
+2026,2020s,warreau01,Austin Warren,New York Mets,NL,Reliever,Right,41,2,0,0,0,2,3,151,216,45,24,23,6,24,55,3
+2026,2020s,raleybr01,Brooks Raley,New York Mets,NL,Reliever,Left,45,0,0,0,0,5,5,124,170,30,12,9,2,15,40,3
+2026,2020s,edwarca01,Carl Edwards,New York Mets,NL,Reliever,Right,2,0,0,0,0,0,0,18,25,3,1,1,1,4,11,0
+2026,2020s,mcderch01,Chayce McDermott,New York Mets,NL,Reliever,Right,3,0,0,0,0,1,0,16,26,5,3,3,1,4,5,0
+2026,2020s,devench02,Chris Devenski,New York Mets,NL,Reliever,Right,6,0,0,0,0,0,0,16,26,9,8,8,2,1,2,1
+2026,2020s,scottch01,Christian Scott,New York Mets,NL,Starter,Right,23,23,0,0,0,4,5,330,474,93,48,47,12,47,134,9
+2026,2020s,perezci01,Cionel Perez,New York Mets,NL,Reliever,Left,24,2,0,0,0,2,0,88,125,31,13,13,5,8,35,0
+2026,2020s,holmecl01,Clay Holmes,New York Mets,NL,Starter,Right,9,9,0,0,0,4,4,158,215,40,14,14,3,18,45,1
+2026,2020s,kimbrcr01,Craig Kimbrel,New York Mets,NL,Reliever,Right,14,0,0,0,0,0,2,45,64,16,12,10,3,6,15,0
+2026,2020s,duartda01,Daniel Duarte,New York Mets,NL,Reliever,Right,24,0,0,0,2,2,0,89,112,17,8,7,3,7,30,1
+2026,2020s,peterda01,David Peterson,New York Mets,NL,Starter,Left,16,8,0,0,1,3,6,204,319,82,51,46,6,30,63,3
+2026,2020s,nunezde01,Dedniel Núñez,New York Mets,NL,Reliever,Right,18,0,0,0,1,2,1,57,72,17,9,7,4,0,20,0
+2026,2020s,willide03,Devin Williams,New York Mets,NL,Reliever,Right,44,0,0,0,16,3,2,122,184,43,25,20,3,21,52,0
+2026,2020s,mlb697811,Dylan Ross,New York Mets,NL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
+2026,2020s,peralfr01,Freddy Peralta,New York Mets,NL,Starter,Right,22,22,0,0,0,5,9,341,512,120,71,63,17,48,113,5
+2026,2020s,zuniggu01,Guillermo Zuñiga,New York Mets,NL,Reliever,Right,1,0,0,0,0,0,0,3,4,0,0,0,0,1,1,0
+2026,2020s,brazohu01,Huascar Brazoban,New York Mets,NL,Reliever,Right,46,6,0,0,0,5,2,158,207,30,16,15,3,23,49,1
+2026,2020s,mlb674073,Jack Weisenburger,New York Mets,NL,Reliever,Right,7,0,0,0,0,0,0,38,50,10,3,3,0,4,14,0
+2026,2020s,mlb642376,Jefry Yan,New York Mets,NL,Reliever,Left,18,1,0,0,0,2,1,61,96,20,12,11,3,15,26,1
+2026,2020s,gerbejo01,Joey Gerber,New York Mets,NL,Reliever,Right,7,0,0,0,0,0,0,25,34,6,4,4,1,4,8,0
+2026,2020s,tongjo01,Jonah Tong,New York Mets,NL,Starter,Right,7,4,0,0,0,2,2,92,134,24,16,13,2,14,34,2
+2026,2020s,pintajo01,Jonathan Pintaro,New York Mets,NL,Reliever,Right,22,0,0,0,0,2,3,92,130,26,19,18,5,16,30,3
+2026,2020s,hagenju01,Justin Hagenman,New York Mets,NL,Reliever,Right,3,1,0,0,0,0,0,24,33,8,3,3,2,2,4,0
+2026,2020s,hergeke01,Kevin Herget,New York Mets,NL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
+2026,2020s,sengako01,Kodai Senga,New York Mets,NL,Reliever,Right,31,8,0,0,8,0,9,184,283,60,51,50,14,41,75,4
+2026,2020s,garcilu03,Luis Garcia,New York Mets,NL,Reliever,Right,6,0,0,0,0,0,0,19,32,11,6,5,0,2,4,0
+2026,2020s,torrelu01,Luis Torrens,New York Mets,NL,Reliever,Right,2,0,0,0,0,0,0,7,11,4,2,2,2,0,0,0
+2026,2020s,weavelu01,Luke Weaver,New York Mets,NL,Reliever,Right,42,0,0,0,1,2,1,132,169,25,10,9,3,11,45,2
+2026,2020s,mlb676910,Matt Seelinger,New York Mets,NL,Reliever,Right,1,0,0,0,0,0,1,6,15,5,7,7,1,4,2,0
+2026,2020s,mlb681320,Nate Lavender,New York Mets,NL,Reliever,Left,21,0,0,0,0,1,0,65,79,12,4,4,1,4,26,0
+2026,2020s,mcleano01,Nolan McLean,New York Mets,NL,Starter,Right,31,31,0,0,0,12,10,539,747,140,75,63,17,70,194,15
+2026,2020s,lovelri01,Richard Lovelady,New York Mets,NL,Reliever,Left,6,0,0,0,0,1,1,22,32,8,5,3,1,4,6,0
+2026,2020s,stockro01,Robert Stock,New York Mets,NL,Starter,Right,8,7,0,0,0,1,3,91,147,38,21,20,2,15,29,4
+2026,2020s,manaese01,Sean Manaea,New York Mets,NL,Starter,Left,33,19,0,0,0,6,8,452,653,152,88,80,25,44,144,16
+2026,2020s,myersto01,Tobias Myers,New York Mets,NL,Reliever,Right,32,3,0,0,2,1,2,161,230,56,36,33,9,16,41,0
+2026,2020s,curryxz01,Xzavion Curry,New York Mets,NL,Reliever,Right,9,1,0,0,0,0,1,64,94,22,13,13,7,9,15,1
+2026,2020s,mlb804267,Zac Thornton,New York Mets,NL,Starter,Left,15,15,0,0,0,5,6,253,337,78,33,32,14,18,63,3
+2026,2020s,shortza01,Zack Short,New York Mets,NL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
+2026,2020s,mlb529017,Alexander Cornielle,New York Yankees,AL,Reliever,Right,1,0,0,0,0,0,0,3,7,3,2,2,1,1,2,0
+2026,2020s,chivian01,Angel Chivilli,New York Yankees,AL,Reliever,Right,15,0,0,0,0,1,1,50,73,14,9,7,4,7,16,1
+2026,2020s,mlb690440,Bradley Hanner,New York Yankees,AL,Reliever,Right,5,0,0,0,0,1,0,22,34,11,7,7,4,1,7,0
+2026,2020s,mlb694341,Brendan Beck,New York Yankees,AL,Starter,Right,4,2,0,0,0,0,2,38,58,13,14,14,6,8,13,0
+2026,2020s,headrbr01,Brent Headrick,New York Yankees,AL,Reliever,Left,81,0,0,0,0,7,4,235,326,68,20,19,5,27,98,0
+2026,2020s,schlica01,Cam Schlittler,New York Yankees,AL,Starter,Right,33,33,0,0,0,14,6,581,761,129,52,42,16,49,239,6
+2026,2020s,dovalca01,Camilo Doval,New York Yankees,AL,Reliever,Right,44,0,0,0,1,3,1,119,178,38,29,20,6,18,39,2
+2026,2020s,rodonca01,Carlos Rodon,New York Yankees,AL,Starter,Left,16,16,0,0,0,7,3,253,340,51,30,25,7,38,91,2
+2026,2020s,schmicl01,Clarke Schmidt,New York Yankees,AL,Reliever,Right,1,0,0,0,0,0,0,2,4,2,0,0,0,0,2,0
+2026,2020s,bednada01,David Bednar,New York Yankees,AL,Reliever,Right,64,0,0,0,35,7,3,208,280,52,25,19,4,20,76,2
+2026,2020s,mlb695684,Elmer Rodríguez,New York Yankees,AL,Starter,Right,6,6,0,0,0,0,3,80,125,26,16,16,2,16,21,5
+2026,2020s,cruzfe01,Fernando Cruz,New York Yankees,AL,Reliever,Right,61,0,0,0,2,4,6,164,234,41,23,19,7,32,67,2
+2026,2020s,colege01,Gerrit Cole,New York Yankees,AL,Starter,Right,22,22,0,0,0,10,9,381,519,115,52,51,22,25,131,2
+2026,2020s,birdja01,Jake Bird,New York Yankees,AL,Reliever,Right,36,0,0,0,0,1,1,91,139,36,20,20,4,11,31,5
+2026,2020s,schrejo01,John Schreiber,New York Yankees,AL,Reliever,Right,11,0,0,0,1,1,1,33,43,8,3,2,0,4,4,0
+2026,2020s,topaju01,Justin Topa,New York Yankees,AL,Reliever,Right,2,0,0,0,0,0,0,9,16,4,1,0,0,1,3,1
+2026,2020s,castrke01,Kervin Castro,New York Yankees,AL,Reliever,Right,5,0,0,0,0,0,0,19,23,3,1,1,0,2,8,0
+2026,2020s,gillu01,Luis Gil,New York Yankees,AL,Reliever,Right,9,4,0,0,0,1,2,82,124,21,16,14,6,18,17,4
+2026,2020s,friedma01,Max Fried,New York Yankees,AL,Starter,Left,20,20,0,0,0,5,5,338,434,79,35,35,4,33,104,2
+2026,2020s,schuema01,Max Schuemann,New York Yankees,AL,Reliever,Right,1,0,0,0,0,0,0,3,5,1,0,0,0,1,0,0
+2026,2020s,fulmemi01,Michael Fulmer,New York Yankees,AL,Reliever,Right,12,0,0,0,0,0,1,30,46,9,7,5,2,6,14,1
+2026,2020s,blackpa01,Paul Blackburn,New York Yankees,AL,Reliever,Right,62,2,0,0,1,7,3,255,336,60,19,16,7,33,69,1
+2026,2020s,weathry01,Ryan Weathers,New York Yankees,AL,Starter,Left,25,25,0,0,0,5,8,412,568,130,61,55,18,38,143,3
+2026,2020s,yarbrry01,Ryan Yarbrough,New York Yankees,AL,Reliever,Left,38,2,0,0,3,2,1,190,268,54,33,26,3,23,49,4
+2026,2020s,hillti01,Tim Hill,New York Yankees,AL,Reliever,Left,67,0,0,0,2,5,2,176,241,54,33,30,12,13,25,7
+2026,2020s,warrewi01,Will Warren,New York Yankees,AL,Starter,Right,32,29,0,0,0,11,6,468,677,159,83,68,21,54,158,4
+2026,2020s,delosye01,Yerry De Los Santos,New York Yankees,AL,Reliever,Right,16,0,0,0,0,1,0,66,94,20,9,5,4,8,17,0
+2026,2020s,mlb672442,Yovanny Cruz,New York Yankees,AL,Reliever,Right,4,0,0,0,0,0,0,16,20,3,1,1,0,1,6,1
+2026,2020s,civalaa01,Aaron Civale,Oakland Athletics,AL,Starter,Right,16,15,0,0,0,5,7,224,341,98,46,45,16,23,58,2
+2026,2020s,bowdebe01,Ben Bowden,Oakland Athletics,AL,Reliever,Left,1,0,0,0,0,0,0,3,8,2,4,4,0,2,0,1
+2026,2020s,bassobr01,Brady Basso,Oakland Athletics,AL,Reliever,Left,26,7,0,0,0,1,4,129,200,61,30,29,4,10,31,1
+2026,2020s,kriskbr01,Brooks Kriske,Oakland Athletics,AL,Reliever,Right,2,0,0,0,0,0,0,8,11,2,0,0,0,1,2,0
+2026,2020s,corteca01,Carlos Cortes,Oakland Athletics,AL,Reliever,Unknown,9,0,0,0,0,0,0,28,49,15,12,11,4,8,1,0
+2026,2020s,roycrch01,Chris Roycroft,Oakland Athletics,AL,Reliever,Right,9,0,0,0,0,1,0,41,64,15,6,5,2,9,11,0
+2026,2020s,romdr01,Drew Rom,Oakland Athletics,AL,Reliever,Left,13,0,0,0,0,0,1,36,56,16,9,9,0,3,6,0
+2026,2020s,alvarel01,Elvis Alvarado,Oakland Athletics,AL,Reliever,Right,56,0,0,0,6,5,4,166,229,44,25,24,10,25,65,2
+2026,2020s,mlb695611,Gage Jump,Oakland Athletics,AL,Starter,Left,20,20,0,0,0,6,11,296,437,104,62,60,12,46,108,4
+2026,2020s,hartlge01,Geoff Hartlieb,Oakland Athletics,AL,Reliever,Right,18,0,0,0,0,2,1,84,124,30,15,15,1,14,22,1
+2026,2020s,mlb696522,Hayden Juenger,Oakland Athletics,AL,Reliever,Right,13,0,0,0,0,0,1,42,71,22,13,13,0,6,6,1
+2026,2020s,harriho02,Hogan Harris,Oakland Athletics,AL,Reliever,Left,74,0,0,0,17,4,2,211,311,60,28,26,8,42,88,5
+2026,2020s,ginnjt01,J. T. Ginn,Oakland Athletics,AL,Starter,Right,27,24,1,0,0,9,8,415,580,114,63,57,17,57,121,9
+2026,2020s,perkija01,Jack Perkins,Oakland Athletics,AL,Reliever,Right,37,17,0,0,3,3,13,363,541,125,89,82,23,51,140,10
+2026,2020s,lopezja04,Jacob Lopez,Oakland Athletics,AL,Starter,Left,27,24,0,0,0,7,5,370,551,126,78,75,23,58,112,4
+2026,2020s,sprinje01,Jeffrey Springs,Oakland Athletics,AL,Starter,Left,29,29,0,0,0,4,14,428,630,152,105,98,35,57,112,5
+2026,2020s,rockjo01,Joe Rock,Oakland Athletics,AL,Reliever,Left,1,0,0,0,0,0,0,0,3,1,2,2,0,2,0,0
+2026,2020s,kuhnejo01,Joel Kuhnel,Oakland Athletics,AL,Reliever,Right,25,0,0,0,4,1,2,77,108,27,12,12,2,6,14,2
+2026,2020s,estesjo01,Joey Estes,Oakland Athletics,AL,Starter,Right,2,1,0,0,0,0,0,22,34,12,9,9,4,2,5,0
+2026,2020s,suarejo01,Jose Suarez,Oakland Athletics,AL,Reliever,Left,36,1,0,0,0,1,3,129,187,48,30,27,6,13,37,2
+2026,2020s,sternju01,Justin Sterner,Oakland Athletics,AL,Reliever,Right,46,0,0,0,1,2,3,128,184,46,31,29,11,13,40,0
+2026,2020s,mlb695034,Kade Morris,Oakland Athletics,AL,Reliever,Right,6,2,0,0,0,0,1,52,89,30,21,21,5,7,10,3
+2026,2020s,medinlu02,Luis Medina,Oakland Athletics,AL,Reliever,Right,60,1,0,0,0,6,3,219,317,63,30,25,7,39,93,4
+2026,2020s,morallu01,Luis Morales,Oakland Athletics,AL,Reliever,Right,5,2,0,0,0,0,2,48,90,27,26,24,7,14,13,1
+2026,2020s,severlu01,Luis Severino,Oakland Athletics,AL,Starter,Right,12,12,0,0,0,2,6,188,271,61,33,29,9,31,65,2
+2026,2020s,leitema02,Mark Leiter,Oakland Athletics,AL,Reliever,Right,36,0,0,0,4,0,1,101,144,33,16,16,2,11,38,4
+2026,2020s,barnema02,Mason Barnett,Oakland Athletics,AL,Reliever,Right,20,6,0,0,2,1,4,150,229,53,40,39,14,30,50,2
+2026,2020s,krookma01,Matt Krook,Oakland Athletics,AL,Reliever,Left,5,0,0,0,0,0,0,11,21,5,7,6,1,4,5,1
+2026,2020s,kellymi03,Michael Kelly,Oakland Athletics,AL,Reliever,Right,5,0,0,0,0,0,0,15,32,12,9,9,1,6,6,0
+2026,2020s,barlosc01,Scott Barlow,Oakland Athletics,AL,Reliever,Right,36,0,0,0,2,2,0,100,152,26,26,24,7,19,29,7
+2026,2020s,blewesc01,Scott Blewett,Oakland Athletics,AL,Reliever,Right,25,0,0,0,0,2,2,106,151,39,16,13,4,9,32,0
+2026,2020s,johnsse01,Seth Johnson,Oakland Athletics,AL,Reliever,Right,12,1,0,0,0,0,0,52,78,22,12,12,4,6,20,1
+2026,2020s,rashita01,Taylor Rashi,Oakland Athletics,AL,Reliever,Right,1,0,0,0,0,0,0,6,11,3,1,1,0,2,1,0
+2026,2020s,ferguty01,Tyler Ferguson,Oakland Athletics,AL,Reliever,Right,1,0,0,0,0,0,0,4,8,4,4,4,2,0,1,0
+2026,2020s,mlb814305,Yunior Tur,Oakland Athletics,AL,Reliever,Right,8,0,0,0,0,0,0,38,78,25,27,23,6,11,14,1
+2026,2020s,nolaaa01,Aaron Nola,Philadelphia Phillies,NL,Starter,Right,33,33,0,0,0,7,12,526,744,177,93,91,37,59,177,2
+2026,2020s,rangeal01,Alan Rangel,Philadelphia Phillies,NL,Reliever,Right,7,3,0,0,0,0,3,78,123,31,17,17,4,13,29,2
+2026,2020s,mlb686934,Alex McFarlane,Philadelphia Phillies,NL,Reliever,Right,19,0,0,0,0,4,1,57,79,15,8,6,2,7,20,0
+2026,2020s,mlb691725,Andrew Painter,Philadelphia Phillies,NL,Starter,Right,25,23,0,0,0,3,10,380,552,132,76,76,21,47,115,5
+2026,2020s,kellebr01,Brad Keller,Philadelphia Phillies,NL,Reliever,Right,32,0,0,0,3,2,1,94,135,29,15,14,4,13,32,2
+2026,2020s,mlb662144,Brian Keller,Philadelphia Phillies,NL,Reliever,Right,1,0,0,0,0,0,0,9,11,2,1,1,1,0,3,0
+2026,2020s,raleybr01,Brooks Raley,Philadelphia Phillies,NL,Reliever,Left,16,0,0,0,1,0,2,34,54,17,10,10,4,5,11,0
+2026,2020s,wilsobr02,Bryse Wilson,Philadelphia Phillies,NL,Reliever,Right,1,0,0,0,0,0,0,6,7,1,0,0,0,1,0,0
+2026,2020s,kiliaca01,Caleb Kilian,Philadelphia Phillies,NL,Reliever,Right,4,0,0,0,0,1,1,10,16,4,7,5,1,2,3,0
+2026,2020s,shugach01,Chase Shugart,Philadelphia Phillies,NL,Reliever,Right,46,0,0,0,0,2,1,161,223,43,28,24,10,20,59,4
+2026,2020s,sanchcr01,Cristopher Sanchez,Philadelphia Phillies,NL,Starter,Left,33,33,1,1,0,18,7,621,857,204,73,67,19,45,231,6
+2026,2020s,mooredy01,Dylan Moore,Philadelphia Phillies,NL,Reliever,Right,2,0,0,0,0,0,0,5,8,1,1,1,0,1,0,1
+2026,2020s,stubbga01,Garrett Stubbs,Philadelphia Phillies,NL,Reliever,Right,5,0,0,0,0,0,0,14,24,8,5,5,1,1,0,1
+2026,2020s,holmagr01,Grant Holman,Philadelphia Phillies,NL,Reliever,Right,1,0,0,0,0,0,0,1,7,4,5,0,0,1,0,0
+2026,2020s,luzarje01,Jesus Luzardo,Philadelphia Phillies,NL,Starter,Left,30,29,1,1,0,14,5,539,730,141,65,57,15,52,221,11
+2026,2020s,duranjh01,Jhoan Duran,Philadelphia Phillies,NL,Reliever,Right,61,0,0,0,33,2,6,178,236,49,14,12,2,10,84,4
+2026,2020s,bowlajo01,Jonathan Bowlan,Philadelphia Phillies,NL,Reliever,Right,59,0,0,0,2,2,2,169,229,43,23,21,8,15,73,4
+2026,2020s,alvarjo03,Jose Alvarado,Philadelphia Phillies,NL,Reliever,Left,68,0,0,0,1,5,4,175,273,65,40,38,5,31,70,8
+2026,2020s,urquijo01,Jose Urquidy,Philadelphia Phillies,NL,Reliever,Right,2,0,0,0,0,0,0,22,33,10,3,3,0,0,9,0
+2026,2020s,backhky01,Kyle Backhus,Philadelphia Phillies,NL,Reliever,Left,21,1,0,0,0,2,1,60,94,25,12,11,3,6,20,2
+2026,2020s,trivilo01,Lou Trivino,Philadelphia Phillies,NL,Reliever,Right,3,0,0,0,0,0,0,9,18,4,4,4,1,4,4,1
+2026,2020s,lazarma01,Max Lazar,Philadelphia Phillies,NL,Reliever,Right,8,0,0,0,0,0,0,30,45,12,7,7,3,3,8,0
+2026,2020s,hoffmno01,Nolan Hoffman,Philadelphia Phillies,NL,Reliever,Right,3,0,0,0,0,0,0,14,21,6,2,2,0,3,2,0
+2026,2020s,kerkeor01,Orion Kerkering,Philadelphia Phillies,NL,Reliever,Right,62,0,0,0,2,7,1,174,268,50,36,32,5,34,63,7
+2026,2020s,johnsse01,Seth Johnson,Philadelphia Phillies,NL,Reliever,Right,16,0,0,0,0,1,0,49,80,15,12,10,1,14,20,1
+2026,2020s,walketa01,Taijuan Walker,Philadelphia Phillies,NL,Starter,Right,5,4,0,0,0,1,4,68,115,36,25,23,8,11,17,1
+2026,2020s,banksta01,Tanner Banks,Philadelphia Phillies,NL,Reliever,Left,32,1,0,0,0,0,4,109,176,52,29,25,8,15,38,1
+2026,2020s,mayzati01,Tim Mayza,Philadelphia Phillies,NL,Reliever,Left,60,6,0,0,0,3,4,202,271,58,28,26,7,18,64,1
+2026,2020s,richatr01,Trevor Richards,Philadelphia Phillies,NL,Reliever,Right,2,0,0,0,0,0,0,13,19,4,1,1,0,3,5,0
+2026,2020s,popza01,Zach Pop,Philadelphia Phillies,NL,Reliever,Right,7,1,0,0,0,0,0,22,31,5,3,3,0,3,6,1
+2026,2020s,wheelza01,Zack Wheeler,Philadelphia Phillies,NL,Starter,Right,28,28,0,0,0,14,5,486,645,123,55,54,21,47,193,4
+2026,2020s,mlb699008,Antwone Kelly,Pittsburgh Pirates,NL,Reliever,Right,8,0,0,0,0,0,0,56,81,19,10,10,4,8,14,1
+2026,2020s,mlb684049,Brandan Bidois,Pittsburgh Pirates,NL,Reliever,Right,15,0,0,0,0,0,0,47,80,19,16,11,5,12,20,1
+2026,2020s,eiserbr01,Brandon Eisert,Pittsburgh Pirates,NL,Reliever,Left,15,0,0,0,0,1,2,50,72,17,9,9,0,6,17,1
+2026,2020s,ashcrbr01,Braxton Ashcraft,Pittsburgh Pirates,NL,Starter,Right,28,28,1,0,0,14,6,496,667,145,73,67,22,35,173,7
+2026,2020s,chandbu01,Bubba Chandler,Pittsburgh Pirates,NL,Starter,Right,31,30,0,0,0,8,10,462,674,136,89,79,15,80,140,7
+2026,2020s,sandeca01,Cam Sanders,Pittsburgh Pirates,NL,Reliever,Right,9,0,0,0,0,0,0,28,48,9,9,9,1,10,13,1
+2026,2020s,dovalca01,Camilo Doval,Pittsburgh Pirates,NL,Reliever,Right,20,0,0,0,0,0,1,57,88,19,9,8,1,14,23,1
+2026,2020s,mlodzca01,Carmen Mlodzinski,Pittsburgh Pirates,NL,Reliever,Right,37,12,0,0,2,8,7,369,537,125,62,54,10,44,97,4
+2026,2020s,devench02,Chris Devenski,Pittsburgh Pirates,NL,Reliever,Right,3,0,0,0,0,0,0,7,12,5,2,2,1,0,3,0
+2026,2020s,santade01,Dennis Santana,Pittsburgh Pirates,NL,Reliever,Right,44,0,0,0,2,2,5,125,186,42,30,28,8,21,37,2
+2026,2020s,siskev01,Evan Sisk,Pittsburgh Pirates,NL,Reliever,Left,41,0,0,0,0,1,0,134,197,36,15,15,2,25,50,9
+2026,2020s,sotogr01,Gregory Soto,Pittsburgh Pirates,NL,Reliever,Left,69,0,0,0,16,6,5,201,285,49,31,27,5,29,79,7
+2026,2020s,barcohu01,Hunter Barco,Pittsburgh Pirates,NL,Reliever,Left,7,0,0,0,0,0,1,53,87,21,17,15,4,13,14,2
+2026,2020s,strathu01,Hunter Stratton,Pittsburgh Pirates,NL,Reliever,Right,2,0,0,0,0,0,0,7,12,5,2,2,0,0,2,0
+2026,2020s,mattsis01,Isaac Mattson,Pittsburgh Pirates,NL,Reliever,Right,38,0,0,0,0,0,0,116,176,44,23,23,3,18,36,1
+2026,2020s,jonesja09,Jared Jones,Pittsburgh Pirates,NL,Starter,Right,21,21,0,0,0,5,6,305,415,79,43,42,12,31,123,3
+2026,2020s,urquijo01,Jose Urquidy,Pittsburgh Pirates,NL,Reliever,Right,5,0,0,0,1,0,1,19,36,15,10,6,1,2,6,0
+2026,2020s,lawreju01,Justin Lawrence,Pittsburgh Pirates,NL,Reliever,Right,23,0,0,0,0,0,2,66,106,22,20,13,4,12,25,4
+2026,2020s,mlb694753,Khristian Curtis,Pittsburgh Pirates,NL,Reliever,Right,6,0,0,0,0,2,0,63,87,15,11,11,1,12,13,1
+2026,2020s,yateski01,Kirby Yates,Pittsburgh Pirates,NL,Reliever,Right,15,1,0,0,0,2,0,45,60,14,3,3,1,5,13,0
+2026,2020s,bachala01,Lake Bachar,Pittsburgh Pirates,NL,Starter,Right,15,8,0,0,0,1,2,84,116,18,8,8,4,15,32,1
+2026,2020s,weavelu01,Luke Weaver,Pittsburgh Pirates,NL,Reliever,Right,18,0,0,0,0,2,0,49,69,17,9,9,2,5,20,1
+2026,2020s,montgma01,Mason Montgomery,Pittsburgh Pirates,NL,Reliever,Left,70,5,0,0,18,6,4,206,278,45,23,22,6,26,105,1
+2026,2020s,kellemi03,Mitch Keller,Pittsburgh Pirates,NL,Starter,Right,22,22,0,0,0,6,8,347,503,117,73,68,15,42,89,8
+2026,2020s,murdono01,Noah Murdock,Pittsburgh Pirates,NL,Reliever,Right,3,0,0,0,0,0,0,10,15,3,0,0,0,3,4,0
+2026,2020s,skenepa01,Paul Skenes,Pittsburgh Pirates,NL,Starter,Right,32,32,0,0,0,10,11,523,712,146,82,74,20,49,200,11
+2026,2020s,florera03,Rafael Flores,Pittsburgh Pirates,NL,Reliever,Right,1,0,0,0,0,0,0,3,5,2,0,0,0,0,0,0
+2026,2020s,marinro01,Ron Marinaccio,Pittsburgh Pirates,NL,Reliever,Right,4,0,0,0,0,0,0,16,25,5,4,4,1,2,4,2
+2026,2020s,callity01,Tyler Callihan,Pittsburgh Pirates,NL,Reliever,Right,4,0,0,0,0,0,0,9,15,3,0,0,0,3,1,0
+2026,2020s,mlb696062,Wilber Dotel,Pittsburgh Pirates,NL,Reliever,Right,22,2,0,0,0,1,5,127,182,42,24,21,3,16,41,0
+2026,2020s,ramiryo01,Yohan Ramirez,Pittsburgh Pirates,NL,Reliever,Right,66,1,0,0,2,7,4,255,362,57,32,27,4,44,102,14
+2026,2020s,morejad01,Adrian Morejon,San Diego Padres,NL,Reliever,Left,76,0,0,0,3,9,3,258,352,65,32,27,4,28,107,5
+2026,2020s,jacobal01,Alek Jacob,San Diego Padres,NL,Reliever,Right,3,0,0,0,0,1,0,15,23,5,3,3,1,2,6,1
+2026,2020s,rodribr01,Bradgley Rodriguez,San Diego Padres,NL,Reliever,Right,68,4,0,0,2,4,3,222,301,59,25,18,6,20,81,0
+2026,2020s,mizeca01,Casey Mize,San Diego Padres,NL,Starter,Right,10,10,0,0,0,2,4,134,208,56,42,37,13,19,25,2
+2026,2020s,morgada01,David Morgan,San Diego Padres,NL,Reliever,Right,32,0,0,0,0,4,1,100,162,37,16,14,2,22,39,4
+2026,2020s,marquge01,German Marquez,San Diego Padres,NL,Starter,Right,13,10,0,0,1,4,2,159,236,55,32,31,14,24,37,2
+2026,2020s,cannigr01,Griffin Canning,San Diego Padres,NL,Reliever,Right,30,11,0,0,0,5,9,266,391,94,57,56,14,41,87,5
+2026,2020s,searsjp01,JP Sears,San Diego Padres,NL,Starter,Left,8,6,0,0,0,3,4,98,143,33,19,17,6,11,25,2
+2026,2020s,adamja01,Jason Adam,San Diego Padres,NL,Reliever,Right,38,0,0,0,2,2,2,103,142,30,10,10,5,10,22,3
+2026,2020s,estraje01,Jeremiah Estrada,San Diego Padres,NL,Reliever,Right,33,0,0,0,1,2,3,93,126,20,16,12,2,16,38,0
+2026,2020s,britojh01,Jhony Brito,San Diego Padres,NL,Reliever,Right,5,0,0,0,0,0,0,27,35,7,3,3,2,1,6,0
+2026,2020s,hartky01,Kyle Hart,San Diego Padres,NL,Reliever,Left,46,4,0,0,0,1,3,192,268,51,37,35,5,26,59,3
+2026,2020s,giolilu01,Lucas Giolito,San Diego Padres,NL,Starter,Right,7,5,0,0,0,2,3,89,138,32,19,17,4,23,18,1
+2026,2020s,millema03,Mason Miller,San Diego Padres,NL,Reliever,Right,66,0,0,0,38,5,2,210,272,37,16,13,3,26,129,2
+2026,2020s,waldrma01,Matt Waldron,San Diego Padres,NL,Reliever,Right,10,3,0,0,0,1,2,98,147,43,26,26,7,8,28,2
+2026,2020s,kingmi01,Mike King,San Diego Padres,NL,Starter,Right,32,32,0,0,0,12,10,555,757,148,68,66,20,70,159,13
+2026,2020s,pivetni01,Nick Pivetta,San Diego Padres,NL,Starter,Right,8,8,0,0,0,3,2,104,140,27,11,11,2,8,42,1
+2026,2020s,vasqura02,Randy Vásquez,San Diego Padres,NL,Starter,Right,32,23,0,0,0,10,6,422,587,141,65,61,16,37,87,5
+2026,2020s,rayro02,Robbie Ray,San Diego Padres,NL,Starter,Left,9,9,0,0,0,3,2,129,190,39,24,24,7,27,33,1
+2026,2020s,mlb660710,Rodolfo Durán,San Diego Padres,NL,Reliever,Right,2,0,0,0,0,0,0,9,19,9,9,9,2,1,0,0
+2026,2020s,marinro01,Ron Marinaccio,San Diego Padres,NL,Reliever,Right,33,0,0,0,0,1,0,141,203,50,25,25,9,18,38,3
+2026,2020s,buehlwa01,Walker Buehler,San Diego Padres,NL,Starter,Right,32,32,0,0,0,9,6,461,651,150,81,79,22,57,131,7
+2026,2020s,peralwa01,Wandy Peralta,San Diego Padres,NL,Reliever,Left,65,5,0,0,0,3,3,232,321,79,31,31,7,23,50,3
+2026,2020s,matsuyu01,Yuki Matsui,San Diego Padres,NL,Reliever,Left,54,0,0,0,1,5,1,192,260,37,14,13,7,36,68,2
+2026,2020s,housead01,Adrian Houser,San Francisco Giants,NL,Starter,Right,26,16,0,0,0,4,7,329,470,109,54,49,15,34,75,4
+2026,2020s,molinan01,Anthony Molina,San Francisco Giants,NL,Starter,Right,6,5,0,0,0,3,2,87,115,23,14,12,2,6,29,0
+2026,2020s,tidwebl01,Blade Tidwell,San Francisco Giants,NL,Starter,Right,17,9,0,0,1,1,2,170,235,46,29,28,8,21,46,6
+2026,2020s,mlb694820,Braxton Roxby,San Francisco Giants,NL,Reliever,Right,4,0,0,0,0,0,0,16,25,6,2,2,0,2,3,1
+2026,2020s,kennebu01,Buddy Kennedy,San Francisco Giants,NL,Reliever,Right,1,0,0,0,0,0,0,3,9,4,4,4,0,2,0,0
+2026,2020s,kiliaca01,Caleb Kilian,San Francisco Giants,NL,Reliever,Right,45,0,0,0,8,3,6,133,193,39,23,21,5,20,53,1
+2026,2020s,dovalca01,Camilo Doval,San Francisco Giants,NL,Reliever,Right,2,0,0,0,0,0,0,6,7,0,0,0,0,1,4,0
+2026,2020s,seymoca01,Carson Seymour,San Francisco Giants,NL,Reliever,Right,25,1,0,0,1,0,2,95,140,31,19,16,6,16,23,1
+2026,2020s,whiseca01,Carson Whisenhunt,San Francisco Giants,NL,Starter,Left,8,8,0,0,0,3,4,104,164,41,26,25,5,21,26,1
+2026,2020s,mlb702885,Cesar Perdomo,San Francisco Giants,NL,Starter,Left,5,4,0,0,0,0,1,74,104,27,10,10,4,7,14,0
+2026,2020s,kossch01,Christian Koss,San Francisco Giants,NL,Reliever,Right,2,0,0,0,0,0,0,6,10,5,3,3,0,0,0,0
+2026,2020s,mlb701474,Duncan Davitt,San Francisco Giants,NL,Reliever,Right,4,0,0,0,0,0,1,18,29,8,7,6,2,3,4,0
+2026,2020s,smithdy01,Dylan Smith,San Francisco Giants,NL,Reliever,Right,42,0,0,0,4,0,6,119,177,35,20,17,3,22,45,2
+2026,2020s,milleer01,Erik Miller,San Francisco Giants,NL,Reliever,Left,38,0,0,0,4,2,0,98,142,23,10,10,2,22,45,2
+2026,2020s,santogr01,Gregory Santos,San Francisco Giants,NL,Reliever,Right,3,0,0,0,0,0,0,15,22,5,5,2,0,3,1,0
+2026,2020s,brubajt01,JT Brubaker,San Francisco Giants,NL,Reliever,Right,41,1,0,0,2,0,0,181,250,49,27,24,5,26,39,2
+2026,2020s,foleyja01,Jason Foley,San Francisco Giants,NL,Reliever,Right,24,0,0,0,0,3,2,78,117,28,15,12,2,11,15,0
+2026,2020s,kuhnejo01,Joel Kuhnel,San Francisco Giants,NL,Reliever,Right,10,0,0,0,2,0,0,29,45,9,6,3,1,6,6,0
+2026,2020s,peguejo01,Joel Peguero,San Francisco Giants,NL,Reliever,Right,11,0,0,0,0,0,0,34,48,10,5,3,0,4,5,2
+2026,2020s,buttojo01,Jose Butto,San Francisco Giants,NL,Reliever,Right,3,0,0,0,0,0,0,6,16,6,5,5,2,4,5,0
+2026,2020s,winnke01,Keaton Winn,San Francisco Giants,NL,Reliever,Right,44,0,0,0,1,2,3,129,176,34,17,16,3,17,33,3
+2026,2020s,rouppla01,Landen Roupp,San Francisco Giants,NL,Starter,Right,29,29,0,0,0,9,14,465,657,126,74,69,11,75,143,5
+2026,2020s,webblo01,Logan Webb,San Francisco Giants,NL,Starter,Right,27,27,1,0,0,8,9,482,668,147,80,77,13,41,134,11
+2026,2020s,gagema01,Matt Gage,San Francisco Giants,NL,Reliever,Left,34,0,0,0,1,4,1,82,126,28,18,17,6,17,22,1
+2026,2020s,mlb683363,Matt Wilkinson,San Francisco Giants,NL,Starter,Left,8,6,0,0,0,1,3,83,110,22,14,11,5,5,20,0
+2026,2020s,abnerph01,Philip Abner,San Francisco Giants,NL,Reliever,Left,5,0,0,0,0,0,0,14,22,7,7,5,4,3,4,0
+2026,2020s,sanmare01,Reiver Sanmartin,San Francisco Giants,NL,Reliever,Left,24,0,0,0,0,3,0,64,93,22,12,10,3,7,16,0
+2026,2020s,rayro02,Robbie Ray,San Francisco Giants,NL,Starter,Left,22,21,0,0,0,10,6,368,512,101,50,42,15,57,107,1
+2026,2020s,borucry01,Ryan Borucki,San Francisco Giants,NL,Reliever,Left,21,0,0,0,0,1,1,71,104,27,14,13,3,9,15,2
+2026,2020s,walkery01,Ryan Walker,San Francisco Giants,NL,Reliever,Right,33,0,0,0,3,0,1,98,155,40,27,26,5,19,23,1
+2026,2020s,hentgsa01,Sam Hentges,San Francisco Giants,NL,Reliever,Left,45,0,0,0,0,1,7,110,173,35,17,13,0,25,41,4
+2026,2020s,mlb675920,Seth Lonsway,San Francisco Giants,NL,Reliever,Left,2,0,0,0,0,0,0,7,14,7,3,2,0,0,2,0
+2026,2020s,bivensp01,Spencer Bivens,San Francisco Giants,NL,Reliever,Right,4,0,0,0,0,0,0,15,30,11,10,8,1,4,8,0
+2026,2020s,mlb805345,Trent Harris,San Francisco Giants,NL,Reliever,Right,22,0,0,0,2,0,1,70,94,20,7,6,1,7,27,0
+2026,2020s,mcdontr01,Trevor McDonald,San Francisco Giants,NL,Starter,Right,14,14,0,0,0,3,7,211,310,69,43,40,7,23,57,12
+2026,2020s,becktr01,Tristan Beck,San Francisco Giants,NL,Reliever,Right,14,0,0,0,1,1,0,57,83,21,11,11,2,5,9,1
+2026,2020s,mahlety01,Tyler Mahle,San Francisco Giants,NL,Starter,Right,18,18,0,0,0,3,9,284,404,95,55,54,14,37,89,2
+2026,2020s,mlb678576,Wilkin Ramos,San Francisco Giants,NL,Reliever,Right,2,0,0,0,0,0,0,6,15,5,5,5,0,4,1,0
+2026,2020s,mlb805074,Yunior Marte,San Francisco Giants,NL,Starter,Right,5,3,0,0,0,0,2,73,103,24,12,12,5,10,15,0
+2026,2020s,mlb695380,Alex Hoppe,Seattle Mariners,AL,Reliever,Right,24,0,0,0,0,0,1,84,123,27,21,18,2,11,34,1
+2026,2020s,munozan01,Andres Munoz,Seattle Mariners,AL,Reliever,Right,61,0,0,0,28,5,6,172,240,46,29,27,9,24,89,1
+2026,2020s,woobr01,Bryan Woo,Seattle Mariners,AL,Starter,Right,30,30,0,0,0,12,10,519,710,152,84,77,18,39,175,8
+2026,2020s,millebr04,Bryce Miller,Seattle Mariners,AL,Starter,Right,22,21,0,0,0,4,10,356,485,100,60,55,21,38,119,2
+2026,2020s,vargaca01,Carlos Vargas,Seattle Mariners,AL,Reliever,Right,16,0,0,0,0,3,0,57,81,16,10,10,2,4,17,4
+2026,2020s,legumca01,Casey Legumina,Seattle Mariners,AL,Reliever,Right,8,0,0,0,0,0,1,35,53,15,6,6,0,3,9,3
+2026,2020s,wilcoco01,Cole Wilcox,Seattle Mariners,AL,Reliever,Right,23,0,0,0,0,0,0,81,123,27,13,12,2,17,28,2
+2026,2020s,criswco01,Cooper Criswell,Seattle Mariners,AL,Reliever,Right,37,0,0,0,1,4,2,122,172,41,18,15,3,16,31,1
+2026,2020s,mlb682445,Domingo Gonzalez,Seattle Mariners,AL,Reliever,Right,5,0,0,0,0,0,0,23,36,9,4,4,1,5,5,0
+2026,2020s,bazared01,Eduard Bazardo,Seattle Mariners,AL,Reliever,Right,73,0,0,0,1,4,4,202,297,73,34,30,13,25,70,2
+2026,2020s,hancoem01,Emerson Hancock,Seattle Mariners,AL,Starter,Right,25,25,0,0,0,7,8,416,566,126,56,55,20,32,126,7
+2026,2020s,speiega01,Gabe Speier,Seattle Mariners,AL,Reliever,Left,54,0,0,0,1,2,3,138,190,35,17,15,5,15,45,5
+2026,2020s,kirbyge01,George Kirby,Seattle Mariners,AL,Starter,Right,30,30,1,0,0,9,11,524,741,197,89,84,22,47,148,3
+2026,2020s,milneho01,Hoby Milner,Seattle Mariners,AL,Reliever,Left,6,0,0,0,0,0,0,19,28,8,3,3,1,1,7,0
+2026,2020s,diazjh01,Jhonathan Diaz,Seattle Mariners,AL,Reliever,Left,1,0,0,0,0,0,0,4,6,2,1,1,1,0,1,0
+2026,2020s,peredjh01,Jhonny Pereda,Seattle Mariners,AL,Reliever,Right,1,0,0,0,0,0,0,1,4,3,2,2,1,0,0,0
+2026,2020s,ferrejo01,Jose Ferrer,Seattle Mariners,AL,Reliever,Left,73,0,0,0,3,4,4,194,295,75,33,30,7,20,54,7
+2026,2020s,suarejo01,Jose Suarez,Seattle Mariners,AL,Reliever,Left,1,0,0,0,0,0,0,6,11,2,1,1,0,2,3,1
+2026,2020s,simpsjo02,Josh Simpson,Seattle Mariners,AL,Reliever,Left,8,0,0,0,0,0,0,22,38,11,8,8,4,4,10,1
+2026,2020s,mlb807739,Kade Anderson,Seattle Mariners,AL,Starter,Left,7,7,0,0,0,2,2,107,146,35,15,15,4,9,32,0
+2026,2020s,rivasle01,Leo Rivas,Seattle Mariners,AL,Reliever,Right,1,0,0,0,0,0,0,3,13,9,9,7,1,1,0,0
+2026,2020s,gilbelo01,Logan Gilbert,Seattle Mariners,AL,Starter,Right,32,32,0,0,0,12,11,558,750,153,77,77,29,49,205,7
+2026,2020s,castilu02,Luis Castillo,Seattle Mariners,AL,Starter,Right,20,17,0,0,0,3,9,299,443,107,65,56,16,32,86,5
+2026,2020s,brashma01,Matt Brash,Seattle Mariners,AL,Reliever,Right,20,0,0,0,0,3,0,50,64,8,2,1,0,6,15,3
+2026,2020s,ruckemi01,Michael Rucker,Seattle Mariners,AL,Reliever,Right,37,0,0,0,0,1,4,131,186,39,31,27,6,17,50,2
+2026,2020s,mlb689546,Nick Davila,Seattle Mariners,AL,Reliever,Right,24,0,0,0,1,0,0,82,119,24,17,15,2,13,13,4
+2026,2020s,dominse01,Seranthony Dominguez,Seattle Mariners,AL,Reliever,Right,24,0,0,0,0,1,0,71,95,18,8,8,3,8,18,1
+2026,2020s,taylotr01,Troy Taylor,Seattle Mariners,AL,Reliever,Right,2,0,0,0,0,0,0,9,15,4,3,3,1,2,2,0
+2026,2020s,roblevi01,Victor Robles,Seattle Mariners,AL,Reliever,Right,1,0,0,0,0,0,0,3,9,5,3,3,0,1,0,0
+2026,2020s,wilsowe01,Weston Wilson,Seattle Mariners,AL,Reliever,Right,1,0,0,0,0,0,0,3,8,5,3,3,0,0,0,0
+2026,2020s,pallaan01,Andre Pallante,St. Louis Cardinals,NL,Starter,Right,29,29,0,0,0,12,9,486,679,156,73,69,12,50,110,6
+2026,2020s,zimmebr02,Bruce Zimmermann,St. Louis Cardinals,NL,Reliever,Left,1,0,0,0,0,0,0,15,21,6,3,3,0,1,2,0
+2026,2020s,mlb663494,Bryan Torres,St. Louis Cardinals,NL,Reliever,Right,1,0,0,0,0,0,0,6,8,1,0,0,0,1,0,0
+2026,2020s,mlb802408,Brycen Mautz,St. Louis Cardinals,NL,Reliever,Left,8,1,0,0,0,0,1,46,75,18,10,10,2,11,19,2
+2026,2020s,mlb685464,Cade Winquest,St. Louis Cardinals,NL,Reliever,Right,11,0,0,0,0,1,0,41,57,9,8,6,1,8,16,1
+2026,2020s,ferguca01,Caleb Ferguson,St. Louis Cardinals,NL,Reliever,Left,9,0,0,0,0,0,0,25,41,11,8,8,2,8,9,0
+2026,2020s,roycrch01,Chris Roycroft,St. Louis Cardinals,NL,Reliever,Right,7,0,0,0,0,0,0,16,39,13,9,9,2,8,4,1
+2026,2020s,mlb687309,Cooper Hjerpe,St. Louis Cardinals,NL,Reliever,Left,4,0,0,0,0,1,0,37,55,7,6,6,0,9,15,2
+2026,2020s,maydu01,Dustin May,St. Louis Cardinals,NL,Starter,Right,21,21,1,1,0,5,7,327,459,105,56,53,7,35,106,7
+2026,2020s,soriage01,George Soriano,St. Louis Cardinals,NL,Reliever,Right,70,0,0,0,4,6,5,198,290,57,33,31,10,35,66,3
+2026,2020s,gracego01,Gordon Graceffo,St. Louis Cardinals,NL,Reliever,Right,62,1,0,0,1,8,2,243,326,53,28,24,5,36,63,3
+2026,2020s,mlb684516,Hancel Rincon,St. Louis Cardinals,NL,Reliever,Right,3,0,0,0,0,0,0,7,14,5,7,7,1,1,3,1
+2026,2020s,dobbihu01,Hunter Dobbins,St. Louis Cardinals,NL,Starter,Right,11,8,0,0,1,3,3,162,231,49,24,22,7,24,52,2
+2026,2020s,shustja01,Jared Shuster,St. Louis Cardinals,NL,Reliever,Left,5,0,0,0,0,0,0,27,44,11,10,9,1,6,4,0
+2026,2020s,romerjo01,JoJo Romero,St. Louis Cardinals,NL,Reliever,Left,44,0,0,0,0,1,3,129,186,40,17,16,5,16,43,4
+2026,2020s,bruihju01,Justin Bruihl,St. Louis Cardinals,NL,Reliever,Left,73,0,0,0,0,1,1,233,346,75,41,31,4,28,53,12
+2026,2020s,leahyky01,Kyle Leahy,St. Louis Cardinals,NL,Starter,Right,30,30,0,0,0,10,5,420,596,147,58,57,15,41,132,5
+2026,2020s,mlb703725,Luis Gastelum,St. Louis Cardinals,NL,Reliever,Right,34,0,0,0,0,5,4,110,152,33,23,18,6,12,44,2
+2026,2020s,mlb690155,Matt Pushard,St. Louis Cardinals,NL,Reliever,Right,6,0,0,0,0,0,0,21,32,6,5,4,0,4,6,1
+2026,2020s,svansma01,Matt Svanson,St. Louis Cardinals,NL,Reliever,Right,41,1,0,0,0,2,3,130,207,55,39,35,5,21,41,2
+2026,2020s,liberma01,Matthew Liberatore,St. Louis Cardinals,NL,Starter,Left,31,31,0,0,0,6,14,465,674,173,96,90,28,55,154,5
+2026,2020s,mlb691008,Max Rajcic,St. Louis Cardinals,NL,Reliever,Right,6,0,0,0,0,0,0,27,39,6,5,5,1,6,8,0
+2026,2020s,mcgremi01,Michael McGreevy,St. Louis Cardinals,NL,Starter,Right,31,31,0,0,0,7,9,506,702,168,79,74,21,48,115,1
+2026,2020s,pagespe01,Pedro Pagés,St. Louis Cardinals,NL,Reliever,Right,2,0,0,0,0,0,0,6,7,2,1,1,1,0,0,0
+2026,2020s,strzepe01,Peter Strzelecki,St. Louis Cardinals,NL,Reliever,Right,8,0,0,0,0,1,1,42,61,13,9,9,1,6,8,2
+2026,2020s,mlb687273,Quinn Mathews,St. Louis Cardinals,NL,Starter,Left,9,9,0,0,0,2,4,148,211,48,21,21,5,20,46,1
+2026,2020s,obrieri01,Riley O'Brien,St. Louis Cardinals,NL,Reliever,Right,66,0,0,0,38,3,9,192,276,53,35,29,5,29,64,10
+2026,2020s,fernary01,Ryan Fernandez,St. Louis Cardinals,NL,Reliever,Right,17,0,0,0,0,1,2,69,100,19,14,9,2,11,28,0
+2026,2020s,stanery01,Ryne Stanek,St. Louis Cardinals,NL,Reliever,Right,70,0,0,0,2,2,3,188,267,52,31,28,9,32,65,2
+2026,2020s,blewesc01,Scott Blewett,St. Louis Cardinals,NL,Reliever,Right,1,0,0,0,0,0,0,6,9,1,0,0,0,2,2,0
+2026,2020s,brookaa01,Aaron Brooks,Tampa Bay Rays,AL,Reliever,Right,1,0,0,0,0,0,1,1,4,1,4,3,1,2,0,0
+2026,2020s,mlb702047,Alex Cook,Tampa Bay Rays,AL,Reliever,Right,4,0,0,0,0,0,0,17,24,4,3,3,1,2,5,0
+2026,2020s,wantzan01,Andrew Wantz,Tampa Bay Rays,AL,Reliever,Right,1,0,0,0,0,0,0,5,11,2,5,5,1,2,1,2
+2026,2020s,willibe03,Ben Williamson,Tampa Bay Rays,AL,Reliever,Right,5,0,0,0,0,0,0,15,21,5,2,2,1,1,0,0
+2026,2020s,mlb811315,Brody Hopkins,Tampa Bay Rays,AL,Reliever,Right,6,0,0,0,0,0,0,16,24,2,3,3,1,6,7,0
+2026,2020s,bakerbr01,Bryan Baker,Tampa Bay Rays,AL,Reliever,Right,65,0,0,0,41,4,2,187,244,35,12,10,4,22,63,2
+2026,2020s,booseca01,Cam Booser,Tampa Bay Rays,AL,Reliever,Left,42,0,0,0,0,1,0,123,152,25,10,9,5,6,45,0
+2026,2020s,legumca01,Casey Legumina,Tampa Bay Rays,AL,Reliever,Right,47,6,0,0,0,2,1,180,252,58,24,24,7,16,46,5
+2026,2020s,mlb686678,Chase Solesky,Tampa Bay Rays,AL,Reliever,Right,1,0,0,0,0,0,0,9,17,6,2,2,1,1,4,0
+2026,2020s,roycrch01,Chris Roycroft,Tampa Bay Rays,AL,Reliever,Right,11,0,0,0,1,1,0,58,86,24,14,14,6,4,14,2
+2026,2020s,sulseco01,Cole Sulser,Tampa Bay Rays,AL,Reliever,Right,51,2,0,0,3,1,0,169,236,53,31,27,7,17,56,0
+2026,2020s,kimbrcr01,Craig Kimbrel,Tampa Bay Rays,AL,Reliever,Right,19,0,0,0,0,0,0,56,80,13,8,8,1,10,17,2
+2026,2020s,rasmudr01,Drew Rasmussen,Tampa Bay Rays,AL,Starter,Right,30,30,0,0,0,16,5,516,669,125,53,51,14,32,174,7
+2026,2020s,peralfr01,Freddy Peralta,Tampa Bay Rays,AL,Starter,Right,10,10,0,0,0,5,2,166,218,41,20,20,6,15,43,3
+2026,2020s,cleavga01,Garrett Cleavinger,Tampa Bay Rays,AL,Reliever,Left,51,0,0,0,2,4,4,124,181,37,23,22,6,22,54,2
+2026,2020s,jaxgr01,Griffin Jax,Tampa Bay Rays,AL,Starter,Right,34,23,0,0,0,8,10,337,459,97,56,44,15,35,116,2
+2026,2020s,biggehu01,Hunter Bigge,Tampa Bay Rays,AL,Reliever,Right,18,0,0,0,0,1,1,58,85,14,17,15,1,14,14,0
+2026,2020s,seymoia01,Ian Seymour,Tampa Bay Rays,AL,Reliever,Left,47,16,0,0,2,9,7,398,551,114,67,62,25,36,158,5
+2026,2020s,woodfja01,Jake Woodford,Tampa Bay Rays,AL,Reliever,Right,1,0,0,0,0,0,0,4,8,3,3,3,1,1,2,0
+2026,2020s,scholje01,Jesse Scholtens,Tampa Bay Rays,AL,Reliever,Right,12,2,0,0,0,5,3,143,209,49,25,23,12,15,37,3
+2026,2020s,boylejo01,Joe Boyle,Tampa Bay Rays,AL,Starter,Right,4,3,0,0,0,0,1,57,81,13,13,11,1,9,21,0
+2026,2020s,heasljo01,Jonathan Heasley,Tampa Bay Rays,AL,Reliever,Right,1,0,0,0,0,0,0,12,19,8,5,5,2,0,2,0
+2026,2020s,kellyke02,Kevin Kelly,Tampa Bay Rays,AL,Reliever,Right,71,0,0,0,4,6,4,221,279,55,23,20,6,11,63,3
+2026,2020s,rodrima01,Manuel Rodriguez,Tampa Bay Rays,AL,Reliever,Right,6,0,0,0,0,0,0,20,35,6,3,2,1,8,10,1
+2026,2020s,englema01,Mason Englert,Tampa Bay Rays,AL,Reliever,Right,15,4,0,0,1,0,4,118,179,52,27,26,13,9,38,1
+2026,2020s,grovemi01,Michael Grove,Tampa Bay Rays,AL,Reliever,Right,3,0,0,0,0,1,0,21,28,7,5,4,3,0,6,0
+2026,2020s,martini01,Nick Martinez,Tampa Bay Rays,AL,Starter,Right,31,31,1,0,0,15,6,540,722,171,62,62,22,26,109,3
+2026,2020s,mcclash01,Shane McClanahan,Tampa Bay Rays,AL,Starter,Left,24,24,0,0,0,10,7,354,487,93,52,44,10,39,106,4
+2026,2020s,matzst01,Steven Matz,Tampa Bay Rays,AL,Reliever,Left,36,11,0,0,1,6,6,241,342,74,50,49,15,25,61,2
+2026,2020s,mlb694680,Trevor Martin,Tampa Bay Rays,AL,Reliever,Right,6,0,0,0,0,0,0,34,54,14,8,5,4,4,7,2
+2026,2020s,mlb694494,Ty Johnson,Tampa Bay Rays,AL,Reliever,Right,8,0,0,0,0,0,0,23,34,7,3,3,1,4,11,0
+2026,2020s,wellsty01,Tyler Wells,Tampa Bay Rays,AL,Reliever,Right,14,0,0,0,2,3,0,54,66,8,4,3,2,5,19,0
+2026,2020s,gomezyo01,Yoendrys Gómez,Tampa Bay Rays,AL,Reliever,Right,9,0,0,0,1,0,0,52,82,19,13,12,5,10,13,1
+2026,2020s,mlb671936,Adam Macko,Texas Rangers,AL,Reliever,Left,8,0,0,0,0,0,0,27,46,14,7,6,2,4,9,1
+2026,2020s,mlb687239,Ben Peoples,Texas Rangers,AL,Reliever,Right,16,0,0,0,0,0,1,49,68,14,5,5,3,8,10,1
+2026,2020s,quantca01,Cal Quantrill,Texas Rangers,AL,Reliever,Right,32,15,0,0,0,9,5,330,443,89,41,35,13,25,81,6
+2026,2020s,mlb691945,Carter Baumler,Texas Rangers,AL,Reliever,Right,4,0,0,0,0,0,0,17,27,4,2,2,1,6,6,1
+2026,2020s,silsech01,Chase Silseth,Texas Rangers,AL,Reliever,Right,26,0,0,0,0,0,2,61,97,21,12,12,3,13,26,4
+2026,2020s,martich02,Chris Martin,Texas Rangers,AL,Reliever,Right,16,0,0,0,0,1,1,42,66,25,15,14,4,2,9,1
+2026,2020s,paddach01,Chris Paddack,Texas Rangers,AL,Reliever,Right,1,0,0,0,0,0,0,12,19,7,2,2,1,0,1,0
+2026,2020s,bradfco01,Cody Bradford,Texas Rangers,AL,Starter,Left,10,8,0,0,0,0,5,132,193,55,21,21,6,10,22,1
+2026,2020s,winnco01,Cole Winn,Texas Rangers,AL,Reliever,Right,51,1,0,0,1,5,3,144,215,54,32,30,7,16,49,1
+2026,2020s,mlb693713,Emiliano Teodo,Texas Rangers,AL,Reliever,Right,1,0,0,0,0,0,0,5,10,3,2,2,0,2,1,0
+2026,2020s,mlb686560,Gavin Collyer,Texas Rangers,AL,Reliever,Right,24,0,0,0,0,1,1,75,113,17,16,15,2,19,23,6
+2026,2020s,leiteja01,Jack Leiter,Texas Rangers,AL,Starter,Right,15,15,0,0,0,3,7,240,355,80,50,47,14,35,83,4
+2026,2020s,degroja01,Jacob deGrom,Texas Rangers,AL,Starter,Right,31,31,0,0,0,11,11,488,668,139,76,76,20,46,201,2
+2026,2020s,latzja01,Jake Latz,Texas Rangers,AL,Reliever,Left,58,1,0,0,30,3,4,216,271,35,19,17,6,23,83,0
+2026,2020s,junisja01,Jakob Junis,Texas Rangers,AL,Reliever,Right,53,1,0,0,6,1,3,163,234,51,22,22,4,18,38,5
+2026,2020s,beeksja01,Jalen Beeks,Texas Rangers,AL,Reliever,Left,29,0,0,0,0,2,1,78,113,28,11,11,6,8,21,0
+2026,2020s,rossjo01,Joe Ross,Texas Rangers,AL,Reliever,Right,5,0,0,0,0,0,1,24,35,9,5,4,2,2,5,0
+2026,2020s,montgjo01,Jordan Montgomery,Texas Rangers,AL,Reliever,Left,13,0,0,0,1,1,0,78,104,20,12,12,3,6,20,1
+2026,2020s,cornijo01,Jose Corniell,Texas Rangers,AL,Reliever,Right,2,0,0,0,0,0,1,13,28,11,10,10,2,4,4,0
+2026,2020s,rockeku01,Kumar Rocker,Texas Rangers,AL,Starter,Right,30,27,0,0,0,6,11,444,645,147,74,72,20,61,138,4
+2026,2020s,higasky01,Kyle Higashioka,Texas Rangers,AL,Reliever,Right,3,0,0,0,0,0,0,9,18,8,7,7,1,1,0,1
+2026,2020s,curvelu01,Luis Curvelo,Texas Rangers,AL,Reliever,Right,9,0,0,0,0,0,0,31,55,17,12,11,4,7,6,0
+2026,2020s,gorema01,MacKenzie Gore,Texas Rangers,AL,Starter,Left,34,34,0,0,0,8,11,519,750,160,89,88,19,71,174,7
+2026,2020s,gonzama02,Marco Gonzales,Texas Rangers,AL,Reliever,Left,3,0,0,0,1,0,0,20,29,7,1,1,0,4,3,0
+2026,2020s,eovalna01,Nathan Eovaldi,Texas Rangers,AL,Starter,Right,27,23,0,0,0,11,10,437,613,142,71,68,24,35,144,10
+2026,2020s,lopezni01,Nicky Lopez,Texas Rangers,AL,Reliever,Right,1,0,0,0,0,0,0,3,7,4,1,1,0,0,1,0
+2026,2020s,mlb663884,Nolan Kingham,Texas Rangers,AL,Reliever,Right,1,0,0,0,0,0,0,3,6,1,1,1,0,2,1,0
+2026,2020s,mlb682608,Peyton Gray,Texas Rangers,AL,Reliever,Right,49,0,0,0,0,6,0,168,249,56,29,24,9,17,60,3
+2026,2020s,mlb695239,Robby Ahlstrom,Texas Rangers,AL,Reliever,Left,42,0,0,0,0,3,1,111,164,38,26,25,7,15,34,3
+2026,2020s,garciro04,Robert Garcia,Texas Rangers,AL,Reliever,Left,20,0,0,0,0,2,1,56,71,13,7,5,1,9,11,0
+2026,2020s,haggesa01,Sam Haggerty,Texas Rangers,AL,Reliever,Right,1,0,0,0,0,0,0,3,3,0,0,0,0,0,0,1
+2026,2020s,willitr01,Trevor Williams,Texas Rangers,AL,Reliever,Right,7,1,0,0,0,2,0,35,49,9,5,5,2,4,12,1
+2026,2020s,alexaty01,Tyler Alexander,Texas Rangers,AL,Reliever,Left,75,5,0,0,4,5,2,219,312,73,34,30,3,23,60,4
+2026,2020s,mlb692437,Winston Santos,Texas Rangers,AL,Reliever,Right,1,0,0,0,0,0,0,6,9,2,2,2,1,1,1,0
+2026,2020s,mlb671936,Adam Macko,Toronto Blue Jays,AL,Reliever,Left,22,1,0,0,0,2,0,66,99,24,12,12,3,10,23,3
+2026,2020s,vothau01,Austin Voth,Toronto Blue Jays,AL,Reliever,Right,2,0,0,0,0,0,0,18,31,8,6,6,3,5,1,0
+2026,2020s,fishebr02,Braydon Fisher,Toronto Blue Jays,AL,Reliever,Right,75,10,0,0,1,3,4,227,310,52,34,27,8,44,74,3
+2026,2020s,mlb676454,Brendan Cellucci,Toronto Blue Jays,AL,Reliever,Left,6,0,0,0,0,0,0,26,30,2,0,0,0,3,11,0
+2026,2020s,littlbr02,Brendon Little,Toronto Blue Jays,AL,Reliever,Left,30,0,0,0,0,0,3,85,132,29,23,20,5,25,44,0
+2026,2020s,mlb669310,CJ Van Eyk,Toronto Blue Jays,AL,Reliever,Right,5,1,0,0,0,0,2,35,55,15,8,7,2,2,3,2
+2026,2020s,mlb689149,Chad Dallas,Toronto Blue Jays,AL,Reliever,Right,6,0,0,0,0,2,1,43,64,13,8,8,2,8,17,0
+2026,2020s,leech02,Chase Lee,Toronto Blue Jays,AL,Reliever,Right,8,0,0,0,1,1,0,29,42,8,8,7,3,8,5,0
+2026,2020s,ponceco01,Cody Ponce,Toronto Blue Jays,AL,Starter,Right,1,1,0,0,0,0,0,7,10,1,1,1,0,1,3,0
+2026,2020s,seaboco01,Connor Seabold,Toronto Blue Jays,AL,Reliever,Right,5,0,0,0,0,0,0,10,18,6,3,3,0,2,1,0
+2026,2020s,ceasedy01,Dylan Cease,Toronto Blue Jays,AL,Starter,Right,29,29,1,1,0,11,6,507,685,108,54,45,11,78,239,3
+2026,2020s,lauerer01,Eric Lauer,Toronto Blue Jays,AL,Starter,Left,8,6,0,0,0,1,5,109,162,38,27,27,11,16,26,0
+2026,2020s,mlb696522,Hayden Juenger,Toronto Blue Jays,AL,Reliever,Right,2,0,0,0,0,0,0,6,10,2,3,3,0,2,0,0
+2026,2020s,taillja01,Jameson Taillon,Toronto Blue Jays,AL,Starter,Right,3,3,0,0,0,0,0,30,44,9,4,4,2,5,8,0
+2026,2020s,hoffmje02,Jeff Hoffman,Toronto Blue Jays,AL,Reliever,Right,51,0,0,0,5,6,7,144,215,48,28,21,4,18,75,5
+2026,2020s,mantijo01,Joe Mantiply,Toronto Blue Jays,AL,Reliever,Left,25,0,0,0,0,2,0,81,111,27,10,9,3,5,22,1
+2026,2020s,mlb804619,John Klein,Toronto Blue Jays,AL,Reliever,Right,1,0,0,0,0,0,0,12,16,2,2,0,0,2,5,0
+2026,2020s,flemijo01,Josh Fleming,Toronto Blue Jays,AL,Reliever,Left,1,0,0,0,0,0,0,9,18,6,4,4,1,2,1,1
+2026,2020s,rodrijo07,José Rodriguez,Toronto Blue Jays,AL,Reliever,Right,4,0,0,0,0,0,0,14,16,3,0,0,0,0,5,0
+2026,2020s,soriajo02,José Soriano,Toronto Blue Jays,AL,Starter,Right,10,10,0,0,0,3,2,163,234,58,34,32,6,16,42,5
+2026,2020s,gausmke01,Kevin Gausman,Toronto Blue Jays,AL,Starter,Right,23,23,0,0,0,5,10,382,540,128,68,62,15,36,127,1
+2026,2020s,estrala01,Lazaro Estrada,Toronto Blue Jays,AL,Reliever,Right,8,0,0,0,1,1,1,39,57,8,9,8,2,10,9,1
+2026,2020s,varlalo01,Louie Varland,Toronto Blue Jays,AL,Reliever,Right,71,0,0,0,35,5,6,234,307,55,20,11,2,23,97,0
+2026,2020s,fluhama01,Mason Fluharty,Toronto Blue Jays,AL,Reliever,Left,83,4,0,0,1,7,1,188,263,50,23,23,6,28,65,1
+2026,2020s,waldrma01,Matt Waldron,Toronto Blue Jays,AL,Reliever,Right,4,0,0,0,0,0,0,13,22,7,5,5,0,2,3,0
+2026,2020s,scherma01,Max Scherzer,Toronto Blue Jays,AL,Starter,Right,18,18,0,0,0,4,9,254,364,78,54,54,15,35,68,2
+2026,2020s,lorenmi01,Michael Lorenzen,Toronto Blue Jays,AL,Reliever,Right,6,0,0,0,1,0,2,35,57,18,11,11,4,5,8,0
+2026,2020s,strawmy01,Myles Straw,Toronto Blue Jays,AL,Reliever,Right,4,0,0,0,0,0,0,12,20,8,2,2,1,1,0,0
+2026,2020s,corbipa01,Patrick Corbin,Toronto Blue Jays,AL,Starter,Left,19,15,0,0,1,3,4,240,360,98,50,49,12,25,63,6
+2026,2020s,sewalpa01,Paul Sewald,Toronto Blue Jays,AL,Reliever,Right,17,0,0,0,0,0,0,43,56,6,1,1,1,4,9,2
+2026,2020s,mlb694357,Ricky Tiedemann,Toronto Blue Jays,AL,Reliever,Left,5,0,0,0,0,0,0,18,29,5,1,1,0,6,8,1
+2026,2020s,biebesh01,Shane Bieber,Toronto Blue Jays,AL,Starter,Right,11,11,0,0,0,5,2,167,242,55,28,27,10,24,44,0
+2026,2020s,woodssi01,Simeon Woods Richardson,Toronto Blue Jays,AL,Reliever,Right,8,0,0,0,0,2,0,55,76,14,8,8,2,12,14,0
+2026,2020s,arrigsp01,Spencer Arrighetti,Toronto Blue Jays,AL,Reliever,Right,7,2,0,0,0,2,4,68,106,21,20,16,6,14,19,1
+2026,2020s,mlb693686,Spencer Miles,Toronto Blue Jays,AL,Reliever,Right,49,8,0,0,2,6,2,287,388,80,31,28,5,25,93,1
+2026,2020s,mlb681084,Tanner Andrews,Toronto Blue Jays,AL,Reliever,Right,2,0,0,0,0,0,0,9,11,1,0,0,0,2,1,0
+2026,2020s,nanceto01,Tommy Nance,Toronto Blue Jays,AL,Reliever,Right,32,0,0,0,0,1,2,99,139,29,15,14,5,13,34,0
+2026,2020s,yesavtr01,Trey Yesavage,Toronto Blue Jays,AL,Starter,Right,20,20,0,0,0,5,6,293,401,64,41,40,12,47,97,2
+2026,2020s,heinety01,Tyler Heineman,Toronto Blue Jays,AL,Reliever,Right,3,0,0,0,0,0,0,10,18,7,5,5,1,1,0,0
+2026,2020s,rogerty01,Tyler Rogers,Toronto Blue Jays,AL,Reliever,Right,74,0,0,0,4,2,3,213,294,61,22,14,2,22,40,2
+2026,2020s,rodriya01,Yariel Rodríguez,Toronto Blue Jays,AL,Reliever,Right,10,0,0,0,0,0,1,28,45,12,11,8,2,7,6,1
+2026,2020s,granian01,Andre Granillo,Washington Nationals,NL,Reliever,Right,8,0,0,0,0,0,0,28,50,13,12,10,2,8,3,1
+2026,2020s,alvaran01,Andrew Alvarez,Washington Nationals,NL,Starter,Left,25,17,0,0,1,2,6,338,473,95,43,43,7,51,114,3
+2026,2020s,lordbr02,Brad Lord,Washington Nationals,NL,Reliever,Right,40,5,0,0,1,5,2,250,357,69,36,35,10,33,77,8
+2026,2020s,cavalca01,Cade Cavalli,Washington Nationals,NL,Starter,Right,32,32,0,0,0,13,5,509,706,148,68,57,18,48,200,16
+2026,2020s,palmqca01,Carson Palmquist,Washington Nationals,NL,Starter,Left,11,6,0,0,0,0,2,49,78,21,14,14,1,8,15,3
+2026,2020s,perezci01,Cionel Perez,Washington Nationals,NL,Reliever,Left,16,0,0,0,0,2,3,48,73,16,12,11,2,11,9,0
+2026,2020s,beetecl01,Clayton Beeter,Washington Nationals,NL,Reliever,Right,50,0,0,0,12,6,5,144,209,36,25,24,8,31,47,3
+2026,2020s,henryco01,Cole Henry,Washington Nationals,NL,Reliever,Right,11,0,0,0,0,0,2,41,70,17,14,12,4,7,15,3
+2026,2020s,earlyco01,Connelly Early,Washington Nationals,NL,Starter,Left,1,1,0,0,0,0,0,9,10,1,0,0,0,0,1,0
+2026,2020s,herzdj01,DJ Herz,Washington Nationals,NL,Starter,Left,2,2,0,0,0,0,1,21,35,11,8,8,3,3,6,0
+2026,2020s,mlb678868,Eddy Yean,Washington Nationals,NL,Reliever,Right,8,1,0,0,0,0,1,33,45,8,3,3,1,2,7,1
+2026,2020s,mlb680899,Erik Tolman,Washington Nationals,NL,Reliever,Left,15,0,0,0,5,1,1,46,67,13,6,5,1,9,17,0
+2026,2020s,grifffo01,Foster Griffin,Washington Nationals,NL,Starter,Left,22,22,0,0,0,12,3,388,524,109,49,44,19,30,116,8
+2026,2020s,varlagu01,Gus Varland,Washington Nationals,NL,Reliever,Right,34,0,0,0,6,2,2,99,155,43,26,24,7,15,32,0
+2026,2020s,mlb695378,Jack Sinclair,Washington Nationals,NL,Reliever,Right,11,0,0,0,1,1,0,33,46,6,3,3,0,4,8,3
+2026,2020s,mlb800600,Jackson Kent,Washington Nationals,NL,Starter,Left,8,7,0,0,0,2,4,109,170,40,25,24,2,25,30,0
+2026,2020s,rutleja01,Jackson Rutledge,Washington Nationals,NL,Reliever,Right,1,0,0,0,0,0,0,4,12,6,7,7,0,2,2,0
+2026,2020s,birdja01,Jake Bird,Washington Nationals,NL,Reliever,Right,8,0,0,0,0,0,0,25,33,6,3,3,2,2,10,0
+2026,2020s,irvinja01,Jake Irvin,Washington Nationals,NL,Starter,Right,22,20,0,0,0,2,10,320,470,100,70,65,20,48,110,9
+2026,2020s,mlb688692,Jared Simpson,Washington Nationals,NL,Reliever,Left,4,1,0,0,0,1,1,13,20,1,5,5,0,7,4,0
+2026,2020s,wiemejo01,Joey Wiemer,Washington Nationals,NL,Reliever,Right,2,0,0,0,0,0,0,6,16,7,5,5,1,2,0,1
+2026,2020s,vivasjo01,Jorbit Vivas,Washington Nationals,NL,Reliever,Right,4,0,0,0,0,0,0,12,27,11,7,6,1,1,0,3
+2026,2020s,grayjo03,Josiah Gray,Washington Nationals,NL,Reliever,Right,3,0,0,0,1,0,0,12,15,3,0,0,0,1,2,0
+2026,2020s,tenajo01,José Tena,Washington Nationals,NL,Reliever,Right,1,0,0,0,0,0,0,3,5,2,1,1,0,1,0,0
+2026,2020s,fernaju02,Julian Fernandez,Washington Nationals,NL,Reliever,Right,3,0,0,0,0,0,0,12,18,3,3,1,1,2,3,0
+2026,2020s,lawreju01,Justin Lawrence,Washington Nationals,NL,Reliever,Right,7,0,0,0,1,0,0,19,32,7,3,3,1,7,6,0
+2026,2020s,waldike01,Ken Waldichuk,Washington Nationals,NL,Reliever,Left,5,0,0,0,0,0,0,28,41,8,7,7,4,6,8,1
+2026,2020s,mlb691384,Luis Perales,Washington Nationals,NL,Reliever,Right,6,0,0,0,0,0,0,33,60,15,14,14,5,13,13,0
+2026,2020s,krookma01,Matt Krook,Washington Nationals,NL,Reliever,Left,6,0,0,0,0,0,1,14,25,4,4,4,1,6,4,1
+2026,2020s,waldrma01,Matt Waldron,Washington Nationals,NL,Reliever,Right,3,1,0,0,0,1,0,17,25,7,0,0,0,1,2,0
+2026,2020s,kranima01,Max Kranick,Washington Nationals,NL,Reliever,Right,17,0,0,0,0,0,1,55,94,27,19,19,4,13,11,1
+2026,2020s,mikolmi01,Miles Mikolas,Washington Nationals,NL,Reliever,Right,25,11,0,0,0,3,9,348,498,137,80,75,27,23,58,2
+2026,2020s,parkemi01,Mitchell Parker,Washington Nationals,NL,Reliever,Left,22,0,0,0,1,3,3,119,178,46,31,29,9,13,34,2
+2026,2020s,ribalor01,Orlando Ribalta,Washington Nationals,NL,Reliever,Right,45,0,0,0,2,1,2,129,178,34,21,18,5,18,42,0
+2026,2020s,poulipj01,PJ Poulin,Washington Nationals,NL,Reliever,Left,35,11,0,0,3,3,0,110,153,27,12,11,4,21,25,1
+2026,2020s,schulpa01,Paxton Schultz,Washington Nationals,NL,Reliever,Right,27,1,0,0,1,1,2,97,153,43,26,23,5,12,32,1
+2026,2020s,lovelri01,Richard Lovelady,Washington Nationals,NL,Reliever,Left,32,6,0,0,4,2,3,83,140,33,15,13,4,20,25,4
+2026,2020s,mlb683000,Riley Cornelio,Washington Nationals,NL,Reliever,Right,18,3,0,0,0,3,2,110,160,26,22,15,2,29,40,0
+2026,2020s,cosgrto01,Tom Cosgrove,Washington Nationals,NL,Reliever,Left,18,0,0,0,1,1,2,49,74,18,16,14,3,6,14,2
+2026,2020s,willitr01,Trevor Williams,Washington Nationals,NL,Reliever,Right,8,0,0,0,0,0,0,51,71,15,5,5,2,6,22,1
+2026,2020s,mlb702021,Will Dion,Washington Nationals,NL,Reliever,Left,15,1,0,0,1,3,2,90,116,18,10,10,4,14,30,0
+2026,2020s,mlb672442,Yovanny Cruz,Washington Nationals,NL,Reliever,Right,13,0,0,0,1,0,2,32,50,13,8,8,2,8,9,1
+2026,2020s,litteza01,Zack Littell,Washington Nationals,NL,Starter,Right,23,14,0,0,0,7,8,337,481,115,69,62,25,35,70,3
+2026,2020s,kentza01,Zak Kent,Washington Nationals,NL,Reliever,Right,9,0,0,0,0,0,0,38,57,15,8,8,1,3,10,0
