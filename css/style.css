@@ -68,7 +68,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-s
 .sound-toggle:hover { background: var(--wall-2); }
 .sound-toggle:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 .sound-toggle[aria-pressed="true"] { background: var(--lights); border-color: var(--lights); color: var(--wall); }
-@media (max-width: 1240px) { .brand span { display: none; } }
+@media (max-width: 1280px) { .brand span { display: none; } }
 @media (max-width: 900px) { .sound-toggle { padding: 6px 10px; font-size: 12px; } }
 @media (max-width: 760px) {
   .nav { position: static; }

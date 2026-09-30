@@ -1,4 +1,4 @@
-# The Evolution of MLB Hitting
+# The Evolution of MLB Hitting and Pitching
 
 A data website built for FDA 2 (Financial Data Analytics). It studies every MLB batter's and pitcher's season from 1960 to 2026, using the 2025 Lahman release plus the 2026 regular season from MLB's Stats API, and tracks how strikeouts, home runs, ERA, complete games and other measures changed over that time. The report page is `index.html` and the main dashboard is `dashboard.html`; the site also has a pitching dashboard and a hitter-vs-pitcher matchup page.
 
