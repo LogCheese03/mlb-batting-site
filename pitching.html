@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pitching Dashboard | The Evolution of MLB Hitting</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared navigation bar (identical on every page) -->
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M6 3.5c2.5 2.5 2.5 14.5 0 17M18 3.5c-2.5 2.5-2.5 14.5 0 17" stroke="#c8102e" stroke-width="1.6" fill="none" stroke-dasharray="2 1.6"/></svg>
+      <span>The Evolution of MLB Hitting</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Report</a></li>
+      <li><a href="dashboard.html">Hitting Dashboard</a></li>
+      <li><a href="pitching.html" aria-current="page">Pitching Dashboard</a></li>
+      <li><a href="index.html#methods">About the data</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="loading" id="loading">Loading every pitcher-season…</div>
+
+<main class="dash">
+  <div class="dash-title">
+    <div>
+      <h1>Build your own pitching report</h1>
+      <p>Filter the data, pick a measure, and choose how to break it down. Every number recalculates in your browser. With no filters applied, the numbers match the pitching findings in the report.</p>
+    </div>
+  </div>
+
+  <!-- ---------------- Filters ---------------- -->
+  <aside class="filters" aria-label="Filters">
+    <h2>Filters</h2>
+
+    <div class="filter">
+      <div class="filter-label">Seasons <span class="count" id="yearLabel"></span></div>
+      <div class="range-row">
+        <input type="number" id="yearMin" aria-label="First season">
+        <span>to</span>
+        <input type="number" id="yearMax" aria-label="Last season">
+      </div>
+      <input type="range" id="yearMinSlider" aria-label="First season slider">
+      <input type="range" id="yearMaxSlider" aria-label="Last season slider">
+    </div>
+
+    <div class="filter">
+      <div class="filter-label">Franchise <span class="count" id="franchiseCount"></span></div>
+      <input type="search" id="franchiseSearch" placeholder="Search franchises" aria-label="Search franchises">
+      <div style="margin-top:6px"><button class="linkish" id="franchAll">Select all</button> · <button class="linkish" id="franchNone">Clear</button></div>
+      <div class="checklist" id="franchiseList"></div>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label">League</div>
+      <div class="chips" id="leagueChips"></div>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label">Role</div>
+      <div class="chips" id="roleChips"></div>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label">Throws</div>
+      <div class="chips" id="throwsChips"></div>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label">Minimum batters faced <span class="count" id="minBFLabel">0</span></div>
+      <input type="range" id="minBF" min="0" max="800" step="25" value="0" aria-label="Minimum batters faced">
+    </div>
+
+    <button class="btn-reset" id="reset">Reset all filters</button>
+  </aside>
+
+  <!-- ---------------- Main panel ---------------- -->
+  <section aria-label="Results">
+
+    <div class="player-card" id="playerCard">
+      <h2>Look up a pitcher</h2>
+      <div class="player-search-row">
+        <input type="search" id="playerSearch" list="playerNames" placeholder="Type a pitcher's name…" aria-label="Search for a pitcher">
+        <datalist id="playerNames"></datalist>
+        <p>Career line and season-by-season trend, independent of the filters below. Career totals include only the 1960–2025 seasons in this data.</p>
+      </div>
+      <div class="player-result" id="playerResult" hidden></div>
+    </div>
+
+    <div class="controls">
+      <div class="control">
+        <label for="measure">Measure</label>
+        <select id="measure"></select>
+      </div>
+      <div class="control">
+        <label for="breakdown">Break down by</label>
+        <select id="breakdown">
+          <option value="role">Role (starter / reliever)</option>
+          <option value="franchise">Franchise</option>
+          <option value="league">League</option>
+          <option value="throws">Throwing hand</option>
+          <option value="decade">Decade</option>
+        </select>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
+    </div>
+
+    <div class="scoreboard kpi-board" aria-label="Summary numbers">
+      <div class="board-grid" id="kpis"></div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card wide">
+        <div class="chart-head"><span class="chart-title" id="t-trend"></span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div class="seg" id="trendMode"><button aria-pressed="true" data-v="all">All selected</button><button aria-pressed="false" data-v="split">Split by breakdown</button></div>
+            <button class="btn" data-save="trend">Save PNG</button>
+          </div></div>
+        <div class="chart-box"><canvas id="c-trend" role="img" aria-label="Measure by season"></canvas></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title" id="t-bar"></span><button class="btn" data-save="bar">Save PNG</button></div>
+        <div class="chart-box clickable"><canvas id="c-bar" role="img" aria-label="Measure by breakdown"></canvas></div>
+        <p class="chart-note">Click a bar to filter the whole dashboard to that group.</p>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title" id="t-scatter"></span><button class="btn" data-save="scatter">Save PNG</button></div>
+        <div class="chart-box clickable"><canvas id="c-scatter" role="img" aria-label="Strikeout rate versus walk rate"></canvas></div>
+        <p class="chart-note">Each bubble is one group; bubble size is plate appearances. Click one to filter to it.</p>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title" id="t-leaders"></span><button class="btn" data-save="leaders">Save PNG</button></div>
+        <div class="chart-box clickable"><canvas id="c-leaders" role="img" aria-label="Top pitchers"></canvas></div>
+        <p class="chart-note" id="n-leaders"></p>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title" id="t-hist"></span><button class="btn" data-save="hist">Save PNG</button></div>
+        <div class="chart-box"><canvas id="c-hist" role="img" aria-label="Distribution of pitcher-seasons"></canvas></div>
+        <p class="chart-note" id="n-hist"></p>
+      </div>
+
+      <div class="chart-card wide">
+        <div class="chart-head"><span class="chart-title" id="t-heat"></span></div>
+        <div class="heatmap-wrap" id="heatmap"></div>
+      </div>
+    </div>
+
+    <div class="chart-card table-card">
+      <div class="chart-head"><span class="chart-title" id="t-table"></span><button class="btn" id="exportCsv">Download table as CSV</button></div>
+      <div class="table-wrap"><table class="data-table" id="table"></table></div>
+    </div>
+  </section>
+</main>
+
+<footer>Built by Logan Hull with data from the Lahman Baseball Database. <a href="index.html">Read the report</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/pitching.js"></script>
+</body>
+</html>
