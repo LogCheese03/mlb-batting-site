@@ -1,6 +1,6 @@
 # The Evolution of MLB Hitting
 
-A data website built for FDA 2 (Financial Data Analytics). It studies every MLB batter's and pitcher's season from 1960 to 2025, using the 2025 Lahman release, and tracks how strikeouts, home runs, ERA, complete games and other measures changed over that time. The report page is `index.html` and the main dashboard is `dashboard.html`; the site also has a pitching dashboard and a hitter-vs-pitcher matchup page.
+A data website built for FDA 2 (Financial Data Analytics). It studies every MLB batter's and pitcher's season from 1960 to 2026, using the 2025 Lahman release plus the 2026 regular season from MLB's Stats API, and tracks how strikeouts, home runs, ERA, complete games and other measures changed over that time. The report page is `index.html` and the main dashboard is `dashboard.html`; the site also has a pitching dashboard and a hitter-vs-pitcher matchup page.
 
 - **Live site:** https://logcheese03.github.io/mlb-batting-site/
 - **Repository:** https://github.com/LogCheese03/mlb-batting-site
@@ -13,13 +13,15 @@ The [Lahman Baseball Database](https://sabr.org/lahman-database/), compiled by S
 
 Tables used: `Batting.csv`, `Pitching.csv`, `People.csv`, `Fielding.csv`, `Teams.csv` and `TeamsFranchises.csv`.
 
-The Matchups page uses a second source, [Retrosheet](https://www.retrosheet.org) play-by-play event files for 1960–2025 (`https://www.retrosheet.org/events/YYYYeve.zip`), because Lahman has no batter-versus-pitcher data. *The information used here was obtained free of charge from and is copyrighted by Retrosheet. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711.*
+The 2026 regular season is not in Lahman yet (a season is published after it ends), so it comes from MLB's public Stats API (`https://statsapi.mlb.com`), fetched by `scripts/fetch_mlb_2026.py` and merged by `prep_data.py`; see "The 2026 season" below.
+
+The Matchups page uses another source, [Retrosheet](https://www.retrosheet.org) play-by-play event files for 1960–2025 (`https://www.retrosheet.org/events/YYYYeve.zip`), because Lahman has no batter-versus-pitcher data. *The information used here was obtained free of charge from and is copyrighted by Retrosheet. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711.*
 
 One row of `data/batting.csv` is one player's batting line for one team in one season. The time column is `year`, and the group column is `franchise`.
 
-The pitching file, `data/pitching.csv`, has the same grain (one pitcher, one team, one season) with 37,414 rows and 24 columns. The hitting file meets the project's data requirements on its own; the pitching and matchup files are extras.
+The pitching file, `data/pitching.csv`, has the same grain (one pitcher, one team, one season) with 38,416 rows and 24 columns. The hitting file meets the project's data requirements on its own; the pitching and matchup files are extras.
 
-The cleaned hitting file has 56,345 rows and 24 columns, covering 66 seasons (1960–2025) and 30 franchises. The categorical columns include `franchise`, `league`, `pos`, `bats` and `decade`, and the numeric columns include `PA`, `H`, `HR`, `RBI`, `SB`, `BB` and `SO`.
+The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (1960–2026) and 30 franchises. The categorical columns include `franchise`, `league`, `pos`, `bats` and `decade`, and the numeric columns include `PA`, `H`, `HR`, `RBI`, `SB`, `BB` and `SO`.
 
 ## Files
 
@@ -38,8 +40,10 @@ The cleaned hitting file has 56,345 rows and 24 columns, covering 66 seasons (19
 | `js/sound.js` | Optional synthesized hover/click sounds and a looping "Take Me Out to the Ball Game" chorus (both off by default; labeled buttons in the nav bar). |
 | `js/roster.js` | Loads `data/batting.csv` on the report page and renders every player's line for a chosen season and franchise, with a team-total row. |
 | `scripts/prep_data.py` | Reads the raw Lahman CSVs, joins franchise, handedness and primary position or role, drops rows, checks the project requirements, and writes `batting.csv`, `pitching.csv` and `report.json`. |
+| `scripts/fetch_mlb_2026.py` | Downloads the 2026 regular season from MLB's Stats API into `data/raw/mlb2026/` (player lines, positions, MLB's own team totals for a cross-check). |
 | `scripts/build_matchups.py` | Reads Retrosheet play-by-play zips, classifies every plate appearance, credits it to the pitcher on the mound, checks the totals against Lahman, and writes the three matchup files below. |
-| `data/raw/` | The original Lahman CSV files (`Batting`, `People`, `Fielding`, `Teams`, `TeamsFranchises`), unchanged. |
+| `data/raw/` | The original Lahman CSV files (`Batting`, `Pitching`, `People`, `Fielding`, `Teams`, `TeamsFranchises`), unchanged. |
+| `data/raw/mlb2026/` | Trimmed copies of the MLB Stats API responses for 2026 (`players.json`, `fielding.json`, `teams.json`, `team_totals.json`, `meta.json`), so the 2026 rows can be rebuilt without the network. |
 | `data/batting.csv` | Cleaned hitting data loaded by the hitting dashboard, written by the script. |
 | `data/pitching.csv` | Cleaned pitching data loaded by the pitching dashboard, written by the script. |
 | `data/matchups.csv` | One row per batter, pitcher and season for pairs with at least 20 career plate appearances against each other. |
@@ -69,6 +73,10 @@ The pages load their data with `fetch`, so opening the HTML files directly (`fil
 5. Primary position is the fielding position with the most games for that stint. Rows with no fielding record are labeled "DH / pinch hitter."
 
 The pitching data follows the same steps, plus one more: a pitcher is a starter for a team and season if he started at least half of his games, otherwise a reliever. The script prints how many rows each step affects, and the report shows the same counts.
+
+## The 2026 season
+
+Rows for 2026 are built from the MLB Stats API with the same columns and cleaning rules as the Lahman rows (zero-plate-appearance and zero-batter-faced lines are dropped; a pitcher is a starter if he started at least half his games; the primary position is the one with the most games, with LF, CF and RF combined as Outfield). Players are matched to their Lahman `playerID` by birth date and name so careers continue; players with no match, mostly 2026 debuts, keep an `mlb<id>` id. `prep_data.py` sums the player rows by team and compares them with MLB's own published team totals: 643 of 660 comparisons match exactly, and the only differences are in team earned runs, which are not always the sum of the pitchers' earned runs. The regular season ended September 27, 2026; postseason games are not included. The matchup page covers 1960–2025 only, because 2026 play-by-play is not published yet.
 
 ## How the matchup data was checked
 
