@@ -41,7 +41,9 @@
       <span data-fill="meta.rows|int"></span> player-seasons across <span data-fill="meta.franchises"></span> MLB
       franchises. The data comes from the Lahman Baseball Database. It tracks how
       strikeouts, home runs, walks, batting average and base stealing moved over <span data-fill="meta.seasons"></span>
-      seasons, and how hitting differs by league, franchise, position and batting hand.
+      seasons, and how hitting differs by league, franchise, position and batting hand. A second half of the report
+      does the same for pitching, using <span data-fill="pitching.meta.rows|int"></span> pitcher-seasons: strikeouts,
+      walks, ERA, complete games, starters' workloads and the rise of the bullpen.
     </p>
   </header>
 
@@ -55,6 +57,10 @@
         <div class="tile"><div class="tile-value small"><span data-fill="headline.K_PCT_first|pct"></span> → <span data-fill="headline.K_PCT_last|pct"></span></div><div class="tile-label">Strikeout rate, <span data-fill="meta.start_year"></span> vs. <span data-fill="meta.end_year"></span></div></div>
         <div class="tile"><div class="tile-value small"><span data-fill="headline.HR_PCT_first|pct"></span> → <span data-fill="headline.HR_PCT_last|pct"></span></div><div class="tile-label">Home run rate, <span data-fill="meta.start_year"></span> vs. <span data-fill="meta.end_year"></span></div></div>
         <div class="tile"><div class="tile-value" data-fill="meta.franchises"></div><div class="tile-label">Franchises tracked</div></div>
+        <div class="tile"><div class="tile-value" data-count="pitching.headline.pitcher_seasons|int"></div><div class="tile-label">Pitcher-seasons analyzed</div></div>
+        <div class="tile"><div class="tile-value" data-count="pitching.headline.total_SO|int"></div><div class="tile-label">Strikeouts thrown, all seasons</div></div>
+        <div class="tile"><div class="tile-value small"><span data-fill="pitching.headline.K9_first|dec2"></span> → <span data-fill="pitching.headline.K9_last|dec2"></span></div><div class="tile-label">Strikeouts per 9 innings, <span data-fill="meta.start_year"></span> vs. <span data-fill="meta.end_year"></span></div></div>
+        <div class="tile"><div class="tile-value small"><span data-fill="pitching.headline.ERA_first|dec2"></span> → <span data-fill="pitching.headline.ERA_last|dec2"></span></div><div class="tile-label">League ERA, <span data-fill="meta.start_year"></span> vs. <span data-fill="meta.end_year"></span></div></div>
       </div>
     </div>
   </section>
@@ -178,6 +184,74 @@
       </div>
     </section>
 
+
+    <div class="part-head" id="pitching-part">
+      <h2>Pitching</h2>
+      <p>The same seasons from the pitcher's side. Every rate below is computed from totals (total earned runs and total innings, never an average of pitchers' ERAs), and the <a href="pitching.html">pitching dashboard</a> lets you filter and re-cut the same numbers.</p>
+    </div>
+
+    <section class="finding" id="p-strikeouts">
+      <h2>Strikeouts per 9 innings rose from <span data-fill="d.pK9First|dec2"></span> to <span data-fill="d.pK9Last|dec2"></span></h2>
+      <p>A pitcher who worked 9 innings in <span data-fill="meta.start_year"></span> struck out <span class="stat-inline" data-fill="d.pK9First|dec2"></span> batters on average. By <span data-fill="meta.end_year"></span> the figure was <span class="stat-inline" data-fill="d.pK9Last|dec2"></span>, and it peaked at <span class="stat-inline" data-fill="d.pK9Peak|dec2"></span> in <span data-fill="d.pK9PeakYear"></span>. Walks per 9 innings moved much less, from <span class="stat-inline" data-fill="d.pBB9First|dec2"></span> to <span class="stat-inline" data-fill="d.pBB9Last|dec2"></span>. This is the pitching side of the rise in hitters' strikeout rate above.</p>
+      <a class="cta-inline" href="pitching.html?measure=K9">Explore strikeouts per 9 in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Rates per 9 innings, by season</span>
+          <div class="seg" data-chart="pk9"><button aria-pressed="true" data-v="KBB">K/9 and BB/9</button><button aria-pressed="false" data-v="HR9">HR/9</button><button aria-pressed="false" data-v="WHIP">WHIP</button></div></div>
+        <div class="chart-box"><canvas id="c-pk9" role="img" aria-label="Pitching rates per nine innings by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="p-era">
+      <h2>League ERA bottomed at <span data-fill="d.pEraMin|dec2"></span> in <span data-fill="d.pEraMinYear"></span> and peaked at <span data-fill="d.pEraMax|dec2"></span> in <span data-fill="d.pEraMaxYear"></span></h2>
+      <p>ERA is earned runs allowed per 9 innings for the whole league. The low point, <span class="stat-inline" data-fill="d.pEraMin|dec2"></span> in <span data-fill="d.pEraMinYear"></span>, is the "Year of the Pitcher"; the mound was lowered and the strike zone shrunk the next season. The high point was <span class="stat-inline" data-fill="d.pEraMax|dec2"></span> in <span data-fill="d.pEraMaxYear"></span>. From 1973 to 2021 the AL's ERA averaged <span class="stat-inline" data-fill="d.pDhGap|signdec2"></span> runs per 9 innings compared with the NL, the years only the AL used a designated hitter.</p>
+      <a class="cta-inline" href="pitching.html?measure=ERA&breakdown=league">Explore ERA by league in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">ERA by season, AL vs. NL</span></div>
+        <div class="chart-box"><canvas id="c-pera" role="img" aria-label="ERA by season for each league"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="p-cg">
+      <h2>Complete games per team fell from <span data-fill="d.pCgFirst|dec1"></span> to <span data-fill="d.pCgLast|dec1"></span></h2>
+      <p>A complete game means one pitcher finishes what he started. Dividing all complete games by the number of franchises active that season gives complete games per team. It was <span class="stat-inline" data-fill="d.pCgFirst|dec1"></span> in <span data-fill="meta.start_year"></span> and <span class="stat-inline" data-fill="d.pCgLast|dec1"></span> in <span data-fill="meta.end_year"></span>. The average team now finishes fewer than one a season.</p>
+      <a class="cta-inline" href="pitching.html?measure=CG&breakdown=decade">Explore complete games in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Complete games per team, by season</span></div>
+        <div class="chart-box"><canvas id="c-pcg" role="img" aria-label="Complete games per team by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="p-starters">
+      <h2>Starters' innings per start fell from <span data-fill="d.pIpsFirst|dec2"></span> to <span data-fill="d.pIpsLast|dec2"></span></h2>
+      <p>Counting only pitchers who started at least half the games they appeared in, the average start lasted <span class="stat-inline" data-fill="d.pIpsFirst|dec2"></span> innings in <span data-fill="meta.start_year"></span> and <span class="stat-inline" data-fill="d.pIpsLast|dec2"></span> in <span data-fill="meta.end_year"></span>. That is about <span class="stat-inline" data-fill="d.pIpsDrop|dec1"></span> fewer innings each time a starter takes the ball.</p>
+      <a class="cta-inline" href="pitching.html?measure=IP&breakdown=role">Explore innings by role in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Innings per start (starting pitchers), by season</span></div>
+        <div class="chart-box"><canvas id="c-pips" role="img" aria-label="Innings per start by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="p-bullpen">
+      <h2>Relievers threw <span data-fill="d.pRelLast|pct"></span> of innings in the <span data-fill="d.lastDecade"></span>, up from <span data-fill="d.pRelFirst|pct"></span> in the <span data-fill="d.firstDecade"></span></h2>
+      <p>A pitcher is a reliever if he started fewer than half the games he pitched in for a team that season. Relievers' share of all innings was <span class="stat-inline" data-fill="d.pRelFirst|pct"></span> in the <span data-fill="d.firstDecade"></span>, dipped to <span class="stat-inline" data-fill="d.pRelMin|pct"></span> in the <span data-fill="d.pRelMinDecade"></span>, and reached <span class="stat-inline" data-fill="d.pRelLast|pct"></span> in the <span data-fill="d.lastDecade"></span>. Shorter starts and the rise of the bullpen are two sides of the same change.</p>
+      <a class="cta-inline" href="pitching.html?measure=IP&breakdown=role">Explore starters vs. relievers in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Share of innings by role, by decade</span></div>
+        <div class="chart-box"><canvas id="c-prel" role="img" aria-label="Starter and reliever share of innings by decade"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="p-franchises">
+      <h2>The <span data-fill="d.pTopFranchise"></span> allowed the fewest earned runs per 9 innings: <span data-fill="d.pTopFranchiseERA|dec2"></span></h2>
+      <p>Combining every pitcher who threw for a franchise from <span data-fill="meta.start_year"></span> to <span data-fill="meta.end_year"></span>, the <span data-fill="d.pTopFranchise"></span> had the lowest ERA (<span class="stat-inline" data-fill="d.pTopFranchiseERA|dec2"></span>) and the <span data-fill="d.pWorstFranchise"></span> the highest (<span class="stat-inline" data-fill="d.pWorstFranchiseERA|dec2"></span>). Franchises that play in hitter-friendly parks or joined in high-scoring eras carry that context, so the switch also shows strikeouts per 9.</p>
+      <a class="cta-inline" href="pitching.html?measure=ERA&breakdown=franchise">Explore franchise pitching in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Top 15 franchises</span>
+          <div class="seg" data-chart="pfr"><button aria-pressed="true" data-v="ERA">Lowest ERA</button><button aria-pressed="false" data-v="K9">Most K/9</button></div></div>
+        <div class="chart-box tall"><canvas id="c-pfr" role="img" aria-label="Franchise pitching leaders"></canvas></div>
+      </div>
+    </section>
+
     <section class="finding" id="roster">
       <h2>See who contributed to any team's season</h2>
       <p>Every player who batted for a franchise in a given season, with the counting stats and rates they personally put up. Sort any column; the bottom row is the team's total for that season, computed the same way as the rest of this report (totals, not an average of averages).</p>
@@ -207,6 +281,9 @@
       <h3>What one row is</h3>
       <p>One row is one player's batting line for one team in one season (a "stint"). A player traded mid-season has one row per team. The file used by the site has <span data-fill="meta.rows|int"></span> rows and <span data-fill="meta.columns"></span> columns covering <span data-fill="meta.seasons"></span> seasons (<span data-fill="meta.start_year"></span>–<span data-fill="meta.end_year"></span>) and <span data-fill="meta.franchises"></span> franchises.</p>
 
+      <h3>Pitching table</h3>
+      <p>The pitching half uses a sixth Lahman table, Pitching. One pitching row is one pitcher's line for one team in one season (a "stint"), the same grain as the batting rows. The file has <span data-fill="pitching.meta.rows|int"></span> rows and <span data-fill="pitching.meta.columns"></span> columns covering the same <span data-fill="pitching.meta.seasons"></span> seasons and <span data-fill="pitching.meta.franchises"></span> franchises. Seasons before <span data-fill="meta.start_year"></span> are excluded (<span data-fill="d.pDroppedWindow|int"></span> rows) and <span data-fill="pitching.meta.rows_dropped_zero_bfp|int"></span> row with no batters faced is dropped. A pitcher is a starter for a given team and season if he started at least half of his games, otherwise a reliever. Innings are stored as outs and divided by 3, so no rounding enters the totals. Holds are not recorded in the Lahman data, so saves are the only late-inning count shown.</p>
+
       <h3>Rows dropped and cleaning</h3>
       <p>Seasons before <span data-fill="meta.start_year"></span> are excluded (<span data-fill="d.droppedWindow|int"></span> rows) to keep the study to the modern era. Rows with zero plate appearances are dropped (<span data-fill="meta.rows_dropped_zero_pa|int"></span> rows) because those players never batted. Any missing counting stat is treated as zero; in this release <span data-fill="meta.cells_filled_with_zero|int"></span> cells were missing, so no values changed. Team codes are mapped to franchises so that, for example, the Montreal Expos and Washington Nationals count as one group. <span data-fill="meta.rows_without_fielding_record|int"></span> rows have no fielding record and are labeled "DH / pinch hitter."</p>
 
@@ -224,6 +301,14 @@
         <tr><td>Stolen bases per team</td><td>Season SB ÷ number of franchises with at least one row that season</td></tr>
         <tr><td>Per 600 PA</td><td>Total ÷ PA × 600</td></tr>
         <tr><td>League OPS gap</td><td>Mean across seasons of (AL OPS − NL OPS)</td></tr>
+        <tr><td>Innings pitched (IP)</td><td>Outs recorded ÷ 3</td></tr>
+        <tr><td>ERA</td><td>9 × earned runs ÷ IP</td></tr>
+        <tr><td>WHIP</td><td>(BB + H) ÷ IP</td></tr>
+        <tr><td>Strikeouts, walks, home runs per 9</td><td>9 × (SO, BB or HR) ÷ IP</td></tr>
+        <tr><td>Pitcher strikeout and walk rate</td><td>SO ÷ batters faced, BB ÷ batters faced</td></tr>
+        <tr><td>Complete games per team</td><td>Season CG ÷ number of franchises with at least one pitching row that season</td></tr>
+        <tr><td>Innings per start</td><td>Innings of pitchers classed as starters ÷ their games started</td></tr>
+        <tr><td>Reliever share of innings</td><td>Innings of pitchers classed as relievers ÷ all innings</td></tr>
         <tr><td>Primary position</td><td>Fielding position with the most games for that player, team and season</td></tr>
       </table>
       <a class="cta" href="dashboard.html">Explore the data yourself</a>

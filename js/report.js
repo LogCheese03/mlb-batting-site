@@ -53,6 +53,30 @@ function derive(rep) {
     triplesFirst: xbh[0]["3B_PER_600"], triplesLast: xbh[xbh.length - 1]["3B_PER_600"],
     doublesFirst: xbh[0]["2B_PER_600"], doublesLast: xbh[xbh.length - 1]["2B_PER_600"],
     droppedWindow: rep.meta.raw_rows - rep.meta.rows_in_window,
+    ...derivePitching(rep, { maxBy, minBy, mean }),
+  };
+}
+
+/* numbers for the pitching findings, all from rep.pitching */
+function derivePitching(rep, { maxBy, minBy, mean }) {
+  const p = rep.pitching, ps = p.season, last = ps[ps.length - 1], dec = p.decade;
+  const byYear = {};
+  p.league_season.forEach(x => { (byYear[x.year] ||= {})[x.league] = x.ERA; });
+  const gaps = Object.entries(byYear).filter(([y, v]) => +y >= 1973 && +y <= 2021 && v.AL != null && v.NL != null).map(([, v]) => v.AL - v.NL);
+  const franchises = p.franchise;                 // sorted by ERA, lowest first
+  const relMin = minBy(dec, "RELIEF_SHARE");
+  return {
+    pK9First: ps[0].K9, pK9Last: last.K9, pK9Peak: maxBy(ps, "K9").K9, pK9PeakYear: maxBy(ps, "K9").year,
+    pBB9First: ps[0].BB9, pBB9Last: last.BB9,
+    pEraMin: minBy(ps, "ERA").ERA, pEraMinYear: minBy(ps, "ERA").year,
+    pEraMax: maxBy(ps, "ERA").ERA, pEraMaxYear: maxBy(ps, "ERA").year,
+    pDhGap: mean(gaps),
+    pCgFirst: ps[0].CG_PER_TEAM, pCgLast: last.CG_PER_TEAM,
+    pIpsFirst: ps[0].IP_PER_START, pIpsLast: last.IP_PER_START, pIpsDrop: ps[0].IP_PER_START - last.IP_PER_START,
+    pRelFirst: dec[0].RELIEF_SHARE, pRelLast: dec[dec.length - 1].RELIEF_SHARE, pRelMin: relMin.RELIEF_SHARE, pRelMinDecade: relMin.decade,
+    pTopFranchise: franchises[0].franchise, pTopFranchiseERA: franchises[0].ERA,
+    pWorstFranchise: franchises[franchises.length - 1].franchise, pWorstFranchiseERA: franchises[franchises.length - 1].ERA,
+    pDroppedWindow: p.meta.raw_rows - p.meta.rows_in_window,
   };
 }
 
@@ -64,6 +88,7 @@ function lookup(path) {
 }
 function format(v, kind) {
   if (kind === "signavg") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "avg");
+  if (kind === "signdec2") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "dec2");
   return kind ? fmt(v, kind) : (v ?? "–");
 }
 function fillNumbers() {
@@ -204,10 +229,71 @@ function drawXbh(v = "both") {
   charts.xbh = new Chart(document.getElementById("c-xbh"), { type: "bar", data: { labels: x.map(r => r.decade), datasets: ds }, options: { plugins: { tooltip: tip("dec2") } } });
 }
 
-const DRAW = { homers: drawHomers, average: drawAverage, leagues: drawLeagues, franchises: drawFranchises, xbh: drawXbh };
+/* ---------------- pitching charts ---------------- */
+const pyears = () => REP.pitching.season.map(x => x.year);
+const dec2Axis = { ticks: { callback: v => v.toFixed(1) } };
+
+function drawPK9(v = "KBB") {
+  const ps = REP.pitching.season;
+  const one = (k, label, c) => ({ label, data: ps.map(x => x[k]), borderColor: c });
+  const sets = v === "KBB" ? [one("K9", "Strikeouts per 9", COLORS[1]), one("BB9", "Walks per 9", COLORS[3])]
+    : v === "HR9" ? [one("HR9", "Home runs allowed per 9", COLORS[0])] : [one("WHIP", "WHIP", COLORS[2])];
+  charts.pk9?.destroy();
+  charts.pk9 = new Chart(document.getElementById("c-pk9"), {
+    type: "line", data: { labels: pyears(), datasets: sets },
+    options: { plugins: { tooltip: tip("dec2"), legend: { display: sets.length > 1 } }, scales: { y: dec2Axis, x: { ticks: { maxTicksLimit: 14 } } } },
+  });
+}
+function drawPEra() {
+  const ys = pyears();
+  const series = lg => ys.map(y => REP.pitching.league_season.find(x => x.year === y && x.league === lg)?.ERA ?? null);
+  line("pera", ys, [
+    { label: "American League", data: series("AL"), borderColor: COLORS[1] },
+    { label: "National League", data: series("NL"), borderColor: COLORS[2] },
+  ], "dec2", { inline: [dhBand] });
+  charts.pera.options.scales.y = dec2Axis; charts.pera.update();
+}
+function drawPCg() {
+  const ps = REP.pitching.season;
+  charts.pcg?.destroy();
+  charts.pcg = new Chart(document.getElementById("c-pcg"), {
+    type: "bar",
+    data: { labels: pyears(), datasets: [{ label: "Complete games per team", data: ps.map(x => x.CG_PER_TEAM), backgroundColor: COLORS[0] }] },
+    options: { plugins: { legend: { display: false }, tooltip: tip("dec1") }, scales: { x: { ticks: { maxTicksLimit: 14 } } } },
+  });
+}
+function drawPIps() {
+  line("pips", pyears(), [{ label: "Innings per start", data: REP.pitching.season.map(x => x.IP_PER_START), borderColor: COLORS[0], backgroundColor: "rgba(22,57,42,.08)", fill: true }], "dec2");
+  charts.pips.options.scales.y = dec2Axis; charts.pips.update();
+}
+function drawPRel() {
+  const dec = REP.pitching.decade;
+  charts.prel?.destroy();
+  charts.prel = new Chart(document.getElementById("c-prel"), {
+    type: "bar",
+    data: { labels: dec.map(x => x.decade), datasets: [
+      { label: "Starters", data: dec.map(x => 1 - x.RELIEF_SHARE), backgroundColor: COLORS[0] },
+      { label: "Relievers", data: dec.map(x => x.RELIEF_SHARE), backgroundColor: COLORS[1] },
+    ] },
+    options: { plugins: { tooltip: tip("pct") }, scales: { x: { stacked: true }, y: { stacked: true, max: 1, ...pctAxis } } },
+  });
+}
+function drawPFr(v = "ERA") {
+  const rows = [...REP.pitching.franchise].sort((a, b) => (v === "ERA" ? a.ERA - b.ERA : b.K9 - a.K9)).slice(0, 15);
+  charts.pfr?.destroy();
+  charts.pfr = new Chart(document.getElementById("c-pfr"), {
+    type: "bar",
+    data: { labels: rows.map(x => x.franchise), datasets: [{ label: v === "ERA" ? "ERA" : "Strikeouts per 9", data: rows.map(x => x[v]), backgroundColor: rows.map((_, i) => (i === 0 ? COLORS[1] : COLORS[0])) }] },
+    options: { indexAxis: "y", interaction: { mode: "nearest", intersect: true },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.x, "dec2") } } }, scales: { x: dec2Axis } },
+  });
+}
+
+const DRAW = { homers: drawHomers, average: drawAverage, leagues: drawLeagues, franchises: drawFranchises, xbh: drawXbh, pk9: drawPK9, pfr: drawPFr };
 function drawAll() {
   drawStrikeouts(); drawHomers(); drawAverage(); drawTto(); drawSteals();
   drawLeagues(); drawFranchises(); drawPositions(); drawHands(); drawXbh();
+  drawPK9(); drawPEra(); drawPCg(); drawPIps(); drawPRel(); drawPFr();
 }
 function wireToggles() {
   document.querySelectorAll(".seg[data-chart]").forEach(seg => {
