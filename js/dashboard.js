@@ -355,7 +355,7 @@ function drawBar(groups) {
       backgroundColor: entries.map((_, i) => (i === 0 && state.breakdown !== "decade" ? COLORS[1] : COLORS[0])) }] },
     options: {
       indexAxis: horizontal ? "y" : "x", interaction: { mode: "nearest", intersect: true },
-      onClick: (evt, els) => { if (els.length) drillDown(state.breakdown, entries[els[0].index][0]); },
+      onClick: (evt, els) => { if (els.length) { const lab = entries[els[0].index][0]; setTimeout(() => drillDown(state.breakdown, lab), 0); } },
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(horizontal ? c.parsed.x : c.parsed.y, m.kind) } } },
       scales: { [horizontal ? "x" : "y"]: axisFor(m.kind), [horizontal ? "y" : "x"]: { ticks: { autoSkip: false, font: { size: 11 } } } },
     },
@@ -374,7 +374,7 @@ function drawScatter(groups) {
     })) },
     options: {
       interaction: { mode: "nearest", intersect: true },
-      onClick: (evt, els) => { if (els.length) drillDown(state.breakdown, entries[els[0].datasetIndex][0]); },
+      onClick: (evt, els) => { if (els.length) { const lab = entries[els[0].datasetIndex][0]; setTimeout(() => drillDown(state.breakdown, lab), 0); } },
       plugins: { legend: { display: entries.length <= 10 },
         tooltip: { callbacks: { label: c => `${c.dataset.label}: K ${fmt(c.parsed.x, "pct")}, HR ${fmt(c.parsed.y, "pct")}` } } },
       scales: { x: { title: { display: true, text: "Strikeout rate" }, ...axisFor("pct") }, y: { title: { display: true, text: "Home run rate" }, ...axisFor("pct") } },
@@ -398,7 +398,7 @@ function drawLeaders(rows) {
     data: { labels: list.map(e => e[1]), datasets: [{ label: m.label, data: list.map(e => e[2]), backgroundColor: list.map((_, i) => (i ? COLORS[2] : COLORS[1])) }] },
     options: {
       indexAxis: "y", interaction: { mode: "nearest", intersect: true },
-      onClick: (evt, els) => { if (els.length) showPlayer(list[els[0].index][0]); },
+      onClick: (evt, els) => { if (els.length) { const id = list[els[0].index][0]; setTimeout(() => showPlayer(id), 0); } },
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.x, m.kind) } } },
       scales: { x: axisFor(m.kind), y: { ticks: { autoSkip: false, font: { size: 11 } } } },
     },
@@ -408,7 +408,7 @@ function drawLeaders(rows) {
 function drawHist(rows) {
   const m = M();
   // Which per-row value to plot for each measure
-  const rowKey = { rows: "PA", medPA: "PA", medHR: "HR", PA: "PA", HR: "HR", H: "H", R: "R", SB: "SB" }[state.measure];
+  const rowKey = { rows: "PA", medPA: "PA", medHR: "HR", PA: "PA", HR: "HR", H: "H", R: "R", SB: "SB", "2B": "2B", "3B": "3B" }[state.measure];
   let values, kind = m.kind, label;
   if (m.rate) {
     values = rows.filter(r => r.PA >= HIST_MIN_PA).map(r => { const t = emptyTotals(); addRow(t, r); return val(t); }).filter(v => v != null);
@@ -416,7 +416,7 @@ function drawHist(rows) {
     document.getElementById("n-hist").textContent = `Player-seasons with at least ${HIST_MIN_PA} plate appearances (${fmt(values.length, "int")} shown).`;
   } else {
     values = rows.map(r => r[rowKey]); kind = "int";
-    label = { PA: "Plate appearances", HR: "Home runs", H: "Hits", R: "Runs", SB: "Stolen bases" }[rowKey] + " per player-season";
+    label = { PA: "Plate appearances", HR: "Home runs", H: "Hits", R: "Runs", SB: "Stolen bases", "2B": "Doubles", "3B": "Triples" }[rowKey] + " per player-season";
     document.getElementById("n-hist").textContent = `All ${fmt(values.length, "int")} player-seasons in the current view.`;
   }
   document.getElementById("t-hist").textContent = `Distribution: ${label}`;
