@@ -8,7 +8,7 @@ const COLORS = ["#16392a", "#c8102e", "#2f6db5", "#e0a526", "#5e9b5a", "#7a4e9c"
 /* Bump this whenever data/batting.csv or data/report.json changes, so
    returning visitors' browsers fetch the new file instead of serving
    their cached copy for the rest of its 10-minute Cache-Control window. */
-const DATA_VERSION = "2025release";
+const DATA_VERSION = "2025release-p1";
 
 const SUM_COLS = ["G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"];
 
@@ -45,7 +45,13 @@ const MEASURES = {
   "3B":    { label: "Triples (total)", kind: "int", fn: t => t["3B"] },
   H:       { label: "Hits (total)", kind: "int", fn: t => t.H },
   R:       { label: "Runs (total)", kind: "int", fn: t => t.R },
+  RBI:     { label: "RBI (total)", kind: "int", fn: t => t.RBI },
+  G:       { label: "Games (total)", kind: "int", fn: t => t.G },
+  TB:      { label: "Total bases (total)", kind: "int", fn: t => TB(t) },
+  XBH:     { label: "Extra-base hits (2B + 3B + HR)", kind: "int", fn: t => t["2B"] + t["3B"] + t.HR },
   SB:      { label: "Stolen bases (total)", kind: "int", fn: t => t.SB },
+  BB:      { label: "Walks (total)", kind: "int", fn: t => t.BB },
+  SO:      { label: "Strikeouts (total)", kind: "int", fn: t => t.SO },
   medHR:   { label: "Home runs per player-season (median)", kind: "dec1", fn: t => median(t.hrList) },
   medPA:   { label: "Plate appearances per player-season (median)", kind: "dec1", fn: t => median(t.paList) },
   BA:      { label: "Batting average (H / AB)", kind: "avg", rate: true, fn: t => safeDiv(t.H, t.AB) },
@@ -56,6 +62,10 @@ const MEASURES = {
   BB_PCT:  { label: "Walk rate (BB / PA)", kind: "pct", rate: true, fn: t => safeDiv(t.BB, t.PA) },
   HR_PCT:  { label: "Home run rate (HR / PA)", kind: "pct", rate: true, fn: t => safeDiv(t.HR, t.PA) },
   TTO_PCT: { label: "Three true outcomes rate ((HR+BB+SO) / PA)", kind: "pct", rate: true, fn: t => safeDiv(t.HR + t.BB + t.SO, t.PA) },
+  ISO:     { label: "Isolated power (SLG − AVG)", kind: "avg", rate: true, fn: t => { const sl = SLG(t), ba = safeDiv(t.H, t.AB); return sl == null || ba == null ? null : sl - ba; } },
+  BABIP:   { label: "BABIP ((H − HR) / (AB − SO − HR + SF))", kind: "avg", rate: true, fn: t => safeDiv(t.H - t.HR, t.AB - t.SO - t.HR + t.SF) },
+  SB_PCT:  { label: "Stolen base success rate (SB / (SB + CS))", kind: "pct", rate: true, fn: t => safeDiv(t.SB, t.SB + t.CS) },
+  BB_K:    { label: "Walk-to-strikeout ratio (BB / SO)", kind: "dec2", rate: true, fn: t => safeDiv(t.BB, t.SO) },
 };
 
 /* ---------------- formatting ---------------- */

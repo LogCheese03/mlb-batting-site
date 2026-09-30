@@ -124,6 +124,9 @@ function showPlayer(id) {
       <div class="tile"><div class="tile-value">${fmt(t.rows, "int")}</div><div class="tile-label">Seasons</div></div>
       <div class="tile"><div class="tile-value">${fmt(t.PA, "int")}</div><div class="tile-label">Plate app.</div></div>
       <div class="tile"><div class="tile-value">${fmt(t.HR, "int")}</div><div class="tile-label">Home runs</div></div>
+      <div class="tile"><div class="tile-value">${fmt(t.R, "int")}</div><div class="tile-label">Runs</div></div>
+      <div class="tile"><div class="tile-value">${fmt(t.RBI, "int")}</div><div class="tile-label">RBI</div></div>
+      <div class="tile"><div class="tile-value">${fmt(t.SB, "int")}</div><div class="tile-label">Stolen bases</div></div>
       <div class="tile"><div class="tile-value">${fmt(val(t, "BA"), "avg")}</div><div class="tile-label">AVG</div></div>
       <div class="tile"><div class="tile-value">${fmt(val(t, "OBP"), "avg")}</div><div class="tile-label">OBP</div></div>
       <div class="tile"><div class="tile-value">${fmt(val(t, "SLG"), "avg")}</div><div class="tile-label">SLG</div></div>
@@ -293,8 +296,11 @@ function drawKpis(t) {
   const tiles = [
     ["Player-seasons", fmt(t.rows, "int")],
     ["Plate appearances", compact(t.PA)],
-    ["Home runs", fmt(t.HR, "int")],
-    ["Batting average", fmt(val(t, "BA"), "avg")],
+    ["Home runs (HR)", fmt(t.HR, "int")],
+    ["Runs (R)", fmt(t.R, "int")],
+    ["RBI", fmt(t.RBI, "int")],
+    ["Batting average (AVG)", fmt(val(t, "BA"), "avg")],
+    ["Stolen bases (SB)", fmt(t.SB, "int")],
     ["OPS", fmt(val(t, "OPS"), "avg")],
     ["Strikeout rate", fmt(val(t, "K_PCT"), "pct")],
     [M().label, fmt(val(t), M().kind)],
@@ -408,15 +414,16 @@ function drawLeaders(rows) {
 function drawHist(rows) {
   const m = M();
   // Which per-row value to plot for each measure
-  const rowKey = { rows: "PA", medPA: "PA", medHR: "HR", PA: "PA", HR: "HR", H: "H", R: "R", SB: "SB", "2B": "2B", "3B": "3B" }[state.measure];
+  const rowKey = { rows: "PA", medPA: "PA", medHR: "HR", PA: "PA", G: "G", HR: "HR", H: "H", R: "R", RBI: "RBI", SB: "SB", BB: "BB", SO: "SO", "2B": "2B", "3B": "3B", TB: "TB", XBH: "XBH" }[state.measure];
+  const rowVal = (r, k) => (k === "TB" ? r.H + r["2B"] + 2 * r["3B"] + 3 * r.HR : k === "XBH" ? r["2B"] + r["3B"] + r.HR : r[k]);
   let values, kind = m.kind, label;
   if (m.rate) {
     values = rows.filter(r => r.PA >= HIST_MIN_PA).map(r => { const t = emptyTotals(); addRow(t, r); return val(t); }).filter(v => v != null);
     label = m.label;
     document.getElementById("n-hist").textContent = `Player-seasons with at least ${HIST_MIN_PA} plate appearances (${fmt(values.length, "int")} shown).`;
   } else {
-    values = rows.map(r => r[rowKey]); kind = "int";
-    label = { PA: "Plate appearances", HR: "Home runs", H: "Hits", R: "Runs", SB: "Stolen bases", "2B": "Doubles", "3B": "Triples" }[rowKey] + " per player-season";
+    values = rows.map(r => rowVal(r, rowKey)); kind = "int";
+    label = { PA: "Plate appearances", HR: "Home runs", H: "Hits", G: "Games", R: "Runs", RBI: "RBI", SB: "Stolen bases", BB: "Walks", SO: "Strikeouts", "2B": "Doubles", "3B": "Triples", TB: "Total bases", XBH: "Extra-base hits" }[rowKey] + " per player-season";
     document.getElementById("n-hist").textContent = `All ${fmt(values.length, "int")} player-seasons in the current view.`;
   }
   document.getElementById("t-hist").textContent = `Distribution: ${label}`;
@@ -465,10 +472,10 @@ function drawHeatmap(rows) {
 
 /* ---------------- table ---------------- */
 const TABLE_COLS = [
-  ["group", null], ["rows", "int"], ["PA", "int"], ["H", "int"], ["HR", "int"], ["SB", "int"],
+  ["group", null], ["rows", "int"], ["PA", "int"], ["H", "int"], ["HR", "int"], ["R", "int"], ["RBI", "int"], ["SB", "int"],
   ["BA", "avg"], ["OBP", "avg"], ["SLG", "avg"], ["OPS", "avg"], ["K_PCT", "pct"], ["BB_PCT", "pct"], ["HR_PCT", "pct"],
 ];
-const HEAD = { group: null, rows: "Player-seasons", PA: "PA", H: "Hits", HR: "HR", SB: "SB", BA: "AVG", OBP: "OBP", SLG: "SLG", OPS: "OPS", K_PCT: "K%", BB_PCT: "BB%", HR_PCT: "HR%" };
+const HEAD = { group: null, rows: "Player-seasons", PA: "PA", H: "Hits", HR: "HR", R: "R", RBI: "RBI", SB: "SB", BA: "AVG", OBP: "OBP", SLG: "SLG", OPS: "OPS", K_PCT: "K%", BB_PCT: "BB%", HR_PCT: "HR%" };
 
 function drawTable(groups, all) {
   const extra = TABLE_COLS.some(([k]) => k === state.measure) ? [] : [[state.measure, M().kind]];
