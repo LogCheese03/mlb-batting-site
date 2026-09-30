@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matchups | The Evolution of MLB Hitting</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared navigation bar (identical on every page) -->
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M6 3.5c2.5 2.5 2.5 14.5 0 17M18 3.5c-2.5 2.5-2.5 14.5 0 17" stroke="#c8102e" stroke-width="1.6" fill="none" stroke-dasharray="2 1.6"/></svg>
+      <span>The Evolution of MLB Hitting</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Report</a></li>
+      <li><a href="dashboard.html">Hitting Dashboard</a></li>
+      <li><a href="pitching.html">Pitching Dashboard</a></li>
+      <li><a href="matchups.html" aria-current="page">Matchups</a></li>
+      <li><a href="index.html#methods">About the data</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="loading" id="loading">Loading every hitter-vs-pitcher matchup…</div>
+
+<main class="dash">
+  <div class="dash-title">
+    <div>
+      <h1>Hitter vs. pitcher</h1>
+      <p>Pick a hitter to see how they did against every pitcher they faced, or pick a pitcher to see it from the other side. Then choose one opponent for the season-by-season line. Pairs with at least 20 career plate appearances against each other, 1960–2025.</p>
+    </div>
+  </div>
+
+  <aside class="filters" aria-label="Choose players">
+    <h2>Look up</h2>
+
+    <div class="filter">
+      <div class="filter-label">Start from</div>
+      <div class="seg" id="modeSeg"><button aria-pressed="true" data-v="hitter">A hitter</button><button aria-pressed="false" data-v="pitcher">A pitcher</button></div>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label" id="playerLabel">Pick a hitter</div>
+      <input type="search" id="playerSearch" list="playerNames" placeholder="Type a hitter's name…" aria-label="Search for the first player">
+      <datalist id="playerNames"></datalist>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label" id="oppLabel">Then a pitcher</div>
+      <input type="search" id="oppSearch" list="oppNames" placeholder="Type a pitcher's name…" aria-label="Search for the opponent">
+      <datalist id="oppNames"></datalist>
+    </div>
+
+    <div class="filter">
+      <div class="filter-label">Minimum plate appearances <span class="count" id="minPALabel">20</span></div>
+      <input type="range" id="minPA" min="20" max="100" step="5" value="20" aria-label="Minimum plate appearances against this opponent">
+    </div>
+
+    <button class="btn-reset" id="reset">Reset</button>
+
+    <div class="filter" style="margin-top:22px">
+      <div class="filter-label">Most-faced matchups</div>
+      <ol id="topPairs" class="top-pairs"></ol>
+    </div>
+  </aside>
+
+  <section aria-label="Results">
+    <div class="controls">
+      <div class="control">
+        <label for="measure">Measure</label>
+        <select id="measure"></select>
+      </div>
+      <p class="status">Switch the measure to change both charts.</p>
+    </div>
+
+    <div class="player-card" id="prompt">
+      <h2>Choose a player to start</h2>
+      <p>Type a name in the box on the left, or click one of the most-faced matchups to jump straight to a famous rivalry.</p>
+    </div>
+
+    <div class="chart-card" id="oppCard" hidden>
+      <div class="chart-head"><span class="chart-title" id="oppTitle"></span></div>
+      <p class="chart-note" id="oppNote" style="margin-top:0"></p>
+      <div class="chart-card" style="margin:14px 0">
+        <div class="chart-head"><span class="chart-title" id="t-opp"></span></div>
+        <div class="chart-box clickable"><canvas id="c-opp" role="img" aria-label="Measure against the most-faced opponents"></canvas></div>
+        <p class="chart-note">Click a bar to open that matchup.</p>
+      </div>
+      <div class="table-wrap opp-table"><table class="data-table" id="oppTable"></table></div>
+    </div>
+
+    <div class="chart-card" id="detail" hidden>
+      <div class="chart-head"><span class="chart-title" id="detailTitle"></span><button class="btn" id="exportCsv">Download season table as CSV</button></div>
+      <div class="scoreboard kpi-board" aria-label="Career totals for this matchup"><div class="board-grid" id="detailKpis"></div></div>
+      <div class="chart-card" style="margin:18px 0">
+        <div class="chart-head"><span class="chart-title" id="t-detailChart"></span></div>
+        <div class="chart-box"><canvas id="c-detail" role="img" aria-label="Matchup by season"></canvas></div>
+      </div>
+      <div class="chart-head"><span class="chart-title" id="t-seasons"></span></div>
+      <div class="table-wrap"><table class="data-table" id="seasonTable"></table></div>
+    </div>
+
+    <p class="chart-note" style="margin-top:22px">The information used here was obtained free of charge from and is copyrighted by <a href="https://www.retrosheet.org">Retrosheet</a>. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711. Each plate appearance is read from Retrosheet's play-by-play files and credited to the pitcher on the mound. From 1970 on, season totals built this way are within <span id="mmTol">…</span> of the official Lahman totals; some 1960s games are missing from the play-by-play, so those seasons run up to <span id="mmWorst">…</span> low. Pitcher totals match Lahman exactly in <span id="mmExact">…</span> of pitcher-seasons, and most misses are a single walk, because official scoring can charge a walk to the pitcher who started the count. See <a href="index.html#methods">About the data</a>.</p>
+  </section>
+</main>
+
+<footer>Built by Logan Hull with data from the Lahman Baseball Database and Retrosheet. <a href="index.html">Read the report</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/matchups.js"></script>
+</body>
+</html>
