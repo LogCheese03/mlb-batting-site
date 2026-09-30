@@ -1,3 +1,4 @@
 .DS_Store
 
-
+# Retrosheet event zips are large (about 125 MB); build_matchups.py reads them from here
+data/retrosheet/
