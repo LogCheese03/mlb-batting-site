@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=p7">
+  <link rel="stylesheet" href="css/style.css?v=p8">
 </head>
 <body>
 
@@ -280,6 +280,26 @@
       </div>
     </section>
 
+    <section class="finding" id="roster-pitching">
+      <h2>See who pitched for any team's season</h2>
+      <p>Every pitcher who threw for a franchise in a given season, with the pitching line he personally put up. Sort any column; the bottom row is the team's total for that season, computed the same way as the rest of this report (ERA and the other rates come from team totals, not an average of the pitchers' rates). Innings use baseball notation, so 200.1 means 200 innings and one out.</p>
+      <div class="controls" style="margin:18px 0">
+        <div class="control">
+          <label for="rosterPYear">Season</label>
+          <select id="rosterPYear"></select>
+        </div>
+        <div class="control">
+          <label for="rosterPFranchise">Franchise</label>
+          <select id="rosterPFranchise"></select>
+        </div>
+        <p class="status" id="rosterPStatus" aria-live="polite">Loading pitcher rows…</p>
+      </div>
+      <div class="chart-card table-card">
+        <div class="chart-head"><span class="chart-title" id="t-rosterP"></span><button class="btn" id="rosterPExport">Download as CSV</button></div>
+        <div class="table-wrap"><table class="data-table" id="rosterPTable"></table></div>
+      </div>
+    </section>
+
     <section class="methods" id="methods">
       <h2>About the data</h2>
 
@@ -335,9 +355,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="js/common.js?v=p7"></script>
-<script src="js/sound.js?v=p7"></script>
-<script src="js/report.js?v=p7"></script>
-<script src="js/roster.js?v=p7"></script>
+<script src="js/common.js?v=p8"></script>
+<script src="js/sound.js?v=p8"></script>
+<script src="js/report.js?v=p8"></script>
+<script src="js/roster.js?v=p8"></script>
+<script src="js/roster_pitching.js?v=p8"></script>
 </body>
 </html>

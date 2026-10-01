@@ -27,7 +27,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 
 | File | What it does |
 |---|---|
-| `index.html` | Report page. It has the summary, headline numbers, ten findings with charts, a season/franchise roster explorer, and the data and methods section. |
+| `index.html` | Report page. It has the summary, headline numbers (a batting row and a pitching row), ten hitting findings and six pitching findings with charts, a season/franchise table of every hitter and another for every pitcher, and the data and methods section. |
 | `dashboard.html` | Hitting dashboard. It has filters, summary numbers (HR, R, RBI, AVG, SB and more), five charts and a heatmap, measure and breakdown switches, a table and a reset button. |
 | `pitching.html` | Pitching dashboard, built the same way: filters (seasons, franchise, league, role, throws, minimum batters faced), summary numbers (W, K, SV, ERA, WHIP, K/9), five charts and a heatmap, switches, a table and a reset button. |
 | `matchups.html` | Hitter-vs-pitcher page. Search any hitter or pitcher, see every opponent they faced, then open one matchup for the season-by-season line, chart and table. |
@@ -39,6 +39,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `js/dashboard.js` | Loads `data/batting.csv`, applies filters, recalculates the numbers and draws the dashboard charts, heatmap and table. Also runs the player search, chart click-to-filter, and the `?measure=...&breakdown=...` deep links from the report. |
 | `js/sound.js` | Optional synthesized hover/click sounds and a looping "Take Me Out to the Ball Game" chorus (both off by default; labeled buttons in the nav bar). |
 | `js/roster.js` | Loads `data/batting.csv` on the report page and renders every player's line for a chosen season and franchise, with a team-total row. |
+| `js/roster_pitching.js` | Loads `data/pitching.csv` on the report page and renders every pitcher's line for a chosen season and franchise, with a team-total row (the pitching twin of `js/roster.js`). |
 | `scripts/prep_data.py` | Reads the raw Lahman CSVs, joins franchise, handedness and primary position or role, drops rows, checks the project requirements, and writes `batting.csv`, `pitching.csv` and `report.json`. |
 | `scripts/fetch_mlb_2026.py` | Downloads the 2026 regular season from MLB's Stats API into `data/raw/mlb2026/` (player lines, positions, MLB's own team totals for a cross-check). |
 | `scripts/fetch_mlb_2026_pa.py` | Downloads every 2026 plate appearance (batter, pitcher, event) from MLB's play-by-play feeds into `data/raw/mlb2026/pa_events.csv`. |
