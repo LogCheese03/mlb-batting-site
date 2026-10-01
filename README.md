@@ -11,7 +11,7 @@ A data website built for FDA 2 (Financial Data Analytics). It studies every MLB 
 
 The [Lahman Baseball Database](https://sabr.org/lahman-database/), compiled by Sean Lahman and maintained with SABR, downloaded as CSV files. Using the 2025 release (covering 1871–2025), downloaded September 27, 2026.
 
-Tables used: `Batting.csv`, `Pitching.csv`, `People.csv`, `Fielding.csv`, `Teams.csv` and `TeamsFranchises.csv`.
+Tables used: `Batting.csv`, `Pitching.csv`, `People.csv`, `Fielding.csv`, `Teams.csv` (also for each team's park factor, `BPF`) and `TeamsFranchises.csv`.
 
 The 2026 regular season is not in Lahman yet (a season is published after it ends), so it comes from MLB's public Stats API (`https://statsapi.mlb.com`), fetched by `scripts/fetch_mlb_2026.py` and merged by `prep_data.py`; see "The 2026 season" below.
 
@@ -27,7 +27,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 
 | File | What it does |
 |---|---|
-| `index.html` | Report page. It has the summary, headline numbers (a batting row and a pitching row), ten hitting findings and six pitching findings with charts, a season/franchise table of every hitter and another for every pitcher, and the data and methods section. |
+| `index.html` | Report page. It has the summary and three big takeaways (the home run rate, strikeouts rising with home runs, and how ballparks shape pitching), headline numbers (a batting row and a pitching row), seventeen findings with charts, a season/franchise table of every hitter and another for every pitcher, and the data and methods section. |
 | `dashboard.html` | Hitting dashboard. It has filters, summary numbers (HR, R, RBI, AVG, SB and more), five charts and a heatmap, measure and breakdown switches, a table and a reset button. |
 | `pitching.html` | Pitching dashboard, built the same way: filters (seasons, franchise, league, role, throws, minimum batters faced), summary numbers (W, K, SV, ERA, WHIP, K/9), five charts and a heatmap, switches, a table and a reset button. |
 | `matchups.html` | Hitter-vs-pitcher page. Search any hitter or pitcher, see every opponent they faced, then open one matchup for the season-by-season line, chart and table. |
@@ -50,7 +50,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `data/pitching.csv` | Cleaned pitching data loaded by the pitching dashboard, written by the script. |
 | `data/matchups/` | `index.json` lists every player; `b/<id>.csv` has one file per hitter and `p/<id>.csv` one per pitcher, each with every opponent faced, season by season (17,287 files). Loaded one at a time by the matchup page. |
 | `data/matchups_meta.json` | Counts and the accuracy check for the matchup data (season totals against Lahman, pitcher totals against Lahman). |
-| `data/report.json` | Every number and chart series on the report (hitting at the top level, pitching under `pitching`), written by the script. |
+| `data/report.json` | Every number and chart series on the report (hitting at the top level, pitching under `pitching`, average park factors under `park`), written by the script. |
 | `.gitignore` | Keeps macOS `.DS_Store` files out of the repository. |
 
 ## Reproduce the numbers

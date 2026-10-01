@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=p9">
+  <link rel="stylesheet" href="css/style.css?v=p11">
 </head>
 <body>
 
@@ -35,17 +35,23 @@
   <header class="hero">
     <h1>The Evolution of MLB Hitting and Pitching</h1>
     <p class="byline">By Logan Hull for FDA 2</p>
-    <!-- LOGAN: rewrite this summary in your own words once you've looked at the numbers. -->
     <p class="summary">
-      This report follows every MLB batter's season from <span data-fill="meta.start_year"></span> to
+      This report follows every MLB batter's and pitcher's season from <span data-fill="meta.start_year"></span> to
       <span data-fill="meta.end_year"></span>: one row for every player on every team in every season, which adds up to
-      <span data-fill="meta.rows|int"></span> player-seasons across <span data-fill="meta.franchises"></span> MLB
-      franchises. The data comes from the Lahman Baseball Database, plus the 2026 regular season from MLB's public Stats API. It tracks how
-      strikeouts, home runs, walks, batting average and base stealing moved over <span data-fill="meta.seasons"></span>
-      seasons, and how hitting differs by league, franchise, position and batting hand. A second half of the report
-      does the same for pitching, using <span data-fill="pitching.meta.rows|int"></span> pitcher-seasons: strikeouts,
-      walks, ERA, complete games, starters' workloads and the rise of the bullpen.
+      <span data-fill="meta.rows|int"></span> player-seasons of hitting and <span data-fill="pitching.meta.rows|int"></span> of pitching
+      across <span data-fill="meta.franchises"></span> MLB franchises. The data comes from the Lahman Baseball Database, plus the
+      2026 regular season from MLB's public Stats API. The biggest story is the home run: its share of plate appearances rose from
+      <span data-fill="headline.HR_PCT_first|pct"></span> in <span data-fill="meta.start_year"></span> to
+      <span data-fill="headline.HR_PCT_last|pct"></span> in <span data-fill="meta.end_year"></span>, after peaking at
+      <span data-fill="d.hrPeak|pct"></span> in <span data-fill="d.hrPeakYear"></span>. Two more patterns run alongside it: strikeouts
+      rose with home runs, and a team's ballpark can shape its pitching as much as its pitchers do, as the Colorado Rockies show.
     </p>
+
+    <div class="takeaways" aria-label="The three big takeaways">
+      <a class="takeaway" href="#homers"><span class="takeaway-num">1</span><strong>Home runs</strong><span><span data-fill="headline.HR_PCT_first|pct"></span> → <span data-fill="headline.HR_PCT_last|pct"></span> of plate appearances, peaking in <span data-fill="d.hrPeakYear"></span></span></a>
+      <a class="takeaway" href="#hr-k"><span class="takeaway-num">2</span><strong>Strikeouts rose with them</strong><span><span data-fill="headline.K_PCT_first|pct"></span> → <span data-fill="headline.K_PCT_last|pct"></span> of plate appearances, a correlation of <span data-fill="d.hrkCorr|corr"></span></span></a>
+      <a class="takeaway" href="#ballparks"><span class="takeaway-num">3</span><strong>Ballparks shape pitching</strong><span>Rockies ERA <span data-fill="d.parkTopERA|dec2"></span> vs. <span data-fill="d.leagueERA|dec2"></span> for the league</span></a>
+    </div>
   </header>
 
   <section class="hero-board" aria-label="Headline numbers">
@@ -80,12 +86,55 @@
 
   <article id="findings">
 
-    <!--
-      LOGAN: Each heading states the finding using live numbers from data/report.json.
-      The paragraphs are neutral first drafts. After you run the script and look at
-      the charts, rewrite each paragraph in your own words and add what you think
-      explains the pattern. Check every number against data/report.json.
-    -->
+    <div class="part-head" id="big-three">
+      <h2>The three big takeaways</h2>
+      <p>Three patterns run through the <span data-fill="meta.seasons"></span> seasons: the home run rate changed more than anything else, strikeouts rose along with it, and a ballpark can shape a team's pitching as much as its pitchers do.</p>
+    </div>
+
+    <section class="finding" id="homers">
+      <h2>The home run rate climbed from <span data-fill="headline.HR_PCT_first|pct"></span> to <span data-fill="headline.HR_PCT_last|pct"></span> of plate appearances, peaking at <span data-fill="d.hrPeak|pct"></span> in <span data-fill="d.hrPeakYear"></span></h2>
+      <p>The home run rate is home runs divided by plate appearances, which adjusts for seasons of different lengths (1981, 1994, 1995 and 2020 were shortened). It was <span class="stat-inline" data-fill="headline.HR_PCT_first|pct2"></span> in <span data-fill="meta.start_year"></span> and <span class="stat-inline" data-fill="headline.HR_PCT_last|pct2"></span> in <span data-fill="meta.end_year"></span>, and the high point was <span class="stat-inline" data-fill="d.hrPeak|pct2"></span> in <span data-fill="d.hrPeakYear"></span>. It was not a straight climb: the rate fell to <span class="stat-inline" data-fill="d.hrLowDecadeRate|pct2"></span> in the <span data-fill="d.hrLowDecade"></span>, then rose in every decade after that, reaching <span class="stat-inline" data-fill="d.hrLastDecadeRate|pct2"></span> in the <span data-fill="d.lastDecade"></span>. Of everything in this data, this is the biggest change in how the game is played.</p>
+      <p>Switch the chart to home runs per team to see raw totals, or to decades to see the shape of the climb.</p>
+      <a class="cta-inline" href="dashboard.html?measure=HR_PCT">Explore home run rate in the dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title" id="t-homers">Home runs per plate appearance, by season</span>
+          <div class="seg" data-chart="homers"><button aria-pressed="true" data-v="HR_PCT">Rate</button><button aria-pressed="false" data-v="HR_PER_TEAM">Per team</button><button aria-pressed="false" data-v="DECADE">By decade</button></div></div>
+        <div class="chart-box"><canvas id="c-homers" role="img" aria-label="Home run rate by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="hr-k">
+      <h2>As home runs rose, so did strikeouts: the two rates moved together (correlation <span data-fill="d.hrkCorr|corr"></span>)</h2>
+      <p>The home run rate went from <span class="stat-inline" data-fill="headline.HR_PCT_first|pct"></span> to <span class="stat-inline" data-fill="headline.HR_PCT_last|pct"></span> of plate appearances while the strikeout rate went from <span class="stat-inline" data-fill="headline.K_PCT_first|pct"></span> to <span class="stat-inline" data-fill="headline.K_PCT_last|pct"></span>. Across the <span data-fill="meta.seasons"></span> seasons the two rates are strongly related, with a correlation of <span class="stat-inline" data-fill="d.hrkCorr|corr"></span> (1 would mean they always rise and fall together), and by decade it is <span class="stat-inline" data-fill="d.hrkCorrDecade|corr"></span>. Both fell in the <span data-fill="d.hrLowDecade"></span> and both rose in every decade after that.</p>
+      <p>They do not move in lockstep every year (the correlation of year-to-year changes is only <span class="stat-inline" data-fill="d.hrkCorrDiff|corr"></span>), so this is a long-run pattern, not a rule for any single season. The likely link is how hitters swing: swinging for the fences produces more home runs and more misses, which is the trade-off behind the three true outcomes below. This data shows that the two rise together; it cannot, by itself, prove why.</p>
+      <a class="cta-inline" href="dashboard.html?measure=K_PCT">Explore strikeout rate in the dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Home run rate and strikeout rate</span>
+          <div class="seg" data-chart="hrk"><button aria-pressed="true" data-v="TIME">Over time</button><button aria-pressed="false" data-v="SCATTER">One dot per season</button></div></div>
+        <div class="chart-box"><canvas id="c-hrk" role="img" aria-label="Home run rate and strikeout rate by season"></canvas></div>
+      </div>
+    </section>
+
+    <section class="finding" id="ballparks">
+      <h2>The <span data-fill="d.parkTop"></span> have the highest ERA of any franchise, <span data-fill="d.parkTopERA|dec2"></span>, in the most hitter-friendly ballpark</h2>
+      <p>Where a team plays can matter as much as who pitches for it. The <span data-fill="d.parkTop"></span>' pitchers have the highest ERA of any franchise, <span class="stat-inline" data-fill="d.parkTopERA|dec2"></span> against <span class="stat-inline" data-fill="d.leagueERA|dec2"></span> for the whole league. Their home, <span data-fill="d.parkTopPark"></span> in Denver, sits about a mile above sea level, where the thin air lets fly balls carry farther. Lahman's park factor measures this effect (100 is a neutral park, and anything above 100 favors hitters): the <span data-fill="d.parkTop"></span> average <span class="stat-inline" data-fill="d.parkTopBPF|dec1"></span> over <span data-fill="d.parkTopSeasons"></span> seasons, far above the next highest, the <span data-fill="d.parkSecond"></span> at <span class="stat-inline" data-fill="d.parkSecondBPF|dec1"></span>, and the lowest, the <span data-fill="d.parkLowest"></span> at <span class="stat-inline" data-fill="d.parkLowestBPF|dec1"></span>. <span data-fill="d.parkTopPark"></span> rated <span class="stat-inline" data-fill="d.parkTopMax"></span> in <span data-fill="d.parkTopMaxYear"></span>, the most extreme single season.</p>
+      <p>Across all <span data-fill="d.parkN"></span> franchises, a higher park factor goes with a higher ERA (correlation <span class="stat-inline" data-fill="d.parkCorrERA|corr"></span>). Take the <span data-fill="d.parkTop"></span> out and the link is weaker (<span class="stat-inline" data-fill="d.parkCorrERANoTop|corr"></span>), which means Colorado is an extreme case, not just the top of a smooth trend. Park factors come from Lahman's Teams table and end in <span data-fill="d.parkLastYear"></span>; ERA covers every season through <span data-fill="meta.end_year"></span>.</p>
+      <a class="cta-inline" href="pitching.html?measure=ERA&breakdown=franchise">Explore franchise pitching in the pitching dashboard</a>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Park factor against pitching results, one dot per franchise</span>
+          <div class="seg" data-chart="park"><button aria-pressed="true" data-v="ERA">ERA</button><button aria-pressed="false" data-v="HR9">Home runs per 9</button></div></div>
+        <div class="chart-box"><canvas id="c-park" role="img" aria-label="Park factor against ERA by franchise"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-head"><span class="chart-title">Average park factor by franchise</span></div>
+        <div class="chart-box tall"><canvas id="c-bpf" role="img" aria-label="Average park factor by franchise"></canvas></div>
+      </div>
+    </section>
+
+    <div class="part-head" id="hitting-part">
+      <h2>More on hitting</h2>
+      <p>The same seasons, one stat at a time. Every rate is computed from totals, and each finding links to a matching view in the <a href="dashboard.html">hitting dashboard</a>.</p>
+    </div>
 
     <section class="finding" id="strikeouts">
       <h2>Strikeouts rose from <span data-fill="headline.K_PCT_first|pct"></span> to <span data-fill="headline.K_PCT_last|pct"></span> of plate appearances</h2>
@@ -94,17 +143,6 @@
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">Strikeouts as a share of plate appearances, by season</span></div>
         <div class="chart-box"><canvas id="c-strikeouts" aria-label="Line chart of strikeout rate by season" role="img"></canvas></div>
-      </div>
-    </section>
-
-    <section class="finding" id="homers">
-      <h2>Home run rate peaked in <span data-fill="d.hrPeakYear"></span> at <span data-fill="d.hrPeak|pct"></span> of plate appearances</h2>
-      <p>The home run rate is home runs divided by plate appearances, which adjusts for seasons of different lengths (1981, 1994, 1995 and 2020 were shortened). It went from <span class="stat-inline" data-fill="headline.HR_PCT_first|pct"></span> in the first season to <span class="stat-inline" data-fill="headline.HR_PCT_last|pct"></span> in the latest. Switch the chart to home runs per team to see raw totals.</p>
-      <a class="cta-inline" href="dashboard.html?measure=HR_PCT">Explore home run rate in the dashboard</a>
-      <div class="chart-card">
-        <div class="chart-head"><span class="chart-title" id="t-homers">Home runs per plate appearance, by season</span>
-          <div class="seg" data-chart="homers"><button aria-pressed="true" data-v="HR_PCT">Rate</button><button aria-pressed="false" data-v="HR_PER_TEAM">Per team</button></div></div>
-        <div class="chart-box"><canvas id="c-homers" role="img" aria-label="Home run rate by season"></canvas></div>
       </div>
     </section>
 
@@ -192,7 +230,6 @@
       </div>
     </section>
 
-
     <div class="part-head" id="pitching-part">
       <h2>Pitching</h2>
       <p>The same seasons from the pitcher's side. Every rate below is computed from totals (total earned runs and total innings, never an average of pitchers' ERAs), and the <a href="pitching.html">pitching dashboard</a> lets you filter and re-cut the same numbers.</p>
@@ -246,17 +283,6 @@
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">Share of innings by role, by decade</span></div>
         <div class="chart-box"><canvas id="c-prel" role="img" aria-label="Starter and reliever share of innings by decade"></canvas></div>
-      </div>
-    </section>
-
-    <section class="finding" id="p-franchises">
-      <h2>The <span data-fill="d.pTopFranchise"></span> allowed the fewest earned runs per 9 innings: <span data-fill="d.pTopFranchiseERA|dec2"></span></h2>
-      <p>Combining every pitcher who threw for a franchise from <span data-fill="meta.start_year"></span> to <span data-fill="meta.end_year"></span>, the <span data-fill="d.pTopFranchise"></span> had the lowest ERA (<span class="stat-inline" data-fill="d.pTopFranchiseERA|dec2"></span>) and the <span data-fill="d.pWorstFranchise"></span> the highest (<span class="stat-inline" data-fill="d.pWorstFranchiseERA|dec2"></span>). Franchises that play in hitter-friendly parks or joined in high-scoring eras carry that context, so the switch also shows strikeouts per 9.</p>
-      <a class="cta-inline" href="pitching.html?measure=ERA&breakdown=franchise">Explore franchise pitching in the pitching dashboard</a>
-      <div class="chart-card">
-        <div class="chart-head"><span class="chart-title">Top 15 franchises</span>
-          <div class="seg" data-chart="pfr"><button aria-pressed="true" data-v="ERA">Lowest ERA</button><button aria-pressed="false" data-v="K9">Most K/9</button></div></div>
-        <div class="chart-box tall"><canvas id="c-pfr" role="img" aria-label="Franchise pitching leaders"></canvas></div>
       </div>
     </section>
 
@@ -324,6 +350,9 @@
       <h3>Pitching table</h3>
       <p>The pitching half uses a sixth Lahman table, Pitching. One pitching row is one pitcher's line for one team in one season (a "stint"), the same grain as the batting rows. The file has <span data-fill="pitching.meta.rows|int"></span> rows and <span data-fill="pitching.meta.columns"></span> columns covering the same <span data-fill="pitching.meta.seasons"></span> seasons and <span data-fill="pitching.meta.franchises"></span> franchises. Seasons before <span data-fill="meta.start_year"></span> are excluded (<span data-fill="d.pDroppedWindow|int"></span> rows) and <span data-fill="pitching.meta.rows_dropped_zero_bfp|int"></span> row with no batters faced is dropped. A pitcher is a starter for a given team and season if he started at least half of his games, otherwise a reliever. Innings are stored as outs and divided by 3, so no rounding enters the totals. Holds are not recorded in the Lahman data, so saves are the only late-inning count shown.</p>
 
+      <h3>Correlations and park factors</h3>
+      <p>The "correlation" in the home run, strikeout and ballpark findings is the Pearson correlation coefficient: 1 means two numbers always rise and fall together, 0 means no linear relationship, and negative numbers mean they move in opposite directions. The home run and strikeout correlation uses the league-wide rates for each of the <span data-fill="meta.seasons"></span> seasons (and, separately, for each decade and for each year-to-year change). The ballpark finding uses each franchise's average park factor from the Lahman Teams table (<code>BPF</code>, where 100 is a neutral park and a higher number favors hitters) for <span data-fill="d.parkN"></span> franchises, and compares it with the franchise's ERA and home runs allowed per 9 innings. Lahman publishes park factors through <span data-fill="d.parkLastYear"></span>, so the 2026 season is not in the park averages. A correlation shows that two things move together, not that one causes the other.</p>
+
       <h3>The 2026 season</h3>
       <p>Lahman publishes a season only after it ends, so its 2025 release stops at 2025. The 2026 regular season, which ended September 27, was added from MLB's public Stats API by <code>scripts/fetch_mlb_2026.py</code> (fetched <span data-fill="meta.mlb2026_fetched_utc"></span> UTC). That is <span data-fill="meta.mlb2026_hitting_rows_raw|int"></span> hitting lines and <span data-fill="meta.mlb2026_pitching_rows_raw|int"></span> pitching lines, one per player and team, cleaned with the same rules as every other season (<span data-fill="meta.mlb2026_hitting_rows_dropped_zero_pa|int"></span> hitting lines with no plate appearances are dropped). Each MLB player is matched to his Lahman playerID by birth date and name, so careers continue across the two sources: <span data-fill="meta.mlb2026_matched_to_lahman_id|int"></span> of <span data-fill="meta.mlb2026_players|int"></span> players matched, and the rest, mostly 2026 debuts, keep an MLB id. Primary position is the position with the most games, with left, center and right field combined as Outfield, as in Lahman. Postseason games are not included in any season. As a check, the player rows were summed by team and compared with MLB's own published team totals: <span data-fill="meta.mlb2026_team_checks_exact|int"></span> of <span data-fill="meta.mlb2026_team_checks|int"></span> comparisons match exactly, and the only differences are in <span data-fill="meta.mlb2026_team_check_misses"></span>, because a team's earned runs are not always the sum of its pitchers' earned runs.</p>
 
@@ -367,10 +396,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="js/common.js?v=p9"></script>
-<script src="js/sound.js?v=p9"></script>
-<script src="js/report.js?v=p9"></script>
-<script src="js/roster.js?v=p9"></script>
-<script src="js/roster_pitching.js?v=p9"></script>
+<script src="js/common.js?v=p11"></script>
+<script src="js/sound.js?v=p11"></script>
+<script src="js/report.js?v=p11"></script>
+<script src="js/roster.js?v=p11"></script>
+<script src="js/roster_pitching.js?v=p11"></script>
 </body>
 </html>

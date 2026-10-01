@@ -56,6 +56,51 @@ function derive(rep) {
     doublesFirst: xbh[0]["2B_PER_600"], doublesLast: xbh[xbh.length - 1]["2B_PER_600"],
     droppedWindow: rep.meta.raw_rows - rep.meta.rows_in_window,
     ...derivePitching(rep, { maxBy, minBy, mean }),
+    ...deriveStory(rep, { maxBy, minBy }),
+  };
+}
+
+/* the three big takeaways: home run rate, home runs with strikeouts, ballparks and ERA */
+const pearson = (x, y) => {
+  const n = x.length, mx = x.reduce((a, b) => a + b, 0) / n, my = y.reduce((a, b) => a + b, 0) / n;
+  let sxy = 0, sxx = 0, syy = 0;
+  for (let i = 0; i < n; i++) { sxy += (x[i] - mx) * (y[i] - my); sxx += (x[i] - mx) ** 2; syy += (y[i] - my) ** 2; }
+  return sxy / Math.sqrt(sxx * syy);
+};
+function deriveStory(rep, { minBy }) {
+  const s = rep.season;
+  // home run and strikeout rates by decade, from season totals (HR / PA and SO / PA)
+  const byDec = {};
+  s.forEach(x => {
+    const d = Math.floor(x.year / 10) * 10 + "s";
+    const o = (byDec[d] ||= { decade: d, HR: 0, SO: 0, PA: 0 });
+    o.HR += x.HR; o.SO += x.SO; o.PA += x.PA;
+  });
+  const decades = Object.values(byDec).map(o => ({ decade: o.decade, HR_PCT: o.HR / o.PA, K_PCT: o.SO / o.PA }));
+  const lowHr = minBy(decades, "HR_PCT"), lowK = minBy(decades, "K_PCT");
+  const kHr = s.map(x => x.HR_PCT), kK = s.map(x => x.K_PCT);
+  const diff = a => a.slice(1).map((v, i) => v - a[i]);
+
+  // park factor (Lahman BPF: 100 is neutral, above 100 favors hitters) against franchise ERA and HR/9
+  const park = rep.park.rows, fr = Object.fromEntries(rep.pitching.franchise.map(f => [f.franchise, f]));
+  const joined = park.filter(p => fr[p.franchise]).map(p => ({ ...p, ERA: fr[p.franchise].ERA, HR9: fr[p.franchise].HR9 }));
+  const top = joined[0], rest = joined.slice(1);
+  return {
+    hrDecades: decades,
+    hrLowDecade: lowHr.decade, hrLowDecadeRate: lowHr.HR_PCT, hrLastDecadeRate: decades[decades.length - 1].HR_PCT,
+    kLowDecade: lowK.decade,
+    hrkCorr: pearson(kHr, kK), hrkCorrDiff: pearson(diff(kHr), diff(kK)),
+    hrkCorrDecade: pearson(decades.map(d => d.HR_PCT), decades.map(d => d.K_PCT)),
+    leagueERA: rep.pitching.headline.ERA_all,
+    parkTop: top.franchise, parkTopBPF: top.BPF, parkTopMax: top.BPF_max, parkTopMaxYear: top.BPF_max_year, parkTopPark: top.BPF_max_park,
+    parkTopERA: top.ERA, parkTopSeasons: top.seasons,
+    parkSecond: joined[1].franchise, parkSecondBPF: joined[1].BPF,
+    parkLowest: joined[joined.length - 1].franchise, parkLowestBPF: joined[joined.length - 1].BPF,
+    parkCorrERA: pearson(joined.map(p => p.BPF), joined.map(p => p.ERA)),
+    parkCorrERANoTop: pearson(rest.map(p => p.BPF), rest.map(p => p.ERA)),
+    parkCorrHR9: pearson(joined.map(p => p.BPF), joined.map(p => p.HR9)),
+    parkLastYear: rep.park.last_year, parkN: joined.length,
+    parkJoined: joined,
   };
 }
 
@@ -94,6 +139,7 @@ function lookup(path) {
 }
 function format(v, kind) {
   if (kind === "signavg") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "avg");
+  if (kind === "corr") return v == null ? "–" : (v < 0 ? "−" : "") + Math.abs(v).toFixed(2);
   if (kind === "pct2") return v == null ? "–" : (v * 100).toFixed(2) + "%";
     if (kind === "signdec2") return v == null ? "–" : (v >= 0 ? "+" : "−") + fmt(Math.abs(v), "dec2");
   return kind ? fmt(v, kind) : (v ?? "–");
@@ -145,6 +191,19 @@ function drawStrikeouts() {
   line("strikeouts", years(), [{ label: "Strikeout rate", data: REP.season.map(x => x.K_PCT), borderColor: COLORS[1], backgroundColor: "rgba(200,16,46,.08)", fill: true }], "pct");
 }
 function drawHomers(v = "HR_PCT") {
+  if (v === "DECADE") {
+    document.getElementById("t-homers").textContent = "Home runs per plate appearance, by decade";
+    charts.homers?.destroy();
+    const dec = D.hrDecades;
+    charts.homers = new Chart(document.getElementById("c-homers"), {
+      type: "bar",
+      data: { labels: dec.map(x => x.decade), datasets: [{ label: "HR rate", data: dec.map(x => x.HR_PCT),
+        backgroundColor: dec.map(x => (x.decade === D.hrLowDecade ? COLORS[3] : COLORS[1])) }] },
+      options: { plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.y, "pct2") } } },
+        scales: { y: { beginAtZero: true, ticks: { callback: v => (v * 100).toFixed(1) + "%" } } } },
+    });
+    return;
+  }
   const kind = v === "HR_PCT" ? "pct" : "dec1";
   document.getElementById("t-homers").textContent = v === "HR_PCT" ? "Home runs per plate appearance, by season" : "Home runs per team, by season";
   line("homers", years(), [{ label: v === "HR_PCT" ? "HR rate" : "HR per team", data: REP.season.map(x => x[v]), borderColor: COLORS[0], backgroundColor: "rgba(11,37,69,.08)", fill: true }], kind);
@@ -285,22 +344,79 @@ function drawPRel() {
     options: { plugins: { tooltip: tip("pct") }, scales: { x: { stacked: true }, y: { stacked: true, max: 1, ...pctAxis } } },
   });
 }
-function drawPFr(v = "ERA") {
-  const rows = [...REP.pitching.franchise].sort((a, b) => (v === "ERA" ? a.ERA - b.ERA : b.K9 - a.K9)).slice(0, 15);
-  charts.pfr?.destroy();
-  charts.pfr = new Chart(document.getElementById("c-pfr"), {
+/* home runs and strikeouts together: two lines over time, or one dot per season */
+function drawHrk(v = "TIME") {
+  const s = REP.season;
+  charts.hrk?.destroy();
+  if (v === "TIME") {
+    charts.hrk = new Chart(document.getElementById("c-hrk"), {
+      type: "line",
+      data: { labels: years(), datasets: [
+        { label: "Home run rate (left axis)", data: s.map(x => x.HR_PCT), borderColor: COLORS[1], yAxisID: "y" },
+        { label: "Strikeout rate (right axis)", data: s.map(x => x.K_PCT), borderColor: COLORS[0], yAxisID: "y1" },
+      ] },
+      options: { plugins: { tooltip: tip("pct") },
+        scales: { x: { ticks: { maxTicksLimit: 14 } },
+          y: { position: "left", title: { display: true, text: "Home run rate" }, ticks: { callback: v => (v * 100).toFixed(1) + "%" } },
+          y1: { position: "right", title: { display: true, text: "Strikeout rate" }, grid: { drawOnChartArea: false }, ticks: { callback: v => (v * 100).toFixed(0) + "%" } } } },
+    });
+  } else {
+    const decs = [...new Set(s.map(x => Math.floor(x.year / 10) * 10 + "s"))];
+    charts.hrk = new Chart(document.getElementById("c-hrk"), {
+      type: "scatter",
+      data: { datasets: decs.map((d, i) => ({ label: d, backgroundColor: COLORS[i % COLORS.length], borderColor: COLORS[i % COLORS.length], pointRadius: 5,
+        data: s.filter(x => Math.floor(x.year / 10) * 10 + "s" === d).map(x => ({ x: x.HR_PCT, y: x.K_PCT, year: x.year })) })) },
+      options: { interaction: { mode: "nearest", intersect: true },
+        plugins: { tooltip: { callbacks: { label: c => `${c.raw.year}: HR ${fmt(c.raw.x, "pct")}, strikeouts ${fmt(c.raw.y, "pct")}` } } },
+        scales: { x: { title: { display: true, text: "Home run rate (each dot is one season)" }, ticks: { callback: v => (v * 100).toFixed(1) + "%" } },
+          y: { title: { display: true, text: "Strikeout rate" }, ticks: { callback: v => (v * 100).toFixed(0) + "%" } } } },
+    });
+  }
+}
+
+/* ballparks: each dot is a franchise, park factor against ERA (or home runs allowed per 9) */
+const labelPoints = {
+  id: "labelPoints",
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart; ctx.save(); ctx.font = "600 12px Libre Franklin, sans-serif"; ctx.fillStyle = "#101a2b";
+    chart.getDatasetMeta(0).data.forEach((pt, i) => { const d = chart.data.datasets[0].data[i]; if (d.label) ctx.fillText(d.label, pt.x + 9, pt.y + 4); });
+    ctx.restore();
+  },
+};
+function drawPark(v = "ERA") {
+  const pts = D.parkJoined, hi = pts[0], lo = pts[pts.length - 1];
+  const show = new Set([hi.franchise, lo.franchise, pts[1].franchise]);
+  charts.park?.destroy();
+  charts.park = new Chart(document.getElementById("c-park"), {
+    type: "scatter",
+    data: { datasets: [{ label: "Franchises", pointRadius: 6, pointHoverRadius: 8,
+      backgroundColor: pts.map(p => (p.franchise === hi.franchise ? COLORS[1] : COLORS[0])),
+      borderColor: pts.map(p => (p.franchise === hi.franchise ? COLORS[1] : COLORS[0])),
+      data: pts.map(p => ({ x: p.BPF, y: p[v], franchise: p.franchise, label: show.has(p.franchise) ? p.franchise : "" })) }] },
+    options: { interaction: { mode: "nearest", intersect: true },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${c.raw.franchise}: park factor ${c.raw.x.toFixed(1)}, ${v === "ERA" ? "ERA" : "HR/9"} ${c.raw.y.toFixed(2)}` } } },
+      scales: { x: { title: { display: true, text: "Average park factor, 1960–" + D.parkLastYear + " (100 is neutral; higher helps hitters)" } },
+        y: { title: { display: true, text: v === "ERA" ? "ERA, 1960–" + REP.meta.end_year : "Home runs allowed per 9 innings" }, ticks: { callback: t => t.toFixed(1) } } } },
+    plugins: [labelPoints],
+  });
+}
+function drawBpf() {
+  const rows = D.parkJoined;
+  charts.bpf?.destroy();
+  charts.bpf = new Chart(document.getElementById("c-bpf"), {
     type: "bar",
-    data: { labels: rows.map(x => x.franchise), datasets: [{ label: v === "ERA" ? "ERA" : "Strikeouts per 9", data: rows.map(x => x[v]), backgroundColor: rows.map((_, i) => (i === 0 ? COLORS[1] : COLORS[0])) }] },
+    data: { labels: rows.map(p => p.franchise), datasets: [{ label: "Average park factor", data: rows.map(p => p.BPF), backgroundColor: rows.map((p, i) => (i === 0 ? COLORS[1] : COLORS[0])) }] },
     options: { indexAxis: "y", interaction: { mode: "nearest", intersect: true },
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.x, "dec2") } } }, scales: { x: dec2Axis } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x.toFixed(1) } } },
+      scales: { x: { min: 90, title: { display: true, text: "Average park factor (100 is neutral)" } }, y: { ticks: { autoSkip: false, font: { size: 11 } } } } },
   });
 }
 
-const DRAW = { homers: drawHomers, average: drawAverage, leagues: drawLeagues, franchises: drawFranchises, xbh: drawXbh, pk9: drawPK9, pfr: drawPFr };
+const DRAW = { hrk: drawHrk, park: drawPark, homers: drawHomers, average: drawAverage, leagues: drawLeagues, franchises: drawFranchises, xbh: drawXbh, pk9: drawPK9 };
 function drawAll() {
   drawStrikeouts(); drawHomers(); drawAverage(); drawTto(); drawSteals();
   drawLeagues(); drawFranchises(); drawPositions(); drawHands(); drawXbh();
-  drawPK9(); drawPEra(); drawPCg(); drawPIps(); drawPRel(); drawPFr();
+  drawPK9(); drawPEra(); drawPCg(); drawPIps(); drawPRel(); drawHrk(); drawPark(); drawBpf();
 }
 function wireToggles() {
   document.querySelectorAll(".seg[data-chart]").forEach(seg => {
