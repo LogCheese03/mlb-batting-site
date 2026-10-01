@@ -98,7 +98,7 @@
       for (let c = 0; c < 3; c++) {
         const idx = r * 3 + c, cell = state.cells[idx];
         const label = `${crit(rows[r]).label} and ${crit(cols[c]).label}`;
-        if (cell) h += `<div class="g-cell hit" role="gridcell"><span class="g-name">${esc(cell.name)}</span><span class="g-pts">${cell.pts} pts</span></div>`;
+        if (cell) h += `<div class="g-cell hit" role="gridcell">${photo(cell)}<span class="g-name">${esc(cell.name)}</span><span class="g-pts">${cell.pts} pts</span></div>`;
         else h += `<button class="g-cell${idx === activeCell ? " active" : ""}" data-i="${idx}" ${finished() ? "disabled" : ""} aria-label="${esc(label)}">${finished() ? "" : "+"}</button>`;
       }
     }
@@ -109,6 +109,13 @@
     $("done").hidden = !finished();
     if (finished()) showDone();
     $("pick").hidden = activeCell < 0 || finished();
+  }
+
+  // MLB's image server; the d_ part makes it return a generic silhouette for players without a photo.
+  function photo(cell) {
+    if (!cell.mlbam) return '<span class="g-photo g-none" aria-hidden="true">⚾</span>';
+    const u = `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160,q_auto:best/v1/people/${cell.mlbam}/headshot/67/current`;
+    return `<img class="g-photo" src="${u}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'g-photo g-none',textContent:'⚾'}))">`;
   }
 
   function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
@@ -156,7 +163,7 @@
       // Points: share of the other valid answers with a longer career than this player.
       const longer = cell.filter((a) => d.players[a][4] > p[4]).length;
       const pts = Math.max(1, Math.round(100 * longer / cell.length));
-      state.cells[activeCell] = { pid: p[0], name: p[1], pts };
+      state.cells[activeCell] = { pid: p[0], name: p[1], pts, mlbam: p[6] || 0 };
       state.score += pts;
       say(`${p[1]} fits. +${pts} points.`);
     } else {

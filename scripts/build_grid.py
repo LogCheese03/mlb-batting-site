@@ -137,6 +137,14 @@ def build(kind):
     }
 
 
+def mlbam_ids():
+    """playerID -> MLB id (from scripts/fetch_mlbam_ids.py), used for the headshot shown after a correct guess."""
+    path = DATA / "raw" / "mlbam_ids.csv"
+    if not path.exists():
+        return {}
+    return dict(pd.read_csv(path, dtype=str).values)
+
+
 def merge(hit, pit):
     """One pool of every player: team and era clues are shared, hitting and pitching clues sit side by side."""
     skip = {"pitched", "batted"}  # "also pitched/batted" only make sense inside one pool
@@ -169,8 +177,9 @@ def merge(hit, pit):
             counts[m] += 1
     for c, n in zip(crit, counts):
         c["n"] = n
+    ids = mlbam_ids()
     return {"criteria": crit,
-            "players": [[p[0], p[1], p[2], p[3], p[4], sorted(p[5])] for p in players.values()]}
+            "players": [[p[0], p[1], p[2], p[3], p[4], sorted(p[5]), int(ids.get(p[0], 0))] for p in players.values()]}
 
 
 def main():

@@ -346,3 +346,5 @@ button.g-cell:disabled { cursor: default; background: #eef1f6; }
 .grid-done ul { padding-left: 18px; font-size: 14.5px; }
 .share-text { background: var(--chalk); padding: 10px 12px; border-radius: var(--radius-sm); font: 15px/1.4 var(--body); white-space: pre-wrap; }
 @media (max-width: 520px) { .g-cell { min-height: 78px; font-size: 12.5px; } .g-name { font-size: 12.5px; } .g-row { min-height: 78px; } }
+.g-photo { width: clamp(40px, 9vw, 72px); height: clamp(40px, 9vw, 72px); border-radius: 50%; object-fit: cover; object-position: top; background: #dfe6f1; border: 2px solid #3a8f4d; }
+.g-none { display: grid; place-items: center; font-size: 24px; }
