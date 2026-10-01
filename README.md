@@ -32,16 +32,19 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `dashboard.html` | Hitting dashboard. It has filters, summary numbers (HR, R, RBI, AVG, SB and more), five charts and a heatmap, measure and breakdown switches, a table and a reset button. |
 | `pitching.html` | Pitching dashboard, built the same way: filters (seasons, franchise, league, role, throws, minimum batters faced), summary numbers (W, K, SV, ERA, WHIP, K/9), five charts and a heatmap, switches, a table and a reset button. |
 | `matchups.html` | Hitter-vs-pitcher page. Search any hitter or pitcher, see every opponent they faced, then open one matchup for the season-by-season line, chart and table. |
+| `grid.html` | Daily Grid game, like Immaculate Grid: a 3×3 grid of team, stat, position and era clues, one for hitters and one for pitchers each day. Name a player who fits both the row and the column; nine guesses, points for rarer picks, progress saved in the browser, and a copyable result. |
 | `css/style.css` | Shared fonts, colors and layout for both pages. |
 | `js/common.js` | Shared formulas (AVG, OBP, SLG, OPS, rates), number formatting and chart styling. Its formulas match `scripts/prep_data.py`. |
 | `js/report.js` | Loads `data/report.json`, fills in every number on the report and draws the report charts. Each finding links to a matching dashboard view. |
 | `js/pitching.js` | Loads `data/pitching.csv` and does everything `dashboard.js` does for the pitching dashboard, with pitching formulas (ERA, WHIP, K/9 and so on). |
 | `js/matchups.js` | Loads `data/matchups/index.json` (every player), then the one file for the hitter or pitcher you pick, and draws the opponent list, charts and season-by-season table. |
 | `js/dashboard.js` | Loads `data/batting.csv`, applies filters, recalculates the numbers and draws the dashboard charts, heatmap and table. Also runs the player search, chart click-to-filter, and the `?measure=...&breakdown=...` deep links from the report. |
+| `js/grid.js` | Loads `data/grid.json`, builds the day's grid from a date-seeded random generator (so everyone gets the same one, with at least 3 valid players per square), checks guesses and scores them. |
 | `js/sound.js` | Optional synthesized hover/click sounds and a looping "Take Me Out to the Ball Game" chorus (both off by default; labeled buttons in the nav bar). |
 | `js/roster.js` | Loads `data/batting.csv` on the report page and renders every player's line for a chosen season and franchise, with a team-total row. |
 | `js/roster_pitching.js` | Loads `data/pitching.csv` on the report page and renders every pitcher's line for a chosen season and franchise, with a team-total row (the pitching twin of `js/roster.js`). |
 | `scripts/prep_data.py` | Reads the raw Lahman CSVs, joins franchise, handedness and primary position or role, drops rows, checks the project requirements, and writes `batting.csv`, `pitching.csv` and `report.json`. |
+| `scripts/build_grid.py` | Reads `data/batting.csv` and `data/pitching.csv` and writes `data/grid.json`: the clue list (teams, season and career milestones, positions, handedness, decades) and, for each player, the clues they meet. |
 | `scripts/fetch_mlb_2026.py` | Downloads the 2026 regular season from MLB's Stats API into `data/raw/mlb2026/` (player lines, positions, MLB's own team totals for a cross-check). |
 | `scripts/fetch_mlb_2026_pa.py` | Downloads every 2026 plate appearance (batter, pitcher, event) from MLB's play-by-play feeds into `data/raw/mlb2026/pa_events.csv`. |
 | `scripts/build_matchups.py` | Reads the Retrosheet zips (1960–2025) and the 2026 feed, classifies every plate appearance, credits it to the pitcher on the mound, checks the totals against this site's hitting and pitching files, and writes the matchup files below. |
@@ -51,6 +54,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `data/pitching.csv` | Cleaned pitching data loaded by the pitching dashboard, written by the script. |
 | `data/matchups/` | `index.json` lists every player; `b/<id>.csv` has one file per hitter and `p/<id>.csv` one per pitcher, each with every opponent faced, season by season (17,287 files). Loaded one at a time by the matchup page. |
 | `data/matchups_meta.json` | Counts and the accuracy check for the matchup data (season totals against Lahman, pitcher totals against Lahman). |
+| `data/grid.json` | Clues and player eligibility for the Daily Grid game, written by `scripts/build_grid.py`. |
 | `data/report.json` | Every number and chart series on the report (hitting at the top level, pitching under `pitching`, average park factors under `park`), written by the script. |
 | `.gitignore` | Keeps macOS `.DS_Store` files out of the repository. |
 
@@ -63,6 +67,8 @@ python3 -m http.server 8000       # then open http://localhost:8000
 ```
 
 To rebuild the matchup files, download the yearly zips from Retrosheet into `data/retrosheet/` (1960–2025, about 125 MB, not committed) and run `python3 scripts/build_matchups.py` (about two minutes and 4 GB of memory). `python3 scripts/fetch_mlb_2026_pa.py` rebuilds the 2026 plate-appearance file from MLB's feeds (about 25 minutes).
+
+To rebuild the Daily Grid data, run `python3 scripts/build_grid.py` after `prep_data.py` (a few seconds).
 
 The pages load their data with `fetch`, so opening the HTML files directly (`file://`) will not work. Use the local server above, or the GitHub Pages URL.
 

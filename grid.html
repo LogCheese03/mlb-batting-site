@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Grid | The Evolution of MLB Hitting and Pitching</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=p15">
+</head>
+<body>
+
+<!-- Shared navigation bar (identical on every page) -->
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-ball" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M6 3.5c2.5 2.5 2.5 14.5 0 17M18 3.5c-2.5 2.5-2.5 14.5 0 17" stroke="#c8102e" stroke-width="1.6" fill="none" stroke-dasharray="2 1.6"/></svg>
+      <span>MLB Hitting &amp; Pitching</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Report</a></li>
+      <li><a href="dashboard.html">Hitting Dashboard</a></li>
+      <li><a href="pitching.html">Pitching Dashboard</a></li>
+      <li><a href="matchups.html">Matchups</a></li>
+      <li><a href="grid.html" aria-current="page">Daily Grid</a></li>
+      <li><a href="index.html#methods">About the data</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="loading" id="loading">Setting up today's grid…</div>
+
+<main class="dash grid-page">
+  <div class="dash-title">
+    <div>
+      <h1>Daily Grid</h1>
+      <p>Fill all nine squares with a player who fits <em>both</em> the row and the column. One guess per square, nine guesses, and no player twice. The rarer your pick, the more points it earns. A new grid for hitters and one for pitchers every day, built from the same data as the rest of the site (1960–2026).</p>
+    </div>
+  </div>
+
+  <section class="grid-wrap" aria-label="Game">
+    <div class="grid-bar">
+      <div class="seg" id="modeSeg"><button aria-pressed="true" data-v="hit">Hitters</button><button aria-pressed="false" data-v="pit">Pitchers</button></div>
+      <label class="grid-date">Day <input type="date" id="dayPick" aria-label="Pick a day"></label>
+      <div class="grid-stats"><span>Guesses left <b id="left">9</b></span><span>Score <b id="score">0</b></span></div>
+    </div>
+
+    <div class="grid" id="grid" role="grid" aria-label="Three by three grid"></div>
+
+    <div class="grid-pick" id="pick" hidden>
+      <div class="filter-label" id="pickLabel"></div>
+      <div class="suggest-wrap">
+        <input type="search" id="pickSearch" placeholder="Type a player's name…" aria-label="Search for a player" autocomplete="off">
+        <ul class="suggest" id="pickSuggest" role="listbox" hidden></ul>
+      </div>
+      <button class="btn" id="pickCancel">Cancel</button>
+    </div>
+
+    <p class="grid-msg" id="msg" role="status" aria-live="polite">Click a square to start.</p>
+
+    <div class="grid-done" id="done" hidden>
+      <h2 id="doneTitle"></h2>
+      <pre id="shareText" class="share-text"></pre>
+      <button class="btn" id="shareBtn">Copy result</button>
+      <div id="reveal"></div>
+    </div>
+
+    <p class="chart-note">Players count for a team if they appeared for that franchise in this data, and for a season stat if they reached it in one season (a traded player's stints are added together). Points per square run from 1 to 100 and measure how few of the other valid answers had a longer career (plate appearances or innings pitched). The grid for each day is the same for everyone.</p>
+  </section>
+</main>
+
+<footer>Built by Logan Hull with data from the Lahman Baseball Database. <a href="index.html">Read the report</a></footer>
+
+<script src="js/common.js?v=p15"></script>
+<script src="js/sound.js?v=p15"></script>
+<script src="js/grid.js?v=p15"></script>
+</body>
+</html>
