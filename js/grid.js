@@ -32,6 +32,17 @@
   // Lower-case, no accents, and no punctuation or spaces, so "TJ Beam" finds "T. J. Beam" and "oneill" finds "O'Neill".
   function squash(s) { return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
 
+  // Number of single-letter edits between two strings (for names spelled a little differently than typed).
+  function edits(a, b) {
+    let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) {
+      const cur = [i];
+      for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+
   function buildSets(kind) {
     const d = DATA[kind];
     if (d.sets) return d;
@@ -146,6 +157,16 @@
     const hits = [];
     for (let i = 0; i < d.players.length; i++) {
       if (d.norm[i].includes(q) && !used.has(i)) hits.push(i);
+    }
+    // Nothing matched: try a close first name plus the exact last name ("Christopher Sanchez" finds Cristopher Sanchez).
+    const words = $("pickSearch").value.trim().split(/\s+/);
+    if (!hits.length && words.length >= 2) {
+      const first = squash(words[0]), last = squash(words.slice(1).join(""));
+      for (let i = 0; i < d.players.length; i++) {
+        if (used.has(i)) continue;
+        const parts = d.players[i][1].split(" ");
+        if (squash(parts.slice(1).join("")) === last && edits(squash(parts[0]), first) <= 2) hits.push(i);
+      }
     }
     // Names starting with the typed text come first, then the longest careers.
     const rank = (i) => (d.norm[i].startsWith(q) ? 0 : 1);
