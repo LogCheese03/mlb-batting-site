@@ -1,6 +1,7 @@
 """Build data/grid.json for the daily Grid game (grid.html).
 
-Reads the cleaned data/batting.csv and data/pitching.csv and writes, for hitters and
+Reads the raw Lahman tables (every player 1871-2025, nobody dropped) plus the 2026 season from
+data/batting.csv and data/pitching.csv, and writes, for hitters and
 pitchers separately, a list of criteria (teams, season milestones, career milestones,
 positions, handedness) and a list of players, each with the criteria they meet.
 The browser picks each day's nine criteria and checks guesses against this file.
@@ -43,17 +44,56 @@ TEAM_ID = {
 MIN_PLAYERS = 40  # a criterion with fewer matching players is too thin to use
 
 
+RAW = DATA / "raw"
+POS_NAMES = {"P": "Pitcher", "C": "Catcher", "1B": "First base", "2B": "Second base",
+             "3B": "Third base", "SS": "Shortstop", "OF": "Outfield", "DH": "DH / pinch hitter"}
+
+
+def load_full(kind):
+    """Every player-season-team row, 1871-2026: raw Lahman through 2025 (nobody dropped, so pinch runners and
+    pitchers who faced no batters are included) plus the 2026 rows already built from MLB's Stats API."""
+    people = pd.read_csv(RAW / "People.csv", usecols=["playerID", "nameFirst", "nameLast", "bats", "throws"])
+    people["name"] = (people.nameFirst.fillna("") + " " + people.nameLast.fillna("")).str.strip()
+    teams = pd.read_csv(RAW / "Teams.csv", usecols=["yearID", "teamID", "franchID"]).drop_duplicates(["yearID", "teamID"])
+    fr = pd.read_csv(RAW / "TeamsFranchises.csv", usecols=["franchID", "franchName"]).drop_duplicates("franchID")
+    if kind == "hit":
+        df = pd.read_csv(RAW / "Batting.csv")
+        num = ["G", "AB", "R", "H", "2B", "HR", "RBI", "SB", "BB", "HBP", "SH", "SF"]
+        df[num] = df[num].fillna(0).astype(int)
+        df["PA"] = df.AB + df.BB + df.HBP + df.SH + df.SF
+        df = df.merge(people[["playerID", "name", "bats"]], on="playerID", how="left")
+        df["bats"] = df.bats.map({"R": "Right", "L": "Left", "B": "Switch"}).fillna("Unknown")
+        f = pd.read_csv(RAW / "Fielding.csv", usecols=["playerID", "yearID", "stint", "POS", "G"])
+        f = f.sort_values("G", ascending=False).drop_duplicates(["playerID", "yearID", "stint"])
+        df = df.merge(f[["playerID", "yearID", "stint", "POS"]], on=["playerID", "yearID", "stint"], how="left")
+        df["pos"] = df.POS.fillna("DH").map(POS_NAMES)
+        cols = ["playerID", "name", "year", "franchise", "pos", "bats", "G", "PA", "AB", "R", "H", "2B", "HR", "RBI", "SB", "BB"]
+    else:
+        df = pd.read_csv(RAW / "Pitching.csv")
+        num = ["G", "GS", "SV", "W", "SO", "IPouts", "ER", "SHO", "CG"]
+        df[num] = df[num].fillna(0).astype(int)
+        df = df.merge(people[["playerID", "name", "throws"]], on="playerID", how="left")
+        df["throws"] = df.throws.map({"R": "Right", "L": "Left", "S": "Switch"}).fillna("Unknown")
+        cols = ["playerID", "name", "year", "franchise", "throws"] + num
+    df = df.rename(columns={"yearID": "year"})
+    df = df.merge(teams.rename(columns={"yearID": "year"}), on=["year", "teamID"], how="left")
+    df = df.merge(fr, on="franchID", how="left").rename(columns={"franchName": "franchise"})
+    df["franchise"] = df.franchise.fillna(df.teamID)
+    old = df[cols]
+    new = pd.read_csv(DATA / ("batting.csv" if kind == "hit" else "pitching.csv"))
+    new = new[new.year == 2026]
+    return pd.concat([old, new[[c for c in cols if c in new.columns]]], ignore_index=True)
+
+
 def season_sum(df, cols):
     """One row per player-season (a traded player's stints are added together)."""
     return df.groupby(["playerID", "year"], as_index=False)[cols].sum()
 
 
-def build(kind):
+def build(kind, df):
     if kind == "hit":
-        df = pd.read_csv(DATA / "batting.csv")
         num = ["G", "PA", "AB", "H", "HR", "RBI", "SB", "R", "BB", "2B"]
     else:
-        df = pd.read_csv(DATA / "pitching.csv")
         num = ["G", "GS", "SV", "W", "SO", "IPouts", "ER", "SHO", "CG"]
     seas = season_sum(df, num)
     car = df.groupby("playerID")[num].sum()
@@ -97,7 +137,6 @@ def build(kind):
             add("pos:" + pos, "Played " + pos.lower(), "pos", "pos", df.loc[df.pos == pos, "playerID"])
         add("bats:Left", "Bats left-handed", "bats", "hand", df.loc[df.bats == "Left", "playerID"])
         add("bats:Switch", "Switch hitter", "bats", "hand", df.loc[df.bats == "Switch", "playerID"])
-        add("pitched", "Also pitched in the majors", "role", "pos", pd.read_csv(DATA / "pitching.csv").playerID)
     else:
         season("s_w15", "15+ wins in a season", "w", seas.W >= 15)
         season("s_w20", "20+ wins in a season", "w", seas.W >= 20)
@@ -122,11 +161,9 @@ def build(kind):
         add("role:Closer", "Reliever with 20+ saves in a season", "role", "pos",
             seas.loc[seas.SV >= 20, "playerID"])
         add("throws:Left", "Throws left-handed", "hand", "hand", df.loc[df.throws == "Left", "playerID"])
-        add("batted", "Also batted in the majors (100+ PA)", "role", "pos",
-            pd.read_csv(DATA / "batting.csv").groupby("playerID").PA.sum().loc[lambda s: s >= 100].index)
 
     # Decades: played at least one season in that decade.
-    for dec in range(1960, 2030, 10):
+    for dec in range(1870, 2030, 10):
         add(f"dec:{dec}", f"Played in the {dec}s", "dec", "era",
             df.loc[(df.year >= dec) & (df.year < dec + 10), "playerID"])
 
@@ -158,15 +195,15 @@ def mlbam_ids():
     return {r.playerID: r.mlbam for r in df.itertuples() if r.photo == "1"}   # only players MLB really has a photo for
 
 
-def main_team():
-    """playerID -> MLB id of the franchise the player appeared in most (games), hitting and pitching together."""
-    both = pd.concat([pd.read_csv(DATA / "batting.csv", usecols=["playerID", "franchise", "G"]),
-                      pd.read_csv(DATA / "pitching.csv", usecols=["playerID", "franchise", "G"])])
+def main_team(hit_df, pit_df):
+    """playerID -> MLB id of the franchise the player appeared in most (games), hitting and pitching together.
+    Players whose main team no longer exists get 0 (no logo)."""
+    both = pd.concat([hit_df[["playerID", "franchise", "G"]], pit_df[["playerID", "franchise", "G"]]])
     g = both.groupby(["playerID", "franchise"], as_index=False).G.sum().sort_values("G")
-    return {r.playerID: TEAM_ID[r.franchise] for r in g.itertuples()}   # last row per player wins = most games
+    return {r.playerID: TEAM_ID.get(r.franchise, 0) for r in g.itertuples()}   # last row per player wins = most games
 
 
-def merge(hit, pit):
+def merge(hit, pit, team):
     """One pool of every player: team and era clues are shared, hitting and pitching clues sit side by side."""
     skip = {"pitched", "batted"}  # "also pitched/batted" only make sense inside one pool
     crit, index, players = [], {}, {}
@@ -198,14 +235,15 @@ def merge(hit, pit):
             counts[m] += 1
     for c, n in zip(crit, counts):
         c["n"] = n
-    ids, team = mlbam_ids(), main_team()
+    ids = mlbam_ids()
     return {"criteria": crit,
             "players": [[p[0], p[1], p[2], p[3], p[4], sorted(p[5]), int(ids.get(p[0], 0)), team.get(p[0], 0)] for p in players.values()]}
 
 
 def main():
-    hit, pit = build("hit"), build("pit")
-    out = {"all": merge(hit, pit)}
+    hit_df, pit_df = load_full("hit"), load_full("pit")
+    hit, pit = build("hit", hit_df), build("pit", pit_df)
+    out = {"all": merge(hit, pit, main_team(hit_df, pit_df))}
     path = DATA / "grid.json"
     path.write_text(json.dumps(out, separators=(",", ":"), ensure_ascii=False))
     for k in out:

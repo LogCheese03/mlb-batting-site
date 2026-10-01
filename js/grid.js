@@ -195,7 +195,7 @@
       state.misses++;
       const r = Math.floor(activeCell / 3), c = activeCell % 3, have = new Set(p[5]);
       const lacks = [puzzle.rows[r], puzzle.cols[c]].filter((x) => !have.has(x)).map((x) => crit(x).label);
-      say(`${p[1]} (${p[2]}–${p[3]}) doesn't fit: no "${lacks.join('" or "')}" in this data (1960–2026).`, true);
+      say(`${p[1]} (${p[2]}–${p[3]}) doesn't fit: not "${lacks.join('" or "')}".`, true);
     }
     activeCell = -1;
     $("pickSearch").value = ""; hideSuggest();

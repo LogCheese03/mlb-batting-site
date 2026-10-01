@@ -42,7 +42,12 @@ def main():
         df = pd.read_csv(io.StringIO(raw), usecols=["key_mlbam", "key_bbref", "key_retro"], dtype=str)
         frames.append(df)
     reg = pd.concat(frames)
-    ids = set(pd.read_csv(ROOT / "data" / "batting.csv").playerID) | set(pd.read_csv(ROOT / "data" / "pitching.csv").playerID)
+    raw = ROOT / "data" / "raw"
+    ids = set()
+    for name in ("Batting.csv", "Pitching.csv"):
+        ids |= set(pd.read_csv(raw / name, usecols=["playerID"]).playerID)
+    for name in ("batting.csv", "pitching.csv"):   # the 2026 season (rookies keyed by MLB id)
+        ids |= set(pd.read_csv(ROOT / "data" / name, usecols=["playerID"]).playerID)
     # Lahman playerID matches Baseball-Reference's id; fall back on the Retrosheet id (via Lahman People).
     people = pd.read_csv(ROOT / "data" / "raw" / "People.csv", usecols=["playerID", "retroID", "bbrefID"], dtype=str)
     by_bbref = reg.dropna(subset=["key_mlbam", "key_bbref"]).drop_duplicates("key_bbref").set_index("key_bbref").key_mlbam
@@ -59,8 +64,15 @@ def main():
         if m is not None:
             out[pid] = m
     path = ROOT / "data" / "raw" / "mlbam_ids.csv"
-    with ThreadPoolExecutor(24) as pool:
-        photo = list(pool.map(has_photo, out.values()))
+    path_old = ROOT / "data" / "raw" / "mlbam_ids.csv"   # reuse earlier answers so a re-run only checks new players
+    known = {}
+    if path_old.exists():
+        old = pd.read_csv(path_old, dtype=str)
+        known = {(r.mlbam): r.photo == "1" for r in old.itertuples()}
+    todo = [m for m in out.values() if m not in known]
+    with ThreadPoolExecutor(48) as pool:
+        known.update(zip(todo, pool.map(has_photo, todo)))
+    photo = [known[m] for m in out.values()]
     with open(path, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["playerID", "mlbam", "photo"])
