@@ -6943,5 +6943,341 @@
    "ERA_first": 3.8171,
    "ERA_last": 4.1785
   }
+ },
+ "park": {
+  "first_year": 1960,
+  "last_year": 2025,
+  "rows": [
+   {
+    "franchise": "Colorado Rockies",
+    "BPF": 116.4,
+    "PPF": 117.1,
+    "seasons": 33,
+    "BPF_max": 129,
+    "BPF_max_year": 1995,
+    "BPF_max_park": "Coors Field",
+    "park_latest": "Coors Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Boston Red Sox",
+    "BPF": 105.6,
+    "PPF": 105.2,
+    "seasons": 66,
+    "BPF_max": 113,
+    "BPF_max_year": 1976,
+    "BPF_max_park": "Fenway Park II",
+    "park_latest": "Fenway Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Arizona Diamondbacks",
+    "BPF": 104.3,
+    "PPF": 104.5,
+    "seasons": 28,
+    "BPF_max": 111,
+    "BPF_max_year": 2002,
+    "BPF_max_park": "Bank One Ballpark",
+    "park_latest": "Chase Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Chicago Cubs",
+    "BPF": 103.5,
+    "PPF": 103.8,
+    "seasons": 66,
+    "BPF_max": 113,
+    "BPF_max_year": 1969,
+    "BPF_max_park": "Wrigley Field",
+    "park_latest": "Wrigley Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Cincinnati Reds",
+    "BPF": 102.7,
+    "PPF": 102.5,
+    "seasons": 66,
+    "BPF_max": 113,
+    "BPF_max_year": 2021,
+    "BPF_max_park": "Great American Ball Park",
+    "park_latest": "Great American Ballpark",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Atlanta Braves",
+    "BPF": 102.5,
+    "PPF": 102.1,
+    "seasons": 66,
+    "BPF_max": 112,
+    "BPF_max_year": 1977,
+    "BPF_max_park": "Atlanta-Fulton County Stadium",
+    "park_latest": "Truist Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Minnesota Twins",
+    "BPF": 102.1,
+    "PPF": 102.1,
+    "seasons": 66,
+    "BPF_max": 108,
+    "BPF_max_year": 1967,
+    "BPF_max_park": "Metropolitan Stadium",
+    "park_latest": "Target Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Toronto Blue Jays",
+    "BPF": 101.9,
+    "PPF": 101.9,
+    "seasons": 49,
+    "BPF_max": 111,
+    "BPF_max_year": 2016,
+    "BPF_max_park": "Rogers Centre",
+    "park_latest": "Rogers Centre",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Kansas City Royals",
+    "BPF": 101.6,
+    "PPF": 102.0,
+    "seasons": 57,
+    "BPF_max": 110,
+    "BPF_max_year": 2002,
+    "BPF_max_park": "Kauffman Stadium",
+    "park_latest": "Kauffman Stadium",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Texas Rangers",
+    "BPF": 101.2,
+    "PPF": 101.7,
+    "seasons": 65,
+    "BPF_max": 117,
+    "BPF_max_year": 2011,
+    "BPF_max_park": "Rangers Ballpark in Arlington",
+    "park_latest": "Globe Life Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Detroit Tigers",
+    "BPF": 100.8,
+    "PPF": 101.0,
+    "seasons": 66,
+    "BPF_max": 106,
+    "BPF_max_year": 1973,
+    "BPF_max_park": "Tiger Stadium",
+    "park_latest": "Comerica Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Philadelphia Phillies",
+    "BPF": 100.8,
+    "PPF": 100.9,
+    "seasons": 66,
+    "BPF_max": 105,
+    "BPF_max_year": 1977,
+    "BPF_max_park": "Veterans Stadium",
+    "park_latest": "Citizens Bank Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Chicago White Sox",
+    "BPF": 100.5,
+    "PPF": 100.5,
+    "seasons": 66,
+    "BPF_max": 107,
+    "BPF_max_year": 2013,
+    "BPF_max_park": "U.S. Cellular Field",
+    "park_latest": "Rate Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "St. Louis Cardinals",
+    "BPF": 100.4,
+    "PPF": 100.0,
+    "seasons": 66,
+    "BPF_max": 111,
+    "BPF_max_year": 1962,
+    "BPF_max_park": "Sportsman's Park IV",
+    "park_latest": "Busch Stadium III",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Washington Nationals",
+    "BPF": 100.2,
+    "PPF": 100.4,
+    "seasons": 57,
+    "BPF_max": 106,
+    "BPF_max_year": 2018,
+    "BPF_max_park": "Nationals Park",
+    "park_latest": "Nationals Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Cleveland Indians",
+    "BPF": 100.1,
+    "PPF": 100.2,
+    "seasons": 66,
+    "BPF_max": 110,
+    "BPF_max_year": 2016,
+    "BPF_max_park": "Progressive Field",
+    "park_latest": "Progressive Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Pittsburgh Pirates",
+    "BPF": 99.7,
+    "PPF": 99.7,
+    "seasons": 66,
+    "BPF_max": 105,
+    "BPF_max_year": 1978,
+    "BPF_max_park": "Three Rivers Stadium",
+    "park_latest": "PNC Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Milwaukee Brewers",
+    "BPF": 99.6,
+    "PPF": 99.8,
+    "seasons": 57,
+    "BPF_max": 105,
+    "BPF_max_year": 1995,
+    "BPF_max_park": "County Stadium",
+    "park_latest": "American Family Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "New York Yankees",
+    "BPF": 99.2,
+    "PPF": 98.3,
+    "seasons": 66,
+    "BPF_max": 108,
+    "BPF_max_year": 2011,
+    "BPF_max_park": "Yankee Stadium III",
+    "park_latest": "Yankee Stadium II",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Baltimore Orioles",
+    "BPF": 98.7,
+    "PPF": 98.5,
+    "seasons": 66,
+    "BPF_max": 106,
+    "BPF_max_year": 2013,
+    "BPF_max_park": "Oriole Park at Camden Yards",
+    "park_latest": "Oriole Park at Camden Yards",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Florida Marlins",
+    "BPF": 98.0,
+    "PPF": 98.7,
+    "seasons": 33,
+    "BPF_max": 105,
+    "BPF_max_year": 2010,
+    "BPF_max_park": "Dolphin Stadium",
+    "park_latest": "loanDepot park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Los Angeles Angels of Anaheim",
+    "BPF": 97.9,
+    "PPF": 98.1,
+    "seasons": 65,
+    "BPF_max": 111,
+    "BPF_max_year": 1961,
+    "BPF_max_park": "Wrigley Field (LA)",
+    "park_latest": "Angel Stadium of Anaheim",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Seattle Mariners",
+    "BPF": 97.7,
+    "PPF": 98.2,
+    "seasons": 49,
+    "BPF_max": 105,
+    "BPF_max_year": 1981,
+    "BPF_max_park": "Kingdome",
+    "park_latest": "T-Mobile Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "San Francisco Giants",
+    "BPF": 97.6,
+    "PPF": 97.3,
+    "seasons": 66,
+    "BPF_max": 105,
+    "BPF_max_year": 1973,
+    "BPF_max_park": "Candlestick Park",
+    "park_latest": "Oracle Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "New York Mets",
+    "BPF": 97.1,
+    "PPF": 97.3,
+    "seasons": 64,
+    "BPF_max": 102,
+    "BPF_max_year": 1969,
+    "BPF_max_park": "Shea Stadium",
+    "park_latest": "Citi Field",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Houston Astros",
+    "BPF": 97.0,
+    "PPF": 96.9,
+    "seasons": 64,
+    "BPF_max": 107,
+    "BPF_max_year": 2000,
+    "BPF_max_park": "Enron Field",
+    "park_latest": "Daikin Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Tampa Bay Rays",
+    "BPF": 97.0,
+    "PPF": 97.4,
+    "seasons": 28,
+    "BPF_max": 101,
+    "BPF_max_year": 1998,
+    "BPF_max_park": "Tropicana Field",
+    "park_latest": "Steinbrenner Field ",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Los Angeles Dodgers",
+    "BPF": 96.7,
+    "PPF": 95.7,
+    "seasons": 66,
+    "BPF_max": 108,
+    "BPF_max_year": 1961,
+    "BPF_max_park": "Los Angeles Memorial Coliseum",
+    "park_latest": "Dodger Stadium",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "Oakland Athletics",
+    "BPF": 96.3,
+    "PPF": 96.4,
+    "seasons": 66,
+    "BPF_max": 106,
+    "BPF_max_year": 1963,
+    "BPF_max_park": "Municipal Stadium I",
+    "park_latest": "Sutter Health Park",
+    "park_latest_year": 2025
+   },
+   {
+    "franchise": "San Diego Padres",
+    "BPF": 94.5,
+    "PPF": 95.0,
+    "seasons": 57,
+    "BPF_max": 103,
+    "BPF_max_year": 1991,
+    "BPF_max_park": "Jack Murphy Stadium",
+    "park_latest": "Petco Park",
+    "park_latest_year": 2025
+   }
+  ]
  }
 }

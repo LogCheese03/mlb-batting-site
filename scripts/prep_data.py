@@ -509,6 +509,27 @@ def validate_pitching(df):
           f"franchises={df['franchise'].nunique()}  pitchers={df['playerID'].nunique():,}")
 
 
+def park_factors(franchise_names):
+    """Average park factor per franchise from the Lahman Teams table (100 = a neutral park, above 100
+    favors hitters). Lahman publishes BPF (batters) and PPF (pitchers) for seasons through 2025."""
+    teams = read_csv("Teams.csv")
+    fr = read_csv("TeamsFranchises.csv")
+    names = dict(zip(fr["franchID"], fr["franchName"]))
+    t = teams[teams["yearID"] >= START_YEAR].copy()
+    t["franchise"] = t["franchID"].map(names)
+    t = t[t["franchise"].isin(franchise_names)]
+    rows = []
+    for f, g in t.groupby("franchise"):
+        peak = g.loc[g["BPF"].idxmax()]
+        latest = g.sort_values("yearID").iloc[-1]
+        rows.append({"franchise": f, "BPF": r(g["BPF"].mean(), 1), "PPF": r(g["PPF"].mean(), 1),
+                     "seasons": int(len(g)), "BPF_max": int(peak["BPF"]), "BPF_max_year": int(peak["yearID"]),
+                     "BPF_max_park": str(peak["park"]), "park_latest": str(latest["park"]),
+                     "park_latest_year": int(latest["yearID"])})
+    rows.sort(key=lambda x: -x["BPF"])
+    return {"first_year": int(t["yearID"].min()), "last_year": int(t["yearID"].max()), "rows": rows}
+
+
 def main():
     df, log = build()
     validate(df)
@@ -520,6 +541,7 @@ def main():
     validate_pitching(pdf)
     pdf.to_csv(OUT_PITCH_CSV, index=False)
     rep["pitching"] = pitching_report(pdf, plog)
+    rep["park"] = park_factors(set(df["franchise"]))
     OUT_JSON.write_text(json.dumps(rep, indent=1))
     print(f"\nWrote {OUT_CSV.relative_to(ROOT)} ({OUT_CSV.stat().st_size/1e6:.1f} MB)")
     print(f"Wrote {OUT_PITCH_CSV.relative_to(ROOT)} ({OUT_PITCH_CSV.stat().st_size/1e6:.1f} MB)")
