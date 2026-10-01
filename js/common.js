@@ -8,7 +8,7 @@ const COLORS = ["#0b2545", "#c8102e", "#2f6db5", "#8da2c0", "#e57a86", "#1f8a8a"
 /* Bump this whenever data/batting.csv or data/report.json changes, so
    returning visitors' browsers fetch the new file instead of serving
    their cached copy for the rest of its 10-minute Cache-Control window. */
-const DATA_VERSION = "2026season-p8";
+const DATA_VERSION = "2026season-p9";
 
 const SUM_COLS = ["G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"];
 
@@ -120,4 +120,14 @@ function downloadCSV(rows, name) {
   const a = document.createElement("a");
   a.href = url; a.download = name + ".csv"; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/* Runs fn once el is within `margin` of the viewport (or right away if the browser cannot tell).
+   Used to download the two large team tables on the report only when a reader scrolls near them. */
+function whenNearViewport(el, fn, margin = "800px") {
+  if (!el || !("IntersectionObserver" in window)) { fn(); return; }
+  const io = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) { io.disconnect(); fn(); }
+  }, { rootMargin: margin });
+  io.observe(el);
 }

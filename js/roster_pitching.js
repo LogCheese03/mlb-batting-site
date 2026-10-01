@@ -15,17 +15,22 @@ let sort = { key: "IPouts", dir: -1 };
 let rows = [], total = null;
 const $ = id => document.getElementById(id);
 
-Papa.parse("data/pitching.csv?v=" + DATA_VERSION, {
-  download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
-  complete: res => {
-    DATA = res.data.map(r => { SUM.forEach(c => (r[c] = +r[c] || 0)); r.year = +r.year; return r; });
-    init();
-  },
-  error: err => {
-    $("rosterPStatus").textContent = "Could not load data/pitching.csv. Run scripts/prep_data.py and serve the site through a web server.";
-    console.error(err);
-  },
-});
+/* the 4 MB file is only downloaded when a reader scrolls near this section */
+function load() {
+  $("rosterPStatus").textContent = "Loading pitcher rows…";
+  Papa.parse("data/pitching.csv?v=" + DATA_VERSION, {
+    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
+    complete: res => {
+      DATA = res.data.map(r => { SUM.forEach(c => (r[c] = +r[c] || 0)); r.year = +r.year; return r; });
+      init();
+    },
+    error: err => {
+      $("rosterPStatus").textContent = "Could not load data/pitching.csv. Run scripts/prep_data.py and serve the site through a web server.";
+      console.error(err);
+    },
+  });
+}
+whenNearViewport($("roster-pitching"), load);
 
 function init() {
   const years = [...new Set(DATA.map(r => r.year))].sort((a, b) => b - a);

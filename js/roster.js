@@ -8,17 +8,22 @@ let ROSTER_DATA = [];
 let rosterSort = { key: "PA", dir: -1 };
 let rosterRows = [], rosterTotal = null;
 
-Papa.parse("data/batting.csv?v=" + DATA_VERSION, {
-  download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
-  complete: res => {
-    ROSTER_DATA = res.data.map(r => { SUM_COLS.forEach(c => (r[c] = +r[c] || 0)); r.year = +r.year; return r; });
-    initRoster();
-  },
-  error: err => {
-    document.getElementById("rosterStatus").textContent = "Could not load data/batting.csv. Run scripts/prep_data.py and serve the site through a web server.";
-    console.error(err);
-  },
-});
+/* the 6 MB file is only downloaded when a reader scrolls near this section */
+function loadRoster() {
+  document.getElementById("rosterStatus").textContent = "Loading player rows…";
+  Papa.parse("data/batting.csv?v=" + DATA_VERSION, {
+    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
+    complete: res => {
+      ROSTER_DATA = res.data.map(r => { SUM_COLS.forEach(c => (r[c] = +r[c] || 0)); r.year = +r.year; return r; });
+      initRoster();
+    },
+    error: err => {
+      document.getElementById("rosterStatus").textContent = "Could not load data/batting.csv. Run scripts/prep_data.py and serve the site through a web server.";
+      console.error(err);
+    },
+  });
+}
+whenNearViewport(document.getElementById("roster"), loadRoster);
 
 function initRoster() {
   const years = [...new Set(ROSTER_DATA.map(r => r.year))].sort((a, b) => b - a);
