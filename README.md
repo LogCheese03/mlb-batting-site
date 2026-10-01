@@ -5,7 +5,7 @@ A data website built for FDA 2 (Financial Data Analytics). It studies every MLB 
 - **Live site:** https://logcheese03.github.io/mlb-batting-site/
 - **Repository:** https://github.com/LogCheese03/mlb-batting-site
 - **Author:** Logan Hull
-- **Built with:** plain HTML, CSS and JavaScript (Chart.js and Papa Parse for charts and CSV loading), Python and pandas for data prep, and Claude Code as the coding assistant
+- **Built with:** plain HTML, CSS and JavaScript (Chart.js and Papa Parse for charts and CSV loading, Three.js for the 3D stat animations), Python and pandas for data prep, and Claude Code as the coding assistant
 
 ## Data source
 
@@ -40,6 +40,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `js/matchups.js` | Loads `data/matchups/index.json` (every player), then the one file for the hitter or pitcher you pick, and draws the opponent list, charts and season-by-season table. |
 | `js/dashboard.js` | Loads `data/batting.csv`, applies filters, recalculates the numbers and draws the dashboard charts, heatmap and table. Also runs the player search, chart click-to-filter, and the `?measure=...&breakdown=...` deep links from the report. |
 | `js/grid.js` | Loads `data/grid.json`, builds the day's grid from a date-seeded random generator (so everyone gets the same one, with at least 3 valid players per square), checks guesses and scores them. |
+| `js/animations.js` | The "Watch it" 3D scenes on the report page (a home run clearing the fence, a strikeout, a steal, a triple, batting average, K/9 and ERA), drawn with Three.js (loaded from cdnjs when a scene scrolls into view). Each scene is a function of time; with reduced motion on, it shows its final picture. |
 | `js/sound.js` | Optional synthesized hover/click sounds and a looping "Take Me Out to the Ball Game" chorus (both off by default; labeled buttons in the nav bar). |
 | `js/roster.js` | Loads `data/batting.csv` on the report page and renders every player's line for a chosen season and franchise, with a team-total row. |
 | `js/roster_pitching.js` | Loads `data/pitching.csv` on the report page and renders every pitcher's line for a chosen season and franchise, with a team-total row (the pitching twin of `js/roster.js`). |

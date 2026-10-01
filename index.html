@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=p15">
+  <link rel="stylesheet" href="css/style.css?v=p22">
 </head>
 <body>
 
@@ -97,6 +97,7 @@
       <p>The home run rate is home runs divided by plate appearances, which adjusts for seasons of different lengths (1981, 1994, 1995 and 2020 were shortened). It was <span class="stat-inline" data-fill="headline.HR_PCT_first|pct2"></span> in <span data-fill="meta.start_year"></span> and <span class="stat-inline" data-fill="headline.HR_PCT_last|pct2"></span> in <span data-fill="meta.end_year"></span>, and the high point was <span class="stat-inline" data-fill="d.hrPeak|pct2"></span> in <span data-fill="d.hrPeakYear"></span>. It was not a straight climb: the rate fell to <span class="stat-inline" data-fill="d.hrLowDecadeRate|pct2"></span> in the <span data-fill="d.hrLowDecade"></span>, then rose in every decade after that, reaching <span class="stat-inline" data-fill="d.hrLastDecadeRate|pct2"></span> in the <span data-fill="d.lastDecade"></span>. Of everything in this data, this is the biggest change in how the game is played.</p>
       <p>Switch the chart to home runs per team to see raw totals, or to decades to see the shape of the climb.</p>
       <a class="cta-inline" href="dashboard.html?measure=HR_PCT">Explore home run rate in the dashboard</a>
+      <div data-anim="hr"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title" id="t-homers">Home runs per plate appearance, by season</span>
           <div class="seg" data-chart="homers"><button aria-pressed="true" data-v="HR_PCT">Rate</button><button aria-pressed="false" data-v="HR_PER_TEAM">Per team</button><button aria-pressed="false" data-v="DECADE">By decade</button></div></div>
@@ -141,6 +142,7 @@
       <h2>Strikeouts rose from <span data-fill="headline.K_PCT_first|pct"></span> to <span data-fill="headline.K_PCT_last|pct"></span> of plate appearances</h2>
       <p>In <span data-fill="meta.start_year"></span>, <span class="stat-inline" data-fill="headline.K_PCT_first|pct"></span> of all plate appearances ended in a strikeout. In <span data-fill="meta.end_year"></span> it was <span class="stat-inline" data-fill="headline.K_PCT_last|pct"></span>. The highest single season was <span data-fill="d.kPeakYear"></span> at <span class="stat-inline" data-fill="d.kPeak|pct"></span>.</p>
       <a class="cta-inline" href="dashboard.html?measure=K_PCT">Explore strikeout rate in the dashboard</a>
+      <div data-anim="so"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">Strikeouts as a share of plate appearances, by season</span></div>
         <div class="chart-box"><canvas id="c-strikeouts" aria-label="Line chart of strikeout rate by season" role="img"></canvas></div>
@@ -151,6 +153,7 @@
       <h2>Batting average ranged from <span data-fill="d.baMin|avg"></span> in <span data-fill="d.baMinYear"></span> to <span data-fill="d.baMax|avg"></span> in <span data-fill="d.baMaxYear"></span></h2>
       <p>Batting average is total hits divided by total at-bats for the whole league each season. The lowest season was <span data-fill="d.baMinYear"></span> (<span class="stat-inline" data-fill="d.baMin|avg"></span>) and the highest was <span data-fill="d.baMaxYear"></span> (<span class="stat-inline" data-fill="d.baMax|avg"></span>). Use the switch to compare on-base percentage, slugging and OPS over the same years.</p>
       <a class="cta-inline" href="dashboard.html?measure=BA">Explore batting average in the dashboard</a>
+      <div data-anim="hit"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">League-wide rate stat by season</span>
           <div class="seg" data-chart="average"><button aria-pressed="true" data-v="BA">AVG</button><button aria-pressed="false" data-v="OBP">OBP</button><button aria-pressed="false" data-v="SLG">SLG</button><button aria-pressed="false" data-v="OPS">OPS</button></div></div>
@@ -172,6 +175,7 @@
       <h2>Stolen bases per team peaked at <span data-fill="d.sbPeak|dec1"></span> in <span data-fill="d.sbPeakYear"></span></h2>
       <p>Dividing total stolen bases by the number of franchises active that season gives steals per team. The peak was <span class="stat-inline" data-fill="d.sbPeak|dec1"></span> in <span data-fill="d.sbPeakYear"></span>. In <span data-fill="meta.end_year"></span> it was <span class="stat-inline" data-fill="d.sbLast|dec1"></span>. Shortened seasons appear as dips in this chart because it counts totals rather than rates.</p>
       <a class="cta-inline" href="dashboard.html?measure=SB&breakdown=decade">Explore stolen bases in the dashboard</a>
+      <div data-anim="sb"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">Stolen bases per team, by season</span></div>
         <div class="chart-box"><canvas id="c-steals" role="img" aria-label="Bar chart of stolen bases per team by season"></canvas></div>
@@ -224,6 +228,7 @@
       <h2>Triples per 600 plate appearances went from <span data-fill="d.triplesFirst|dec2"></span> to <span data-fill="d.triplesLast|dec2"></span></h2>
       <p>Per 600 plate appearances (about a full season for a regular), hitters averaged <span class="stat-inline" data-fill="d.triplesFirst|dec2"></span> triples in the <span data-fill="d.firstDecade"></span> and <span class="stat-inline" data-fill="d.triplesLast|dec2"></span> in the <span data-fill="d.lastDecade"></span>. Doubles went from <span class="stat-inline" data-fill="d.doublesFirst|dec2"></span> to <span class="stat-inline" data-fill="d.doublesLast|dec2"></span>.</p>
       <a class="cta-inline" href="dashboard.html?measure=3B&breakdown=decade">Explore doubles and triples in the dashboard</a>
+      <div data-anim="triple"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">Doubles and triples per 600 plate appearances, by decade</span>
           <div class="seg" data-chart="xbh"><button aria-pressed="true" data-v="both">Both</button><button aria-pressed="false" data-v="3B_PER_600">Triples only</button></div></div>
@@ -240,6 +245,7 @@
       <h2>Strikeouts per 9 innings rose from <span data-fill="d.pK9First|dec2"></span> to <span data-fill="d.pK9Last|dec2"></span></h2>
       <p>A pitcher who worked 9 innings in <span data-fill="meta.start_year"></span> struck out <span class="stat-inline" data-fill="d.pK9First|dec2"></span> batters on average. By <span data-fill="meta.end_year"></span> the figure was <span class="stat-inline" data-fill="d.pK9Last|dec2"></span>, and it peaked at <span class="stat-inline" data-fill="d.pK9Peak|dec2"></span> in <span data-fill="d.pK9PeakYear"></span>. Walks per 9 innings moved much less, from <span class="stat-inline" data-fill="d.pBB9First|dec2"></span> to <span class="stat-inline" data-fill="d.pBB9Last|dec2"></span>. This is the pitching side of the rise in hitters' strikeout rate above.</p>
       <a class="cta-inline" href="pitching.html?measure=K9">Explore strikeouts per 9 in the pitching dashboard</a>
+      <div data-anim="k9"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">Rates per 9 innings, by season</span>
           <div class="seg" data-chart="pk9"><button aria-pressed="true" data-v="KBB">K/9 and BB/9</button><button aria-pressed="false" data-v="HR9">HR/9</button><button aria-pressed="false" data-v="WHIP">WHIP</button></div></div>
@@ -251,6 +257,7 @@
       <h2>League ERA bottomed at <span data-fill="d.pEraMin|dec2"></span> in <span data-fill="d.pEraMinYear"></span> and peaked at <span data-fill="d.pEraMax|dec2"></span> in <span data-fill="d.pEraMaxYear"></span></h2>
       <p>ERA is earned runs allowed per 9 innings for the whole league. The low point, <span class="stat-inline" data-fill="d.pEraMin|dec2"></span> in <span data-fill="d.pEraMinYear"></span>, is the "Year of the Pitcher"; the mound was lowered and the strike zone shrunk the next season. The high point was <span class="stat-inline" data-fill="d.pEraMax|dec2"></span> in <span data-fill="d.pEraMaxYear"></span>. From 1973 to 2021 the AL's ERA averaged <span class="stat-inline" data-fill="d.pDhGap|signdec2"></span> runs per 9 innings compared with the NL, the years only the AL used a designated hitter.</p>
       <a class="cta-inline" href="pitching.html?measure=ERA&breakdown=league">Explore ERA by league in the pitching dashboard</a>
+      <div data-anim="era"></div>
       <div class="chart-card">
         <div class="chart-head"><span class="chart-title">ERA by season, AL vs. NL</span></div>
         <div class="chart-box"><canvas id="c-pera" role="img" aria-label="ERA by season for each league"></canvas></div>
@@ -412,6 +419,7 @@
 <script src="js/common.js?v=p15"></script>
 <script src="js/sound.js?v=p15"></script>
 <script src="js/report.js?v=p15"></script>
+<script src="js/animations.js?v=p23"></script>
 <script src="js/roster.js?v=p15"></script>
 <script src="js/roster_pitching.js?v=p15"></script>
 </body>
