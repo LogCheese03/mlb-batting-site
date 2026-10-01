@@ -207,7 +207,7 @@ function resetState() {
     yearMin: DOMAIN.yearMin, yearMax: DOMAIN.yearMax,
     franchise: new Set(DOMAIN.franchise), league: new Set(DOMAIN.league),
     role: new Set(DOMAIN.role), throws: new Set(DOMAIN.throws), minBF: 0,
-    measure: "K9", breakdown: "role", trendMode: "all",
+    measure: "K9", breakdown: "role", trendMode: "split",
   });
   syncInputs();
   update();
@@ -416,20 +416,23 @@ function drawBar(groups) {
 }
 
 function drawScatter(groups) {
+  const m = M();
   const entries = [...groups.entries()];
-  const maxBF = Math.max(...entries.map(([, t]) => t.BFP));
+  const vals = entries.map(([, t]) => val(t));
+  const maxV = Math.max(...vals.filter(v => v != null && v > 0), 1e-9);
   document.getElementById("t-scatter").textContent = `Strikeout rate vs. walk rate by ${BREAKDOWNS[state.breakdown].toLowerCase()}`;
+  document.getElementById("n-scatter").textContent = `Each bubble is one group; bubble size shows ${m.label}. Click one to filter to it.`;
   make("scatter", {
     type: "bubble",
     data: { datasets: entries.map(([k, t], i) => ({
       label: k, backgroundColor: COLORS[i % COLORS.length] + "b3", borderColor: COLORS[i % COLORS.length],
-      data: [{ x: val(t, "K_PCT"), y: val(t, "BB_PCT"), r: 4 + 18 * Math.sqrt(t.BFP / maxBF) }],
+      data: [{ x: val(t, "K_PCT"), y: val(t, "BB_PCT"), r: 4 + 18 * Math.sqrt(Math.max(0, vals[i] ?? 0) / maxV), v: vals[i] }],
     })) },
     options: {
       interaction: { mode: "nearest", intersect: true },
       onClick: (evt, els) => { if (els.length) { const lab = entries[els[0].datasetIndex][0]; setTimeout(() => drillDown(state.breakdown, lab), 0); } },
       plugins: { legend: { display: entries.length <= 10 },
-        tooltip: { callbacks: { label: c => `${c.dataset.label}: K ${fmt(c.parsed.x, "pct")}, BB ${fmt(c.parsed.y, "pct")}` } } },
+        tooltip: { callbacks: { label: c => `${c.dataset.label}: K ${fmt(c.parsed.x, "pct")}, BB ${fmt(c.parsed.y, "pct")}, ${m.label} ${fmt(c.raw.v, m.kind)}` } } },
       scales: { x: { title: { display: true, text: "Strikeout rate (higher is better for the pitcher)" }, ...axisFor("pct") }, y: { title: { display: true, text: "Walk rate (lower is better)" }, ...axisFor("pct") } },
     },
   });
@@ -439,56 +442,72 @@ function drawLeaders(rows) {
   const m = M();
   const players = groupBy(rows, r => r.playerID);
   const names = new Map(rows.map(r => [r.playerID, r.name]));
+  // the group each pitcher belongs to in this view: the one where he faced the most batters
+  const best = new Map();
+  rows.forEach(r => { const b = best.get(r.playerID); if (!b || r.BFP > b.w) best.set(r.playerID, { w: r.BFP, g: r[state.breakdown] }); });
   let list = [...players.entries()];
   if (m.rate) list = list.filter(([, t]) => t.BFP >= LEADER_MIN_BFP);
-  list = list.map(([id, t]) => [id, names.get(id), val(t)]).filter(e => e[2] != null)
+  list = list.map(([id, t]) => [id, names.get(id), val(t), best.get(id).g]).filter(e => e[2] != null)
     .sort((a, b) => (m.lower ? a[2] - b[2] : b[2] - a[2])).slice(0, 10);
-  document.getElementById("t-leaders").textContent = `Top 10 pitchers: ${m.label}${m.lower ? " (lowest)" : ""}`;
+  document.getElementById("t-leaders").textContent = `Top 10 pitchers: ${m.label}${m.lower ? " (lowest)" : ""}, colored by ${BREAKDOWNS[state.breakdown].toLowerCase()}`;
   document.getElementById("n-leaders").textContent = (m.rate
     ? `Pitchers who faced at least ${fmt(LEADER_MIN_BFP, "int")} batters in the current view. Totals are summed across the filtered seasons.`
     : "Totals are summed across the filtered seasons and teams.") + " Click a bar to look up that pitcher.";
+  const groups = [...new Set(list.map(e => e[3]))];
   make("leaders", {
     type: "bar",
-    data: { labels: list.map(e => e[1]), datasets: [{ label: m.label, data: list.map(e => e[2]), backgroundColor: list.map((_, i) => (i ? COLORS[2] : COLORS[1])) }] },
+    data: { labels: list.map(e => e[1]), datasets: groups.map((g, i) => ({ label: g, data: list.map(e => (e[3] === g ? e[2] : null)), backgroundColor: COLORS[i % COLORS.length] })) },
     options: {
       indexAxis: "y", interaction: { mode: "nearest", intersect: true },
       onClick: (evt, els) => { if (els.length) { const id = list[els[0].index][0]; setTimeout(() => showPlayer(id), 0); } },
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => fmt(c.parsed.x, m.kind) } } },
-      scales: { x: axisFor(m.kind), y: { ticks: { autoSkip: false, font: { size: 11 } } } },
+      plugins: { legend: { display: groups.length > 1 }, tooltip: { callbacks: { label: c => `${c.dataset.label}: ${fmt(c.parsed.x, m.kind)}` } } },
+      scales: { x: { stacked: true, ...axisFor(m.kind) }, y: { stacked: true, ticks: { autoSkip: false, font: { size: 11 } } } },
     },
   });
 }
 
 function drawHist(rows) {
-  const m = M();
+  const m = M(), bk = state.breakdown;
   // Which per-row value to plot for each counting measure
   const rowKey = { rows: "BFP", medSO: "SO", medIP: "IP", IP: "IP", G: "G", GS: "GS", CG: "CG", SHO: "SHO", W: "W", L: "L", SV: "SV", SO: "SO", BB: "BB", HR: "HR", H: "H", ER: "ER" }[state.measure];
   const labels0 = { BFP: "Batters faced", IP: "Innings", G: "Games", GS: "Games started", CG: "Complete games", SHO: "Shutouts", W: "Wins", L: "Losses", SV: "Saves", SO: "Strikeouts", BB: "Walks", HR: "Home runs allowed", H: "Hits allowed", ER: "Earned runs" };
-  let values, kind = m.kind, label;
+  let items, kind = m.kind, label;
   if (m.rate) {
-    values = rows.filter(r => r.BFP >= HIST_MIN_BFP).map(r => { const t = emptyTotals(); addRow(t, r); return val(t); }).filter(v => v != null);
+    items = rows.filter(r => r.BFP >= HIST_MIN_BFP).map(r => { const t = emptyTotals(); addRow(t, r); return { v: val(t), g: r[bk] }; }).filter(it => it.v != null);
     label = m.label;
-    document.getElementById("n-hist").textContent = `Pitcher-seasons with at least ${HIST_MIN_BFP} batters faced (${fmt(values.length, "int")} shown).`;
+    document.getElementById("n-hist").textContent = `Pitcher-seasons with at least ${HIST_MIN_BFP} batters faced (${fmt(items.length, "int")} shown).`;
   } else {
-    values = rows.map(r => (rowKey === "IP" ? r.IPouts / 3 : r[rowKey])); kind = "int";
+    items = rows.map(r => ({ v: (rowKey === "IP" ? r.IPouts / 3 : r[rowKey]), g: r[bk] })); kind = "int";
     label = labels0[rowKey] + " per pitcher-season";
-    document.getElementById("n-hist").textContent = `All ${fmt(values.length, "int")} pitcher-seasons in the current view.`;
+    document.getElementById("n-hist").textContent = `All ${fmt(items.length, "int")} pitcher-seasons in the current view.`;
   }
-  document.getElementById("t-hist").textContent = `Distribution: ${label}`;
-  if (!values.length) { charts.hist?.destroy(); return; }
+  document.getElementById("t-hist").textContent = `Distribution: ${label}, stacked by ${BREAKDOWNS[bk].toLowerCase()}`;
+  if (!items.length) { charts.hist?.destroy(); return; }
   // 20 equal-width bins from the 1st to 99th percentile so outliers don't flatten the chart
-  const s = [...values].sort((a, b) => a - b);
+  const s = items.map(it => it.v).sort((a, b) => a - b);
   const lo = s[Math.floor(s.length * 0.01)], hi = s[Math.floor(s.length * 0.99)] || lo + 1;
-  const n = 20, w = (hi - lo) / n || 1, bins = new Array(n).fill(0);
-  values.forEach(v => { bins[Math.min(n - 1, Math.max(0, Math.floor((v - lo) / w)))]++; });
+  const n = 20, w = (hi - lo) / n || 1;
+  const bin = v => Math.min(n - 1, Math.max(0, Math.floor((v - lo) / w)));
+  // one stack per group: the six largest groups, and everything else together
+  const sizes = new Map();
+  items.forEach(it => sizes.set(it.g, (sizes.get(it.g) || 0) + 1));
+  const ranked = [...sizes.entries()].sort((a, b) => b[1] - a[1]).map(e => e[0]);
+  const keep = new Set(ranked.length > 7 ? ranked.slice(0, 6) : ranked);
+  const stacks = new Map();
+  items.forEach(it => {
+    const g = keep.has(it.g) ? it.g : "All other groups";
+    if (!stacks.has(g)) stacks.set(g, new Array(n).fill(0));
+    stacks.get(g)[bin(it.v)]++;
+  });
   const fk = kind === "int" ? "dec1" : kind;
-  const labels = bins.map((_, i) => fmt(lo + i * w, fk));
+  const labels = Array.from({ length: n }, (_, i) => fmt(lo + i * w, fk));
   make("hist", {
     type: "bar",
-    data: { labels, datasets: [{ label: "Pitcher-seasons", data: bins, backgroundColor: COLORS[4], barPercentage: 1, categoryPercentage: 0.95 }] },
+    data: { labels, datasets: [...stacks.entries()].map(([g, data], i) => ({ label: g, data, backgroundColor: COLORS[i % COLORS.length], barPercentage: 1, categoryPercentage: 0.95 })) },
     options: {
-      plugins: { legend: { display: false }, tooltip: { callbacks: { title: c => `${labels[c[0].dataIndex]} to ${fmt(lo + (c[0].dataIndex + 1) * w, fk)}`, label: c => `${fmt(c.parsed.y, "int")} pitcher-seasons` } } },
-      scales: { x: { ticks: { maxTicksLimit: 8 } }, y: { title: { display: true, text: "Pitcher-seasons" } } },
+      plugins: { legend: { display: stacks.size > 1 },
+        tooltip: { callbacks: { title: c => `${labels[c[0].dataIndex]} to ${fmt(lo + (c[0].dataIndex + 1) * w, fk)}`, label: c => `${c.dataset.label}: ${fmt(c.parsed.y, "int")} pitcher-seasons` } } },
+      scales: { x: { stacked: true, ticks: { maxTicksLimit: 8 } }, y: { stacked: true, title: { display: true, text: "Pitcher-seasons" } } },
     },
   });
 }
