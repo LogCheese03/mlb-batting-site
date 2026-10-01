@@ -7,13 +7,32 @@ Source: https://github.com/chadwickbureau/register (one people-N.csv per hex dig
 """
 import csv
 import io
+import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://raw.githubusercontent.com/chadwickbureau/register/master/data/people-{}.csv"
+
+
+PHOTO = "https://img.mlbstatic.com/mlb-photos/image/upload/w_160,q_auto:best/v1/people/{}/headshot/67/current"
+
+
+def has_photo(mlbam):
+    """True when MLB's server has a real headshot (it answers 404, not a silhouette, without the d_ default)."""
+    for _ in range(3):
+        try:
+            req = urllib.request.Request(PHOTO.format(mlbam), method="HEAD")
+            return urllib.request.urlopen(req, timeout=20).status == 200
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return False
+        except Exception:
+            pass
+    return False
 
 
 def main():
@@ -40,10 +59,13 @@ def main():
         if m is not None:
             out[pid] = m
     path = ROOT / "data" / "raw" / "mlbam_ids.csv"
+    with ThreadPoolExecutor(24) as pool:
+        photo = list(pool.map(has_photo, out.values()))
     with open(path, "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["playerID", "mlbam"])
-        w.writerows(out.items())
+        w.writerow(["playerID", "mlbam", "photo"])
+        w.writerows((pid, m, int(ok)) for (pid, m), ok in zip(out.items(), photo))
+    print(sum(photo), "have a photo")
     print(f"{len(out)} of {len(ids)} players matched -> {path}")
 
 

@@ -28,6 +28,18 @@ TEAM_SHORT = {
     "Florida Marlins": "Marlins", "Arizona Diamondbacks": "D-backs", "Tampa Bay Rays": "Rays",
 }
 
+# MLB team ids, used by the browser for the team-logo fallback (https://www.mlbstatic.com/team-logos/<id>.svg)
+TEAM_ID = {
+    "Atlanta Braves": 144, "Baltimore Orioles": 110, "Boston Red Sox": 111, "Chicago Cubs": 112,
+    "Chicago White Sox": 145, "Cincinnati Reds": 113, "Cleveland Indians": 114, "Detroit Tigers": 116,
+    "Los Angeles Dodgers": 119, "Minnesota Twins": 142, "New York Yankees": 147, "Oakland Athletics": 133,
+    "Philadelphia Phillies": 143, "Pittsburgh Pirates": 134, "San Francisco Giants": 137,
+    "St. Louis Cardinals": 138, "Los Angeles Angels of Anaheim": 108, "Texas Rangers": 140,
+    "Houston Astros": 117, "New York Mets": 121, "Kansas City Royals": 118, "Milwaukee Brewers": 158,
+    "San Diego Padres": 135, "Washington Nationals": 120, "Seattle Mariners": 136, "Toronto Blue Jays": 141,
+    "Colorado Rockies": 115, "Florida Marlins": 146, "Arizona Diamondbacks": 109, "Tampa Bay Rays": 139,
+}
+
 MIN_PLAYERS = 40  # a criterion with fewer matching players is too thin to use
 
 
@@ -142,7 +154,16 @@ def mlbam_ids():
     path = DATA / "raw" / "mlbam_ids.csv"
     if not path.exists():
         return {}
-    return dict(pd.read_csv(path, dtype=str).values)
+    df = pd.read_csv(path, dtype=str)
+    return {r.playerID: r.mlbam for r in df.itertuples() if r.photo == "1"}   # only players MLB really has a photo for
+
+
+def main_team():
+    """playerID -> MLB id of the franchise the player appeared in most (games), hitting and pitching together."""
+    both = pd.concat([pd.read_csv(DATA / "batting.csv", usecols=["playerID", "franchise", "G"]),
+                      pd.read_csv(DATA / "pitching.csv", usecols=["playerID", "franchise", "G"])])
+    g = both.groupby(["playerID", "franchise"], as_index=False).G.sum().sort_values("G")
+    return {r.playerID: TEAM_ID[r.franchise] for r in g.itertuples()}   # last row per player wins = most games
 
 
 def merge(hit, pit):
@@ -177,9 +198,9 @@ def merge(hit, pit):
             counts[m] += 1
     for c, n in zip(crit, counts):
         c["n"] = n
-    ids = mlbam_ids()
+    ids, team = mlbam_ids(), main_team()
     return {"criteria": crit,
-            "players": [[p[0], p[1], p[2], p[3], p[4], sorted(p[5]), int(ids.get(p[0], 0))] for p in players.values()]}
+            "players": [[p[0], p[1], p[2], p[3], p[4], sorted(p[5]), int(ids.get(p[0], 0)), team.get(p[0], 0)] for p in players.values()]}
 
 
 def main():

@@ -29,6 +29,9 @@
   }
 
   // ---------- puzzle generation ----------
+  // Lower-case, no accents, and no punctuation or spaces, so "TJ Beam" finds "T. J. Beam" and "oneill" finds "O'Neill".
+  function squash(s) { return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+
   function buildSets(kind) {
     const d = DATA[kind];
     if (d.sets) return d;
@@ -111,11 +114,12 @@
     $("pick").hidden = activeCell < 0 || finished();
   }
 
-  // MLB's image server; the d_ part makes it return a generic silhouette for players without a photo.
+  // The player's MLB headshot, or their main team's logo when MLB has no photo for them.
   function photo(cell) {
-    if (!cell.mlbam) return '<span class="g-photo g-none" aria-hidden="true">⚾</span>';
-    const u = `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_160,q_auto:best/v1/people/${cell.mlbam}/headshot/67/current`;
-    return `<img class="g-photo" src="${u}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'g-photo g-none',textContent:'⚾'}))">`;
+    const logo = cell.team ? `<img class="g-photo g-logo" src="https://www.mlbstatic.com/team-logos/${cell.team}.svg" alt="" loading="lazy">` : '<span class="g-photo g-none" aria-hidden="true">⚾</span>';
+    if (!cell.mlbam) return logo;
+    const u = `https://img.mlbstatic.com/mlb-photos/image/upload/w_160,q_auto:best/v1/people/${cell.mlbam}/headshot/67/current`;
+    return `<img class="g-photo" src="${u}" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fb" data-fb="${esc(logo)}">`;
   }
 
   function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
@@ -143,8 +147,8 @@
     for (let i = 0; i < d.players.length; i++) {
       if (d.norm[i].includes(q) && !used.has(i)) hits.push(i);
     }
-    // Names with a word starting with the typed text come first (so "ju" lists Judge before Beaujul), then the longest careers.
-    const rank = (i) => (d.norm[i].startsWith(q) ? 0 : (" " + d.norm[i]).includes(" " + q) ? 1 : 2);
+    // Names starting with the typed text come first, then the longest careers.
+    const rank = (i) => (d.norm[i].startsWith(q) ? 0 : 1);
     hits.sort((a, b) => rank(a) - rank(b) || d.players[b][4] - d.players[a][4]);
     sugg = hits.slice(0, 10);
     const ul = $("pickSuggest");
@@ -163,12 +167,14 @@
       // Points: share of the other valid answers with a longer career than this player.
       const longer = cell.filter((a) => d.players[a][4] > p[4]).length;
       const pts = Math.max(1, Math.round(100 * longer / cell.length));
-      state.cells[activeCell] = { pid: p[0], name: p[1], pts, mlbam: p[6] || 0 };
+      state.cells[activeCell] = { pid: p[0], name: p[1], pts, mlbam: p[6] || 0, team: p[7] || 0 };
       state.score += pts;
       say(`${p[1]} fits. +${pts} points.`);
     } else {
       state.misses++;
-      say(`${p[1]} doesn't fit that square.`, true);
+      const r = Math.floor(activeCell / 3), c = activeCell % 3, have = new Set(p[5]);
+      const lacks = [puzzle.rows[r], puzzle.cols[c]].filter((x) => !have.has(x)).map((x) => crit(x).label);
+      say(`${p[1]} (${p[2]}–${p[3]}) doesn't fit: no "${lacks.join('" or "')}" in this data (1960–2026).`, true);
     }
     activeCell = -1;
     $("pickSearch").value = ""; hideSuggest();

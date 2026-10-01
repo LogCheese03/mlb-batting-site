@@ -348,3 +348,4 @@ button.g-cell:disabled { cursor: default; background: #eef1f6; }
 @media (max-width: 520px) { .g-cell { min-height: 78px; font-size: 12.5px; } .g-name { font-size: 12.5px; } .g-row { min-height: 78px; } }
 .g-photo { width: clamp(40px, 9vw, 72px); height: clamp(40px, 9vw, 72px); border-radius: 50%; object-fit: cover; object-position: top; background: #dfe6f1; border: 2px solid #3a8f4d; }
 .g-none { display: grid; place-items: center; font-size: 24px; }
+.g-logo { object-fit: contain; background: #fff; padding: 6px; border-color: var(--line); }

@@ -45,7 +45,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `js/roster_pitching.js` | Loads `data/pitching.csv` on the report page and renders every pitcher's line for a chosen season and franchise, with a team-total row (the pitching twin of `js/roster.js`). |
 | `scripts/prep_data.py` | Reads the raw Lahman CSVs, joins franchise, handedness and primary position or role, drops rows, checks the project requirements, and writes `batting.csv`, `pitching.csv` and `report.json`. |
 | `scripts/build_grid.py` | Reads `data/batting.csv` and `data/pitching.csv` and writes `data/grid.json`: one pool of every hitter and pitcher, with a clue list (teams, season and career milestones, positions, handedness, decades) and, for each player, the clues they meet. |
-| `scripts/fetch_mlbam_ids.py` | Downloads the Chadwick Bureau register and saves each player's MLB id to `data/raw/mlbam_ids.csv`, so the Daily Grid can show a headshot after a correct guess. |
+| `scripts/fetch_mlbam_ids.py` | Downloads the Chadwick Bureau register and saves each player's MLB id to `data/raw/mlbam_ids.csv` and checks which players MLB has a real headshot for (about five minutes), so the Daily Grid can show a headshot, or the player's main team logo when there is no photo, after a correct guess. |
 | `scripts/fetch_mlb_2026.py` | Downloads the 2026 regular season from MLB's Stats API into `data/raw/mlb2026/` (player lines, positions, MLB's own team totals for a cross-check). |
 | `scripts/fetch_mlb_2026_pa.py` | Downloads every 2026 plate appearance (batter, pitcher, event) from MLB's play-by-play feeds into `data/raw/mlb2026/pa_events.csv`. |
 | `scripts/build_matchups.py` | Reads the Retrosheet zips (1960–2025) and the 2026 feed, classifies every plate appearance, credits it to the pitcher on the mound, checks the totals against this site's hitting and pitching files, and writes the matchup files below. |
@@ -55,7 +55,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 | `data/pitching.csv` | Cleaned pitching data loaded by the pitching dashboard, written by the script. |
 | `data/matchups/` | `index.json` lists every player; `b/<id>.csv` has one file per hitter and `p/<id>.csv` one per pitcher, each with every opponent faced, season by season (17,287 files). Loaded one at a time by the matchup page. |
 | `data/matchups_meta.json` | Counts and the accuracy check for the matchup data (season totals against Lahman, pitcher totals against Lahman). |
-| `data/raw/mlbam_ids.csv` | Each player's MLB id (from the Chadwick Bureau register), written by `scripts/fetch_mlbam_ids.py`. |
+| `data/raw/mlbam_ids.csv` | Each player's MLB id (from the Chadwick Bureau register) and whether MLB has a photo, written by `scripts/fetch_mlbam_ids.py`. |
 | `data/grid.json` | Clues and player eligibility for the Daily Grid game, written by `scripts/build_grid.py`. |
 | `data/report.json` | Every number and chart series on the report (hitting at the top level, pitching under `pitching`, average park factors under `park`), written by the script. |
 | `.gitignore` | Keeps macOS `.DS_Store` files out of the repository. |
