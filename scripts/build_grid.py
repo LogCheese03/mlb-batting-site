@@ -175,7 +175,7 @@ def merge(hit, pit):
 
 def main():
     hit, pit = build("hit"), build("pit")
-    out = {"all": merge(hit, pit), "hit": hit, "pit": pit}
+    out = {"all": merge(hit, pit)}
     path = DATA / "grid.json"
     path.write_text(json.dumps(out, separators=(",", ":"), ensure_ascii=False))
     for k in out:
