@@ -27,6 +27,7 @@ The cleaned hitting file has 57,084 rows and 24 columns, covering 67 seasons (19
 
 | File | What it does |
 |---|---|
+| `README.md` | This file: what the project is, where the data came from, what every file does, how to rebuild the numbers, the cleaning steps and how the data was checked. |
 | `index.html` | Report page. It has the summary and three big takeaways (the home run rate, strikeouts rising with home runs, and how ballparks shape pitching), headline numbers (a batting row and a pitching row), seventeen findings with charts, a season/franchise table of every hitter and another for every pitcher, and the data and methods section. |
 | `dashboard.html` | Hitting dashboard. It has filters, summary numbers (HR, R, RBI, AVG, SB and more), five charts and a heatmap, measure and breakdown switches, a table and a reset button. |
 | `pitching.html` | Pitching dashboard, built the same way: filters (seasons, franchise, league, role, throws, minimum batters faced), summary numbers (W, K, SV, ERA, WHIP, K/9), five charts and a heatmap, switches, a table and a reset button. |
