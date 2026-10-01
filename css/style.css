@@ -1,18 +1,18 @@
 /* ------------------------------------------------------------------
    Shared styles for index.html and dashboard.html
-   Theme: outfield wall and manual scoreboard
+   Theme: red, white and navy
 ------------------------------------------------------------------- */
 :root {
-  --wall: #16392a;        /* outfield wall green */
-  --wall-2: #214d3a;
-  --wall-3: #2e6a50;
-  --chalk: #f4f6f1;       /* page background */
+  --wall: #0b2545;        /* navy wall */
+  --wall-2: #13315c;
+  --wall-3: #2a5aa0;
+  --chalk: #f4f7fb;       /* page background */
   --paper: #ffffff;
-  --ink: #1a2230;
-  --muted: #5b6573;
-  --line: #d5dbd2;
+  --ink: #101a2b;
+  --muted: #52617a;
+  --line: #d3dbe8;
   --stitch: #c8102e;      /* baseball stitch red */
-  --lights: #f2c94c;      /* scoreboard bulbs */
+  --lights: #ffffff;      /* scoreboard lights */
   --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
   --radius-lg: 10px;
@@ -55,7 +55,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-s
 .nav-links { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
   display: block; padding: 8px 11px; border-radius: var(--radius-sm);
-  color: #dfe8e2; text-decoration: none; font-weight: 600; font-size: 14.5px; white-space: nowrap;
+  color: #dbe5f5; text-decoration: none; font-weight: 600; font-size: 14.5px; white-space: nowrap;
 }
 .nav-links a:hover { background: var(--wall-2); color: #fff; }
 .nav-links a[aria-current="page"] { background: var(--lights); color: var(--wall); }
@@ -92,11 +92,11 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-s
 }
 .scoreboard-title { font-family: var(--display); font-size: 20px; color: var(--lights); margin: 0 0 14px 4px; font-weight: 700; }
 .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-.board-row-label { font-family: var(--display); font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: #c4d4ca; margin: 14px 0 8px 4px; }
+.board-row-label { font-family: var(--display); font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: #c3d0e6; margin: 14px 0 8px 4px; }
 .board-row-label:first-of-type { margin-top: 0; }
 .board-grid + .board-row-label { margin-top: 20px; }
 .tile {
-  background: #0f2a1f;
+  background: #071a33;
   border: 2px solid var(--wall-3);
   border-radius: var(--radius-sm);
   padding: 14px 14px 12px;
@@ -106,7 +106,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-s
   color: #fff; font-variant-numeric: tabular-nums;
 }
 .tile-value.small { font-size: 34px; }
-.tile-label { font-size: 13.5px; color: #c4d4ca; margin-top: 8px; line-height: 1.35; }
+.tile-label { font-size: 13.5px; color: #c3d0e6; margin-top: 8px; line-height: 1.35; }
 
 /* ---------------- report page ---------------- */
 .report-layout {
@@ -263,10 +263,10 @@ input[type="range"] { width: 100%; accent-color: var(--wall); }
 .data-table th[aria-sort="ascending"]::after { content: " ▲"; font-size: 10px; }
 .data-table th[aria-sort="descending"]::after { content: " ▼"; font-size: 10px; }
 .data-table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: right; }
-.data-table tbody tr:hover { background: #eef3ee; }
+.data-table tbody tr:hover { background: #e9eff8; }
 .data-table tfoot td { font-weight: 700; background: var(--chalk); border-top: 2px solid var(--wall); }
 
-.loading { position: fixed; inset: 0; background: rgba(244,246,241,.92); display: grid; place-items: center; z-index: 100; font-family: var(--display); font-size: 30px; color: var(--wall); }
+.loading { position: fixed; inset: 0; background: rgba(244,247,251,.92); display: grid; place-items: center; z-index: 100; font-family: var(--display); font-size: 30px; color: var(--wall); }
 .loading[hidden] { display: none; }
 .empty { padding: 40px; text-align: center; color: var(--muted); }
 
@@ -292,14 +292,14 @@ footer { text-align: center; color: var(--muted); font-size: 14px; padding: 30px
 .top-pairs li { margin: 5px 0; }
 .opp-table { max-height: 520px; overflow: auto; }
 .data-table tbody tr[data-o] { cursor: pointer; }
-.data-table tbody tr[data-o]:hover { background: #eef3ec; }
-.data-table tbody tr.selected { background: #fbf1cc; }
+.data-table tbody tr[data-o]:hover { background: #e9eff8; }
+.data-table tbody tr.selected { background: #fde3e6; }
 .part-head { margin: 56px 0 8px; padding-top: 10px; border-top: 4px solid var(--stitch); }
 .part-head h2 { font-size: clamp(34px, 4vw, 48px); color: var(--wall); }
 .part-head p { color: var(--muted); max-width: 70ch; }
 
 .suggest-wrap { position: relative; }
 .suggest { position: absolute; z-index: 20; left: 0; right: 0; top: 100%; margin: 2px 0 0; padding: 4px; list-style: none;
-  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: 0 8px 24px rgba(22,57,42,.18); max-height: 320px; overflow: auto; }
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: 0 8px 24px rgba(11,37,69,.18); max-height: 320px; overflow: auto; }
 .suggest li { padding: 7px 9px; border-radius: 3px; cursor: pointer; font-size: 14px; }
-.suggest li:hover, .suggest li.active { background: #eef3ec; }
+.suggest li:hover, .suggest li.active { background: #e9eff8; }

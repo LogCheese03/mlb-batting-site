@@ -3,12 +3,12 @@
    The formulas here MUST match scripts/prep_data.py so both pages agree.
 ------------------------------------------------------------------- */
 
-const COLORS = ["#16392a", "#c8102e", "#2f6db5", "#e0a526", "#5e9b5a", "#7a4e9c", "#2a9d8f", "#8a5a44", "#4a5568", "#d45d9a"];
+const COLORS = ["#0b2545", "#c8102e", "#2f6db5", "#8da2c0", "#e57a86", "#1f8a8a", "#7a0f22", "#6fa8e0", "#4a5568", "#e0a526"];
 
 /* Bump this whenever data/batting.csv or data/report.json changes, so
    returning visitors' browsers fetch the new file instead of serving
    their cached copy for the rest of its 10-minute Cache-Control window. */
-const DATA_VERSION = "2026season-p6";
+const DATA_VERSION = "2026season-p7";
 
 const SUM_COLS = ["G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"];
 
@@ -94,7 +94,7 @@ function applyChartTheme() {
   Chart.defaults.maintainAspectRatio = false;
   Chart.defaults.plugins.legend.labels.usePointStyle = true;
   Chart.defaults.plugins.legend.labels.boxWidth = 8;
-  Chart.defaults.plugins.tooltip.backgroundColor = "#16392a";
+  Chart.defaults.plugins.tooltip.backgroundColor = "#0b2545";
   Chart.defaults.plugins.tooltip.padding = 10;
   Chart.defaults.plugins.tooltip.titleFont = { weight: "700" };
   Chart.defaults.elements.line.borderWidth = 2.5;

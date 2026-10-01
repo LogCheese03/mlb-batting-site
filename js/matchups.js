@@ -306,7 +306,7 @@ function drawDetail() {
   chart?.destroy();
   const line = { type: m === "PA" ? "bar" : "line", label: MEASURES[m], data: seasonRows.map(r => rateOf(r.t, m)), borderColor: COLORS[1], backgroundColor: m === "PA" ? COLORS[1] : "rgba(200,16,46,.12)", pointRadius: 4, yAxisID: "y", order: 1, spanGaps: true };
   const datasets = m === "PA" ? [line]
-    : [line, { type: "bar", label: "Plate appearances", data: seasonRows.map(r => r.t.PA), backgroundColor: "rgba(22,57,42,.25)", yAxisID: "y1", order: 2 }];
+    : [line, { type: "bar", label: "Plate appearances", data: seasonRows.map(r => r.t.PA), backgroundColor: "rgba(11,37,69,.25)", yAxisID: "y1", order: 2 }];
   chart = new Chart($("c-detail"), {
     type: "bar", data: { labels: years, datasets },
     options: {

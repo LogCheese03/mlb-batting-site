@@ -147,7 +147,7 @@ function drawStrikeouts() {
 function drawHomers(v = "HR_PCT") {
   const kind = v === "HR_PCT" ? "pct" : "dec1";
   document.getElementById("t-homers").textContent = v === "HR_PCT" ? "Home runs per plate appearance, by season" : "Home runs per team, by season";
-  line("homers", years(), [{ label: v === "HR_PCT" ? "HR rate" : "HR per team", data: REP.season.map(x => x[v]), borderColor: COLORS[0], backgroundColor: "rgba(22,57,42,.08)", fill: true }], kind);
+  line("homers", years(), [{ label: v === "HR_PCT" ? "HR rate" : "HR per team", data: REP.season.map(x => x[v]), borderColor: COLORS[0], backgroundColor: "rgba(11,37,69,.08)", fill: true }], kind);
 }
 function drawAverage(v = "BA") {
   line("average", years(), [{ label: v, data: REP.season.map(x => x[v]), borderColor: COLORS[2] }], "avg");
@@ -179,8 +179,8 @@ const dhBand = {
     const labels = chart.data.labels, i0 = labels.indexOf(1973), i1 = labels.indexOf(2021);
     if (i0 < 0) return;
     const x0 = x.getPixelForValue(i0), x1 = x.getPixelForValue(i1 < 0 ? labels.length - 1 : i1);
-    ctx.save(); ctx.fillStyle = "rgba(242,201,76,.16)"; ctx.fillRect(x0, a.top, x1 - x0, a.bottom - a.top);
-    ctx.fillStyle = "#8a6d12"; ctx.font = "600 12px Libre Franklin, sans-serif"; ctx.fillText("DH in AL only", x0 + 6, a.top + 14); ctx.restore();
+    ctx.save(); ctx.fillStyle = "rgba(47,109,181,.12)"; ctx.fillRect(x0, a.top, x1 - x0, a.bottom - a.top);
+    ctx.fillStyle = "#1f4e8c"; ctx.font = "600 12px Libre Franklin, sans-serif"; ctx.fillText("DH in AL only", x0 + 6, a.top + 14); ctx.restore();
   },
 };
 function drawLeagues(v = "OPS") {
@@ -270,7 +270,7 @@ function drawPCg() {
   });
 }
 function drawPIps() {
-  line("pips", pyears(), [{ label: "Innings per start", data: REP.pitching.season.map(x => x.IP_PER_START), borderColor: COLORS[0], backgroundColor: "rgba(22,57,42,.08)", fill: true }], "dec2");
+  line("pips", pyears(), [{ label: "Innings per start", data: REP.pitching.season.map(x => x.IP_PER_START), borderColor: COLORS[0], backgroundColor: "rgba(11,37,69,.08)", fill: true }], "dec2");
   charts.pips.options.scales.y = dec2Axis; charts.pips.update();
 }
 function drawPRel() {

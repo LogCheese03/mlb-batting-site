@@ -334,7 +334,7 @@ function drawTrend(rows, groups) {
     }));
   } else {
     const byY = groupBy(rows, r => r.year);
-    datasets = [{ label: "All selected", borderColor: COLORS[0], backgroundColor: "rgba(22,57,42,.08)", fill: true,
+    datasets = [{ label: "All selected", borderColor: COLORS[0], backgroundColor: "rgba(11,37,69,.08)", fill: true,
       data: years.map(y => (byY.has(y) ? val(byY.get(y)) : null)) }];
   }
   const split = state.trendMode === "split" ? ` (largest ${Math.min(8, groups.size)} groups by ${BREAKDOWNS[state.breakdown].toLowerCase()})` : "";
@@ -456,7 +456,7 @@ function drawHeatmap(rows) {
     if (v == null) return "background:#eef0ec;color:#99a";
     const p = hi === lo ? 0.5 : (v - lo) / (hi - lo);
     const l = 94 - p * 64;                              // light to dark green
-    return `background:hsl(152,45%,${l}%);color:${l < 55 ? "#fff" : "#1a2230"}`;
+    return `background:hsl(214,55%,${l}%);color:${l < 55 ? "#fff" : "#1a2230"}`;
   };
   document.getElementById("t-heat").textContent = `${m.label}: ${BREAKDOWNS[bk].toLowerCase()} by decade`;
   document.getElementById("heatmap").innerHTML = `
