@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=p11">
+  <link rel="stylesheet" href="css/style.css?v=p12">
 </head>
 <body>
 
@@ -298,7 +298,12 @@
       <a class="cta" href="matchups.html">Open the Matchups page</a>
     </div>
 
-    <section class="finding" id="roster">
+    <div class="part-head" id="tables-part">
+      <h2>Team by team</h2>
+      <p>Two interactive tables. Pick any season and franchise to see who contributed.</p>
+    </div>
+
+    <section class="finding explorer" id="roster">
       <h2>See who contributed to any team's season</h2>
       <p>Every player who batted for a franchise in a given season, with the counting stats and rates they personally put up. Sort any column; the bottom row is the team's total for that season, computed the same way as the rest of this report (totals, not an average of averages).</p>
       <div class="controls" style="margin:18px 0">
@@ -318,7 +323,7 @@
       </div>
     </section>
 
-    <section class="finding" id="roster-pitching">
+    <section class="finding explorer" id="roster-pitching">
       <h2>See who pitched for any team's season</h2>
       <p>Every pitcher who threw for a franchise in a given season, with the pitching line he personally put up. Sort any column; the bottom row is the team's total for that season, computed the same way as the rest of this report (ERA and the other rates come from team totals, not an average of the pitchers' rates). Innings use baseball notation, so 200.1 means 200 innings and one out.</p>
       <div class="controls" style="margin:18px 0">
@@ -384,6 +389,13 @@
         <tr><td>Complete games per team</td><td>Season CG ÷ number of franchises with at least one pitching row that season</td></tr>
         <tr><td>Innings per start</td><td>Innings of pitchers classed as starters ÷ their games started</td></tr>
         <tr><td>Reliever share of innings</td><td>Innings of pitchers classed as relievers ÷ all innings</td></tr>
+        <tr><td>Home runs per team</td><td>Season HR ÷ number of franchises with at least one row that season</td></tr>
+        <tr><td>Rates by decade (home run, strikeout)</td><td>The decade's total HR (or SO) ÷ the decade's total PA, not an average of season rates</td></tr>
+        <tr><td>Share of plate appearances by batting hand</td><td>PA by left-handed, right-handed or switch hitters in the decade ÷ all PA in the decade</td></tr>
+        <tr><td>Franchise home run total and rate</td><td>Sum of HR across the franchise's rows; HR ÷ PA across the same rows</td></tr>
+        <tr><td>League ERA gap (AL − NL)</td><td>Mean across seasons of (AL ERA − NL ERA), each from league totals</td></tr>
+        <tr><td>Franchise ERA and strikeouts per 9</td><td>From the franchise's total ER, SO and IP over all its seasons, not an average of seasons</td></tr>
+        <tr><td>Team table totals</td><td>Sums of the pitchers' (or hitters') rows; every rate in the bottom row is recomputed from those sums</td></tr>
         <tr><td>Primary position</td><td>Fielding position with the most games for that player, team and season</td></tr>
       </table>
       <a class="cta" href="dashboard.html">Explore the data yourself</a>
@@ -396,10 +408,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="js/common.js?v=p11"></script>
-<script src="js/sound.js?v=p11"></script>
-<script src="js/report.js?v=p11"></script>
-<script src="js/roster.js?v=p11"></script>
-<script src="js/roster_pitching.js?v=p11"></script>
+<script src="js/common.js?v=p12"></script>
+<script src="js/sound.js?v=p12"></script>
+<script src="js/report.js?v=p12"></script>
+<script src="js/roster.js?v=p12"></script>
+<script src="js/roster_pitching.js?v=p12"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ const COLORS = ["#0b2545", "#c8102e", "#2f6db5", "#8da2c0", "#e57a86", "#1f8a8a"
 /* Bump this whenever data/batting.csv or data/report.json changes, so
    returning visitors' browsers fetch the new file instead of serving
    their cached copy for the rest of its 10-minute Cache-Control window. */
-const DATA_VERSION = "2026season-p11";
+const DATA_VERSION = "2026season-p12";
 
 const SUM_COLS = ["G", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BB", "SO", "HBP", "SH", "SF"];
 
