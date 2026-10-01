@@ -137,8 +137,45 @@ def build(kind):
     }
 
 
+def merge(hit, pit):
+    """One pool of every player: team and era clues are shared, hitting and pitching clues sit side by side."""
+    skip = {"pitched", "batted"}  # "also pitched/batted" only make sense inside one pool
+    crit, index, players = [], {}, {}
+    for part in (hit, pit):
+        remap = {}
+        for ci, c in enumerate(part["criteria"]):
+            if c["id"] in skip:
+                continue
+            if c["id"] not in index:
+                index[c["id"]] = len(crit)
+                crit.append({k: c[k] for k in ("id", "label", "group", "type")})
+            remap[ci] = index[c["id"]]
+        for pid, name, first, last, vol, met in part["players"]:
+            p = players.setdefault(pid, [pid, name, first, last, 0, set(), 0, 0])
+            p[2], p[3] = min(p[2], first), max(p[3], last)
+            p[4] += vol
+            p[5].update(remap[m] for m in met if m in remap)
+            p[6 if part is hit else 7] = vol
+    for cid, label, test in [("role:hitter", "Mainly a hitter (1,000+ career PA)", lambda p: p[6] >= 1000),
+                             ("role:pitcher", "Pitcher (300+ career innings)", lambda p: p[7] >= 300)]:
+        index[cid] = len(crit)
+        crit.append({"id": cid, "label": label, "group": "kind", "type": "pos"})
+        for p in players.values():
+            if test(p):
+                p[5].add(index[cid])
+    counts = [0] * len(crit)
+    for p in players.values():
+        for m in p[5]:
+            counts[m] += 1
+    for c, n in zip(crit, counts):
+        c["n"] = n
+    return {"criteria": crit,
+            "players": [[p[0], p[1], p[2], p[3], p[4], sorted(p[5])] for p in players.values()]}
+
+
 def main():
-    out = {"hit": build("hit"), "pit": build("pit")}
+    hit, pit = build("hit"), build("pit")
+    out = {"all": merge(hit, pit), "hit": hit, "pit": pit}
     path = DATA / "grid.json"
     path.write_text(json.dumps(out, separators=(",", ":"), ensure_ascii=False))
     for k in out:

@@ -36,13 +36,13 @@
   <div class="dash-title">
     <div>
       <h1>Daily Grid</h1>
-      <p>Fill all nine squares with a player who fits <em>both</em> the row and the column. One guess per square, nine guesses, and no player twice. The rarer your pick, the more points it earns. A new grid for hitters and one for pitchers every day, built from the same data as the rest of the site (1960–2026).</p>
+      <p>Fill all nine squares with a player who fits <em>both</em> the row and the column. One guess per square, nine guesses, and no player twice. The rarer your pick, the more points it earns. A new Mixed grid (hitters and pitchers together), a hitters-only grid and a pitchers-only grid every day, built from the same data as the rest of the site (1960–2026).</p>
     </div>
   </div>
 
   <section class="grid-wrap" aria-label="Game">
     <div class="grid-bar">
-      <div class="seg" id="modeSeg"><button aria-pressed="true" data-v="hit">Hitters</button><button aria-pressed="false" data-v="pit">Pitchers</button></div>
+      <div class="seg" id="modeSeg"><button aria-pressed="true" data-v="all">Mixed</button><button aria-pressed="false" data-v="hit">Hitters</button><button aria-pressed="false" data-v="pit">Pitchers</button></div>
       <label class="grid-date">Day <input type="date" id="dayPick" aria-label="Pick a day"></label>
       <div class="grid-stats"><span>Guesses left <b id="left">9</b></span><span>Score <b id="score">0</b></span></div>
     </div>
@@ -67,7 +67,7 @@
       <div id="reveal"></div>
     </div>
 
-    <p class="chart-note">Players count for a team if they appeared for that franchise in this data, and for a season stat if they reached it in one season (a traded player's stints are added together). Points per square run from 1 to 100 and measure how few of the other valid answers had a longer career (plate appearances or innings pitched). The grid for each day is the same for everyone.</p>
+    <p class="chart-note">Players count for a team if they appeared for that franchise in this data, and for a season stat if they reached it in one season (a traded player's stints are added together). Points per square run from 1 to 100 and measure how few of the other valid answers had a longer career (plate appearances plus innings pitched). The grid for each day is the same for everyone.</p>
   </section>
 </main>
 

@@ -7,7 +7,7 @@
   const $ = (id) => document.getElementById(id);
   const MIN_ANSWERS = 3;      // every square must have at least this many valid players
   const GUESSES = 9;
-  let DATA = null, mode = "hit", day = todayStr();
+  let DATA = null, mode = "all", day = todayStr();
   let puzzle = null, state = null, activeCell = -1;
 
   function todayStr() {
@@ -168,7 +168,7 @@
     const filled = state.cells.filter(Boolean).length;
     $("doneTitle").textContent = filled === 9 ? `Grid complete! ${state.score} points` : `Out of guesses: ${filled}/9 squares, ${state.score} points`;
     const rows = [0, 1, 2].map((r) => [0, 1, 2].map((c) => (state.cells[r * 3 + c] ? "🟩" : "⬛")).join("")).join("\n");
-    const label = mode === "hit" ? "hitters" : "pitchers";
+    const label = { all: "mixed", hit: "hitters", pit: "pitchers" }[mode];
     $("shareText").textContent = `MLB Daily Grid (${label}) ${day}\n${rows}\n${filled}/9 · ${state.score} pts\n${location.origin}${location.pathname}`;
     const d = DATA[mode];
     const missed = state.cells.map((c, i) => c ? null : i).filter((i) => i !== null);
