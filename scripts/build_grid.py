@@ -203,6 +203,46 @@ def main_team(hit_df, pit_df):
     return {r.playerID: TEAM_ID.get(r.franchise, 0) for r in g.itertuples()}   # last row per player wins = most games
 
 
+def squash(s):
+    import unicodedata
+    s = unicodedata.normalize("NFD", str(s))
+    return "".join(c for c in s.lower() if c.isalnum() and c.isascii())
+
+
+def extra_players(known_ids):
+    """Players who reached the majors but have no hitting or pitching line in the tables above:
+    Lahman people with an MLB debut and no stats, and 2026 players who took the field without a plate
+    appearance or a batter faced (the cleaned 2026 files drop those rows)."""
+    people = pd.read_csv(RAW / "People.csv", usecols=["playerID", "nameFirst", "nameLast", "birthYear", "birthMonth",
+                                                        "birthDay", "debut", "finalGame"])
+    people["name"] = (people.nameFirst.fillna("") + " " + people.nameLast.fillna("")).str.strip()
+    out = {}
+    for r in people[people.debut.notna()].itertuples():
+        if r.playerID not in known_ids:
+            first = int(r.debut[:4])
+            last = int(r.finalGame[:4]) if isinstance(r.finalGame, str) else first
+            out[r.playerID] = {"name": r.name, "first": first, "last": last, "teams": set()}
+    # 2026 feed: match to Lahman by name + birth date, to the MLB id file, or else key it as mlb<id>
+    people["key"] = [(squash(n), f"{int(y):04d}-{int(m):02d}-{int(d):02d}") if pd.notna(y) and pd.notna(m) and pd.notna(d) else None
+                     for n, y, m, d in zip(people.name, people.birthYear, people.birthMonth, people.birthDay)]
+    by_birth = {k: pid for pid, k in zip(people.playerID, people.key) if k}
+    ids_path = RAW / "mlbam_ids.csv"
+    by_mlbam = {r.mlbam: r.playerID for r in pd.read_csv(ids_path, dtype=str).itertuples()} if ids_path.exists() else {}
+    feed = json.loads((RAW / "mlb2026" / "players.json").read_text())
+    fielding = json.loads((RAW / "mlb2026" / "fielding.json").read_text())
+    teams_of = {}
+    for f in fielding:
+        teams_of.setdefault(str(f["playerId"]), set()).add(f["teamId"])
+    for mid, rec in feed.items():
+        pid = by_mlbam.get(mid) or by_birth.get((squash(rec["name"]), rec.get("birthDate"))) or "mlb" + mid
+        if pid in known_ids or "mlb" + mid in known_ids:
+            continue
+        e = out.setdefault(pid, {"name": rec["name"], "first": 2026, "last": 2026, "teams": set()})
+        e["last"] = 2026
+        e["teams"] |= teams_of.get(mid, set())
+    return out
+
+
 def merge(hit, pit, team):
     """One pool of every player: team and era clues are shared, hitting and pitching clues sit side by side."""
     skip = {"pitched", "batted"}  # "also pitched/batted" only make sense inside one pool
@@ -229,6 +269,16 @@ def merge(hit, pit, team):
         for p in players.values():
             if test(p):
                 p[5].add(index[cid])
+    # Players with no stat lines at all: era clues from their years, team clues for 2026 fielders.
+    by_team_id = {v: k for k, v in TEAM_ID.items()}
+    for pid, e in extra_players(set(players)).items():
+        met = {index[f"dec:{y // 10 * 10}"] for y in range(e["first"], e["last"] + 1) if f"dec:{y // 10 * 10}" in index}
+        for t in e["teams"]:
+            if "team:" + by_team_id.get(t, "") in index:
+                met.add(index["team:" + by_team_id[t]])
+        players[pid] = [pid, e["name"], e["first"], e["last"], 0, met, 0, 0]
+        if e["teams"]:
+            team[pid] = sorted(e["teams"])[0]
     counts = [0] * len(crit)
     for p in players.values():
         for m in p[5]:
