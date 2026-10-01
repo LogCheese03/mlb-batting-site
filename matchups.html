@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=p5">
+  <link rel="stylesheet" href="css/style.css?v=p6">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
   <div class="dash-title">
     <div>
       <h1>Hitter vs. pitcher</h1>
-      <p>Pick a hitter to see how they did against every pitcher they faced, or pick a pitcher to see it from the other side. Then choose one opponent for the season-by-season line. Pairs with at least 20 career plate appearances against each other, 1960–2025 (2026 play-by-play is not published yet).</p>
+      <p>Pick any hitter to see how they did against every pitcher they faced, or any pitcher to see it from the other side. Then choose one opponent for the season-by-season line. Every pairing is here: <span id="playerCount">…</span> players, 1960 through the 2026 regular season.</p>
     </div>
   </div>
 
@@ -49,19 +49,23 @@
 
     <div class="filter">
       <div class="filter-label" id="playerLabel">Pick a hitter</div>
-      <input type="search" id="playerSearch" list="playerNames" placeholder="Type a hitter's name…" aria-label="Search for the first player">
-      <datalist id="playerNames"></datalist>
+      <div class="suggest-wrap">
+        <input type="search" id="playerSearch" placeholder="Type a hitter's name…" aria-label="Search for the first player" autocomplete="off">
+        <ul class="suggest" id="playerSuggest" role="listbox" hidden></ul>
+      </div>
     </div>
 
     <div class="filter">
       <div class="filter-label" id="oppLabel">Then a pitcher</div>
-      <input type="search" id="oppSearch" list="oppNames" placeholder="Type a pitcher's name…" aria-label="Search for the opponent">
-      <datalist id="oppNames"></datalist>
+      <div class="suggest-wrap">
+        <input type="search" id="oppSearch" placeholder="Type a pitcher's name…" aria-label="Search for the opponent" autocomplete="off">
+        <ul class="suggest" id="oppSuggest" role="listbox" hidden></ul>
+      </div>
     </div>
 
     <div class="filter">
-      <div class="filter-label">Minimum plate appearances <span class="count" id="minPALabel">20</span></div>
-      <input type="range" id="minPA" min="20" max="100" step="5" value="20" aria-label="Minimum plate appearances against this opponent">
+      <div class="filter-label">Minimum plate appearances <span class="count" id="minPALabel">1</span></div>
+      <input type="range" id="minPA" min="1" max="100" step="1" value="1" aria-label="Minimum plate appearances against this opponent">
     </div>
 
     <button class="btn-reset" id="reset">Reset</button>
@@ -78,7 +82,7 @@
         <label for="measure">Measure</label>
         <select id="measure"></select>
       </div>
-      <p class="status">Switch the measure to change both charts.</p>
+      <p class="status" id="status" aria-live="polite">Switch the measure to change both charts.</p>
     </div>
 
     <div class="player-card" id="prompt">
@@ -95,6 +99,7 @@
         <p class="chart-note">Click a bar to open that matchup.</p>
       </div>
       <div class="table-wrap opp-table"><table class="data-table" id="oppTable"></table></div>
+      <p style="text-align:center;margin:12px 0 0"><button class="btn" id="showAll" hidden>Show all rows</button></p>
     </div>
 
     <div class="chart-card" id="detail" hidden>
@@ -108,7 +113,7 @@
       <div class="table-wrap"><table class="data-table" id="seasonTable"></table></div>
     </div>
 
-    <p class="chart-note" style="margin-top:22px">The information used here was obtained free of charge from and is copyrighted by <a href="https://www.retrosheet.org">Retrosheet</a>. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711. Each plate appearance is read from Retrosheet's play-by-play files and credited to the pitcher on the mound. From 1970 on, season totals built this way are within <span id="mmTol">…</span> of the official Lahman totals; some 1960s games are missing from the play-by-play, so those seasons run up to <span id="mmWorst">…</span> low. Pitcher totals match Lahman exactly in <span id="mmExact">…</span> of pitcher-seasons, and most misses are a single walk, because official scoring can charge a walk to the pitcher who started the count. See <a href="index.html#methods">About the data</a>.</p>
+    <p class="chart-note" style="margin-top:22px">The information used here was obtained free of charge from and is copyrighted by <a href="https://www.retrosheet.org">Retrosheet</a>. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711. Each plate appearance from 1960 to 2025 is read from Retrosheet's play-by-play files and credited to the pitcher on the mound; 2026 comes from MLB's own play-by-play. From 1970 on, season totals built this way are within <span id="mmTol">…</span> of the totals in this site's hitting file; some 1960s games are missing from the play-by-play, so those seasons run up to <span id="mmWorst">…</span> low. Pitcher totals match exactly in <span id="mmExact">…</span> of pitcher-seasons, and most misses are a single walk, because official scoring can charge a walk to the pitcher who started the count. See <a href="index.html#methods">About the data</a>.</p>
   </section>
 </main>
 
@@ -116,8 +121,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="js/common.js?v=p5"></script>
-<script src="js/sound.js?v=p5"></script>
-<script src="js/matchups.js?v=p5"></script>
+<script src="js/common.js?v=p6"></script>
+<script src="js/sound.js?v=p6"></script>
+<script src="js/matchups.js?v=p6"></script>
 </body>
 </html>
