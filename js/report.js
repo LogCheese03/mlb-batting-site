@@ -80,8 +80,8 @@ function derivePitching(rep, { maxBy, minBy, mean }) {
     pWorstFranchise: franchises[franchises.length - 1].franchise, pWorstFranchiseERA: franchises[franchises.length - 1].ERA,
     pDroppedWindow: p.meta.raw_rows - p.meta.rows_in_window,
     ...(rep.matchups ? {
-      mmTol: Math.max(rep.matchups.worst_relative_difference_1970_on, 0.0001), mmWorst: rep.matchups.worst_relative_difference_vs_lahman,
-      mmExact: rep.matchups.pitcher_check.exact_share, mmKeptShare: rep.matchups.plate_appearances_kept / rep.matchups.plate_appearances_parsed,
+      mmTol: Math.max(rep.matchups.worst_relative_difference_1970_on, 0.0001), mmWorst: rep.matchups.worst_relative_difference_vs_site,
+      mmExact: rep.matchups.pitcher_check.exact_share, mmBatExact: rep.matchups.batter_check.exact_share,
     } : {}),
   };
 }
