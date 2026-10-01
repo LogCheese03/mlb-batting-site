@@ -130,14 +130,16 @@
   function hideSuggest() { $("pickSuggest").hidden = true; sugg = []; suggActive = -1; }
   function search() {
     const q = $("pickSearch").value.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
-    if (q.length < 2) return hideSuggest();
+    if (q.length < 1) return hideSuggest();
     const d = DATA[mode], used = new Set(state.used);
     const hits = [];
     for (let i = 0; i < d.players.length; i++) {
       if (d.norm[i].includes(q) && !used.has(i)) hits.push(i);
     }
-    hits.sort((a, b) => (d.norm[a].startsWith(q) ? 0 : 1) - (d.norm[b].startsWith(q) ? 0 : 1) || d.players[b][4] - d.players[a][4]);
-    sugg = hits.slice(0, 8);
+    // Names with a word starting with the typed text come first (so "ju" lists Judge before Beaujul), then the longest careers.
+    const rank = (i) => (d.norm[i].startsWith(q) ? 0 : (" " + d.norm[i]).includes(" " + q) ? 1 : 2);
+    hits.sort((a, b) => rank(a) - rank(b) || d.players[b][4] - d.players[a][4]);
+    sugg = hits.slice(0, 10);
     const ul = $("pickSuggest");
     ul.innerHTML = sugg.map((i, k) => { const p = d.players[i];
       return `<li role="option" data-k="${k}">${esc(p[1])} <span class="muted">(${p[2]}–${p[3]})</span></li>`; }).join("") || '<li class="muted">No unused player by that name</li>';
