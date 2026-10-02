@@ -134,7 +134,7 @@
       const camStart = V(T, 2.9, 1.5, 3.7), camHigh = V(T, 9, 21, 12), lookStart = V(T, -0.1, 0.9, -1.6), lookAt = new T.Vector3();
       return {
         dur: 5200,
-        cues: [{ at: 2750, say: "Home run!" }],
+        cues: [{ at: 2750, say: "Home run!", clip: "home-run" }],
         frame(ms) {
           const sw = ease(seg(ms, 300, 640));
           bat.rotation.y = lerp(-1.45, 1.6, sw); bat.tilt.rotation.z = lerp(0.9, 0.05, seg(ms, 300, 520));
@@ -207,7 +207,8 @@
       });
       return {
         dur: PITCHES.length * PERIOD + 1500,
-        cues: PITCHES.map((p, i) => ({ at: i * PERIOD + CROSS + 60, say: i === PITCHES.length - 1 ? "Strike three!|You're out!" : p.call === "STRIKE" ? "Strike!" : "Ball!" })),
+        cues: PITCHES.map((p, i) => ({ at: i * PERIOD + CROSS + 60, say: i === PITCHES.length - 1 ? "Strike three!|You're out!" : p.call === "STRIKE" ? "Strike!" : "Ball!",
+          clip: i === PITCHES.length - 1 ? "strike-three" : p.call === "STRIKE" ? "strike" : "ball" })),
         frame(ms) {
           const n = Math.min(PITCHES.length - 1, Math.floor(ms / PERIOD)), local = ms - n * PERIOD, P = PITCHES[n];
           pitcher.armR.rotation.x = lerp(0.35 * PI, 1.55 * PI, ease(seg(local, 0, 470))) + (local > 520 ? lerp(0, 0.45 * PI, seg(local, 520, 1000)) : 0);
@@ -264,7 +265,7 @@
       const throwFrom = V(T, 0.2, 1.0, 0.9), throwTo = V(T, -0.35, 0.55, -12.2);
       return {
         dur: 4200,
-        cues: [{ at: 2000, say: "Safe!" }],
+        cues: [{ at: 2000, say: "Safe!", clip: "safe" }],
         frame(ms) {
           const r = ease(seg(ms, 600, 1750)), slide = ease(seg(ms, 1450, 1750));
           runner.position.copy(A).addScaledVector(dir, r); faceDir(runner, dir.x, dir.z);
@@ -293,7 +294,7 @@
       const gap = V(T, 15, 0.15, -31), home = V(T, 0, 0.82, 0), third = V(T, -6.2, 0.7, -6.9);
       return {
         dur: 5000,
-        cues: [{ at: 3000, say: "Safe!" }],
+        cues: [{ at: 3000, say: "Safe!", clip: "safe" }],
         frame(ms) {
           let pos = bases[0], moving = ms >= 400 && ms < 3000;
           if (ms >= 3000) pos = bases[3].clone().add(V(T, -0.3, 0, 0.3));
@@ -415,9 +416,37 @@
       setTimeout(res, 2500);                           // never hang if the browser drops the event
     });
   }
+  // Recorded calls beat any synthesized voice: if audio/umpire-<clip>.mp3 (or .m4a/.wav/.ogg) exists it is played instead.
+  const clipCache = {};
+  function findClip(clip) {
+    if (!clipCache[clip]) {
+      const exts = ["mp3", "m4a", "wav", "ogg"];
+      clipCache[clip] = (async () => {
+        for (const e of exts) {
+          const url = `audio/umpire-${clip}.${e}`;
+          try { const r = await fetch(url, { method: "HEAD" }); if (r.ok) return url; } catch (err) { /* offline */ }
+        }
+        return null;
+      })();
+    }
+    return clipCache[clip];
+  }
+  let current = null;
+  async function playClip(clip) {
+    const url = clip && (await findClip(clip));
+    if (!url) return false;
+    try {
+      if (current) current.pause();
+      current = new Audio(url); current.volume = 1;
+      await current.play();
+      return true;
+    } catch (e) { return false; }
+  }
   // `text` may hold several shouts separated by "|" ("Strike three!|You're out!"); they are spoken with a short beat between.
-  async function say(text) {
-    if (!soundOn() || !("speechSynthesis" in window)) return;
+  async function say(text, clip) {
+    if (!soundOn()) return;
+    if (await playClip(clip)) return;
+    if (!("speechSynthesis" in window)) return;
     try {
       speechSynthesis.cancel();
       const parts = text.split("|");
@@ -446,7 +475,7 @@
       };
       fill();
       if ("speechSynthesis" in window) speechSynthesis.addEventListener("voiceschanged", fill);
-      pick.addEventListener("change", () => { try { localStorage.setItem("mlbUmpireVoice", pick.value); } catch (e) { /* ignore */ } say("Strike three!|You're out!"); });
+      pick.addEventListener("change", () => { try { localStorage.setItem("mlbUmpireVoice", pick.value); } catch (e) { /* ignore */ } say("Strike three!|You're out!", "strike-three"); });
       hint.append(" Voice: ", pick);
       host.insertBefore(hint, host.querySelector(".anim-stage").nextSibling);
     }
@@ -476,7 +505,7 @@
       const tick = (now) => {
         const ms = Math.max(0, (now - t0) * SPEED);
         s.frame(Math.min(ms, s.dur)); render();
-        (s.cues || []).forEach((c) => { if (c.at > prev && c.at <= ms) say(c.say); });
+        (s.cues || []).forEach((c) => { if (c.at > prev && c.at <= ms) say(c.say, c.clip); });
         prev = ms;
         if (ms < s.dur) raf = requestAnimationFrame(tick);
       };
