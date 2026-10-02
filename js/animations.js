@@ -207,7 +207,7 @@
       });
       return {
         dur: PITCHES.length * PERIOD + 1500,
-        cues: PITCHES.map((p, i) => ({ at: i * PERIOD + CROSS + 60, say: i === PITCHES.length - 1 ? "Strike three! You're out!" : p.call === "STRIKE" ? "Strike!" : "Ball!" })),
+        cues: PITCHES.map((p, i) => ({ at: i * PERIOD + CROSS + 60, say: i === PITCHES.length - 1 ? "Strike three!|You're out!" : p.call === "STRIKE" ? "Strike!" : "Ball!" })),
         frame(ms) {
           const n = Math.min(PITCHES.length - 1, Math.floor(ms / PERIOD)), local = ms - n * PERIOD, P = PITCHES[n];
           pitcher.armR.rotation.x = lerp(0.35 * PI, 1.55 * PI, ease(seg(local, 0, 470))) + (local > 520 ? lerp(0, 0.45 * PI, seg(local, 520, 1000)) : 0);
@@ -383,18 +383,45 @@
 
   /* ---------- the umpire's voice (only when the site's sound toggle is on) ---------- */
   const soundOn = () => !!(window.SiteSound && window.SiteSound.isEnabled && window.SiteSound.isEnabled());
-  let voice = null;
-  function say(text) {
+  // Browsers only have the voices the device ships with, so rank them: newer "premium / natural" voices sound far less robotic
+  // than the default, and a deep male voice suits an umpire. The viewer can override the choice with the picker on the card.
+  const NOVELTY = /bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|zarvox|albert|fred|junior|kathy|ralph|deranged|hysterical/i;
+  function rankVoice(v) {
+    let s = 0;
+    if (!/^en/i.test(v.lang)) return -99;
+    if (NOVELTY.test(v.name)) return -50;
+    if (/premium|enhanced|natural|neural|siri|online/i.test(v.name)) s += 6;
+    if (/daniel|aaron|evan|guy|davis|ryan|james|tom|david|mark|alex|arthur|oliver|gordon|male/i.test(v.name)) s += 3;
+    if (/en[-_]US/i.test(v.lang)) s += 2;
+    if (/google/i.test(v.name)) s += 1;
+    return s;
+  }
+  const englishVoices = () => ("speechSynthesis" in window ? speechSynthesis.getVoices() : []).filter((v) => /^en/i.test(v.lang) && !NOVELTY.test(v.name));
+  function pickVoice() {
+    let saved = null; try { saved = localStorage.getItem("mlbUmpireVoice"); } catch (e) { /* private mode */ }
+    const all = englishVoices();
+    return all.find((v) => v.name === saved) || all.slice().sort((a, b) => rankVoice(b) - rankVoice(a))[0] || null;
+  }
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  function speakOne(text, loud) {
+    return new Promise((res) => {
+      const u = new SpeechSynthesisUtterance(text), v = pickVoice();
+      if (v) u.voice = v;
+      u.pitch = 0.82 + Math.random() * 0.12;          // a little different every call, like a person
+      u.rate = (loud ? 1.12 : 1.02) + Math.random() * 0.08;
+      u.volume = 1;
+      u.onend = u.onerror = () => res();
+      speechSynthesis.speak(u);
+      setTimeout(res, 2500);                           // never hang if the browser drops the event
+    });
+  }
+  // `text` may hold several shouts separated by "|" ("Strike three!|You're out!"); they are spoken with a short beat between.
+  async function say(text) {
     if (!soundOn() || !("speechSynthesis" in window)) return;
     try {
-      if (!voice) {
-        const vs = speechSynthesis.getVoices().filter((v) => /^en/i.test(v.lang));
-        voice = vs.find((v) => /daniel|alex|fred|google uk english male|david|mark/i.test(v.name)) || vs[0] || null;
-      }
-      const u = new SpeechSynthesisUtterance(text);
-      if (voice) u.voice = voice;
-      u.pitch = 0.5; u.rate = 1.05; u.volume = 1;
-      speechSynthesis.cancel(); speechSynthesis.speak(u);
+      speechSynthesis.cancel();
+      const parts = text.split("|");
+      for (let i = 0; i < parts.length; i++) { await speakOne(parts[i], true); if (i < parts.length - 1) await wait(220); }
     } catch (e) { /* speech is a bonus */ }
   }
   const SPEED = 0.72;                       // scene time per real time: below 1 slows every scene down
@@ -411,6 +438,16 @@
     if (def.voice) {
       const hint = document.createElement("p"); hint.className = "anim-hint";
       hint.textContent = "🔊 The umpire calls it out loud when sound is on (turn on \u201cClick sounds\u201d in the top bar).";
+      const pick = document.createElement("select"); pick.className = "anim-voice"; pick.setAttribute("aria-label", "Umpire voice");
+      const fill = () => {
+        const cur = pickVoice();
+        pick.innerHTML = englishVoices().map((v) => `<option value="${v.name.replace(/"/g, "&quot;")}"${cur && v.name === cur.name ? " selected" : ""}>${v.name}</option>`).join("");
+        pick.hidden = !pick.options.length;
+      };
+      fill();
+      if ("speechSynthesis" in window) speechSynthesis.addEventListener("voiceschanged", fill);
+      pick.addEventListener("change", () => { try { localStorage.setItem("mlbUmpireVoice", pick.value); } catch (e) { /* ignore */ } say("Strike three!|You're out!"); });
+      hint.append(" Voice: ", pick);
       host.insertBefore(hint, host.querySelector(".anim-stage").nextSibling);
     }
     const stage = host.querySelector(".anim-stage"), canvas = host.querySelector("canvas");

@@ -362,3 +362,4 @@ button.g-cell:disabled { cursor: default; background: #eef1f6; }
 .anim-formula { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 12px; text-align: center; background: rgba(11,37,69,.78); color: var(--gold, #ffd23f); font-family: var(--display); font-weight: 800; font-size: clamp(20px, 3.6vw, 32px); opacity: 0; }
 .anim-caption { margin: 0; padding: 10px 14px 12px; font-size: 15px; color: var(--muted); }
 .anim-hint { margin: 0; padding: 6px 14px 0; font-size: 13.5px; color: var(--muted); }
+.anim-voice { font: inherit; font-size: 13px; max-width: 220px; padding: 2px 4px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
