@@ -401,14 +401,16 @@
   function pickVoice() {
     let saved = null; try { saved = localStorage.getItem("mlbUmpireVoice"); } catch (e) { /* private mode */ }
     const all = englishVoices();
-    return all.find((v) => v.name === saved) || all.slice().sort((a, b) => rankVoice(b) - rankVoice(a))[0] || null;
+    // Flo (a voice that ships with recent macOS) is the house umpire whenever the device has it.
+    return all.find((v) => v.name === saved) || all.find((v) => /^flo\b/i.test(v.name)) || all.slice().sort((a, b) => rankVoice(b) - rankVoice(a))[0] || null;
   }
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   function speakOne(text, loud) {
     return new Promise((res) => {
       const u = new SpeechSynthesisUtterance(text), v = pickVoice();
       if (v) u.voice = v;
-      u.pitch = 0.82 + Math.random() * 0.12;          // a little different every call, like a person
+      const flo = v && /^flo\b/i.test(v.name);
+      u.pitch = (flo ? 0.98 : 0.82) + Math.random() * 0.08;   // a little different every call, like a person; Flo already sounds natural at normal pitch
       u.rate = (loud ? 1.12 : 1.02) + Math.random() * 0.08;
       u.volume = 1;
       u.onend = u.onerror = () => res();
